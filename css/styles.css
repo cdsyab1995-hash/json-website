@@ -671,3 +671,55 @@ input[type="text"].input-field:focus {
     font-weight: 600;
 }
 
+/* ===== 排序选项 ===== */
+.sort-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.sort-options .checkbox-label,
+.sort-options .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    padding: 0.5rem 0.75rem;
+    background: white;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.sort-options .checkbox-label:hover,
+.sort-options .radio-label:hover {
+    border-color: var(--primary);
+}
+
+.sort-options .checkbox-label input,
+.sort-options .radio-label input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.sort-options .sort-order {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .sort-options .sort-order {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+

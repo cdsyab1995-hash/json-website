@@ -357,4 +357,32 @@ document.addEventListener('DOMContentLoaded', function() {
             timeout = setTimeout(later, wait);
         };
     }
+
+    // ===== 通用消息提示函数 =====
+    function showMessage(element, text, type) {
+        if (!element) return;
+        element.textContent = text;
+        element.className = 'message show message-' + type;
+    }
+
+    function hideMessage(element) {
+        if (!element) return;
+        element.className = 'message';
+        element.textContent = '';
+    }
+
+    // ===== 通用复制函数 =====
+    async function copyToClipboard(textarea, msgElement) {
+        const text = textarea.value || textarea.textContent || '';
+        if (!text) {
+            showMessage(msgElement, '没有内容可复制', 'error');
+            return;
+        }
+        try {
+            await navigator.clipboard.writeText(text);
+            showMessage(msgElement, '已复制到剪贴板！', 'success');
+        } catch (err) {
+            showMessage(msgElement, '复制失败，请手动复制', 'error');
+        }
+    }
 });

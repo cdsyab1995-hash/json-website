@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="在线JSON清理工具，移除多余空格、修复常见格式错误、统一键名格式。快速美化杂乱JSON数据为规范格式。">
+    <meta name="keywords" content="JSON清理,JSON美化,JSON格式化,JSON规范,JSON去重,JSON格式化工具">
+    <meta name="author" content="JSON Web Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/clean.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/clean.html">
+    <meta property="og:title" content="JSON 清理美化工具 | JSON Web Tools">
+    <meta property="og:description" content="免费在线JSON清理工具，修复格式、统一风格、美化JSON。">
+    <meta property="og:site_name" content="JSON Web Tools">
+    <title>JSON 清理美化工具 - 修复格式统一风格 | JSON Web Tools</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            JSON Web Tools
+        </a>
+        
+        <button class="menu-toggle" aria-label="菜单">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                首页
+            </a>
+            <a href="format.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                    <line x1="9" y1="20" x2="15" y2="20"></line>
+                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                </svg>
+                格式化
+            </a>
+            <a href="escape.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                转义
+            </a>
+            <a href="sort.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+                排序
+            </a>
+            <a href="clean.html" class="nav-link active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+                清理
+            </a>
+            <a href="xml.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <path d="M8 13h2"></path>
+                    <path d="M8 17h2"></path>
+                    <path d="M14 13h2"></path>
+                    <path d="M14 17h2"></path>
+                </svg>
+                XML
+            </a>
+            <a href="yaml.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                YAML
+            </a>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-container">
+        <div class="page-header fade-in">
+            <h1 class="page-title">JSON 清理美化</h1>
+            <p class="page-description">
+                修复格式错误、移除冗余内容、统一JSON风格，让杂乱JSON变得规范整洁
+            </p>
+        </div>
+
+        <!-- 清理工具区域 -->
+        <section class="tool-area fade-in">
+            <!-- 清理选项 -->
+            <div class="tool-section">
+                <div class="sort-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="trimSpaces" checked>
+                        <span>移除首尾空白</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeEmpty" checked>
+                        <span>移除空值（null）</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="fixQuotes" checked>
+                        <span>修复单引号为双引号</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeTrailingComma" checked>
+                        <span>移除尾部逗号</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="fixBackslash" checked>
+                        <span>修复多余反斜杠</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 输入区域 -->
+            <div class="tool-section">
+                <label class="section-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    输入 JSON（支持不规范格式）
+                </label>
+                <textarea 
+                    id="cleanInput" 
+                    class="input-area" 
+                    placeholder='粘贴需要清理的JSON，支持以下不规范格式：
+- 单引号
+- 尾部逗号
+- 多余空白
+- 未转义的特殊字符
+- 注释（会被移除）'></textarea>
+                
+                <!-- 操作按钮 -->
+                <div class="toolbar mt-md">
+                    <div class="toolbar-title">
+                        <span>清理操作</span>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-lg" id="btnClean">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            </svg>
+                            清理美化
+                        </button>
+                        <button class="btn btn-success" id="btnCopy">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            复制结果
+                        </button>
+                        <button class="btn btn-secondary" id="btnClear">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            清空
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 消息提示 -->
+                <div id="msgClean" class="message"></div>
+            </div>
+
+            <!-- 预览区域 -->
+            <div class="tool-section mt-lg">
+                <label class="section-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    预览（语法高亮）
+                </label>
+                <div id="cleanPreview" class="json-highlight"></div>
+            </div>
+
+            <!-- 输出区域 -->
+            <div class="tool-section mt-lg">
+                <label class="section-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    清理结果
+                </label>
+                <textarea 
+                    id="cleanOutput" 
+                    class="output-area" 
+                    placeholder="清理后的JSON将显示在这里..."
+                    readonly></textarea>
+            </div>
+        </section>
+
+        <!-- 功能说明 -->
+        <section class="tool-area fade-in">
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">清理规则说明</h2>
+            <div class="feature-grid" style="margin-top: 0;">
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">移除首尾空白</h3>
+                    <p>自动删除JSON字符串首尾的多余空格、换行和制表符。</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">修复单引号</h3>
+                    <p>将不规范的单引号字符串转换为标准双引号格式。</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">移除尾部逗号</h3>
+                    <p>修复JavaScript允许但JSON标准不允许的尾部逗号。</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">移除空值</h3>
+                    <p>可选择删除值为null的键值对，让JSON更简洁。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="tool-area fade-in">
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">常见问题</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">这个工具能修复所有JSON错误吗？</summary>
+                    <div class="faq-answer">
+                        <p>可以修复常见的格式问题，如单引号、尾部逗号等。</p>
+                        <p>但如果是<strong>语法逻辑错误</strong>（如键值类型错误、括号不匹配等），需要手动修正。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">移除空值会影响数据吗？</summary>
+                    <div class="faq-answer">
+                        <p>会的。如果某个键的值是<code>null</code>，勾选"移除空值"后整个键值对会被删除。</p>
+                        <p>如果需要保留null值，请取消勾选此选项。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">支持JavaScript注释吗？</summary>
+                    <div class="faq-answer">
+                        <p>支持。工具会自动移除<code>//</code>和<code>/* */</code>格式的注释。但建议尽量不要在JSON中使用注释。</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <a href="format.html" style="color: var(--primary);">JSON格式化</a> | 
+            <a href="sort.html" style="color: var(--primary);">JSON排序</a> | 
+            <a href="clean.html" style="color: var(--primary);">JSON清理</a> | 
+            <a href="xml.html" style="color: var(--primary);">XML转JSON</a> | 
+            <a href="yaml.html" style="color: var(--primary);">JSON转YAML</a>
+        </p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // JSON 清理美化功能
+        document.getElementById('btnClean').addEventListener('click', function() {
+            const input = document.getElementById('cleanInput').value;
+            const trimSpaces = document.getElementById('trimSpaces').checked;
+            const removeEmpty = document.getElementById('removeEmpty').checked;
+            const fixQuotes = document.getElementById('fixQuotes').checked;
+            const removeTrailingComma = document.getElementById('removeTrailingComma').checked;
+            const output = document.getElementById('cleanOutput');
+            const preview = document.getElementById('cleanPreview');
+            const msg = document.getElementById('msgClean');
+            
+            if (!input.trim()) {
+                showMessage(msg, '请输入JSON数据', 'error');
+                return;
+            }
+            
+            try {
+                let text = input;
+                
+                // 移除注释
+                text = text.replace(/\/\/.*$/gm, '');
+                text = text.replace(/\/\*[\s\S]*?\*\//g, '');
+                
+                // 修复单引号（简单的字符串替换）
+                if (fixQuotes) {
+                    // 修复键名
+                    text = text.replace(/'([^']+)'\s*:/g, '"$1":');
+                    // 修复字符串值
+                    text = text.replace(/:(\s*)'([^']*)'/g, function(match, space, value) {
+                        const escaped = value.replace(/"/g, '\\"');
+                        return ':' + space + '"' + escaped + '"';
+                    });
+                }
+                
+                // 移除尾部逗号
+                if (removeTrailingComma) {
+                    text = text.replace(/,(\s*[}\]])/g, '$1');
+                }
+                
+                // 移除首尾空白
+                if (trimSpaces) {
+                    text = text.trim();
+                }
+                
+                // 解析并处理null值
+                let json = JSON.parse(text);
+                if (removeEmpty) {
+                    json = removeEmptyValues(json);
+                }
+                
+                const result = JSON.stringify(json, null, 2);
+                output.value = result;
+                preview.innerHTML = highlightJSON(result);
+                showMessage(msg, '清理成功！', 'success');
+            } catch (e) {
+                showMessage(msg, '处理失败: ' + e.message, 'error');
+            }
+        });
+        
+        function removeEmptyValues(obj) {
+            if (Array.isArray(obj)) {
+                return obj.map(item => removeEmptyValues(item)).filter(item => item !== null && item !== undefined);
+            } else if (obj !== null && typeof obj === 'object') {
+                const result = {};
+                Object.keys(obj).forEach(key => {
+                    const value = removeEmptyValues(obj[key]);
+                    if (value !== null && value !== undefined) {
+                        result[key] = value;
+                    }
+                });
+                return result;
+            }
+            return obj;
+        }
+        
+        function highlightJSON(json) {
+            return json.replace(/(".*?"):/g, '<span class="key">$1</span>:')
+                       .replace(/:(".*?")/g, ':<span class="string">$1</span>')
+                       .replace(/:(-?\d+\.?\d*)/g, ':<span class="number">$1</span>')
+                       .replace(/:(true|false)/g, ':<span class="boolean">$1</span>')
+                       .replace(/:(null)/g, ':<span class="null">$1</span>');
+        }
+        
+        // 复制功能
+        document.getElementById('btnCopy').addEventListener('click', function() {
+            const output = document.getElementById('cleanOutput');
+            copyToClipboard(output, document.getElementById('msgClean'));
+        });
+        
+        // 清空功能
+        document.getElementById('btnClear').addEventListener('click', function() {
+            document.getElementById('cleanInput').value = '';
+            document.getElementById('cleanOutput').value = '';
+            document.getElementById('cleanPreview').innerHTML = '';
+            hideMessage(document.getElementById('msgClean'));
+        });
+    </script>
+</body>
+</html>
