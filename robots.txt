@@ -1,0 +1,8 @@
+# robots.txt for JSON Web Tools
+# https://cdsyab1995-hash.github.io/json-website/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cdsyab1995-hash.github.io/json-website/sitemap.xml
