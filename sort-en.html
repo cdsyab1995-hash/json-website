@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free JSON key sorter tool. Sort JSON by key name, recursive sorting, ascending/descending order. Perfect for code review and diff analysis.">
+    <meta name="keywords" content="JSON sort, JSON key sort, JSON recursive sort, JSON reorder, JSON beautify, sort JSON keys, JSON formatting tool">
+    <meta name="author" content="JSON Web Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/sort-en.html">
+    <link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/sort-en.html">
+    <link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/sort.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/sort-en.html">
+    <meta property="og:title" content="JSON Key Sorter - Free Online Tool">
+    <meta property="og:description" content="Sort JSON keys alphabetically. Supports recursive and ascending/descending sorting.">
+    <meta property="og:site_name" content="JSON Web Tools">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON Key Sorter",
+        "url": "https://cdsyab1995-hash.github.io/json-website/sort-en.html",
+        "description": "Free online JSON key sorter with recursive and ascending/descending options",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "featureList": ["JSON key sorting", "Recursive sorting", "Case-sensitive/insensitive", "Ascending/descending order"]
+    }
+    </script>
+    
+    <title>JSON Key Sorter - Sort JSON Keys Alphabetically Online</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index-en.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            JSON Web Tools
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="index-en.html" class="nav-link">Home</a>
+            <a href="format-en.html" class="nav-link">Format</a>
+            <a href="escape-en.html" class="nav-link">Escape</a>
+            <a href="extract-en.html" class="nav-link">Extract</a>
+            <a href="sort-en.html" class="nav-link active">Sort</a>
+            <a href="clean-en.html" class="nav-link">Clean</a>
+            <a href="xml-en.html" class="nav-link">XML</a>
+            <a href="yaml-en.html" class="nav-link">YAML</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header fade-in">
+            <h1 class="page-title">JSON Sorter</h1>
+            <p class="page-description">
+                Sort JSON keys by name with recursive sorting and ascending/descending options
+            </p>
+        </div>
+
+        <section class="tool-area fade-in">
+            <div class="tool-section">
+                <div class="sort-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="recursiveSort" checked>
+                        <span>Recursive Sort (All Nested Levels)</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="caseSensitive" checked>
+                        <span>Case Sensitive</span>
+                    </label>
+                    <div class="sort-order">
+                        <label class="radio-label">
+                            <input type="radio" name="sortOrder" value="asc" checked>
+                            <span>Ascending (A-Z)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="sortOrder" value="desc">
+                            <span>Descending (Z-A)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <label class="section-label">Input JSON</label>
+                <textarea 
+                    id="sortInput" 
+                    class="input-area" 
+                    placeholder='Paste JSON to sort, for example:
+{
+  "zhangsan": "Zhang",
+  "lisi": "Li",
+  "wangwu": "Wang",
+  "config": {
+    "zIndex": 100,
+    "appName": "MyApp",
+    "enabled": true
+  }
+}'></textarea>
+                
+                <div class="toolbar mt-md">
+                    <div class="toolbar-title"><span>Sort Action</span></div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-lg" id="btnSort">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                            Sort
+                        </button>
+                        <button class="btn btn-success" id="btnCopy">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Result
+                        </button>
+                        <button class="btn btn-secondary" id="btnClear">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+                <div id="msgSort" class="message"></div>
+            </div>
+
+            <div class="tool-section mt-lg">
+                <label class="section-label">Sorted Result</label>
+                <textarea 
+                    id="sortOutput" 
+                    class="output-area" 
+                    placeholder="Sorted JSON will appear here..."
+                    readonly></textarea>
+            </div>
+        </section>
+
+        <section class="tool-area fade-in">
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">Features</h2>
+            <div class="feature-grid" style="margin-top: 0;">
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Recursive Sort</h3>
+                    <p>Sort keys at all nested levels, keeping deeply nested objects organized.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Ascending/Descending</h3>
+                    <p>Sort A-Z or Z-A. Useful for comparing different versions of JSON.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Code Review</h3>
+                    <p>Perfect for code review scenarios. Sorted JSON makes it easy to spot added or removed key-value pairs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tool-area fade-in">
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">FAQ</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">What's the difference between recursive and non-recursive sorting?</summary>
+                    <div class="faq-answer">
+                        <p><strong>Non-recursive</strong> only sorts the outermost keys.</p>
+                        <p><strong>Recursive</strong> sorts keys at all nested levels. For example:</p>
+                        <p><code>{"b": 1, "a": {"d": 1, "c": 2}}</code></p>
+                        <p>Non-recursive: <code>{"a": {...}, "b": 1}</code></p>
+                        <p>Recursive: <code>{"a": {"c": 2, "d": 1}, "b": 1}</code></p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Does sorting change JSON values?</summary>
+                    <div class="faq-answer">
+                        <p><strong>No</strong>. JSON sorting only changes key order, without modifying any values. Data content remains identical to the original.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>JSON Web Tools - Free client-side JSON processing. Your data stays private.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <a href="format-en.html" style="color: var(--primary);">JSON Formatter</a> | 
+            <a href="sort-en.html" style="color: var(--primary);">JSON Sorter</a> | 
+            <a href="clean-en.html" style="color: var(--primary);">JSON Cleaner</a>
+        </p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.getElementById('btnSort').addEventListener('click', function() {
+            const input = document.getElementById('sortInput').value.trim();
+            const recursive = document.getElementById('recursiveSort').checked;
+            const caseSensitive = document.getElementById('caseSensitive').checked;
+            const sortOrder = document.querySelector('input[name="sortOrder"]:checked').value;
+            const output = document.getElementById('sortOutput');
+            const msg = document.getElementById('msgSort');
+            
+            if (!input) {
+                showMessage(msg, 'Please enter JSON data', 'error');
+                return;
+            }
+            
+            try {
+                const json = JSON.parse(input);
+                const sorted = sortJSON(json, recursive, caseSensitive, sortOrder);
+                output.value = JSON.stringify(sorted, null, 2);
+                showMessage(msg, 'Sorted successfully!', 'success');
+            } catch (e) {
+                showMessage(msg, 'JSON format error: ' + e.message, 'error');
+            }
+        });
+        
+        function sortJSON(obj, recursive, caseSensitive, order) {
+            if (Array.isArray(obj)) {
+                return recursive ? obj.map(item => sortJSON(item, recursive, caseSensitive, order)) : obj;
+            } else if (obj !== null && typeof obj === 'object') {
+                const sortedKeys = Object.keys(obj).sort((a, b) => {
+                    const cmp = caseSensitive ? a.localeCompare(b) : a.localeCompare(b, undefined, { sensitivity: 'base' });
+                    return order === 'asc' ? cmp : -cmp;
+                });
+                const result = {};
+                sortedKeys.forEach(key => {
+                    result[key] = recursive ? sortJSON(obj[key], recursive, caseSensitive, order) : obj[key];
+                });
+                return result;
+            }
+            return obj;
+        }
+        
+        document.getElementById('btnCopy').addEventListener('click', function() {
+            const output = document.getElementById('sortOutput');
+            copyToClipboard(output, document.getElementById('msgSort'));
+        });
+        
+        document.getElementById('btnClear').addEventListener('click', function() {
+            document.getElementById('sortInput').value = '';
+            document.getElementById('sortOutput').value = '';
+            hideMessage(document.getElementById('msgSort'));
+        });
+    </script>
+</body>
+</html>

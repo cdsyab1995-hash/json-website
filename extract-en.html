@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free JSON data extraction tool using JSONPath syntax. Extract specific data from complex JSON structures. Supports multiple query methods for flexible data extraction.">
+    <meta name="keywords" content="JSON extract, JSONPath, JSON data extraction, JSON query, JSONPath syntax, JSON parser, JSON data mining, extract JSON data, JSON online">
+    <meta name="author" content="JSON Web Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/extract-en.html">
+    <link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/extract-en.html">
+    <link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/extract.html">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/extract-en.html">
+    <meta property="og:title" content="JSON Extractor with JSONPath - Free Online Tool">
+    <meta property="og:description" content="Extract JSON data using JSONPath syntax. Query nested objects and arrays easily.">
+    <meta property="og:site_name" content="JSON Web Tools">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON Data Extractor with JSONPath",
+        "url": "https://cdsyab1995-hash.github.io/json-website/extract-en.html",
+        "description": "Free online JSON data extractor using JSONPath syntax for complex JSON structures",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "featureList": ["JSON data extraction", "JSONPath queries", "Nested data access", "Array indexing"]
+    }
+    </script>
+    
+    <title>JSON Data Extractor - Extract Data Using JSONPath Syntax</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index-en.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            JSON Web Tools
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="index-en.html" class="nav-link">Home</a>
+            <a href="format-en.html" class="nav-link">Format</a>
+            <a href="escape-en.html" class="nav-link">Escape</a>
+            <a href="extract-en.html" class="nav-link active">Extract</a>
+            <a href="sort-en.html" class="nav-link">Sort</a>
+            <a href="clean-en.html" class="nav-link">Clean</a>
+            <a href="xml-en.html" class="nav-link">XML</a>
+            <a href="yaml-en.html" class="nav-link">YAML</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header fade-in">
+            <h1 class="page-title">JSON Extractor</h1>
+            <p class="page-description">
+                Extract specific data from complex JSON using JSONPath syntax
+            </p>
+        </div>
+
+        <section class="tool-area fade-in">
+            <div class="tool-section">
+                <label class="section-label">JSON String</label>
+                <textarea 
+                    id="extractInput" 
+                    class="input-area" 
+                    placeholder='Enter JSON string, for example:
+{
+  "name": "John",
+  "age": 30,
+  "address": {
+    "city": "New York",
+    "district": "Manhattan"
+  },
+  "skills": ["JavaScript", "Python", "Go"],
+  "projects": [
+    {"name": "Project A", "status": "Completed"},
+    {"name": "Project B", "status": "In Progress"}
+  ]
+}'
+                    style="min-height: 250px;"></textarea>
+            </div>
+
+            <div class="tool-section mt-lg">
+                <label class="section-label">JSONPath Path</label>
+                <input 
+                    type="text" 
+                    id="pathInput" 
+                    class="input-field" 
+                    placeholder='Enter JSONPath, for example: $.name or $.address.city or $.skills[0]'/>
+                
+                <div class="toolbar mt-md">
+                    <div class="toolbar-title"><span>Extract Action</span></div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-lg" id="btnExtract">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            Extract Data
+                        </button>
+                    </div>
+                </div>
+                <div id="msgExtract" class="message"></div>
+            </div>
+
+            <div class="tool-section mt-lg">
+                <label class="section-label">Extracted Result</label>
+                <textarea 
+                    id="extractOutput" 
+                    class="output-area" 
+                    placeholder="Extracted data will appear here..."
+                    readonly
+                    style="min-height: 150px;"></textarea>
+            </div>
+
+            <div class="tool-section mt-lg">
+                <label class="section-label">Result Preview (Syntax Highlighted)</label>
+                <div id="extractHighlight" class="json-highlight"></div>
+            </div>
+        </section>
+
+        <section class="tool-area fade-in">
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">JSONPath Syntax Guide</h2>
+            
+            <div class="feature-grid" style="margin-top: 0;">
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Basic Syntax</h3>
+                    <p><code>$.key</code><br>Extract specific key from object</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Nested Access</h3>
+                    <p><code>$.parent.child</code><br>Access nested objects</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Array Index</h3>
+                    <p><code>$.array[0]</code><br>Access array element</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Skip $ Prefix</h3>
+                    <p><code>key.subkey</code><br>Can omit leading $</p>
+                </div>
+            </div>
+
+            <div class="feature-card mt-md" style="cursor: default; background: var(--primary-light);">
+                <h3 style="font-size: 1rem; color: var(--primary);">Examples</h3>
+                <div style="margin-top: 1rem;">
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 0.5rem;"><code>$.name</code> → "John"</li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.address.city</code> → "New York"</li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.skills[0]</code> → "JavaScript"</li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.projects[1].name</code> → "Project B"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-container mt-lg">
+                <h3 style="font-size: 1rem; margin-bottom: 1rem;">FAQ</h3>
+                <details class="faq-item">
+                    <summary class="faq-question">What is the difference between JSONPath and XPath?</summary>
+                    <div class="faq-answer">
+                        <p>JSONPath is the JSON version of XPath concept. XPath is for XML documents, JSONPath is for JSON documents.</p>
+                        <p>Main difference: JSONPath uses <code>$</code> for root (like XPath's <code>/</code>) and <code>.</code> for property access (like XPath's <code>/</code>).</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Why is the extraction result empty?</summary>
+                    <div class="faq-answer">
+                        <p>Common reasons:</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li>JSONPath spelling error</li>
+                            <li>Key doesn't exist or case mismatch</li>
+                            <li>Array index out of range</li>
+                            <li>Input JSON format error</li>
+                        </ul>
+                        <p>Please verify the JSON structure first, then check if the path is correct.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Can I extract multiple elements from an array?</summary>
+                    <div class="faq-answer">
+                        <p>Yes. Common array operations:</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li><code>$.items[0]</code> - First element</li>
+                            <li><code>$.items[-1]</code> - Last element</li>
+                            <li><code>$.items[0:3]</code> - First 3 elements (slice)</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>JSON Web Tools - Free client-side JSON processing. Your data stays private.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
