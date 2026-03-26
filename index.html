@@ -51,6 +51,56 @@
     }
     </script>
     
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "什么是JSON？JSON有什么用途？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成。它广泛用于Web API数据传输、配置文件、NoSQL数据库等场景。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "为什么要格式化JSON？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JSON格式化可以让混乱的JSON数据变得整齐易读，方便调试和理解。格式化后的JSON会自动添加缩进和换行，语法高亮还能帮助你快速识别键值对。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "JSON校验是什么意思？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JSON校验是检查JSON字符串语法是否正确的过程。如果JSON格式有错误（如缺少引号、括号不匹配等），校验工具会告诉你错误的具体位置，方便你快速修正。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "JSON压缩有什么用？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JSON压缩可以移除所有不必要的空格和换行，将JSON压缩成一行。这在数据传输时可以减少数据体积，提高传输效率，特别适合API请求和响应。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "这个工具安全吗？数据会上传吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全安全！所有操作都在你的浏览器本地完成，数据不会上传到任何服务器。我们无法获取或存储你的任何数据，你的JSON内容完全私密。"
+                }
+            }
+        ]
+    }
+    </script>
+    
     <title>JSON Web Tools - 强大的在线JSON工具箱 | JSON格式化校验压缩转义提取</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -185,11 +235,71 @@
                 </div>
             </div>
         </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="tool-area mt-lg fade-in">
+            <h2 class="section-label" style="font-size: 1.5rem; margin-bottom: 1rem;">常见问题 FAQ</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">什么是JSON？JSON有什么用途？</summary>
+                    <div class="faq-answer">
+                        <p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成。它广泛用于Web API数据传输、配置文件、NoSQL数据库等场景。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">为什么要格式化JSON？</summary>
+                    <div class="faq-answer">
+                        <p>JSON格式化可以让混乱的JSON数据变得整齐易读，方便调试和理解。格式化后的JSON会自动添加缩进和换行，语法高亮还能帮助你快速识别键值对。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">JSON校验是什么意思？</summary>
+                    <div class="faq-answer">
+                        <p>JSON校验是检查JSON字符串语法是否正确的过程。如果JSON格式有错误（如缺少引号、括号不匹配等），校验工具会告诉你错误的具体位置，方便你快速修正。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">JSON压缩有什么用？</summary>
+                    <div class="faq-answer">
+                        <p>JSON压缩可以移除所有不必要的空格和换行，将JSON压缩成一行。这在数据传输时可以减少数据体积，提高传输效率，特别适合API请求和响应。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">JSON转义和反转义有什么区别？</summary>
+                    <div class="faq-answer">
+                        <p><strong>转义</strong>是将普通字符串转换为JSON安全格式（如将双引号转换为<code>\"</code>）；<strong>反转义</strong>则是将转义后的字符串还原为原始内容。这在API开发和日志处理中经常用到。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">这个工具安全吗？数据会上传吗？</summary>
+                    <div class="faq-answer">
+                        <p>完全安全！所有操作都在你的浏览器本地完成，数据不会上传到任何服务器。我们无法获取或存储你的任何数据，你的JSON内容完全私密。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">什么是JSONPath？如何提取JSON数据？</summary>
+                    <div class="faq-answer">
+                        <p>JSONPath是一种用于从JSON文档中提取数据的语法，类似于XPath之于XML。使用JSONPath可以快速定位并提取嵌套的键值、数组元素等，如<code>$.user.name</code>或<code>$.items[0].price</code>。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">需要安装软件吗？支持手机使用吗？</summary>
+                    <div class="faq-answer">
+                        <p>无需安装任何软件，只需打开网页即可使用。支持桌面电脑、平板和手机等各种设备，响应式设计确保在各种屏幕尺寸上都有良好的使用体验。</p>
+                    </div>
+                </details>
+            </div>
+        </section>
     </main>
 
     <!-- 页脚 -->
     <footer class="footer">
         <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <a href="format.html" style="color: var(--primary);">JSON格式化</a> | 
+            <a href="escape.html" style="color: var(--primary);">JSON转义</a> | 
+            <a href="extract.html" style="color: var(--primary);">JSON提取</a>
+        </p>
     </footer>
 
     <script src="js/app.js"></script>

@@ -261,6 +261,61 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- 提取页面专属 FAQ -->
+            <div class="faq-container mt-lg">
+                <h3 style="font-size: 1rem; margin-bottom: 1rem;">常见问题</h3>
+                <details class="faq-item">
+                    <summary class="faq-question">JSONPath 和 XPath 有什么区别？</summary>
+                    <div class="faq-answer">
+                        <p>JSONPath 是 XPath 概念的JSON版本。XPath用于XML文档，而JSONPath用于JSON文档。</p>
+                        <p>主要区别：JSONPath使用<code>$</code>表示根节点（类似XPath的<code>/</code>），使用<code>.</code>访问属性（类似XPath的<code>/</code>）。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">为什么提取结果为空？</summary>
+                    <div class="faq-answer">
+                        <p>常见原因：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li>JSONPath路径拼写错误</li>
+                            <li>键名不存在或大小写不匹配</li>
+                            <li>数组索引超出范围</li>
+                            <li>输入的JSON格式有误</li>
+                        </ul>
+                        <p>请先确认JSON结构，再检查路径是否正确。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">可以提取数组中的多个元素吗？</summary>
+                    <div class="faq-answer">
+                        <p>支持。基本语法：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li><code>$.items[0]</code> - 提取第一个元素</li>
+                            <li><code>$.items[-1]</code> - 提取最后一个元素</li>
+                            <li><code>$.items[0:3]</code> - 提取前3个元素（切片）</li>
+                        </ul>
+                        <p>本工具支持常见的数组索引和切片操作。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">路径前面的 $ 符号可以省略吗？</summary>
+                    <div class="faq-answer">
+                        <p>可以。为了方便使用，本工具支持省略开头的 <code>$</code> 符号。</p>
+                        <p>例如 <code>$.user.name</code> 和 <code>user.name</code> 的效果是一样的。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">支持模糊匹配或通配符吗？</summary>
+                    <div class="faq-answer">
+                        <p>支持的通配符：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li><code>$.items[*]</code> 或 <code>$.items[:]</code> - 提取所有元素</li>
+                            <li><code>$..key</code> - 递归匹配所有名为key的属性</li>
+                        </ul>
+                        <p>这些通配符在处理复杂嵌套结构时非常有用。</p>
+                    </div>
+                </details>
+            </div>
         </section>
     </main>
 

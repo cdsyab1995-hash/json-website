@@ -200,6 +200,50 @@ Tab:	'
                     <strong>配置管理：</strong>处理包含特殊字符的配置文件
                 </p>
             </div>
+
+            <!-- 转义页面专属 FAQ -->
+            <div class="faq-container mt-lg">
+                <h3 style="font-size: 1rem; margin-bottom: 1rem;">常见问题</h3>
+                <details class="faq-item">
+                    <summary class="faq-question">哪些字符需要转义？</summary>
+                    <div class="faq-answer">
+                        <p>JSON中需要转义的特殊字符包括：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li><code>"</code> 双引号 → <code>\"</code></li>
+                            <li><code>\</code> 反斜杠 → <code>\\</code></li>
+                            <li><code>\n</code> 换行符 → <code>\\n</code></li>
+                            <li><code>\t</code> 制表符 → <code>\\t</code></li>
+                            <li><code>\r</code> 回车符 → <code>\\r</code></li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">JSON转义在什么场景下使用？</summary>
+                    <div class="faq-answer">
+                        <p>主要应用场景：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li><strong>API请求</strong>：将用户输入的特殊字符安全地放入JSON请求体</li>
+                            <li><strong>日志记录</strong>：将包含特殊字符的日志信息序列化为JSON格式</li>
+                            <li><strong>数据导入</strong>：处理包含引号、换行等字符的CSV或文本数据</li>
+                            <li><strong>前端开发</strong>：生成动态JSON配置文件</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">反转义后为什么看不到换行效果？</summary>
+                    <div class="faq-answer">
+                        <p>这是正常的。在JSON转义中，<code>\\n</code> 代表换行符。当你反转义后，字符串中确实包含了换行字符，但纯文本框可能不显示换行效果。你可以将结果复制到支持富文本的编辑器中查看。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">转义和编码有什么区别？</summary>
+                    <div class="faq-answer">
+                        <p><strong>JSON转义</strong>（如 <code>"</code> → <code>\"</code>）是JSON格式规范要求的，将特殊字符转换为JSON安全的表示。</p>
+                        <p><strong>URL编码</strong>（如 <code>"</code> → <code>%22</code>）用于URL参数传递。</p>
+                        <p>两者用途不同，不要混淆。如果你要生成JSON字符串，使用JSON转义；如果是URL参数，使用URL编码。</p>
+                    </div>
+                </details>
+            </div>
         </section>
     </main>
 

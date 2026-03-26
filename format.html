@@ -221,6 +221,50 @@
                 </div>
             </div>
         </section>
+
+        <!-- 格式化页面专属 FAQ -->
+        <section class="tool-area fade-in">
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">常见问题</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">JSON格式化后缩进几个空格？</summary>
+                    <div class="faq-answer">
+                        <p>本工具默认使用<strong>2个空格</strong>缩进，这是JSON格式化中最常用的标准。格式化后的JSON结构清晰，便于阅读和调试。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">JSON校验显示错误怎么办？</summary>
+                    <div class="faq-answer">
+                        <p>常见JSON错误包括：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li>键或字符串值缺少双引号</li>
+                            <li>多余的逗号（如最后一个元素后有逗号）</li>
+                            <li>括号不匹配</li>
+                            <li>使用了单引号（JSON只支持双引号）</li>
+                        </ul>
+                        <p>请仔细检查JSON语法，或使用格式化工具定位错误位置。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">JSON压缩会丢失数据吗？</summary>
+                    <div class="faq-answer">
+                        <p><strong>不会</strong>。JSON压缩只是移除空格、换行等不影响数据内容的形式化字符，数据本身完全不变。压缩后的JSON功能与原始JSON完全等价。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">为什么需要实时预览功能？</summary>
+                    <div class="faq-answer">
+                        <p>实时预览会在你输入JSON时自动显示格式化的结果和语法高亮，无需每次点击按钮刷新。这对于调试大型JSON或需要频繁修改的场景特别有用，可以大幅提高工作效率。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">支持格式化多层嵌套的JSON吗？</summary>
+                    <div class="faq-answer">
+                        <p>支持。本工具支持<strong>任意深度</strong>的嵌套JSON结构，无论有多少层对象和数组嵌套，都可以正确格式化、校验和压缩。</p>
+                    </div>
+                </details>
+            </div>
+        </section>
     </main>
 
     <!-- 页脚 -->
