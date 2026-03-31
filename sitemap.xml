@@ -129,4 +129,18 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://cdsyab1995-hash.github.io/json-website/blog-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/blog.html"/>
+        <lastmod>2026-03-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://cdsyab1995-hash.github.io/json-website/viewer-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/viewer.html"/>
+        <lastmod>2026-03-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>

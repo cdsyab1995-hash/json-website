@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
+    <meta name="description" content="Complete JSON Tutorial - Learn JSON syntax, data types, API usage, and best practices. Includes practical examples for developers. The best resource for learning JSON online.">
+    <meta name="keywords" content="JSON tutorial, JSON guide, JSON basics, JSON syntax, JSON learning, JSON tutorial for beginners, JSON course">
+    <meta name="author" content="JSON Web Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/blog-en.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/blog-en.html">
+    <meta property="og:title" content="Complete JSON Tutorial - From Beginner to Advanced">
+    <meta property="og:description" content="The most comprehensive JSON tutorial covering syntax, data types, API development, and best practices.">
+    
+    <!-- Alternate -->
+    <link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/blog-en.html">
+    <link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/blog.html">
+    
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Complete JSON Tutorial - From Beginner to Advanced",
+        "description": "Comprehensive JSON tutorial covering syntax, data types, API development, and best practices",
+        "author": {"@type": "Organization", "name": "JSON Web Tools"},
+        "datePublished": "2026-03-26"
+    }
+    </script>
+    
+    <title>JSON Tutorial - Complete Guide to JSON Syntax, Data Types & API Development | JSON Web Tools</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .blog-content h2 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        .blog-content h3 {
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .blog-content p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .blog-content pre {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .blog-content code {
+            background: var(--bg-tertiary);
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-size: 0.875em;
+        }
+        .blog-content pre code {
+            background: none;
+            padding: 0;
+        }
+        .toc {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .toc h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+        .toc a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc a:hover {
+            color: var(--primary);
+        }
+        .example-box {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .tip-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 4px solid #4caf50;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .tip-box.dark {
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+            color: #fff;
+        }
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 4px solid #ff9800;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+        .table-wrapper code {
+            background: var(--bg-tertiary);
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index-en.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            JSON Web Tools
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="index-en.html" class="nav-link">Home</a>
+            <a href="format-en.html" class="nav-link">Format</a>
+            <a href="escape-en.html" class="nav-link">Escape</a>
+            <a href="extract-en.html" class="nav-link">Extract</a>
+            <a href="sort-en.html" class="nav-link">Sort</a>
+            <a href="clean-en.html" class="nav-link">Clean</a>
+            <a href="xml-en.html" class="nav-link">XML</a>
+            <a href="yaml-en.html" class="nav-link">YAML</a>
+            <a href="blog-en.html" class="nav-link active">Tutorial</a>
+            <a href="viewer-en.html" class="nav-link">Viewer</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header text-center fade-in">
+            <h1 class="page-title">Complete JSON Tutorial</h1>
+            <p class="page-description">
+                From Beginner to Advanced - Master JSON Syntax, Data Types & API Development
+            </p>
+            <div class="breadcrumb">
+                <a href="index-en.html">Home</a> / <span>JSON Tutorial</span>
+            </div>
+        </div>
+
+        <div class="blog-content fade-in">
+            <nav class="toc">
+                <h4>Table of Contents</h4>
+                <ul>
+                    <li><a href="#what-is-json">1. What is JSON?</a></li>
+                    <li><a href="#json-syntax">2. JSON Basic Syntax</a></li>
+                    <li><a href="#data-types">3. JSON Data Types</a></li>
+                    <li><a href="#json-vs-javascript">4. JSON vs JavaScript Objects</a></li>
+                    <li><a href="#common-errors">5. Common Errors & Solutions</a></li>
+                    <li><a href="#api-usage">6. JSON in API Development</a></li>
+                    <li><a href="#best-practices">7. Best Practices</a></li>
+                    <li><a href="#tools">8. Recommended Tools</a></li>
+                </ul>
+            </nav>
+
+            <section id="what-is-json">
+                <h2>What is JSON?</h2>
+                <p><strong>JSON (JavaScript Object Notation)</strong> is a lightweight data interchange format, popularized by Douglas Crockford in 2001. It is based on a subset of JavaScript but is language-independent, with nearly all modern programming languages providing native support for JSON.</p>
+                
+                <div class="example-box">
+                    <strong>Why Learn JSON?</strong>
+                    <ul>
+                        <li><strong>API Development</strong>: Over 95% of web APIs use JSON for data transmission</li>
+                        <li><strong>Configuration Files</strong>: package.json, tsconfig.json, and more</li>
+                        <li><strong>Data Storage</strong>: NoSQL databases, configuration files</li>
+                        <li><strong>Logging Systems</strong>: Structured log recording</li>
+                    </ul>
+                </div>
+
+                <h3>JSON Characteristics</h3>
+                <ul>
+                    <li><strong>Clean & Readable</strong>: More compact than XML with clear structure</li>
+                    <li><strong>Easy to Parse</strong>: Built-in support in all major programming languages</li>
+                    <li><strong>Cross-Platform</strong>: Language-independent, exchangeable between any systems</li>
+                    <li><strong>Type-Safe</strong>: Supports multiple data types</li>
+                </ul>
+            </section>
+
+            <section id="json-syntax">
+                <h2>JSON Basic Syntax</h2>
+                <p>JSON has strict syntax rules. Violating any of them will cause parsing to fail.</p>
+
+                <h3>Basic Structure</h3>
+                <pre><code>{
+  "name": "John Smith",
+  "age": 28,
+  "isStudent": false,
+  "skills": ["JavaScript", "Python", "SQL"],
+  "address": {
+    "city": "New York",
+    "district": "Manhattan"
+  }
+}</code></pre>
+
+                <h3>Core Rules</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rule</th>
+                                <th>Correct Example</th>
+                                <th>Incorrect Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Keys must use double quotes</td>
+                                <td><code>"name"</code></td>
+                                <td><code>name</code> or <code>'name'</code></td>
+                            </tr>
+                            <tr>
+                                <td>Strings must use double quotes</td>
+                                <td><code>"Hello"</code></td>
+                                <td><code>'Hello'</code></td>
+                            </tr>
+                            <tr>
+                                <td>No trailing commas</td>
+                                <td><code>[1, 2, 3]</code></td>
+                                <td><code>[1, 2, 3, ]</code></td>
+                            </tr>
+                            <tr>
+                                <td>No comments</td>
+                                <td>(No comments)</td>
+                                <td><code>// comment</code></td>
+                            </tr>
+                            <tr>
+                                <td>No undefined</td>
+                                <td>Use <code>null</code></td>
+                                <td><code>"value": undefined</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="data-types">
+                <h2>JSON Data Types</h2>
+                <p>JSON supports 6 primitive data types.</p>
+
+                <h3>1. String</h3>
+                <pre><code>{
+  "message": "Hello World",
+  "unicode": "Chinese and emoji",
+  "escape": "newline\\n and tab\\t"
+}</code></pre>
+
+                <h3>2. Number</h3>
+                <pre><code>{
+  "integer": 42,
+  "float": 3.14159,
+  "negative": -17,
+  "scientific": 1.5e10,
+  "hex": 0xFF
+}</code></pre>
+
+                <h3>3. Boolean</h3>
+                <pre><code>{
+  "isActive": true,
+  "isDeleted": false
+}</code></pre>
+
+                <h3>4. Null</h3>
+                <pre><code>{
+  "middleName": null,
+  "deletedAt": null
+}</code></pre>
+
+                <h3>5. Object</h3>
+                <pre><code>{
+  "user": {
+    "id": 1,
+    "name": "Jane Doe",
+    "email": "jane@example.com"
+  }
+}</code></pre>
+
+                <h3>6. Array</h3>
+                <pre><code>{
+  "colors": ["red", "green", "blue"],
+  "numbers": [1, 2, 3, 4, 5],
+  "mixed": [1, "two", true, null],
+  "objects": [
+    {"id": 1, "name": "A"},
+    {"id": 2, "name": "B"}
+  ]
+}</code></pre>
+            </section>
+
+            <section id="json-vs-javascript">
+                <h2>JSON vs JavaScript Objects</h2>
+                <p>Despite similar names, JSON and JavaScript objects have important differences.</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>JSON</th>
+                                <th>JavaScript Object</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Key quotes</td>
+                                <td>Must use double quotes</td>
+                                <td>Optional, usually without quotes</td>
+                            </tr>
+                            <tr>
+                                <td>Value types</td>
+                                <td>String, Number, Boolean, Null, Object, Array</td>
+                                <td>Above + undefined, functions, Symbol</td>
+                            </tr>
+                            <tr>
+                                <td>Comments</td>
+                                <td>Not supported</td>
+                                <td>Supports <code>//</code> and <code>/* */</code></td>
+                            </tr>
+                            <tr>
+                                <td>Trailing comma</td>
+                                <td>Not allowed</td>
+                                <td>Allowed in modern JS</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>Data format</td>
+                                <td>Language-built-in object</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Working with JSON in JavaScript</h3>
+                <pre><code>// Object to JSON string
+const obj = { name: "John", age: 30 };
+const jsonString = JSON.stringify(obj);
+console.log(jsonString); // {"name":"John","age":30}
+
+// JSON string to object
+const parsed = JSON.parse(jsonString);
+console.log(parsed.name); // John
+
+// Formatted output
+console.log(JSON.stringify(obj, null, 2));</code></pre>
+            </section>
+
+            <section id="common-errors">
+                <h2>Common Errors & Solutions</h2>
+                
+                <h3>Error 1: Unexpected token</h3>
+                <div class="warning-box">
+                    <strong>Cause:</strong> Special characters in JSON string not escaped<br>
+                    <strong>Solution:</strong> Use escape characters like <code>\"</code>, <code>\\</code>, <code>\n</code>
+                </div>
+                <pre><code>// Incorrect
+{"text": "He said: "Hello""}
+
+// Correct
+{"text": "He said: \"Hello\""}</code></pre>
+
+                <h3>Error 2: Trailing comma</h3>
+                <div class="warning-box">
+                    <strong>Cause:</strong> Comma after last element<br>
+                    <strong>Solution:</strong> Remove trailing comma
+                </div>
+                <pre><code>// Incorrect
+[1, 2, 3, ]
+
+// Correct
+[1, 2, 3]</code></pre>
+
+                <h3>Error 3: Unquoted keys</h3>
+                <div class="warning-box">
+                    <strong>Cause:</strong> JSON keys must be wrapped in double quotes<br>
+                    <strong>Solution:</strong> Add double quotes to all keys
+                </div>
+                <pre><code>// Incorrect
+{name: "John"}
+
+// Correct
+{"name": "John"}</code></pre>
+
+                <h3>Error 4: Single quotes</h3>
+                <div class="warning-box">
+                    <strong>Cause:</strong> JSON only supports double quotes<br>
+                    <strong>Solution:</strong> Replace single quotes with double quotes
+                </div>
+                <pre><code>// Incorrect
+{'name': 'John'}
+
+// Correct
+{"name": "John"}</code></pre>
+            </section>
+
+            <section id="api-usage">
+                <h2>JSON in API Development</h2>
+                
+                <h3>RESTful API Requests</h3>
+                <pre><code>// GET request - fetch data
+fetch('https://api.example.com/users')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// POST request - send JSON data
+fetch('https://api.example.com/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'John',
+    email: 'john@example.com'
+  })
+});</code></pre>
+
+                <h3>JSON Request Body Example</h3>
+                <pre><code>{
+  "action": "createUser",
+  "data": {
+    "username": "johndoe",
+    "password": "encrypted_password",
+    "profile": {
+      "realName": "John Doe",
+      "avatar": "https://example.com/avatar.jpg",
+      "tags": ["developer", "designer"],
+      "settings": {
+        "theme": "dark",
+        "notifications": true,
+        "language": "en-US"
+      }
+    },
+    "createdAt": "2026-03-26T10:30:00Z"
+  }
+}</code></pre>
+
+                <h3>Error Response Format</h3>
+                <pre><code>{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid email format",
+    "field": "email",
+    "details": {
+      "expected": "Valid email address",
+      "received": "invalid-email"
+    }
+  }
+}</code></pre>
+            </section>
+
+            <section id="best-practices">
+                <h2>JSON Best Practices</h2>
+
+                <div class="tip-box">
+                    <strong>Naming Conventions</strong>
+                    <ul>
+                        <li>Use camelCase for key names: e.g., <code>firstName</code>, <code>lastName</code></li>
+                        <li>Use is/has/can prefixes for booleans: e.g., <code>isActive</code>, <code>hasPermission</code></li>
+                        <li>Maintain consistency: use uniform naming style throughout the project</li>
+                    </ul>
+                </div>
+
+                <h3>1. Use Meaningful Data Structures</h3>
+                <pre><code>// Not recommended: flat structure, poor scalability
+{"user_id": 1, "user_name": "John", "user_city": "New York"}
+
+// Recommended: nested structure, clear and extensible
+{"user": {"id": 1, "name": "John", "address": {"city": "New York"}}}</code></pre>
+
+                <h3>2. Handle DateTime Correctly</h3>
+                <pre><code>// Recommended: ISO 8601 format
+{"createdAt": "2026-03-26T10:30:00.000Z"}
+
+// Not recommended: custom format
+{"createdAt": "2026/3/26 10:30:00"}</code></pre>
+
+                <h3>3. Use Strings for Enums</h3>
+                <pre><code>// Recommended: clear enum values
+{"status": "pending", "role": "admin"}
+
+// Not recommended: numeric magic values
+{"status": 0, "role": 1}</code></pre>
+
+                <h3>4. Pagination Response Format</h3>
+                <pre><code>{
+  "success": true,
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 156,
+    "totalPages": 8
+  }
+}</code></pre>
+            </section>
+
+            <section id="tools">
+                <h2>Recommended Tools</h2>
+                <p>Using good tools can greatly improve JSON processing efficiency.</p>
+
+                <div class="feature-grid" style="margin-top: 1rem;">
+                    <div class="feature-card">
+                        <h3>JSON Formatter</h3>
+                        <p>Quickly format, beautify, and compress JSON. Real-time preview with syntax highlighting.</p>
+                        <a href="format-en.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
+                    </div>
+                    <div class="feature-card">
+                        <h3>JSON Validator</h3>
+                        <p>Check JSON syntax errors and locate error positions.</p>
+                        <a href="format-en.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
+                    </div>
+                    <div class="feature-card">
+                        <h3>JSON Escape Tool</h3>
+                        <p>Handle special character escaping, perfect for API development.</p>
+                        <a href="escape-en.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
+                    </div>
+                    <div class="feature-card">
+                        <h3>JSONPath Extractor</h3>
+                        <p>Extract complex data using JSONPath syntax.</p>
+                        <a href="extract-en.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Summary</h2>
+                <p>JSON is one of the foundations of modern web development. Mastering JSON syntax rules, data types, and best practices in API development is an essential skill for every developer.</p>
+                <p>Through this tutorial, you should now understand:</p>
+                <ul>
+                    <li>JSON basic syntax and 6 data types</li>
+                    <li>Differences between JSON and JavaScript objects</li>
+                    <li>Common JSON parsing errors and solutions</li>
+                    <li>JSON usage specifications in API development</li>
+                    <li>Best practices for JSON processing</li>
+                </ul>
+                <div class="tip-box tip-box.dark">
+                    <strong>Continue Learning</strong><br>
+                    Practice with our online JSON tools to deepen your understanding of JSON!
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>JSON Web Tools - Pure client-side JSON processing. Your data stays private.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <a href="format-en.html" style="color: var(--primary);">JSON Formatter</a> | 
+            <a href="blog-en.html" style="color: var(--primary);">JSON Tutorial</a>
+        </p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
