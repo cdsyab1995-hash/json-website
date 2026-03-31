@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Commit and push SEO improvements"""
+"""Commit and push all improvements"""
 import subprocess
 import sys
 
@@ -22,7 +22,7 @@ run_git(['add', '-A'])
 
 # Commit
 print("\nCommitting...")
-run_git(['commit', '-m', 'Fix SEO: correct canonical URLs, Open Graph, and JSON-LD paths'])
+run_git(['commit', '-m', 'Enhance SEO and content: improved meta descriptions, added JSON templates to blog and formatter'])
 
 # Push
 print("\nPushing...")

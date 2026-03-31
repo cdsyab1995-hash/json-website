@@ -385,4 +385,157 @@ document.addEventListener('DOMContentLoaded', function() {
             showMessage(msgElement, '复制失败，请手动复制', 'error');
         }
     }
+
+    // ===== JSON模板加载功能 =====
+    const jsonTemplates = {
+        api: {
+            name: 'API 响应',
+            content: `{
+  "success": true,
+  "message": "请求成功",
+  "data": {
+    "id": 1001,
+    "name": "示例数据",
+    "email": "example@example.com",
+    "createdAt": "2026-03-26T10:30:00Z",
+    "profile": {
+      "avatar": "https://example.com/avatar.jpg",
+      "bio": "这是一段简介"
+    }
+  },
+  "pagination": {
+    "page": 1,
+    "pageSize": 20,
+    "total": 100
+  }
+}`
+        },
+        user: {
+            name: '用户配置',
+            content: `{
+  "user": {
+    "id": "u12345",
+    "username": "zhangsan",
+    "email": "zhang@example.com",
+    "role": "admin",
+    "verified": true,
+    "preferences": {
+      "theme": "dark",
+      "language": "zh-CN",
+      "notifications": {
+        "email": true,
+        "push": false
+      }
+    }
+  }
+}`
+        },
+        product: {
+            name: '商品数据',
+            content: `{
+  "products": [
+    {
+      "id": "P001",
+      "name": "iPhone 15 Pro",
+      "category": "手机",
+      "price": 7999.00,
+      "stock": 100,
+      "tags": ["苹果", "5G", "旗舰"],
+      "specs": {
+        "screen": "6.1英寸",
+        "storage": "256GB",
+        "color": "钛金属色"
+      }
+    },
+    {
+      "id": "P002",
+      "name": "MacBook Air M3",
+      "category": "电脑",
+      "price": 9999.00,
+      "stock": 50,
+      "tags": ["苹果", "轻薄"],
+      "specs": {
+        "screen": "13.6英寸",
+        "storage": "512GB",
+        "color": "午夜色"
+      }
+    }
+  ]
+}`
+        },
+        package: {
+            name: 'package.json',
+            content: `{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "项目描述",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "keywords": ["nodejs", "api"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "nodemon": "^3.0.0"
+  }
+}`
+        },
+        i18n: {
+            name: '国际化配置',
+            content: `{
+  "zh-CN": {
+    "welcome": "欢迎",
+    "login": "登录",
+    "logout": "退出登录",
+    "profile": {
+      "title": "个人资料",
+      "name": "姓名",
+      "email": "邮箱"
+    }
+  },
+  "en-US": {
+    "welcome": "Welcome",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": {
+      "title": "Profile",
+      "name": "Name",
+      "email": "Email"
+    }
+  }
+}`
+        }
+    };
+
+    // 模板选择事件
+    const templateSelect = document.getElementById('templateSelect');
+    const inputJson = document.getElementById('inputJson');
+
+    if (templateSelect && inputJson) {
+        templateSelect.addEventListener('change', function() {
+            const selected = this.value;
+            if (selected && jsonTemplates[selected]) {
+                inputJson.value = jsonTemplates[selected].content;
+                // 触发格式化
+                const btnFormat = document.getElementById('formatBtn');
+                if (btnFormat) btnFormat.click();
+                // 显示提示
+                const msgFormat = document.getElementById('msgFormat');
+                if (msgFormat) {
+                    msgFormat.textContent = '已加载示例: ' + jsonTemplates[selected].name;
+                    msgFormat.className = 'message message-success show';
+                }
+            }
+            // 重置选择器
+            this.value = '';
+        });
+    }
 });

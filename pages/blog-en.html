@@ -212,6 +212,8 @@
                     <li><a href="#api-usage">6. JSON in API Development</a></li>
                     <li><a href="#best-practices">7. Best Practices</a></li>
                     <li><a href="#tools">8. Recommended Tools</a></li>
+                    <li><a href="#templates">9. Common JSON Templates</a></li>
+                    <li><a href="#datasets">10. Common JSON Datasets</a></li>
                 </ul>
             </nav>
 
@@ -581,6 +583,204 @@ fetch('https://api.example.com/users', {
                         <a href="extract-en.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
                     </div>
                 </div>
+            </section>
+
+            <section id="templates">
+                <h2>Common JSON Templates</h2>
+                <p>Here are commonly used JSON templates in development. Copy directly or load into the formatter.</p>
+
+                <h3>1. package.json (npm Project Config)</h3>
+                <pre><code>{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "Project description",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "keywords": ["json", "tool"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}</code></pre>
+
+                <h3>2. API Response Format</h3>
+                <pre><code>{
+  "success": true,
+  "message": "Operation successful",
+  "data": {
+    "id": 1001,
+    "name": "Sample Data",
+    "timestamp": "2026-03-26T10:30:00Z"
+  },
+  "meta": {
+    "page": 1,
+    "pageSize": 20,
+    "total": 100
+  }
+}</code></pre>
+
+                <h3>3. User Configuration</h3>
+                <pre><code>{
+  "user": {
+    "id": "u12345",
+    "username": "johndoe",
+    "email": "john@example.com",
+    "avatar": "https://example.com/avatar.jpg",
+    "role": "admin",
+    "verified": true,
+    "createdAt": "2026-01-15T08:00:00Z"
+  },
+  "preferences": {
+    "theme": "dark",
+    "language": "en-US",
+    "notifications": {
+      "email": true,
+      "push": false
+    }
+  }
+}</code></pre>
+
+                <h3>4. Database Configuration</h3>
+                <pre><code>{
+  "development": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "myapp_dev",
+    "username": "dev_user",
+    "password": "dev_password"
+  },
+  "production": {
+    "host": "db.example.com",
+    "port": 5432,
+    "database": "myapp_prod",
+    "username": "prod_user",
+    "password": "prod_password",
+    "ssl": true
+  }
+}</code></pre>
+
+                <h3>5. Internationalization (i18n) Config</h3>
+                <pre><code>{
+  "en-US": {
+    "welcome": "Welcome",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": {
+      "title": "Profile",
+      "name": "Name",
+      "email": "Email"
+    }
+  },
+  "zh-CN": {
+    "welcome": "欢迎",
+    "login": "登录",
+    "logout": "退出登录",
+    "profile": {
+      "title": "个人资料",
+      "name": "姓名",
+      "email": "邮箱"
+    }
+  }
+}</code></pre>
+
+                <h3>6. Docker Compose Configuration</h3>
+                <pre><code>{
+  "version": "3.8",
+  "services": {
+    "web": {
+      "image": "nginx:alpine",
+      "ports": ["80:80"],
+      "volumes": ["./html:/usr/share/nginx/html"],
+      "depends_on": ["api"]
+    },
+    "api": {
+      "build": "./api",
+      "environment": {
+        "NODE_ENV": "production",
+        "DATABASE_URL": "postgres://db:5432/app"
+      }
+    },
+    "db": {
+      "image": "postgres:15",
+      "environment": {
+        "POSTGRES_DB": "app",
+        "POSTGRES_USER": "user",
+        "POSTGRES_PASSWORD": "password"
+      },
+      "volumes": ["pgdata:/var/lib/postgresql/data"]
+    }
+  },
+  "volumes": {
+    "pgdata": {}
+  }
+}</code></pre>
+            </section>
+
+            <section id="datasets">
+                <h2>Common JSON Datasets</h2>
+                <p>Frequently used JSON data examples in real development.</p>
+
+                <h3>HTTP Status Codes</h3>
+                <pre><code>{
+  "codes": [
+    {"code": 200, "status": "OK", "description": "Request successful"},
+    {"code": 201, "status": "Created", "description": "Resource created successfully"},
+    {"code": 400, "status": "Bad Request", "description": "Invalid request parameters"},
+    {"code": 401, "status": "Unauthorized", "description": "Not authorized"},
+    {"code": 403, "status": "Forbidden", "description": "Access denied"},
+    {"code": 404, "status": "Not Found", "description": "Resource not found"},
+    {"code": 500, "status": "Internal Server Error", "description": "Server error"}
+  ]
+}</code></pre>
+
+                <h3>Countries List</h3>
+                <pre><code>{
+  "countries": [
+    {"code": "US", "name": "United States", "capital": "Washington D.C.", "currency": "USD"},
+    {"code": "CN", "name": "China", "capital": "Beijing", "currency": "CNY"},
+    {"code": "JP", "name": "Japan", "capital": "Tokyo", "currency": "JPY"},
+    {"code": "GB", "name": "United Kingdom", "capital": "London", "currency": "GBP"}
+  ]
+}</code></pre>
+
+                <h3>Products Data</h3>
+                <pre><code>{
+  "products": [
+    {
+      "id": "P001",
+      "name": "iPhone 15 Pro",
+      "category": "Smartphone",
+      "price": 999.00,
+      "stock": 100,
+      "tags": ["Apple", "5G", "Flagship"],
+      "specs": {
+        "screen": "6.1 inches",
+        "storage": "256GB",
+        "color": "Titanium"
+      }
+    },
+    {
+      "id": "P002",
+      "name": "MacBook Air M3",
+      "category": "Laptop",
+      "price": 1299.00,
+      "stock": 50,
+      "tags": ["Apple", "Lightweight", "M3 chip"],
+      "specs": {
+        "screen": "13.6 inches",
+        "storage": "512GB",
+        "color": "Midnight"
+      }
+    }
+  ]
+}</code></pre>
             </section>
 
             <section>
