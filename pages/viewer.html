@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
-    <meta name="description" content="Free JSON Viewer Online - Visualize JSON data with tree structure. Supports collapse/expand nodes, search & locate, copy paths. No registration required.">
-    <meta name="keywords" content="JSON viewer, JSON tree viewer, JSON visualizer, JSON tree structure, online JSON viewer, JSON viewer tool, JSON explorer">
+    <meta name="description" content="JSON在线查看器 - 可视化树形结构展示JSON数据，支持折叠/展开节点、搜索定位、复制路径。免费无需注册。">
+    <meta name="keywords" content="JSON查看器,JSON tree viewer,JSON可视化,JSON展开折叠,在线JSON查看">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/viewer-en.html">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/viewer.html">
     
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/viewer-en.html">
-    <meta property="og:title" content="Free JSON Viewer Online - Tree Structure Visualization">
-    <meta property="og:description" content="Visualize JSON data with tree structure. Supports collapse/expand, search, copy paths. 100% free.">
-    
-    <!-- Alternate -->
-    <link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/viewer-en.html">
-    <link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/viewer.html">
-    
-    <title>Free JSON Viewer Online - Tree Structure Visualization | JSON Web Tools</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>JSON在线查看器 - 树形结构可视化 | JSON Web Tools</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <style>
         .tree-viewer {
             font-family: 'Consolas', 'Monaco', monospace;
@@ -95,14 +85,14 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="index-en.html" class="navbar-brand">
+        <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
             </svg>
             JSON Web Tools
         </a>
-        <button class="menu-toggle" aria-label="Menu">
+        <button class="menu-toggle" aria-label="菜单">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -110,26 +100,25 @@
             </svg>
         </button>
         <div class="navbar-links">
-            <a href="index-en.html" class="nav-link">Home</a>
-            <a href="format-en.html" class="nav-link">Format</a>
-            <a href="escape-en.html" class="nav-link">Escape</a>
-            <a href="extract-en.html" class="nav-link">Extract</a>
-            <a href="sort-en.html" class="nav-link">Sort</a>
-            <a href="clean-en.html" class="nav-link">Clean</a>
-            <a href="xml-en.html" class="nav-link">XML</a>
-            <a href="yaml-en.html" class="nav-link">YAML</a>
-            <a href="viewer-en.html" class="nav-link active">Viewer</a>
+            <a href="../index.html" class="nav-link">首页</a>
+            <a href="format.html" class="nav-link">格式化</a>
+            <a href="escape.html" class="nav-link">转义</a>
+            <a href="extract.html" class="nav-link">提取</a>
+            <a href="sort.html" class="nav-link">排序</a>
+            <a href="clean.html" class="nav-link">清理</a>
+            <a href="xml.html" class="nav-link">XML</a>
+            <a href="yaml.html" class="nav-link">YAML</a>
         </div>
     </nav>
 
     <main class="main-container">
         <div class="page-header text-center fade-in">
-            <h1 class="page-title">JSON Viewer Online</h1>
+            <h1 class="page-title">JSON 在线查看器</h1>
             <p class="page-description">
-                Visualize JSON data with tree structure - Supports collapse/expand, search & locate
+                树形结构可视化展示JSON数据，支持折叠/展开、搜索定位
             </p>
             <div class="breadcrumb">
-                <a href="index-en.html">Home</a> / <span>JSON Viewer</span>
+                <a href="../index.html">首页</a> / <span>JSON查看器</span>
             </div>
         </div>
 
@@ -137,70 +126,70 @@
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
-                    <span class="status-text">Waiting for input...</span>
+                    <span class="status-text">等待输入...</span>
                 </div>
                 <div class="tool-actions">
-                    <button class="btn btn-secondary" id="expandAllBtn">Expand All</button>
-                    <button class="btn btn-secondary" id="collapseAllBtn">Collapse All</button>
+                    <button class="btn btn-secondary" id="expandAllBtn">全部展开</button>
+                    <button class="btn btn-secondary" id="collapseAllBtn">全部折叠</button>
                     <button class="btn btn-secondary" id="searchBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
-                        Search
+                        搜索
                     </button>
-                    <button class="btn btn-danger" id="clearBtn">Clear</button>
+                    <button class="btn btn-danger" id="clearBtn">清空</button>
                 </div>
             </div>
 
             <div class="editor-container">
                 <div class="editor-panel">
-                    <div class="editor-label">Input JSON</div>
-                    <textarea id="inputJson" class="code-editor" placeholder="Paste JSON data here, tree structure will display on the right..."></textarea>
+                    <div class="editor-label">输入 JSON</div>
+                    <textarea id="inputJson" class="code-editor" placeholder="在此粘贴JSON数据，右侧将显示树形结构..."></textarea>
                 </div>
                 <div class="editor-panel">
-                    <div class="editor-label">Tree View</div>
-                    <div id="treeViewer" class="tree-viewer">Paste JSON data to view tree structure...</div>
+                    <div class="editor-label">树形视图</div>
+                    <div id="treeViewer" class="tree-viewer">粘贴JSON数据查看树形结构...</div>
                 </div>
             </div>
 
             <div class="options-row">
                 <label class="checkbox-label">
                     <input type="checkbox" id="autoExpand" checked>
-                    <span>Auto-expand first level</span>
+                    <span>自动展开第一层</span>
                 </label>
                 <label class="checkbox-label" style="margin-left: 20px;">
-                    <span style="margin-right: 0.5rem;">Search:</span>
-                    <input type="text" id="searchInput" placeholder="Enter keywords to search..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); width: 200px;">
+                    <span style="margin-right: 0.5rem;">搜索:</span>
+                    <input type="text" id="searchInput" placeholder="输入关键词搜索..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); width: 200px;">
                 </label>
             </div>
         </div>
 
         <section class="tool-area mt-lg fade-in">
-            <h2 class="section-label">JSON Viewer Tips</h2>
+            <h2 class="section-label">JSON查看器使用技巧</h2>
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary class="faq-question">How to view nested JSON data?</summary>
+                    <summary class="faq-question">如何查看嵌套的JSON数据？</summary>
                     <div class="faq-answer">
-                        <p>Paste JSON data on the left, it will automatically display as a tree structure on the right. Click the arrow or text on the left of any node to expand/collapse that node. Deeply nested data can be viewed layer by layer, avoiding display of too much content at once.</p>
+                        <p>直接在左侧输入JSON，数据会自动以树形结构显示在右侧。点击节点左侧的箭头或文字可以展开/折叠该节点。长嵌套的数据可以逐层查看，避免一次性显示过多内容。</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">How to copy JSON path for a field?</summary>
+                    <summary class="faq-question">如何复制某个字段的JSON路径？</summary>
                     <div class="faq-answer">
-                        <p>Hover over any field, a "Copy" button will appear. Click it to copy that field's JSONPath to clipboard, for example <code>$.user.profile.name</code>.</p>
+                        <p>鼠标悬停在任意字段上，会显示一个"复制"按钮。点击后该字段的JSONPath路径会被复制到剪贴板，例如 <code>$.user.profile.name</code>。</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">Does it support search?</summary>
+                    <summary class="faq-question">支持搜索功能吗？</summary>
                     <div class="faq-answer">
-                        <p>Yes! Click the "Search" button or use the top search box, enter keywords. Matching content will be highlighted, supporting search for both key names and values.</p>
+                        <p>是的！点击"搜索"按钮或使用顶部搜索框，输入关键词。匹配的内容会高亮显示，支持搜索键名和值。</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">Can I export the tree view as an image?</summary>
+                    <summary class="faq-question">可以导出树形视图为图片吗？</summary>
                     <div class="faq-answer">
-                        <p>Current version supports copying tree structure as text format. For image export, we recommend using browser's screenshot feature or screenshot tools.</p>
+                        <p>当前版本支持复制树形结构为文本格式。如需导出图片，建议使用浏览器的截图功能或截图工具。</p>
                     </div>
                 </details>
             </div>
@@ -208,10 +197,10 @@
     </main>
 
     <footer class="footer">
-        <p>JSON Web Tools - Pure client-side JSON processing. Your data stays private.</p>
+        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputJson = document.getElementById('inputJson');
@@ -268,7 +257,7 @@
                     html += `<span class="tree-toggle">${toggleChar}${Object.keys(value).length} keys${closeChar}</span>`;
                 }
                 
-                html += `<button class="tree-copy-btn" onclick="copyPath('${path}')">Copy</button>`;
+                html += `<button class="tree-copy-btn" onclick="copyPath('${path}')">复制路径</button>`;
                 html += `</div>`;
                 
                 if (isExpandable) {
@@ -303,10 +292,10 @@
                     } else {
                         treeViewer.innerHTML = renderNode(undefined, obj, '$', 0);
                     }
-                    updateStatus(true, 'JSON parsed successfully');
+                    updateStatus(true, 'JSON解析成功');
                 } catch (e) {
-                    treeViewer.innerHTML = `<span style="color: #d32f2f;">Parse error: ${escapeHtml(e.message)}</span>`;
-                    updateStatus(false, 'Invalid JSON format');
+                    treeViewer.innerHTML = `<span style="color: #d32f2f;">解析错误: ${escapeHtml(e.message)}</span>`;
+                    updateStatus(false, 'JSON格式错误');
                 }
             }
 
@@ -315,8 +304,8 @@
                 if (value) {
                     renderTree(value);
                 } else {
-                    treeViewer.innerHTML = 'Paste JSON data to view tree structure...';
-                    updateStatus(false, 'Waiting for input...');
+                    treeViewer.innerHTML = '粘贴JSON数据查看树形结构...';
+                    updateStatus(false, '等待输入...');
                 }
             });
 
@@ -331,7 +320,7 @@
 
             window.copyPath = function(path) {
                 navigator.clipboard.writeText(path).then(() => {
-                    alert('Path copied: ' + path);
+                    alert('路径已复制: ' + path);
                 });
             };
 
@@ -355,8 +344,8 @@
 
             clearBtn.addEventListener('click', function() {
                 inputJson.value = '';
-                treeViewer.innerHTML = 'Paste JSON data to view tree structure...';
-                updateStatus(false, 'Waiting for input...');
+                treeViewer.innerHTML = '粘贴JSON数据查看树形结构...';
+                updateStatus(false, '等待输入...');
             });
 
             // Load sample data
@@ -364,23 +353,23 @@
                 "users": [
                     {
                         "id": 1,
-                        "name": "John Smith",
-                        "email": "john@example.com",
+                        "name": "张三",
+                        "email": "zhang@example.com",
                         "roles": ["admin", "user"],
                         "profile": {
                             "age": 28,
-                            "city": "New York",
+                            "city": "北京",
                             "skills": ["JavaScript", "Python"]
                         }
                     },
                     {
                         "id": 2,
-                        "name": "Jane Doe",
-                        "email": "jane@example.com",
+                        "name": "李四",
+                        "email": "li@example.com",
                         "roles": ["user"],
                         "profile": {
                             "age": 32,
-                            "city": "Los Angeles",
+                            "city": "上海",
                             "skills": ["Java", "Go"]
                         }
                     }
@@ -396,3 +385,4 @@
     </script>
 </body>
 </html>
+

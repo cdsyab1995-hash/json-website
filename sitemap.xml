@@ -5,140 +5,140 @@
     <url>
         <loc>https://cdsyab1995-hash.github.io/json-website/</loc>
         <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/index-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/format.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/format-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/format.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/format-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/escape.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/escape-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/escape.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/escape-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/extract.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/extract-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/extract.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/extract-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/sort.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/sort-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/sort.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/sort-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/clean.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/clean-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/clean.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/clean-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/xml.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/xml-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/xml.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/xml-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/yaml.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/yaml-en.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/yaml.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/yaml-en.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/blog.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/blog-en.html"/>
+        <lastmod>2026-03-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/viewer.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/pages/viewer-en.html"/>
+        <lastmod>2026-03-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
     <!-- English Version -->
     <url>
         <loc>https://cdsyab1995-hash.github.io/json-website/index-en.html</loc>
         <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/"/>
-        <lastmod>2026-03-26</lastmod>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/format-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/format.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/format-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/format.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/escape-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/escape.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/escape-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/escape.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/extract-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/extract.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/extract-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/extract.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/sort-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/sort.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/sort-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/sort.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/clean-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/clean.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/clean-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/clean.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/xml-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/xml.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/xml-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/xml.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/yaml-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/yaml.html"/>
-        <lastmod>2026-03-26</lastmod>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/yaml-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/yaml.html"/>
+        <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/blog.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/blog-en.html"/>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/blog-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/blog.html"/>
         <lastmod>2026-03-31</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/viewer.html</loc>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cdsyab1995-hash.github.io/json-website/viewer-en.html"/>
-        <lastmod>2026-03-31</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/blog-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/blog.html"/>
-        <lastmod>2026-03-31</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://cdsyab1995-hash.github.io/json-website/viewer-en.html</loc>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/viewer.html"/>
+        <loc>https://cdsyab1995-hash.github.io/json-website/pages/viewer-en.html</loc>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/pages/viewer.html"/>
         <lastmod>2026-03-31</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>

@@ -1,25 +1,25 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="在线JSON清理工具，移除多余空格、修复常见格式错误、统一键名格式。快速美化杂乱JSON数据为规范格式。">
-    <meta name="keywords" content="JSON清理,JSON美化,JSON格式化,JSON规范,JSON去重,JSON格式化工具">
+    <meta name="description" content="在线JSON排序工具，支持按键名排序、递归排序、升序降序排列。快速整理混乱的JSON数据，适合代码审查和对比分析。">
+    <meta name="keywords" content="JSON排序,JSON按键排序,JSON递归排序,JSON格式整理,JSON美化">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/clean.html">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/sort.html">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/clean.html">
-    <meta property="og:title" content="JSON 清理美化工具 | JSON Web Tools">
-    <meta property="og:description" content="免费在线JSON清理工具，修复格式、统一风格、美化JSON。">
+    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/sort.html">
+    <meta property="og:title" content="JSON 排序工具 - 按键名排序 | JSON Web Tools">
+    <meta property="og:description" content="免费在线JSON排序工具，支持按键名排序、递归排序、升序降序。">
     <meta property="og:site_name" content="JSON Web Tools">
-    <title>JSON清理美化 - 修复格式统一风格 | JSON Web Tools</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>JSON排序工具 - 一键整理混乱的数据结构 | JSON Web Tools</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">
+        <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -38,7 +38,7 @@
         </button>
         
         <div class="navbar-links">
-            <a href="index.html" class="nav-link">
+            <a href="../index.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -67,14 +67,14 @@
                 </svg>
                 提取
             </a>
-            <a href="sort.html" class="nav-link">
+            <a href="sort.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
                 排序
             </a>
-            <a href="clean.html" class="nav-link active">
+            <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
@@ -103,37 +103,35 @@
     <!-- 主内容 -->
     <main class="main-container">
         <div class="page-header fade-in">
-            <h1 class="page-title">JSON 清理美化</h1>
+            <h1 class="page-title">JSON 排序</h1>
             <p class="page-description">
-                修复格式错误、移除冗余内容、统一JSON风格，让杂乱JSON变得规范整洁
+                对JSON的键进行排序，支持按键名排序、递归排序、升序/降序排列
             </p>
         </div>
 
-        <!-- 清理工具区域 -->
+        <!-- 排序工具区域 -->
         <section class="tool-area fade-in">
-            <!-- 清理选项 -->
+            <!-- 排序选项 -->
             <div class="tool-section">
                 <div class="sort-options">
                     <label class="checkbox-label">
-                        <input type="checkbox" id="trimSpaces" checked>
-                        <span>移除首尾空白</span>
+                        <input type="checkbox" id="recursiveSort" checked>
+                        <span>递归排序（所有嵌套层级）</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" id="removeEmpty" checked>
-                        <span>移除空值（null）</span>
+                        <input type="checkbox" id="caseSensitive" checked>
+                        <span>区分大小写</span>
                     </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="fixQuotes" checked>
-                        <span>修复单引号为双引号</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="removeTrailingComma" checked>
-                        <span>移除尾部逗号</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="fixBackslash" checked>
-                        <span>修复多余反斜杠</span>
-                    </label>
+                    <div class="sort-order">
+                        <label class="radio-label">
+                            <input type="radio" name="sortOrder" value="asc" checked>
+                            <span>升序 (A-Z)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="sortOrder" value="desc">
+                            <span>降序 (Z-A)</span>
+                        </label>
+                    </div>
                 </div>
             </div>
 
@@ -144,29 +142,35 @@
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                     </svg>
-                    输入 JSON（支持不规范格式）
+                    输入 JSON
                 </label>
                 <textarea 
-                    id="cleanInput" 
+                    id="sortInput" 
                     class="input-area" 
-                    placeholder='粘贴需要清理的JSON，支持以下不规范格式：
-- 单引号
-- 尾部逗号
-- 多余空白
-- 未转义的特殊字符
-- 注释（会被移除）'></textarea>
+                    placeholder='粘贴需要排序的JSON，例如：
+{
+  "zhangsan": "张三",
+  "lisi": "李四",
+  "wangwu": "王五",
+  "config": {
+    "zIndex": 100,
+    "appName": "MyApp",
+    "enabled": true
+  }
+}'></textarea>
                 
                 <!-- 操作按钮 -->
                 <div class="toolbar mt-md">
                     <div class="toolbar-title">
-                        <span>清理操作</span>
+                        <span>排序操作</span>
                     </div>
                     <div class="btn-group">
-                        <button class="btn btn-primary btn-lg" id="btnClean">
+                        <button class="btn btn-primary btn-lg" id="btnSort">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
                             </svg>
-                            清理美化
+                            排序
                         </button>
                         <button class="btn btn-success" id="btnCopy">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -186,19 +190,7 @@
                 </div>
 
                 <!-- 消息提示 -->
-                <div id="msgClean" class="message"></div>
-            </div>
-
-            <!-- 预览区域 -->
-            <div class="tool-section mt-lg">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    预览（语法高亮）
-                </label>
-                <div id="cleanPreview" class="json-highlight"></div>
+                <div id="msgSort" class="message"></div>
             </div>
 
             <!-- 输出区域 -->
@@ -208,35 +200,31 @@
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
-                    清理结果
+                    排序结果
                 </label>
                 <textarea 
-                    id="cleanOutput" 
+                    id="sortOutput" 
                     class="output-area" 
-                    placeholder="清理后的JSON将显示在这里..."
+                    placeholder="排序后的JSON将显示在这里..."
                     readonly></textarea>
             </div>
         </section>
 
         <!-- 功能说明 -->
         <section class="tool-area fade-in">
-            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">清理规则说明</h2>
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">功能说明</h2>
             <div class="feature-grid" style="margin-top: 0;">
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">移除首尾空白</h3>
-                    <p>自动删除JSON字符串首尾的多余空格、换行和制表符。</p>
+                    <h3 style="font-size: 1rem;">递归排序</h3>
+                    <p>勾选后会对JSON中所有嵌套层级的键进行排序，无论嵌套多深都能整齐排列。</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">修复单引号</h3>
-                    <p>将不规范的单引号字符串转换为标准双引号格式。</p>
+                    <h3 style="font-size: 1rem;">升序/降序</h3>
+                    <p>升序按A-Z排序（数字1-9在前），降序按Z-A反向排序，方便对比不同版本的JSON。</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">移除尾部逗号</h3>
-                    <p>修复JavaScript允许但JSON标准不允许的尾部逗号。</p>
-                </div>
-                <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">移除空值</h3>
-                    <p>可选择删除值为null的键值对，让JSON更简洁。</p>
+                    <h3 style="font-size: 1rem;">代码审查</h3>
+                    <p>适合代码审查场景，排序后的JSON更容易发现新增或删除的键值对差异。</p>
                 </div>
             </div>
         </section>
@@ -246,23 +234,30 @@
             <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">常见问题</h2>
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary class="faq-question">这个工具能修复所有JSON错误吗？</summary>
+                    <summary class="faq-question">递归排序和非递归排序有什么区别？</summary>
                     <div class="faq-answer">
-                        <p>可以修复常见的格式问题，如单引号、尾部逗号等。</p>
-                        <p>但如果是<strong>语法逻辑错误</strong>（如键值类型错误、括号不匹配等），需要手动修正。</p>
+                        <p><strong>非递归排序</strong>只对最外层的键进行排序。</p>
+                        <p><strong>递归排序</strong>会对所有嵌套层级的键都进行排序。例如：</p>
+                        <p><code>{"b": 1, "a": {"d": 1, "c": 2}}</code></p>
+                        <p>非递归结果：<code>{"a": {...}, "b": 1}</code></p>
+                        <p>递归结果：<code>{"a": {"c": 2, "d": 1}, "b": 1}</code></p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">移除空值会影响数据吗？</summary>
+                    <summary class="faq-question">排序会改变JSON的值吗？</summary>
                     <div class="faq-answer">
-                        <p>会的。如果某个键的值是<code>null</code>，勾选"移除空值"后整个键值对会被删除。</p>
-                        <p>如果需要保留null值，请取消勾选此选项。</p>
+                        <p><strong>不会</strong>。JSON排序只改变键的顺序，完全不修改任何值。数据内容与原始JSON完全一致。</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">支持JavaScript注释吗？</summary>
+                    <summary class="faq-question">为什么排序后结果和预期不一样？</summary>
                     <div class="faq-answer">
-                        <p>支持。工具会自动移除<code>//</code>和<code>/* */</code>格式的注释。但建议尽量不要在JSON中使用注释。</p>
+                        <p>可能的原因：</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li>未勾选"递归排序"，只排序了外层</li>
+                            <li>关闭了"区分大小写"，导致大写字母排序顺序不同</li>
+                            <li>JSON格式有误，请先用格式化工具校验</li>
+                        </ul>
                     </div>
                 </details>
             </div>
@@ -281,104 +276,62 @@
         </p>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
     <script>
-        // JSON 清理美化功能
-        document.getElementById('btnClean').addEventListener('click', function() {
-            const input = document.getElementById('cleanInput').value;
-            const trimSpaces = document.getElementById('trimSpaces').checked;
-            const removeEmpty = document.getElementById('removeEmpty').checked;
-            const fixQuotes = document.getElementById('fixQuotes').checked;
-            const removeTrailingComma = document.getElementById('removeTrailingComma').checked;
-            const output = document.getElementById('cleanOutput');
-            const preview = document.getElementById('cleanPreview');
-            const msg = document.getElementById('msgClean');
+        // JSON 排序功能
+        document.getElementById('btnSort').addEventListener('click', function() {
+            const input = document.getElementById('sortInput').value.trim();
+            const recursive = document.getElementById('recursiveSort').checked;
+            const caseSensitive = document.getElementById('caseSensitive').checked;
+            const sortOrder = document.querySelector('input[name="sortOrder"]:checked').value;
+            const output = document.getElementById('sortOutput');
+            const msg = document.getElementById('msgSort');
             
-            if (!input.trim()) {
+            if (!input) {
                 showMessage(msg, '请输入JSON数据', 'error');
                 return;
             }
             
             try {
-                let text = input;
-                
-                // 移除注释
-                text = text.replace(/\/\/.*$/gm, '');
-                text = text.replace(/\/\*[\s\S]*?\*\//g, '');
-                
-                // 修复单引号（简单的字符串替换）
-                if (fixQuotes) {
-                    // 修复键名
-                    text = text.replace(/'([^']+)'\s*:/g, '"$1":');
-                    // 修复字符串值
-                    text = text.replace(/:(\s*)'([^']*)'/g, function(match, space, value) {
-                        const escaped = value.replace(/"/g, '\\"');
-                        return ':' + space + '"' + escaped + '"';
-                    });
-                }
-                
-                // 移除尾部逗号
-                if (removeTrailingComma) {
-                    text = text.replace(/,(\s*[}\]])/g, '$1');
-                }
-                
-                // 移除首尾空白
-                if (trimSpaces) {
-                    text = text.trim();
-                }
-                
-                // 解析并处理null值
-                let json = JSON.parse(text);
-                if (removeEmpty) {
-                    json = removeEmptyValues(json);
-                }
-                
-                const result = JSON.stringify(json, null, 2);
-                output.value = result;
-                preview.innerHTML = highlightJSON(result);
-                showMessage(msg, '清理成功！', 'success');
+                const json = JSON.parse(input);
+                const sorted = sortJSON(json, recursive, caseSensitive, sortOrder);
+                output.value = JSON.stringify(sorted, null, 2);
+                showMessage(msg, '排序成功！', 'success');
             } catch (e) {
-                showMessage(msg, '处理失败: ' + e.message, 'error');
+                showMessage(msg, 'JSON格式错误: ' + e.message, 'error');
             }
         });
         
-        function removeEmptyValues(obj) {
+        function sortJSON(obj, recursive, caseSensitive, order) {
             if (Array.isArray(obj)) {
-                return obj.map(item => removeEmptyValues(item)).filter(item => item !== null && item !== undefined);
+                return recursive ? obj.map(item => sortJSON(item, recursive, caseSensitive, order)) : obj;
             } else if (obj !== null && typeof obj === 'object') {
+                const sortedKeys = Object.keys(obj).sort((a, b) => {
+                    const cmp = caseSensitive ? a.localeCompare(b) : a.localeCompare(b, undefined, { sensitivity: 'base' });
+                    return order === 'asc' ? cmp : -cmp;
+                });
                 const result = {};
-                Object.keys(obj).forEach(key => {
-                    const value = removeEmptyValues(obj[key]);
-                    if (value !== null && value !== undefined) {
-                        result[key] = value;
-                    }
+                sortedKeys.forEach(key => {
+                    result[key] = recursive ? sortJSON(obj[key], recursive, caseSensitive, order) : obj[key];
                 });
                 return result;
             }
             return obj;
         }
         
-        function highlightJSON(json) {
-            return json.replace(/(".*?"):/g, '<span class="key">$1</span>:')
-                       .replace(/:(".*?")/g, ':<span class="string">$1</span>')
-                       .replace(/:(-?\d+\.?\d*)/g, ':<span class="number">$1</span>')
-                       .replace(/:(true|false)/g, ':<span class="boolean">$1</span>')
-                       .replace(/:(null)/g, ':<span class="null">$1</span>');
-        }
-        
         // 复制功能
         document.getElementById('btnCopy').addEventListener('click', function() {
-            const output = document.getElementById('cleanOutput');
-            copyToClipboard(output, document.getElementById('msgClean'));
+            const output = document.getElementById('sortOutput');
+            copyToClipboard(output, document.getElementById('msgSort'));
         });
         
         // 清空功能
         document.getElementById('btnClear').addEventListener('click', function() {
-            document.getElementById('cleanInput').value = '';
-            document.getElementById('cleanOutput').value = '';
-            document.getElementById('cleanPreview').innerHTML = '';
-            hideMessage(document.getElementById('msgClean'));
+            document.getElementById('sortInput').value = '';
+            document.getElementById('sortOutput').value = '';
+            hideMessage(document.getElementById('msgSort'));
         });
     </script>
 </body>
 </html>
+
