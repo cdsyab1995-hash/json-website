@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
+    <meta name="description" content="JSON在线查看器 - 可视化树形结构展示JSON数据，支持折叠/展开节点、搜索定位、复制路径。免费无需注册。">
+    <meta name="keywords" content="JSON查看器,JSON tree viewer,JSON可视化,JSON展开折叠,在线JSON查看">
+    <meta name="author" content="JSON Web Tools">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/viewer.html">
+    
+    <title>JSON在线查看器 - 树形结构可视化 | JSON Web Tools</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .tree-viewer {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            max-height: 500px;
+            overflow: auto;
+        }
+        .tree-node {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        .tree-node::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0;
+            border-top: 1px dashed var(--border);
+        }
+        .tree-toggle {
+            cursor: pointer;
+            user-select: none;
+            color: var(--primary);
+        }
+        .tree-toggle:hover {
+            background: var(--bg-tertiary);
+        }
+        .tree-key {
+            color: #881391;
+            font-weight: 500;
+        }
+        .tree-string {
+            color: #0e7c0e;
+        }
+        .tree-number {
+            color: #1565c0;
+        }
+        .tree-boolean {
+            color: #d84315;
+        }
+        .tree-null {
+            color: #757575;
+        }
+        .tree-expand-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 0 0.25rem;
+            font-family: inherit;
+        }
+        .tree-copy-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.125rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+        .tree-copy-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            JSON Web Tools
+        </a>
+        <button class="menu-toggle" aria-label="菜单">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="format.html" class="nav-link">格式化</a>
+            <a href="escape.html" class="nav-link">转义</a>
+            <a href="extract.html" class="nav-link">提取</a>
+            <a href="sort.html" class="nav-link">排序</a>
+            <a href="clean.html" class="nav-link">清理</a>
+            <a href="xml.html" class="nav-link">XML</a>
+            <a href="yaml.html" class="nav-link">YAML</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header text-center fade-in">
+            <h1 class="page-title">JSON 在线查看器</h1>
+            <p class="page-description">
+                树形结构可视化展示JSON数据，支持折叠/展开、搜索定位
+            </p>
+            <div class="breadcrumb">
+                <a href="index.html">首页</a> / <span>JSON查看器</span>
+            </div>
+        </div>
+
+        <div class="tool-area fade-in">
+            <div class="tool-header">
+                <div class="tool-status" id="status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">等待输入...</span>
+                </div>
+                <div class="tool-actions">
+                    <button class="btn btn-secondary" id="expandAllBtn">全部展开</button>
+                    <button class="btn btn-secondary" id="collapseAllBtn">全部折叠</button>
+                    <button class="btn btn-secondary" id="searchBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        搜索
+                    </button>
+                    <button class="btn btn-danger" id="clearBtn">清空</button>
+                </div>
+            </div>
+
+            <div class="editor-container">
+                <div class="editor-panel">
+                    <div class="editor-label">输入 JSON</div>
+                    <textarea id="inputJson" class="code-editor" placeholder="在此粘贴JSON数据，右侧将显示树形结构..."></textarea>
+                </div>
+                <div class="editor-panel">
+                    <div class="editor-label">树形视图</div>
+                    <div id="treeViewer" class="tree-viewer">粘贴JSON数据查看树形结构...</div>
+                </div>
+            </div>
+
+            <div class="options-row">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="autoExpand" checked>
+                    <span>自动展开第一层</span>
+                </label>
+                <label class="checkbox-label" style="margin-left: 20px;">
+                    <span style="margin-right: 0.5rem;">搜索:</span>
+                    <input type="text" id="searchInput" placeholder="输入关键词搜索..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); width: 200px;">
+                </label>
+            </div>
+        </div>
+
+        <section class="tool-area mt-lg fade-in">
+            <h2 class="section-label">JSON查看器使用技巧</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">如何查看嵌套的JSON数据？</summary>
+                    <div class="faq-answer">
+                        <p>直接在左侧输入JSON，数据会自动以树形结构显示在右侧。点击节点左侧的箭头或文字可以展开/折叠该节点。长嵌套的数据可以逐层查看，避免一次性显示过多内容。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">如何复制某个字段的JSON路径？</summary>
+                    <div class="faq-answer">
+                        <p>鼠标悬停在任意字段上，会显示一个"复制"按钮。点击后该字段的JSONPath路径会被复制到剪贴板，例如 <code>$.user.profile.name</code>。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">支持搜索功能吗？</summary>
+                    <div class="faq-answer">
+                        <p>是的！点击"搜索"按钮或使用顶部搜索框，输入关键词。匹配的内容会高亮显示，支持搜索键名和值。</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">可以导出树形视图为图片吗？</summary>
+                    <div class="faq-answer">
+                        <p>当前版本支持复制树形结构为文本格式。如需导出图片，建议使用浏览器的截图功能或截图工具。</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputJson = document.getElementById('inputJson');
+            const treeViewer = document.getElementById('treeViewer');
+            const status = document.getElementById('status');
+            const expandAllBtn = document.getElementById('expandAllBtn');
+            const collapseAllBtn = document.getElementById('collapseAllBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const searchInput = document.getElementById('searchInput');
+            const autoExpand = document.getElementById('autoExpand');
+
+            function updateStatus(valid, message) {
+                const dot = status.querySelector('.status-dot');
+                const text = status.querySelector('.status-text');
+                dot.className = 'status-dot ' + (valid ? 'valid' : 'invalid');
+                text.textContent = message;
+            }
+
+            function escapeHtml(text) {
+                return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
+
+            function getValueClass(value) {
+                if (value === null) return 'tree-null';
+                if (typeof value === 'string') return 'tree-string';
+                if (typeof value === 'number') return 'tree-number';
+                if (typeof value === 'boolean') return 'tree-boolean';
+                return '';
+            }
+
+            function renderNode(key, value, path, depth) {
+                const indent = '  '.repeat(depth);
+                const type = Array.isArray(value) ? 'array' : (typeof value === 'object' && value !== null) ? 'object' : 'primitive';
+                const isExpandable = type !== 'primitive';
+                const toggleChar = isExpandable ? (type === 'array' ? '[{' : type === 'object' ? '{{' : '') : '';
+                const closeChar = isExpandable ? (type === 'array' ? '}]' : type === 'object' ? '}}' : '') : '';
+                
+                let html = `<div class="tree-line">${indent}`;
+                
+                if (isExpandable) {
+                    html += `<button class="tree-expand-btn" onclick="toggleNode(this)" data-path="${path}">▶</button>`;
+                }
+                
+                if (key !== undefined) {
+                    html += `<span class="tree-key">"${escapeHtml(String(key))}"</span>: `;
+                }
+                
+                if (type === 'primitive') {
+                    const displayValue = value === null ? 'null' : typeof value === 'string' ? `"${escapeHtml(value)}"` : String(value);
+                    html += `<span class="${getValueClass(value)}">${displayValue}</span>`;
+                } else if (type === 'array') {
+                    html += `<span class="tree-toggle">${toggleChar}${value.length} items${closeChar}</span>`;
+                } else {
+                    html += `<span class="tree-toggle">${toggleChar}${Object.keys(value).length} keys${closeChar}</span>`;
+                }
+                
+                html += `<button class="tree-copy-btn" onclick="copyPath('${path}')">复制路径</button>`;
+                html += `</div>`;
+                
+                if (isExpandable) {
+                    html += `<div class="tree-children" style="display: none;">`;
+                    if (Array.isArray(value)) {
+                        value.forEach((item, index) => {
+                            html += renderNode(index, item, `${path}[${index}]`, depth + 1);
+                        });
+                    } else {
+                        Object.keys(value).forEach(k => {
+                            html += renderNode(k, value[k], `${path}.${k}`, depth + 1);
+                        });
+                    }
+                    html += `</div>`;
+                }
+                
+                return html;
+            }
+
+            function renderTree(json) {
+                try {
+                    const obj = typeof json === 'string' ? JSON.parse(json) : json;
+                    if (autoExpand.checked) {
+                        treeViewer.innerHTML = renderNode(undefined, obj, '$', 0);
+                        // Auto expand first level
+                        document.querySelectorAll('.tree-children').forEach(el => {
+                            el.style.display = 'block';
+                        });
+                        document.querySelectorAll('.tree-expand-btn').forEach(btn => {
+                            btn.textContent = '▼';
+                        });
+                    } else {
+                        treeViewer.innerHTML = renderNode(undefined, obj, '$', 0);
+                    }
+                    updateStatus(true, 'JSON解析成功');
+                } catch (e) {
+                    treeViewer.innerHTML = `<span style="color: #d32f2f;">解析错误: ${escapeHtml(e.message)}</span>`;
+                    updateStatus(false, 'JSON格式错误');
+                }
+            }
+
+            inputJson.addEventListener('input', function() {
+                const value = this.value.trim();
+                if (value) {
+                    renderTree(value);
+                } else {
+                    treeViewer.innerHTML = '粘贴JSON数据查看树形结构...';
+                    updateStatus(false, '等待输入...');
+                }
+            });
+
+            window.toggleNode = function(btn) {
+                const children = btn.nextElementSibling.nextElementSibling.nextElementSibling;
+                if (children && children.classList.contains('tree-children')) {
+                    const isHidden = children.style.display === 'none';
+                    children.style.display = isHidden ? 'block' : 'none';
+                    btn.textContent = isHidden ? '▼' : '▶';
+                }
+            };
+
+            window.copyPath = function(path) {
+                navigator.clipboard.writeText(path).then(() => {
+                    alert('路径已复制: ' + path);
+                });
+            };
+
+            expandAllBtn.addEventListener('click', function() {
+                document.querySelectorAll('.tree-children').forEach(el => {
+                    el.style.display = 'block';
+                });
+                document.querySelectorAll('.tree-expand-btn').forEach(btn => {
+                    btn.textContent = '▼';
+                });
+            });
+
+            collapseAllBtn.addEventListener('click', function() {
+                document.querySelectorAll('.tree-children').forEach(el => {
+                    el.style.display = 'none';
+                });
+                document.querySelectorAll('.tree-expand-btn').forEach(btn => {
+                    btn.textContent = '▶';
+                });
+            });
+
+            clearBtn.addEventListener('click', function() {
+                inputJson.value = '';
+                treeViewer.innerHTML = '粘贴JSON数据查看树形结构...';
+                updateStatus(false, '等待输入...');
+            });
+
+            // Load sample data
+            inputJson.value = JSON.stringify({
+                "users": [
+                    {
+                        "id": 1,
+                        "name": "张三",
+                        "email": "zhang@example.com",
+                        "roles": ["admin", "user"],
+                        "profile": {
+                            "age": 28,
+                            "city": "北京",
+                            "skills": ["JavaScript", "Python"]
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "name": "李四",
+                        "email": "li@example.com",
+                        "roles": ["user"],
+                        "profile": {
+                            "age": 32,
+                            "city": "上海",
+                            "skills": ["Java", "Go"]
+                        }
+                    }
+                ],
+                "metadata": {
+                    "total": 2,
+                    "page": 1,
+                    "pageSize": 20
+                }
+            }, null, 2);
+            renderTree(inputJson.value);
+        });
+    </script>
+</body>
+</html>
