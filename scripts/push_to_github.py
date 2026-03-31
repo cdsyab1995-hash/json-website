@@ -12,7 +12,7 @@ subprocess.run([git_path, "-C", repo_path, "config", "--local", "user.email", "c
 subprocess.run([git_path, "-C", repo_path, "add", "-A"])
 
 # Commit
-result = subprocess.run([git_path, "-C", repo_path, "commit", "-m", "Add JSON viewer, blog tutorial page and enhanced SEO for cold start"], capture_output=True, text=True)
+result = subprocess.run([git_path, "-C", repo_path, "commit", "-m", "Improve accessibility: add link underlines, focus states, and aria-labels"], capture_output=True, text=True)
 print(result.stdout)
 print(result.stderr)
 
