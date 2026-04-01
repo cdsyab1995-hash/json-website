@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="在线JSON清理工具，移除多余空格、修复常见格式错误、统一键名格式。快速美化杂乱JSON数据为规范格式。">
-    <meta name="keywords" content="JSON清理,JSON美化,JSON格式化,JSON规范,JSON去重,JSON格式化工具">
+    <meta name="keywords" content="JSON清理,JSON清理在线,JSON美化,JSON格式化,JSON规范,JSON修复,JSON格式化工具,JSON代码美化">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/clean.html">
@@ -14,7 +14,14 @@
     <meta property="og:description" content="免费在线JSON清理工具，修复格式、统一风格、美化JSON。">
     <meta property="og:site_name" content="JSON Web Tools">
     <title>JSON清理美化 - 修复格式统一风格 | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -285,7 +292,7 @@
         </p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         // JSON 清理美化功能
         document.getElementById('btnClean').addEventListener('click', function() {

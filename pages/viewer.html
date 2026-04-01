@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
-    <meta name="description" content="免费JSON查看器！树形结构可视化展示JSON，支持折叠/展开节点、关键词搜索、快速定位。无需注册，数据本地处理。">
-    <meta name="keywords" content="JSON查看器,JSON tree viewer,JSON可视化,JSON展开折叠,在线JSON查看">
+    <meta name="description" content="免费JSON查看器！在线树形结构可视化JSON，支持折叠/展开、关键词搜索、快速定位节点。无需注册，数据本地处理，隐私安全。">
+    <meta name="keywords" content="JSON查看器,JSON查看器在线,JSON tree viewer,JSON可视化,JSON树形视图,JSON展开折叠,在线JSON查看">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/viewer.html">
@@ -31,7 +31,14 @@
     </script>
     
     <title>JSON在线查看器 - 树形结构可视化 | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
     <style>
         .tree-viewer {
             font-family: 'Consolas', 'Monaco', monospace;
@@ -224,7 +231,7 @@
         <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputJson = document.getElementById('inputJson');

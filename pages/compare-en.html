@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
     <meta name="description" content="Free JSON compare tool! Spot differences between two JSON documents instantly. Key-value level diff highlighting, perfect for API debugging and data comparison.">
-    <meta name="keywords" content="JSON compare, JSON diff, JSON compare tool, JSON difference, online JSON compare, free JSON diff">
+    <meta name="keywords" content="JSON compare, JSON diff, JSON compare tool, JSON difference, JSON compare online, JSON diff tool, free JSON diff, JSON comparator, JSON difference checker, JSON side by side">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/compare-en.html">
@@ -32,7 +32,14 @@
     </script>
     
     <title>JSON Compare Tool - Free Online JSON Diff Checker | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
     <style>
         .compare-container {
             display: grid;
@@ -290,7 +297,7 @@
         <p>JSON Web Tools - Pure frontend JSON processing, protecting your data privacy</p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputLeft = document.getElementById('inputLeft');

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
     <meta name="description" content="Free JSON viewer! Tree visualization with collapsible nodes, keyword search, and path copying. Browser-based, private & secure. Try now!">
-    <meta name="keywords" content="JSON viewer, JSON tree viewer, JSON visualizer, JSON tree structure, online JSON viewer, JSON viewer tool, JSON explorer">
+    <meta name="keywords" content="JSON viewer, JSON tree viewer, JSON visualizer, JSON tree structure, online JSON viewer, JSON viewer tool, JSON explorer, JSON prettify, JSON display, JSON reader">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/viewer-en.html">
@@ -21,7 +21,14 @@
     <link rel="alternate" hreflang="zh" href="https://cdsyab1995-hash.github.io/json-website/viewer.html">
     
     <title>Free JSON Viewer Online - Tree Structure Visualization | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
     <style>
         .tree-viewer {
             font-family: 'Consolas', 'Monaco', monospace;
@@ -214,7 +221,7 @@
         <p>JSON Web Tools - Pure client-side JSON processing. Your data stays private.</p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputJson = document.getElementById('inputJson');

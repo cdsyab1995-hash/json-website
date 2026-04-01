@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
     <meta name="description" content="Free JSON to CSV converter online - Convert JSON arrays to CSV format for Excel and Google Sheets. Custom delimiters, nested object flattening, download support.">
-    <meta name="keywords" content="JSON to CSV, JSON to Excel, convert JSON to CSV, CSV converter, free online tool">
+    <meta name="keywords" content="JSON to CSV, JSON to Excel, JSON to CSV converter, JSON to CSV online, convert JSON to CSV, CSV converter, free online tool, JSON to spreadsheet, JSON data export, JSON to table">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/json2csv-en.html">
@@ -32,7 +32,14 @@
     </script>
     
     <title>JSON to CSV Converter - Free Online JSON to Excel Tool | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
     <nav class="navbar">
@@ -214,7 +221,7 @@ Bob,35,Chicago</pre>
         <p>JSON Web Tools - Pure frontend JSON processing, protecting your data privacy</p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputJson = document.getElementById('inputJson');

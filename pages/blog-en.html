@@ -33,7 +33,14 @@
     </script>
     
     <title>JSON Tutorial - Complete Guide to JSON Syntax, Data Types & API Development | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
     <style>
         .blog-content {
             max-width: 800px;
@@ -810,7 +817,7 @@ fetch('https://api.example.com/users', {
         </p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
 </body>
 </html>
 

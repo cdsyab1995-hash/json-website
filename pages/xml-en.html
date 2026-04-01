@@ -32,7 +32,14 @@
     </script>
     
     <title>XML JSON Converter - Convert Between XML and JSON Online</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
     <nav class="navbar">
@@ -206,7 +213,7 @@ Or JSON format:
         </p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         document.getElementById('btnToJSON').addEventListener('click', function() {
             const input = document.getElementById('xmlInput').value.trim();

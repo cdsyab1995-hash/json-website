@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="在线JSON排序工具，支持按键名排序、递归排序、升序降序排列。快速整理混乱的JSON数据，适合代码审查和对比分析。">
-    <meta name="keywords" content="JSON排序,JSON按键排序,JSON递归排序,JSON格式整理,JSON美化">
+    <meta name="keywords" content="JSON排序,JSON排序在线,JSON按键排序,JSON递归排序,JSON升序降序,JSON格式整理,JSON美化">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/sort.html">
@@ -14,7 +14,14 @@
     <meta property="og:description" content="免费在线JSON排序工具，支持按键名排序、递归排序、升序降序。">
     <meta property="og:site_name" content="JSON Web Tools">
     <title>JSON排序工具 - 一键整理混乱的数据结构 | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    
+    <!-- Preconnect to critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical CSS (async loading, non-blocking) -->
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -280,7 +287,7 @@
         </p>
     </footer>
 
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js" defer></script>
     <script>
         // JSON 排序功能
         document.getElementById('btnSort').addEventListener('click', function() {
