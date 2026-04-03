@@ -209,6 +209,61 @@
             <section id="latest-articles">
                 <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">最新文章</h2>
                 
+                <article id="ai-daily-20260403" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🔐 JSON Schema 严格验证：终结 AI 返回数据的不确定性</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>发布时间：</strong>2026年4月3日 | <strong>阅读时间：</strong>8分钟
+                    </p>
+                    <div style="line-height: 1.8;">
+                        <p><strong>AI 大模型的 JSON 输出不可靠，已成为 2026 年最让开发者头疼的问题之一。</strong>即便是顶级模型，也会在特定上下文下返回字段缺失、类型错误或包含幻觉字段的 JSON 数据。本文介绍如何用 JSON Schema 严格验证策略，将 AI 输出的不确定性降到最低。</p>
+
+                        <h4>一、AI JSON 输出的典型问题</h4>
+                        <p>以下是开发者在实际项目中遇到的三类高频问题：</p>
+                        <ul>
+                            <li><strong>字段缺失：</strong>模型认为某些字段"显而易见"，直接省略。例如要求返回 <code>{"name": "...", "age": 0, "email": "..."}</code>，结果 <code>email</code> 消失了。</li>
+                            <li><strong>类型漂移：</strong>数值字段返回字符串（<code>"age": "28"</code> 而非 <code>"age": 28</code>），布尔字段返回 <code>"true"</code> 字符串。</li>
+                            <li><strong>幻觉字段：</strong>模型自作主张添加 Schema 中未定义的字段，污染下游数据管道。</li>
+                        </ul>
+
+                        <h4>二、JSON Schema 严格模式实战</h4>
+                        <p>核心武器是 <code>"additionalProperties": false</code>，配合 <code>"required"</code> 数组强制必填：</p>
+                        <pre><code>{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name":  { "type": "string", "minLength": 1 },
+    "age":   { "type": "integer", "minimum": 0, "maximum": 150 },
+    "email": { "type": "string", "format": "email" },
+    "score": { "type": "number", "minimum": 0, "maximum": 100 }
+  },
+  "required": ["name", "age", "email", "score"],
+  "additionalProperties": false
+}</code></pre>
+                        <p>当 AI 输出中出现 Schema 之外的字段时，校验器会立即报错，让你在数据进入系统之前就能拦截问题。</p>
+
+                        <h4>三、三层防御体系</h4>
+                        <p>仅靠 JSON Schema 校验还不够，建议构建三层防御：</p>
+                        <ol>
+                            <li><strong>Prompt 层：</strong>在系统提示中明确给出 JSON Schema 或示例，要求模型严格遵循。使用"你必须只返回符合以下 Schema 的 JSON，不得添加任何解释文字"。</li>
+                            <li><strong>API 层：</strong>OpenAI、Anthropic 等主流平台均支持 <code>response_format: {type: "json_schema"}</code> 或 <code>tool_use</code> 模式，在模型推理阶段就约束输出格式。</li>
+                            <li><strong>运行时层：</strong>使用 <code>ajv</code>（Node.js）、<code>jsonschema</code>（Python）等库在代码层面做最终校验，对不合规数据触发重试或降级逻辑。</li>
+                        </ol>
+
+                        <h4>四、自动修复策略</h4>
+                        <p>校验失败时，不必直接抛错。可以采用"宽容解析 + 自动修复"策略：</p>
+                        <ul>
+                            <li>类型错误可尝试自动强制转换（<code>"28"</code> → <code>28</code>）</li>
+                            <li>缺失字段可填入默认值，同时记录告警日志</li>
+                            <li>多余字段直接剔除，保留合规部分</li>
+                            <li>严重错误（如必填字段缺失且无法推断）则触发模型重试，最多重试 3 次</li>
+                        </ul>
+
+                        <h4>五、使用在线工具快速验证</h4>
+                        <p>在开发阶段，可使用本站的 <a href="format.html" style="color: var(--primary);">JSON 格式化与校验工具</a> 快速检查 AI 返回的 JSON 是否符合预期结构，以及 <a href="compare.html" style="color: var(--primary);">JSON 对比工具</a> 来比对不同模型输出之间的差异。</p>
+                        <p>掌握 JSON Schema 严格验证，是在 AI 时代构建可靠数据管道的必备技能。数据的可靠性不应依赖模型的"好心情"，而应由代码来保障。</p>
+                    </div>
+                </article>
+
                 <article id="ai-structured-output" style="margin-bottom: 3rem;">
                     <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🤖 AI时代结构化输出：JSON如何成为大模型与应用的数据桥梁</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">

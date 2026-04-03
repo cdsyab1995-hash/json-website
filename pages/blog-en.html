@@ -212,6 +212,75 @@
             <section id="latest-articles">
                 <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">Latest Articles</h2>
                 
+                <article id="ai-daily-20260403" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🔌 MCP Protocol Deep Dive: How JSON Powers the Model Context Revolution</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Published:</strong> April 3, 2026 | <strong>Reading time:</strong> 7 minutes
+                    </p>
+                    <div style="line-height: 1.8;">
+                        <p><strong>Anthropic's Model Context Protocol (MCP) has quietly become one of the most important open standards in the AI ecosystem.</strong> As of early 2026, MCP is supported by Claude, Cursor, Zed, and dozens of third-party tools — and every single message in the protocol is a carefully structured JSON object.</p>
+
+                        <h4>What Is MCP?</h4>
+                        <p>MCP defines how AI assistants communicate with external tools, databases, and data sources. Think of it as a universal adapter: instead of every AI tool reinventing its own API, MCP provides a standardized JSON-based protocol that any client and server can speak.</p>
+                        <p>The protocol is built on JSON-RPC 2.0, which means every request and response follows a predictable JSON structure:</p>
+                        <pre><code>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "search_files",
+    "arguments": {
+      "query": "JSON schema validation",
+      "path": "/src"
+    }
+  }
+}</code></pre>
+
+                        <h4>The Four Core MCP Message Types</h4>
+                        <p>Understanding these JSON structures is essential for building MCP-compatible tools:</p>
+                        <ul>
+                            <li><strong>Request:</strong> Client sends a <code>method</code> with <code>params</code>. Always has an <code>id</code> for correlation.</li>
+                            <li><strong>Response:</strong> Server returns a <code>result</code> or <code>error</code> matching the request <code>id</code>.</li>
+                            <li><strong>Notification:</strong> One-way message with no <code>id</code>, no response expected. Used for progress updates.</li>
+                            <li><strong>Tool Definition:</strong> JSON Schema describing what a tool accepts and returns, enabling the model to understand capabilities.</li>
+                        </ul>
+
+                        <h4>Tool Schemas: Where JSON Schema Shines</h4>
+                        <p>The most critical JSON structure in MCP is the tool definition. Each tool exposes an <code>inputSchema</code> that the model uses to understand what arguments to provide:</p>
+                        <pre><code>{
+  "name": "read_file",
+  "description": "Read the contents of a file at the given path",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Absolute path to the file"
+      }
+    },
+    "required": ["path"],
+    "additionalProperties": false
+  }
+}</code></pre>
+                        <p>Notice the <code>"additionalProperties": false</code> — this strict schema ensures the model cannot hallucinate extra parameters that would break your tool implementation.</p>
+
+                        <h4>Validating MCP Payloads in Practice</h4>
+                        <p>When building MCP servers, always validate incoming JSON against your tool schemas before execution. A malformed tool call should return a structured JSON error, not a crash:</p>
+                        <pre><code>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32602,
+    "message": "Invalid params: 'path' is required"
+  }
+}</code></pre>
+                        <p>Use our <a href="format-en.html" style="color: var(--primary);">JSON Formatter</a> to inspect MCP messages during development, and the <a href="compare-en.html" style="color: var(--primary);">JSON Compare tool</a> to diff tool schemas between MCP server versions to catch breaking changes early.</p>
+
+                        <h4>Why This Matters</h4>
+                        <p>MCP is standardizing how AI agents interact with the world — and it's all JSON under the hood. Mastering MCP's JSON structures today means you'll be ready to build the AI-native tools of tomorrow. The teams who understand the protocol deeply will ship more reliable AI integrations, faster.</p>
+                    </div>
+                </article>
+
                 <article id="ai-structured-output" style="margin-bottom: 3rem;">
                     <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">Structured JSON Output: The New Standard for AI Model Integration</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
