@@ -29,76 +29,6 @@
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
-    <style>
-        .tree-viewer {
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            max-height: 500px;
-            overflow: auto;
-        }
-        .tree-node {
-            margin-left: 1.5rem;
-            position: relative;
-        }
-        .tree-node::before {
-            content: '';
-            position: absolute;
-            left: -1rem;
-            top: 0.5rem;
-            width: 0.5rem;
-            height: 0;
-            border-top: 1px dashed var(--border);
-        }
-        .tree-toggle {
-            cursor: pointer;
-            user-select: none;
-            color: var(--primary);
-        }
-        .tree-toggle:hover {
-            background: var(--bg-tertiary);
-        }
-        .tree-key {
-            color: #881391;
-            font-weight: 500;
-        }
-        .tree-string {
-            color: #0e7c0e;
-        }
-        .tree-number {
-            color: #1565c0;
-        }
-        .tree-boolean {
-            color: #d84315;
-        }
-        .tree-null {
-            color: #757575;
-        }
-        .tree-expand-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--primary);
-            padding: 0 0.25rem;
-            font-family: inherit;
-        }
-        .tree-copy-btn {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 0.125rem 0.5rem;
-            cursor: pointer;
-            font-size: 0.75rem;
-            margin-left: 0.5rem;
-        }
-        .tree-copy-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -219,7 +149,7 @@
     </nav>
 
     <main class="main-container">
-        <div class="page-header text-center fade-in">
+        <div class="page-header text-center">
             <h1 class="page-title">JSON Viewer Online</h1>
             <p class="page-description">
                 Visualize JSON data with tree structure - Supports collapse/expand, search & locate
@@ -229,7 +159,7 @@
             </div>
         </div>
 
-        <div class="tool-area fade-in">
+        <div class="tool-area">
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
@@ -272,7 +202,7 @@
             </div>
         </div>
 
-        <section class="tool-area mt-lg fade-in">
+        <section class="tool-area mt-lg">
             <h2 class="section-label">JSON Viewer Tips</h2>
             <div class="faq-container">
                 <details class="faq-item">

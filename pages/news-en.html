@@ -37,133 +37,6 @@
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
-    <style>
-        .news-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        .news-content h2 {
-            color: var(--primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary);
-        }
-        .news-content h3 {
-            color: var(--text-primary);
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .news-content p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        .news-content ul, .news-content ol {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-        .news-content li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-        .news-content pre {
-            background: var(--bg-tertiary);
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-        .news-content code {
-            background: var(--bg-tertiary);
-            padding: 0.125rem 0.375rem;
-            border-radius: 4px;
-            font-size: 0.875em;
-        }
-        .news-content pre code {
-            background: none;
-            padding: 0;
-        }
-        .news-item {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .news-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .news-item .news-meta {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-        .news-item .news-tag {
-            background: var(--primary);
-            color: white;
-            padding: 0.125rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-        }
-        .news-item h3 {
-            margin-top: 0;
-            color: var(--text-primary);
-        }
-        .news-item p {
-            margin-bottom: 0;
-            color: var(--text-secondary);
-        }
-        .category-section {
-            margin-bottom: 3rem;
-        }
-        .category-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        .category-title svg {
-            width: 24px;
-            height: 24px;
-        }
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border);
-            text-align: left;
-        }
-        th {
-            background: var(--bg-secondary);
-            font-weight: 600;
-        }
-        .tip-box {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            border-left: 4px solid #4caf50;
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .tip-box.dark {
-            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
-            color: #fff;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -277,7 +150,7 @@
     </nav>
 
     <main class="main-container">
-        <div class="page-header text-center fade-in">
+        <div class="page-header text-center">
             <h1 class="page-title">Trending News</h1>
             <p class="page-description">
                 JSON & Web Development Tech Updates - Daily API trends and developer热点
@@ -287,7 +160,7 @@
             </div>
         </div>
 
-        <div class="news-content fade-in">
+        <div class="news-content">
             <!-- Trending Today -->
             <div class="category-section">
                 <h2 class="category-title">

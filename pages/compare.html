@@ -41,97 +41,6 @@
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
-    <style>
-        .compare-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .compare-panel {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .compare-panel .editor-label {
-            background: var(--bg-secondary);
-            padding: 0.5rem 1rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border);
-        }
-        .diff-output {
-            margin-top: 1rem;
-        }
-        .diff-summary {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .diff-stat {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-        .diff-stat.added {
-            background: #d4edda;
-            color: #155724;
-        }
-        .diff-stat.removed {
-            background: #f8d7da;
-            color: #721c24;
-        }
-        .diff-stat.modified {
-            background: #fff3cd;
-            color: #856404;
-        }
-        .diff-stat.unchanged {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-        }
-        .diff-result {
-            background: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: 'Consolas', 'Monaco', monospace;
-            white-space: pre-wrap;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        .diff-line {
-            padding: 2px 8px;
-            border-radius: 3px;
-        }
-        .diff-line.added {
-            background: #d4edda;
-            color: #155724;
-        }
-        .diff-line.removed {
-            background: #f8d7da;
-            color: #721c24;
-        }
-        .diff-line.modified {
-            background: #fff3cd;
-            color: #856404;
-        }
-        .diff-line.unchanged {
-            color: var(--text);
-        }
-        .diff-group {
-            margin-bottom: 0.5rem;
-        }
-        .diff-group-header {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-        @media (max-width: 768px) {
-            .compare-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -252,7 +161,7 @@
     </nav>
 
     <main class="main-container">
-        <div class="page-header text-center fade-in">
+        <div class="page-header text-center">
             <h1 class="page-title">JSON 对比工具</h1>
             <p class="page-description">
                 比较两个JSON文档，高亮显示差异。支持增加、删除、修改检测
@@ -262,7 +171,7 @@
             </div>
         </div>
 
-        <div class="tool-area fade-in">
+        <div class="tool-area">
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
@@ -321,7 +230,7 @@
         </div>
 
         <!-- SEO内容增强 -->
-        <section class="tool-area mt-lg fade-in">
+        <section class="tool-area mt-lg">
             <h2 class="section-label">JSON对比常见问题</h2>
             <div class="faq-container">
                 <details class="faq-item">
@@ -361,7 +270,7 @@
             </div>
         </section>
 
-        <section class="tool-area mt-lg fade-in">
+        <section class="tool-area mt-lg">
             <h2 class="section-label">JSON对比示例</h2>
             <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
                 <p style="margin-bottom: 1rem;"><strong>左侧（原始）：</strong></p>
