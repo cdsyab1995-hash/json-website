@@ -176,6 +176,73 @@
             <section id="latest-articles">
                 <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">Latest Articles</h2>
                 
+                <article id="ai-daily-20260411" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">⚡ Streaming JSON Parsing: Handling Real-Time AI Responses Efficiently</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Published:</strong> April 11, 2026 | <strong>Reading time:</strong> 7 minutes
+                    </p>
+                    <div style="line-height: 1.8;">
+                        <p><strong>In 2026, streaming output has become a baseline expectation for AI applications.</strong> The typewriter effect in ChatGPT, the real-time reasoning scroll in Claude — these smooth experiences rely on a technology that trips up many developers: streaming JSON parsing. Unlike standard JSON responses, streaming responses deliver "in-progress" data that requires special handling to parse correctly.</p>
+
+                        <h4>1. What Is Streaming JSON? It's Not What You Think</h4>
+                        <p>When you call the streaming endpoint of OpenAI or Claude, the response looks roughly like this:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":"Hello"}}]}
+
+data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":" there"}}]}
+
+data: [DONE]</code></pre>
+                        <p>This is <strong>Server-Sent Events (SSE)</strong> format — each line starts with <code>data: </code> followed by an independent JSON object. Importantly: <strong>this is NOT one large JSON blob, but multiple independent JSON lines</strong>, known as NDJSON (Newline Delimited JSON).</p>
+
+                        <h4>2. Parsing Streaming Responses with Fetch + ReadableStream</h4>
+                        <p>Modern browsers can consume streaming responses using <code>body.getReader()</code>:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>const response = await fetch('/api/chat', {
+  method: 'POST',
+  body: JSON.stringify({ message: 'Hello' })
+});
+
+const reader = response.body.getReader();
+const decoder = new TextDecoder();
+let buffer = '';
+
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  
+  buffer += decoder.decode(value, { stream: true });
+  const lines = buffer.split('\n');
+  buffer = lines.pop(); // keep the incomplete last line
+  
+  for (const line of lines) {
+    if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+      const json = JSON.parse(line.slice(6));
+      const content = json.choices[0]?.delta?.content || '';
+      process.stdout.write(content); // stream to UI
+    }
+  }
+}</code></pre>
+
+                        <h4>3. Three Critical Edge Cases</h4>
+                        <ul>
+                            <li><strong>Cross-chunk line breaks:</strong> Network chunks can split mid-line. Use a <code>buffer</code> to hold incomplete lines and wait for the next chunk to complete them before parsing.</li>
+                            <li><strong>Encoding issues:</strong> Always pass <code>{ stream: true }</code> to <code>TextDecoder</code> so multi-byte characters (e.g., CJK) aren't incorrectly split across chunks.</li>
+                            <li><strong>[DONE] signal handling:</strong> OpenAI's format ends with <code>data: [DONE]</code>. Skip this line instead of trying to parse it as JSON.</li>
+                        </ul>
+
+                        <h4>4. Anthropic Claude Has a Slightly Different Format</h4>
+                        <p>Claude's streaming API uses explicit event type fields in each SSE message:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>event: content_block_delta
+data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"Hello"}}</code></pre>
+                        <p>You need to check the <code>event</code> type first, then extract text from the corresponding <code>data</code> fields.</p>
+
+                        <h4>5. Pro Tip: Use JSON Tools to Debug Streaming Payloads</h4>
+                        <p>When debugging streaming JSON, try this workflow: copy individual <code>data:</code> lines into our <a href="../pages/format-en.html" style="color: var(--primary);">JSON Formatter</a> to inspect the structure, or use the <a href="../pages/compare-en.html" style="color: var(--primary);">JSON Compare tool</a> to spot field differences between model versions quickly.</p>
+
+                        <h4>Summary</h4>
+                        <p>Key takeaways for streaming JSON: ① Process line-by-line, never parse the whole buffer at once; ② Use a buffer to handle cross-chunk lines; ③ Pass <code>stream: true</code> to TextDecoder; ④ Handle the [DONE] terminator correctly. Master these, and your AI app's UX will feel dramatically more responsive.</p>
+                    </div>
+                </article>
+                <hr style="border: none; border-top: 1px solid var(--border); margin: 2rem 0;">
+
                 <article id="ai-daily-20260410" style="margin-bottom: 3rem;">
                     <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">📊 93% of APIs Use It: Why JSON Remains the Data Exchange King in 2026</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">

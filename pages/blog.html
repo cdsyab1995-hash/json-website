@@ -173,6 +173,73 @@
             <section id="latest-articles">
                 <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">最新文章</h2>
                 
+                <article id="ai-daily-20260411" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">⚡ JSON流式输出实战：如何优雅处理AI大模型的流式响应</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>发布时间：</strong>2026年4月11日 | <strong>阅读时间：</strong>7分钟
+                    </p>
+                    <div style="line-height: 1.8;">
+                        <p><strong>2026年，流式输出（Streaming）已成为AI应用的标配体验。</strong>ChatGPT的逐字打字效果、Claude实时推理的滚动文字……这些流畅的用户体验背后，是一套被开发者频繁踩坑的技术：流式JSON解析。与普通JSON响应不同，流式响应传输的是"半成品"数据，需要特殊处理才能正确解析。</p>
+
+                        <h4>一、流式JSON是什么？不是你想象中的JSON</h4>
+                        <p>当你调用OpenAI或Claude的流式接口时，收到的数据格式大致如下：</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":"你"}}]}
+
+data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":"好"}}]}
+
+data: [DONE]</code></pre>
+                        <p>这是 <strong>Server-Sent Events (SSE)</strong> 格式，每行以 <code>data: </code> 开头，后跟一个独立的JSON对象。注意：<strong>这不是一个大JSON，而是多个独立的JSON行</strong>，即 NDJSON（Newline Delimited JSON）。</p>
+
+                        <h4>二、用 Fetch + ReadableStream 解析流式响应</h4>
+                        <p>现代浏览器可以用 <code>fetch</code> 的 <code>body.getReader()</code> 来读取流式数据：</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>const response = await fetch('/api/chat', {
+  method: 'POST',
+  body: JSON.stringify({ message: '你好' })
+});
+
+const reader = response.body.getReader();
+const decoder = new TextDecoder();
+let buffer = '';
+
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  
+  buffer += decoder.decode(value, { stream: true });
+  const lines = buffer.split('\n');
+  buffer = lines.pop(); // 保留未完成的行
+  
+  for (const line of lines) {
+    if (line.startsWith('data: ') && line !== 'data: [DONE]') {
+      const json = JSON.parse(line.slice(6));
+      const content = json.choices[0]?.delta?.content || '';
+      process.stdout.write(content); // 实时输出
+    }
+  }
+}</code></pre>
+
+                        <h4>三、三个关键边界问题</h4>
+                        <ul>
+                            <li><strong>chunk 断行问题：</strong>网络传输的chunk边界可能在JSON行中间切断，必须用 <code>buffer</code> 缓存未完成的行，等待下一个chunk补全后再解析。</li>
+                            <li><strong>编码问题：</strong>使用 <code>TextDecoder</code> 时传入 <code>{ stream: true }</code>，确保多字节字符（如中文）不会被错误切割。</li>
+                            <li><strong>[DONE] 信号处理：</strong>OpenAI格式以 <code>data: [DONE]</code> 作为结束标志，需要跳过此行而非尝试解析。</li>
+                        </ul>
+
+                        <h4>四、Anthropic Claude 的流式格式略有不同</h4>
+                        <p>Claude API的流式响应使用不同的事件类型，每个SSE消息有 <code>event:</code> 字段：</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>event: content_block_delta
+data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"你好"}}</code></pre>
+                        <p>解析时需要先检查 <code>event</code> 类型，再按需提取 <code>data</code> 中的文本。</p>
+
+                        <h4>五、实用技巧：用 JSON 校验工具调试流式响应</h4>
+                        <p>调试流式JSON时，推荐这个工作流：将接收到的每一行 <code>data:</code> 内容复制到 <a href="../pages/format.html" style="color: var(--primary);">JSON格式化工具</a> 中验证结构是否完整，或用 <a href="../pages/compare.html" style="color: var(--primary);">JSON对比工具</a> 比较不同模型的响应差异，快速发现字段变化。</p>
+
+                        <h4>小结</h4>
+                        <p>流式JSON解析的核心要点：① 按行处理，不要整体解析；② 用buffer处理跨chunk的行；③ TextDecoder加 <code>stream: true</code>；④ 正确处理结束信号。掌握这些技巧，你的AI应用用户体验将显著提升。</p>
+                    </div>
+                </article>
+                <hr style="border: none; border-top: 1px solid var(--border); margin: 2rem 0;">
+
                 <article id="ai-daily-20260410" style="margin-bottom: 3rem;">
                     <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">📊 93%的API都在用它：2026年JSON为何仍是数据交换王者</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
