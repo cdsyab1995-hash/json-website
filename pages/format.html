@@ -179,22 +179,50 @@
         </div>
 
         <div class="tool-area">
+            <!-- 步骤指示器 -->
+            <div class="step-indicator">
+                <div class="step active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    输入
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="step">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                        <line x1="9" y1="20" x2="15" y2="20"></line>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                    </svg>
+                    格式化
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="step">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    复制
+                </div>
+            </div>
+
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
                     <span class="status-text">等待输入...</span>
                 </div>
                 <div class="tool-actions">
-                    <button class="btn btn-primary" id="formatBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button class="btn btn-success btn-action" id="formatBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="4 7 4 4 20 4 20 7"></polyline>
                             <line x1="9" y1="20" x2="15" y2="20"></line>
                             <line x1="12" y1="4" x2="12" y2="20"></line>
                         </svg>
                         格式化
                     </button>
-                    <button class="btn btn-secondary" id="compressBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button class="btn btn-primary btn-action" id="compressBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="4 14 10 14 10 20"></polyline>
                             <polyline points="20 10 14 10 14 4"></polyline>
                             <line x1="14" y1="10" x2="21" y2="3"></line>
@@ -209,15 +237,15 @@
                         </svg>
                         复制
                     </button>
-                    <button class="btn btn-danger" id="clearBtn">
+                    <button class="btn btn-secondary" id="clearBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                         </svg>
                         清空
                     </button>
-                    <select id="templateSelect" style="padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-secondary); cursor: pointer;">
-                        <option value="">加载示例...</option>
+                    <select id="templateSelect" style="padding: 8px 12px; border-radius: 8px; border: 2px solid var(--border); background: var(--bg-secondary); cursor: pointer; font-weight: 600;">
+                        <option value="">📁 加载示例...</option>
                         <option value="api">API 响应</option>
                         <option value="user">用户配置</option>
                         <option value="product">商品数据</option>

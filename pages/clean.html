@@ -160,36 +160,36 @@
 
         <!-- 清理工具区域 -->
         <section class="tool-area">
-            <!-- 清理选项 -->
-            <div class="tool-section">
-                <div class="sort-options">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="trimSpaces" checked>
-                        <span>移除首尾空白</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="removeEmpty" checked>
-                        <span>移除空值（null）</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="fixQuotes" checked>
-                        <span>修复单引号为双引号</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="removeTrailingComma" checked>
-                        <span>移除尾部逗号</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="fixBackslash" checked>
-                        <span>修复多余反斜杠</span>
-                    </label>
+            <!-- 步骤指示器 -->
+            <div class="step-indicator">
+                <div class="step active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    输入
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="step">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    清理
+                </div>
+                <span class="step-arrow">→</span>
+                <div class="step">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    结果
                 </div>
             </div>
 
             <!-- 输入区域 -->
-            <div class="tool-section">
+            <div class="input-section">
                 <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                     </svg>
@@ -198,72 +198,85 @@
                 <textarea 
                     id="cleanInput" 
                     class="input-area" 
-                    placeholder='粘贴需要清理的JSON，支持以下不规范格式：
+                    placeholder='粘贴需要清理的JSON，支持不规范格式：
 - 单引号
 - 尾部逗号
 - 多余空白
-- 未转义的特殊字符
-- 注释（会被移除）'></textarea>
-                
-                <!-- 操作按钮 -->
-                <div class="toolbar mt-md">
-                    <div class="toolbar-title">
-                        <span>清理操作</span>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-primary btn-lg" id="btnClean">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                            </svg>
-                            清理美化
-                        </button>
-                        <button class="btn btn-success" id="btnCopy">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            复制结果
-                        </button>
-                        <button class="btn btn-secondary" id="btnClear">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                            </svg>
-                            清空
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 消息提示 -->
-                <div id="msgClean" class="message"></div>
+- 注释'
+                    style="min-height: 200px;"></textarea>
             </div>
 
-            <!-- 预览区域 -->
-            <div class="tool-section mt-lg">
+            <!-- 操作按钮区域 -->
+            <div class="action-section">
+                <div class="toolbar-title" style="margin-bottom: 1rem; font-size: 1rem;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    清理选项
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 1.25rem;">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="trimSpaces" checked>
+                        <span>移除首尾空白</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeEmpty" checked>
+                        <span>移除空值</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="fixQuotes" checked>
+                        <span>单引号→双引号</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeTrailingComma" checked>
+                        <span>移除尾部逗号</span>
+                    </label>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-action" id="btnClean">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        清理美化
+                    </button>
+                </div>
+            </div>
+
+            <!-- 消息提示 -->
+            <div id="msgClean" class="message" style="margin-top: 1rem;"></div>
+
+            <!-- 预览 + 输出区域 -->
+            <div class="output-section" style="margin-top: 1.5rem;">
                 <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
                     </svg>
-                    预览（语法高亮）
-                </label>
-                <div id="cleanPreview" class="json-highlight"></div>
-            </div>
-
-            <!-- 输出区域 -->
-            <div class="tool-section mt-lg">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
                     清理结果
                 </label>
+                <div id="cleanPreview" class="json-highlight" style="margin-bottom: 1rem;"></div>
                 <textarea 
                     id="cleanOutput" 
                     class="output-area" 
                     placeholder="清理后的JSON将显示在这里..."
-                    readonly></textarea>
+                    readonly
+                    style="min-height: 150px;"></textarea>
+                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <button class="btn btn-secondary" id="btnCopy" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        复制结果
+                    </button>
+                    <button class="btn btn-secondary" id="btnClear" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        清空
+                    </button>
+                </div>
             </div>
         </section>
 

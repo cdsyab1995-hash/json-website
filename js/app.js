@@ -386,6 +386,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ===== escape页面的复制结果函数 =====
+    window.copyResult = async function() {
+        const output = document.getElementById('escapeOutput');
+        const msgEscape = document.getElementById('msgEscape');
+        if (output && output.value) {
+            try {
+                await navigator.clipboard.writeText(output.value);
+                showMessage(msgEscape, '✓ 已复制到剪贴板！', 'success');
+            } catch (err) {
+                showMessage(msgEscape, '复制失败，请手动选择复制', 'error');
+            }
+        } else {
+            showMessage(msgEscape, '没有内容可复制', 'warning');
+        }
+    };
+
     // ===== JSON模板加载功能 =====
     const jsonTemplates = {
         api: {
