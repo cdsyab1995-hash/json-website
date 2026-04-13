@@ -1,81 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:geo="http://www.w3.org/2003/01/geo/">
     <url>
         <loc>https://aijsons.com/</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/format.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/format.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/escape.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/escape.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/extract.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/extract.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/sort.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/sort.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/clean.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/clean.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/xml.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/xml.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/yaml.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/yaml.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/blog.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/blog.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/news.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/news.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/viewer.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/viewer.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/json2csv.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/json2csv.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
     <url>
         <loc>https://aijsons.com/pages/compare.html</loc>
         <lastmod>2026-04-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/compare.html"/>
+        <geo:geotype>USA</geo:geotype>
     </url>
 </urlset>
