@@ -1,56 +1,62 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="在线XML转JSON工具，支持XML和JSON格式互转。快速将XML数据转换为JSON格式，或将JSON转换为XML。无需安装，纯浏览器端处理。">
-    <meta name="keywords" content="XML转JSON,JSON转XML,XML JSON转换,在线XML转换,XML格式化">
+    <meta name="description" content="Free XML to JSON and JSON to XML converter. Convert between XML and JSON formats seamlessly. Browser-based with no data upload.">
+    <meta name="keywords" content="XML to JSON, JSON to XML, XML JSON converter, XML format, JSON format, convert XML JSON, XML online converter">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/xml.html">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/xml.html">
-    <meta property="og:title" content="XML JSON 互转工具 | JSON Web Tools">
-    <meta property="og:description" content="免费在线XML与JSON互转工具，支持双向转换和格式化。">
+    <link rel="canonical" href="https://aijsons.com/pages/xml.html">
+<meta property="og:type" content="website">
+    <meta property="og:url" content="https://aijsons.com/pages/xml.html">
+    <meta property="og:title" content="XML JSON Converter - Free Online Tool">
+    <meta property="og:description" content="Convert XML to JSON or JSON to XML seamlessly. Free browser-based converter.">
     <meta property="og:site_name" content="JSON Web Tools">
-    <title>XML与JSON互转 - 两种格式无缝转换 | JSON Web Tools</title>
-    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "XML JSON Converter",
+        "url": "https://aijsons.com/pages/xml.html",
+        "description": "Free online XML to JSON and JSON to XML converter with bidirectional conversion",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "featureList": ["XML to JSON conversion", "JSON to XML conversion", "Bidirectional converter", "Auto format detection"]
+    }
+    </script>
+    <title>XML JSON Converter - Convert Between XML and JSON Online</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
             </svg>
             JSON Web Tools
         </a>
-        
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
         </button>
-        
         <div class="navbar-links">
             <a href="../index.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -58,49 +64,46 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
-                    <path d="M8 13h2"></path>
-                    <path d="M8 17h2"></path>
-                    <path d="M14 13h2"></path>
-                    <path d="M14 17h2"></path>
                 </svg>
                 XML
             </a>
             <a href="yaml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    <path d="M4 4l4 16 4-16"></path>
+                    <path d="M12 4l4 16"></path>
                 </svg>
                 YAML
             </a>
@@ -109,7 +112,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -131,272 +134,214 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
-    <!-- 主内容 -->
     <main class="main-container">
         <div class="page-header">
-            <h1 class="page-title">XML 与 JSON 互转</h1>
+            <h1 class="page-title">XML & JSON Converter</h1>
             <p class="page-description">
-                在XML和JSON格式之间自由转换，支持双向转换和格式化展示
+                Convert between XML and JSON formats seamlessly with bidirectional conversion
             </p>
         </div>
-
-        <!-- 转换工具区域 -->
         <section class="tool-area">
-            <!-- 输入区域 -->
             <div class="tool-section">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                    </svg>
-                    输入内容（自动识别格式）
-                </label>
+                <label class="section-label">Input (Auto-Detect Format)</label>
                 <textarea 
                     id="xmlInput" 
                     class="input-area" 
-                    placeholder='输入XML或JSON，例如：
-
-XML格式：
+                    placeholder='Enter XML or JSON, for example:
+XML format:
 <root>
   <user>
-    <name>张三</name>
+    <name>John</name>
     <age>30</age>
   </user>
 </root>
-
-或 JSON格式：
+Or JSON format:
 {
   "root": {
     "user": {
-      "name": "张三",
+      "name": "John",
       "age": 30
     }
   }
-}'
-                    style="min-height: 200px;"></textarea>
-                
-                <!-- 操作按钮 -->
-                <div class="action-section" style="margin-top: 1.5rem;">
-                    <div class="toolbar-title" style="margin-bottom: 1rem; font-size: 1rem;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                        选择转换方向
-                    </div>
+}'></textarea>
+                <div class="toolbar mt-md">
+                    <div class="toolbar-title"><span>Convert Actions</span></div>
                     <div class="btn-group">
-                        <button class="btn btn-primary btn-action" id="btnToJSON">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <button class="btn btn-primary btn-lg" id="btnToJSON">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            XML → JSON
+                            XML to JSON
                         </button>
-                        <button class="btn btn-success btn-action" id="btnToXML">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <button class="btn btn-secondary btn-lg" id="btnToXML">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="19" y1="12" x2="5" y2="12"></line>
                                 <polyline points="12 19 5 12 12 5"></polyline>
                             </svg>
-                            JSON → XML
+                            JSON to XML
                         </button>
                     </div>
                 </div>
-
-                <!-- 消息提示 -->
-                <div id="msgXml" class="message" style="margin-top: 1rem;"></div>
+                <div class="toolbar mt-md">
+                    <div class="btn-group">
+                        <button class="btn btn-success" id="btnCopy">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Result
+                        </button>
+                        <button class="btn btn-secondary" id="btnClear">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+                <div id="msgXml" class="message"></div>
             </div>
-
-            <!-- 输出区域 -->
-            <div class="output-section" style="margin-top: 1.5rem;">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    转换结果
-                </label>
+            <div class="tool-section mt-lg">
+                <label class="section-label">Conversion Result</label>
                 <textarea 
                     id="xmlOutput" 
                     class="output-area" 
-                    placeholder="转换结果将显示在这里..."
+                    placeholder="Converted result will appear here..."
                     readonly
-                    style="min-height: 150px;"></textarea>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end;">
-                    <button class="btn btn-secondary" id="btnCopy" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        复制结果
-                    </button>
-                    <button class="btn btn-secondary" id="btnClear" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        </svg>
-                        清空
-                    </button>
-                </div>
+                    style="font-family: 'Consolas', 'Monaco', monospace;"></textarea>
             </div>
         </section>
-
-        <!-- 功能说明 -->
         <section class="tool-area">
-            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">转换规则</h2>
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">Conversion Rules</h2>
             <div class="feature-grid" style="margin-top: 0;">
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">XML → JSON</h3>
-                    <p>将XML标签转换为JSON键值对，属性用@前缀，文本内容用#text表示。</p>
+                    <h3 style="font-size: 1rem;">XML to JSON</h3>
+                    <p>Convert XML tags to JSON key-value pairs. Attributes use @ prefix, text content uses #text.</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">JSON → XML</h3>
-                    <p>将JSON对象转换为XML标签，数组转换为重复标签。</p>
+                    <h3 style="font-size: 1rem;">JSON to XML</h3>
+                    <p>Convert JSON objects to XML tags. Arrays become repeated tags.</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">自动识别</h3>
-                    <p>工具会自动识别输入内容是XML还是JSON格式。</p>
+                    <h3 style="font-size: 1rem;">Auto Detection</h3>
+                    <p>Automatically detects whether input is XML or JSON format.</p>
                 </div>
             </div>
         </section>
-
-        <!-- 常见问题 -->
         <section class="tool-area">
-            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">常见问题</h2>
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">FAQ</h2>
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary class="faq-question">XML属性在JSON中如何表示？</summary>
+                    <summary class="faq-question">How are XML attributes represented in JSON?</summary>
                     <div class="faq-answer">
-                        <p>XML属性会被转换为带<code>@</code>前缀的键。例如：</p>
-                        <p><code>&lt;user type="admin"&gt;张三&lt;/user&gt;</code></p>
-                        <p>转换为：</p>
-                        <p><code>{"user": {"@type": "admin", "#text": "张三"}}</code></p>
+                        <p>XML attributes are converted to keys with <code>@</code> prefix. For example:</p>
+                        <p><code>&lt;user type="admin"&gt;John&lt;/user&gt;</code></p>
+                        <p>Converts to:</p>
+                        <p><code>{"user": {"@type": "admin", "#text": "John"}}</code></p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">XML命名空间会保留吗？</summary>
+                    <summary class="faq-question">Are XML namespaces preserved?</summary>
                     <div class="faq-answer">
-                        <p>会。命名空间前缀会被保留在键名中，如<code>soap:Envelope</code>会转换为<code>"soap:Envelope"</code>。</p>
+                        <p>Yes. Namespace prefixes are preserved in key names, like <code>soap:Envelope</code> converts to <code>"soap:Envelope"</code>.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">转换会丢失数据吗？</summary>
+                    <summary class="faq-question">Will data be lost during conversion?</summary>
                     <div class="faq-answer">
-                        <p>转换遵循标准映射规则，<strong>不会丢失任何数据</strong>。但部分特殊XML结构（如CDATA、注释等）可能需要额外处理。</p>
+                        <p>Conversion follows standard mapping rules and <strong>won't lose any data</strong>. However, some special XML structures (like CDATA, comments) may need extra handling.</p>
                     </div>
                 </details>
             </div>
         </section>
     </main>
-
-    <!-- 页脚 -->
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Free client-side JSON processing. Your data stays private.</p>
         <p style="margin-top: 0.5rem; font-size: 0.875rem;">
-            <a href="format.html" style="color: var(--primary);">JSON格式化</a> | 
-            <a href="sort.html" style="color: var(--primary);">JSON排序</a> | 
-            <a href="clean.html" style="color: var(--primary);">JSON清理</a> | 
-            <a href="xml.html" style="color: var(--primary);">XML转JSON</a> | 
-            <a href="yaml.html" style="color: var(--primary);">JSON转YAML</a>
+            <a href="format.html" style="color: var(--primary);">JSON Formatter</a> | 
+            <a href="sort.html" style="color: var(--primary);">JSON Sorter</a> | 
+            <a href="xml.html" style="color: var(--primary);">XML Converter</a>
         </p>
     </footer>
-
     <script src="../js/app.js" defer></script>
     <script>
-        // XML JSON 互转功能
         document.getElementById('btnToJSON').addEventListener('click', function() {
             const input = document.getElementById('xmlInput').value.trim();
             const output = document.getElementById('xmlOutput');
             const msg = document.getElementById('msgXml');
-            
             if (!input) {
-                showMessage(msg, '请输入XML内容', 'error');
+                showMessage(msg, 'Please enter XML content', 'error');
                 return;
             }
-            
             try {
                 const json = xmlToJSON(input);
                 output.value = JSON.stringify(json, null, 2);
-                showMessage(msg, 'XML → JSON 转换成功！', 'success');
+                showMessage(msg, 'XML to JSON conversion successful!', 'success');
             } catch (e) {
-                showMessage(msg, '转换失败: ' + e.message, 'error');
+                showMessage(msg, 'Conversion failed: ' + e.message, 'error');
             }
         });
-        
         document.getElementById('btnToXML').addEventListener('click', function() {
             const input = document.getElementById('xmlInput').value.trim();
             const output = document.getElementById('xmlOutput');
             const msg = document.getElementById('msgXml');
-            
             if (!input) {
-                showMessage(msg, '请输入JSON内容', 'error');
+                showMessage(msg, 'Please enter JSON content', 'error');
                 return;
             }
-            
             try {
                 const json = JSON.parse(input);
                 const xml = jsonToXML(json);
                 output.value = xml;
-                showMessage(msg, 'JSON → XML 转换成功！', 'success');
+                showMessage(msg, 'JSON to XML conversion successful!', 'success');
             } catch (e) {
-                showMessage(msg, '转换失败: ' + e.message, 'error');
+                showMessage(msg, 'Conversion failed: ' + e.message, 'error');
             }
         });
-        
-        // XML 转 JSON
         function xmlToJSON(xmlString) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
-            
-            // 检查解析错误
             const parseError = xmlDoc.querySelector('parsererror');
             if (parseError) {
-                throw new Error('XML格式错误');
+                throw new Error('XML format error');
             }
-            
             return parseXMLNode(xmlDoc.documentElement);
         }
-        
         function parseXMLNode(node) {
-            if (node.nodeType === 3) { // 文本节点
+            if (node.nodeType === 3) {
                 const text = node.textContent.trim();
                 return text || null;
             }
-            
-            if (node.nodeType !== 1) return null; // 非元素节点
-            
+            if (node.nodeType !== 1) return null;
             const obj = {};
-            
-            // 处理属性
             for (const attr of node.attributes) {
                 obj['@' + attr.name] = attr.value;
             }
-            
-            // 处理子节点
             const children = Array.from(node.childNodes).filter(n => n.nodeType === 1);
             const textContent = Array.from(node.childNodes)
                 .filter(n => n.nodeType === 3)
                 .map(n => n.textContent)
                 .join('')
                 .trim();
-            
             if (children.length === 0) {
                 if (textContent) {
                     if (Object.keys(obj).length > 0) {
@@ -406,12 +351,10 @@ XML格式：
                     }
                 }
             } else {
-                // 分组同名标签
                 const groups = {};
                 for (const child of children) {
                     const name = child.tagName;
                     const value = parseXMLNode(child);
-                    
                     if (groups[name]) {
                         if (Array.isArray(groups[name])) {
                             groups[name].push(value);
@@ -422,32 +365,23 @@ XML格式：
                         groups[name] = value;
                     }
                 }
-                
                 Object.assign(obj, groups);
             }
-            
             return obj;
         }
-        
-        // JSON 转 XML
         function jsonToXML(json, rootName = 'root') {
             if (typeof json !== 'object' || json === null) {
                 return `<${rootName}>${escapeXML(String(json))}</${rootName}>`;
             }
-            
             let xml = '';
-            
             if (Array.isArray(json)) {
                 for (const item of json) {
                     xml += jsonToXML(item, rootName);
                 }
             } else {
                 xml += '<' + rootName;
-                
-                // 处理属性
                 const attrs = [];
                 const children = {};
-                
                 for (const [key, value] of Object.entries(json)) {
                     if (key.startsWith('@')) {
                         attrs.push(key.substring(1) + '="' + escapeXML(String(value)) + '"');
@@ -457,11 +391,9 @@ XML格式：
                         children[key] = value;
                     }
                 }
-                
                 if (attrs.length > 0) {
                     xml += ' ' + attrs.join(' ');
                 }
-                
                 const childKeys = Object.keys(children);
                 if (childKeys.length === 0) {
                     xml += '></' + rootName + '>';
@@ -473,10 +405,8 @@ XML格式：
                     xml += '</' + rootName + '>';
                 }
             }
-            
             return xml;
         }
-        
         function escapeXML(str) {
             return str
                 .replace(/&/g, '&amp;')
@@ -485,14 +415,10 @@ XML格式：
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&apos;');
         }
-        
-        // 复制功能
         document.getElementById('btnCopy').addEventListener('click', function() {
             const output = document.getElementById('xmlOutput');
             copyToClipboard(output, document.getElementById('msgXml'));
         });
-        
-        // 清空功能
         document.getElementById('btnClear').addEventListener('click', function() {
             document.getElementById('xmlInput').value = '';
             document.getElementById('xmlOutput').value = '';
@@ -501,4 +427,3 @@ XML格式：
     </script>
 </body>
 </html>
-

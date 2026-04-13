@@ -1,41 +1,24 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
-    <meta name="description" content="免费JSON查看器！在线树形结构可视化JSON，支持折叠/展开、关键词搜索、快速定位节点。无需注册，数据本地处理，隐私安全。">
-    <meta name="keywords" content="JSON查看器,JSON查看器在线,JSON tree viewer,JSON可视化,JSON树形视图,JSON展开折叠,在线JSON查看">
+    <meta name="description" content="Free JSON viewer! Tree visualization with collapsible nodes, keyword search, and path copying. Browser-based, private & secure. Try now!">
+    <meta name="keywords" content="JSON viewer, JSON tree viewer, JSON visualizer, JSON tree structure, online JSON viewer, JSON viewer tool, JSON explorer, JSON prettify, JSON display, JSON reader">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/viewer.html">
-    
+    <link rel="canonical" href="https://aijsons.com/pages/viewer.html">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/viewer.html">
-    <meta property="og:title" content="JSON在线查看器 - 树形结构可视化">
-    <meta property="og:description" content="免费在线JSON查看器，可视化树形结构展示，支持折叠/展开、搜索定位。">
-    
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "JSON在线查看器",
-        "url": "https://cdsyab1995-hash.github.io/json-website/pages/viewer.html",
-        "description": "在线JSON查看器，树形结构可视化展示",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Any",
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }
-    </script>
-    
-    <title>JSON查看器在线 - 树形结构可视化/快速定位节点 | JSON Web Tools</title>
-    
+    <meta property="og:url" content="https://aijsons.com/pages/viewer.html">
+    <meta property="og:title" content="Free JSON Viewer Online - Tree Structure Visualization">
+    <meta property="og:description" content="Visualize JSON data with tree structure. Supports collapse/expand, search, copy paths. 100% free.">
+    <!-- Alternate -->
+<title>Free JSON Viewer Tree - Online JSON Tree Viewer with Search | JSON Web Tools</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
@@ -49,7 +32,7 @@
             </svg>
             JSON Web Tools
         </a>
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -62,7 +45,7 @@
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -70,34 +53,34 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -118,7 +101,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -140,135 +123,106 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
     <main class="main-container">
         <div class="page-header text-center">
-            <h1 class="page-title">JSON 在线查看器</h1>
+            <h1 class="page-title">JSON Viewer Online</h1>
             <p class="page-description">
-                树形结构可视化展示JSON数据，支持折叠/展开、搜索定位
+                Visualize JSON data with tree structure - Supports collapse/expand, search & locate
             </p>
             <div class="breadcrumb">
-                <a href="../index.html">首页</a> / <span>JSON查看器</span>
+                <a href="../index.html">Home</a> / <span>JSON Viewer</span>
             </div>
         </div>
-
         <div class="tool-area">
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
-                    <span class="status-text">等待输入...</span>
+                    <span class="status-text">Waiting for input...</span>
                 </div>
                 <div class="tool-actions">
-                    <button class="btn btn-primary" id="expandAllBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <polyline points="9 21 3 21 3 15"></polyline>
-                            <line x1="21" y1="3" x2="14" y2="10"></line>
-                            <line x1="3" y1="21" x2="10" y2="14"></line>
-                        </svg>
-                        全部展开
-                    </button>
-                    <button class="btn btn-secondary" id="collapseAllBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="4 14 10 14 10 20"></polyline>
-                            <polyline points="20 10 14 10 14 4"></polyline>
-                            <line x1="14" y1="10" x2="21" y2="3"></line>
-                            <line x1="3" y1="21" x2="10" y2="14"></line>
-                        </svg>
-                        全部折叠
-                    </button>
-                    <button class="btn btn-success" id="searchBtn">
+                    <button class="btn btn-secondary" id="expandAllBtn">Expand All</button>
+                    <button class="btn btn-secondary" id="collapseAllBtn">Collapse All</button>
+                    <button class="btn btn-secondary" id="searchBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
-                        搜索
+                        Search
                     </button>
-                    <button class="btn btn-secondary" id="clearBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="3 6 5 6 21 6"></polyline>
-                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        </svg>
-                        清空
-                    </button>
+                    <button class="btn btn-danger" id="clearBtn">Clear</button>
                 </div>
             </div>
-
             <div class="editor-container">
                 <div class="editor-panel">
-                    <div class="editor-label">输入 JSON</div>
-                    <textarea id="inputJson" class="code-editor" placeholder="在此粘贴JSON数据，右侧将显示树形结构..."></textarea>
+                    <div class="editor-label">Input JSON</div>
+                    <textarea id="inputJson" class="code-editor" placeholder="Paste JSON data here, tree structure will display on the right..."></textarea>
                 </div>
                 <div class="editor-panel">
-                    <div class="editor-label">树形视图</div>
-                    <div id="treeViewer" class="tree-viewer">粘贴JSON数据查看树形结构...</div>
+                    <div class="editor-label">Tree View</div>
+                    <div id="treeViewer" class="tree-viewer">Paste JSON data to view tree structure...</div>
                 </div>
             </div>
-
             <div class="options-row">
                 <label class="checkbox-label">
                     <input type="checkbox" id="autoExpand" checked>
-                    <span>自动展开第一层</span>
+                    <span>Auto-expand first level</span>
                 </label>
                 <label class="checkbox-label" style="margin-left: 20px;">
-                    <span style="margin-right: 0.5rem;">搜索:</span>
-                    <input type="text" id="searchInput" placeholder="输入关键词搜索..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); width: 200px;">
+                    <span style="margin-right: 0.5rem;">Search:</span>
+                    <input type="text" id="searchInput" placeholder="Enter keywords to search..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); width: 200px;">
                 </label>
             </div>
         </div>
-
         <section class="tool-area mt-lg">
-            <h2 class="section-label">JSON查看器使用技巧</h2>
+            <h2 class="section-label">JSON Viewer Tips</h2>
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary class="faq-question">如何查看嵌套的JSON数据？</summary>
+                    <summary class="faq-question">How to view nested JSON data?</summary>
                     <div class="faq-answer">
-                        <p>直接在左侧输入JSON，数据会自动以树形结构显示在右侧。点击节点左侧的箭头或文字可以展开/折叠该节点。长嵌套的数据可以逐层查看，避免一次性显示过多内容。</p>
+                        <p>Paste JSON data on the left, it will automatically display as a tree structure on the right. Click the arrow or text on the left of any node to expand/collapse that node. Deeply nested data can be viewed layer by layer, avoiding display of too much content at once.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">如何复制某个字段的JSON路径？</summary>
+                    <summary class="faq-question">How to copy JSON path for a field?</summary>
                     <div class="faq-answer">
-                        <p>鼠标悬停在任意字段上，会显示一个"复制"按钮。点击后该字段的JSONPath路径会被复制到剪贴板，例如 <code>$.user.profile.name</code>。</p>
+                        <p>Hover over any field, a "Copy" button will appear. Click it to copy that field's JSONPath to clipboard, for example <code>$.user.profile.name</code>.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">支持搜索功能吗？</summary>
+                    <summary class="faq-question">Does it support search?</summary>
                     <div class="faq-answer">
-                        <p>是的！点击"搜索"按钮或使用顶部搜索框，输入关键词。匹配的内容会高亮显示，支持搜索键名和值。</p>
+                        <p>Yes! Click the "Search" button or use the top search box, enter keywords. Matching content will be highlighted, supporting search for both key names and values.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">可以导出树形视图为图片吗？</summary>
+                    <summary class="faq-question">Can I export the tree view as an image?</summary>
                     <div class="faq-answer">
-                        <p>当前版本支持复制树形结构为文本格式。如需导出图片，建议使用浏览器的截图功能或截图工具。</p>
+                        <p>Current version supports copying tree structure as text format. For image export, we recommend using browser's screenshot feature or screenshot tools.</p>
                     </div>
                 </details>
             </div>
         </section>
     </main>
-
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Pure client-side JSON processing. Your data stays private.</p>
     </footer>
-
     <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -280,18 +234,15 @@
             const clearBtn = document.getElementById('clearBtn');
             const searchInput = document.getElementById('searchInput');
             const autoExpand = document.getElementById('autoExpand');
-
             function updateStatus(valid, message) {
                 const dot = status.querySelector('.status-dot');
                 const text = status.querySelector('.status-text');
                 dot.className = 'status-dot ' + (valid ? 'valid' : 'invalid');
                 text.textContent = message;
             }
-
             function escapeHtml(text) {
                 return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             }
-
             function getValueClass(value) {
                 if (value === null) return 'tree-null';
                 if (typeof value === 'string') return 'tree-string';
@@ -299,24 +250,19 @@
                 if (typeof value === 'boolean') return 'tree-boolean';
                 return '';
             }
-
             function renderNode(key, value, path, depth) {
                 const indent = '  '.repeat(depth);
                 const type = Array.isArray(value) ? 'array' : (typeof value === 'object' && value !== null) ? 'object' : 'primitive';
                 const isExpandable = type !== 'primitive';
                 const toggleChar = isExpandable ? (type === 'array' ? '[{' : type === 'object' ? '{{' : '') : '';
                 const closeChar = isExpandable ? (type === 'array' ? '}]' : type === 'object' ? '}}' : '') : '';
-                
                 let html = `<div class="tree-line">${indent}`;
-                
                 if (isExpandable) {
                     html += `<button class="tree-expand-btn" onclick="toggleNode(this)" data-path="${path}">▶</button>`;
                 }
-                
                 if (key !== undefined) {
                     html += `<span class="tree-key">"${escapeHtml(String(key))}"</span>: `;
                 }
-                
                 if (type === 'primitive') {
                     const displayValue = value === null ? 'null' : typeof value === 'string' ? `"${escapeHtml(value)}"` : String(value);
                     html += `<span class="${getValueClass(value)}">${displayValue}</span>`;
@@ -325,10 +271,8 @@
                 } else {
                     html += `<span class="tree-toggle">${toggleChar}${Object.keys(value).length} keys${closeChar}</span>`;
                 }
-                
-                html += `<button class="tree-copy-btn" onclick="copyPath('${path}')">复制路径</button>`;
+                html += `<button class="tree-copy-btn" onclick="copyPath('${path}')">Copy</button>`;
                 html += `</div>`;
-                
                 if (isExpandable) {
                     html += `<div class="tree-children" style="display: none;">`;
                     if (Array.isArray(value)) {
@@ -342,10 +286,8 @@
                     }
                     html += `</div>`;
                 }
-                
                 return html;
             }
-
             function renderTree(json) {
                 try {
                     const obj = typeof json === 'string' ? JSON.parse(json) : json;
@@ -361,23 +303,21 @@
                     } else {
                         treeViewer.innerHTML = renderNode(undefined, obj, '$', 0);
                     }
-                    updateStatus(true, 'JSON解析成功');
+                    updateStatus(true, 'JSON parsed successfully');
                 } catch (e) {
-                    treeViewer.innerHTML = `<span style="color: #d32f2f;">解析错误: ${escapeHtml(e.message)}</span>`;
-                    updateStatus(false, 'JSON格式错误');
+                    treeViewer.innerHTML = `<span style="color: #d32f2f;">Parse error: ${escapeHtml(e.message)}</span>`;
+                    updateStatus(false, 'Invalid JSON format');
                 }
             }
-
             inputJson.addEventListener('input', function() {
                 const value = this.value.trim();
                 if (value) {
                     renderTree(value);
                 } else {
-                    treeViewer.innerHTML = '粘贴JSON数据查看树形结构...';
-                    updateStatus(false, '等待输入...');
+                    treeViewer.innerHTML = 'Paste JSON data to view tree structure...';
+                    updateStatus(false, 'Waiting for input...');
                 }
             });
-
             window.toggleNode = function(btn) {
                 const children = btn.nextElementSibling.nextElementSibling.nextElementSibling;
                 if (children && children.classList.contains('tree-children')) {
@@ -386,13 +326,11 @@
                     btn.textContent = isHidden ? '▼' : '▶';
                 }
             };
-
             window.copyPath = function(path) {
                 navigator.clipboard.writeText(path).then(() => {
-                    alert('路径已复制: ' + path);
+                    alert('Path copied: ' + path);
                 });
             };
-
             expandAllBtn.addEventListener('click', function() {
                 document.querySelectorAll('.tree-children').forEach(el => {
                     el.style.display = 'block';
@@ -401,7 +339,6 @@
                     btn.textContent = '▼';
                 });
             });
-
             collapseAllBtn.addEventListener('click', function() {
                 document.querySelectorAll('.tree-children').forEach(el => {
                     el.style.display = 'none';
@@ -410,35 +347,33 @@
                     btn.textContent = '▶';
                 });
             });
-
             clearBtn.addEventListener('click', function() {
                 inputJson.value = '';
-                treeViewer.innerHTML = '粘贴JSON数据查看树形结构...';
-                updateStatus(false, '等待输入...');
+                treeViewer.innerHTML = 'Paste JSON data to view tree structure...';
+                updateStatus(false, 'Waiting for input...');
             });
-
             // Load sample data
             inputJson.value = JSON.stringify({
                 "users": [
                     {
                         "id": 1,
-                        "name": "张三",
-                        "email": "zhang@example.com",
+                        "name": "John Smith",
+                        "email": "john@example.com",
                         "roles": ["admin", "user"],
                         "profile": {
                             "age": 28,
-                            "city": "北京",
+                            "city": "New York",
                             "skills": ["JavaScript", "Python"]
                         }
                     },
                     {
                         "id": 2,
-                        "name": "李四",
-                        "email": "li@example.com",
+                        "name": "Jane Doe",
+                        "email": "jane@example.com",
                         "roles": ["user"],
                         "profile": {
                             "age": 32,
-                            "city": "上海",
+                            "city": "Los Angeles",
                             "skills": ["Java", "Go"]
                         }
                     }
@@ -454,4 +389,3 @@
     </script>
 </body>
 </html>
-

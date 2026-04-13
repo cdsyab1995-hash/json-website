@@ -1,78 +1,62 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="在线JSON转义工具，支持JSON字符串转义和反转义处理。轻松处理特殊字符，适合API开发和数据交换场景。纯浏览器端处理，数据安全。">
-    <meta name="keywords" content="JSON转义,JSON转义在线,JSON反转义,JSON字符串转义,JSON转义工具,JSON特殊字符,API开发工具,JSON escape,JSON unescape">
+    <meta name="description" content="Free JSON escape and unescape tool. Safely handle special characters for API development and data exchange. Browser-based processing ensures complete data privacy.">
+    <meta name="keywords" content="JSON escape, JSON unescape, escape special characters, JSON string escape, API development tool, JSON encoding, string escaping, escape JSON online, JSON encode, JSON special characters">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/escape.html">
-    
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/escape.html">
-    <meta property="og:title" content="JSON 转义工具 - 字符串转义与反转义 | JSON Web Tools">
-    <meta property="og:description" content="免费在线JSON转义工具，支持字符串转义和反转义，适合API开发和数据交换。">
+    <link rel="canonical" href="https://aijsons.com/pages/escape.html">
+<meta property="og:type" content="website">
+    <meta property="og:url" content="https://aijsons.com/pages/escape.html">
+    <meta property="og:title" content="JSON Escape & Unescape - Free Online Tool">
+    <meta property="og:description" content="Escape or unescape JSON strings safely. Handle special characters for API development.">
     <meta property="og:site_name" content="JSON Web Tools">
-    
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "JSON转义工具",
-        "url": "https://cdsyab1995-hash.github.io/json-website/pages/escape.html",
-        "description": "在线JSON转义工具，对字符串进行JSON转义和反转义处理",
+        "name": "JSON Escape & Unescape Tool",
+        "url": "https://aijsons.com/pages/escape.html",
+        "description": "Free online JSON escape and unescape tool for safely handling special characters",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": ["JSON转义", "JSON反转义", "特殊字符处理"]
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "featureList": ["JSON string escaping", "JSON string unescaping", "Special character handling"]
     }
     </script>
-    
-    <title>JSON字符串转义 - 安全处理特殊字符 | JSON Web Tools</title>
-    
+    <title>JSON Escape & Unescape - Safely Handle Special Characters</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
             </svg>
             JSON Web Tools
         </a>
-        
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
         </button>
-        
         <div class="navbar-links">
             <a href="../index.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -80,34 +64,34 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -128,7 +112,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -150,226 +134,143 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
-    <!-- 主内容 -->
     <main class="main-container">
         <div class="page-header">
-            <h1 class="page-title">JSON 转义</h1>
+            <h1 class="page-title">JSON Escape</h1>
             <p class="page-description">
-                对字符串进行JSON转义和反转义处理，适合API开发和数据交换场景
+                Escape and unescape strings for JSON format. Handle special characters for API development and data exchange
             </p>
         </div>
-
-        <!-- 转义工具区域 -->
         <section class="tool-area">
-            <!-- 步骤指示器 -->
-            <div class="step-indicator">
-                <div class="step active">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg>
-                    输入
-                </div>
-                <span class="step-arrow">→</span>
-                <div class="step">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    转换
-                </div>
-                <span class="step-arrow">→</span>
-                <div class="step">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    结果
-                </div>
-            </div>
-
-            <!-- 输入区域 -->
-            <div class="input-section">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg>
-                    输入字符串
-                </label>
+            <div class="tool-section">
+                <label class="section-label">Input String</label>
                 <textarea 
                     id="escapeInput" 
                     class="input-area" 
-                    placeholder='在这里输入需要转义或反转义的字符串...
-
-例如：
+                    placeholder='Enter strings to escape or unescape, for example:
 Hello "World"
-New Line
+New Line:
 Tab:	'
-                    style="min-height: 200px;"
-                ></textarea>
-            </div>
-
-            <!-- 操作按钮区域 -->
-            <div class="action-section">
-                <div class="toolbar-title" style="margin-bottom: 1.25rem; font-size: 1.125rem;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
-                    选择操作
+                    style="min-height: 200px;"></textarea>
+                <div class="toolbar mt-md">
+                    <div class="toolbar-title"><span>Escape Actions</span></div>
+                    <div class="btn-group">
+                        <button class="btn btn-success btn-lg" id="btnEscape">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Escape
+                        </button>
+                        <button class="btn btn-primary btn-lg" id="btnUnescape">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            Unescape
+                        </button>
+                    </div>
                 </div>
-                <div class="btn-group">
-                    <button class="btn btn-success btn-action" id="btnEscape">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                        转义
-                    </button>
-                    <button class="btn btn-primary btn-action" id="btnUnescape">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="19" y1="12" x2="5" y2="12"></line>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                        反转义
-                    </button>
-                </div>
+                <div id="msgEscape" class="message"></div>
             </div>
-
-            <!-- 消息提示 -->
-            <div id="msgEscape" class="message"></div>
-
-            <!-- 输出结果 -->
-            <div class="output-section">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    输出结果
-                </label>
+            <div class="tool-section mt-lg">
+                <label class="section-label">Output Result</label>
                 <textarea 
                     id="escapeOutput" 
                     class="output-area" 
-                    placeholder="转换后的结果将显示在这里..."
+                    placeholder="Escaped or unescaped string will appear here..."
                     readonly
-                    style="min-height: 150px;"
-                ></textarea>
-                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end;">
-                    <button class="btn btn-secondary" onclick="copyResult()" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        复制结果
-                    </button>
-                </div>
+                    style="min-height: 150px;"></textarea>
             </div>
         </section>
-
-        <!-- 功能说明 -->
         <section class="tool-area">
-            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">什么是JSON转义？</h2>
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">What is JSON Escape?</h2>
             <div class="two-column">
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem; color: var(--success);">转义</h3>
+                    <h3 style="font-size: 1rem; color: var(--success);">Escape</h3>
                     <p>
-                        将普通字符串转换为JSON安全的字符串。<br><br>
-                        <strong>示例：</strong><br>
-                        输入: <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px;">Hello "World"</code><br>
-                        输出: <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px;">Hello \"World\"</code>
+                        Convert a regular string into JSON-safe format.<br><br>
+                        <strong>Example:</strong><br>
+                        Input: <code>Hello "World"</code><br>
+                        Output: <code>Hello \"World\"</code>
                     </p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem; color: var(--primary);">反转义</h3>
+                    <h3 style="font-size: 1rem; color: var(--primary);">Unescape</h3>
                     <p>
-                        将JSON转义后的字符串还原为原始字符串。<br><br>
-                        <strong>示例：</strong><br>
-                        输入: <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px;">Hello \"World\"\nNew Line</code><br>
-                        输出: <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px;">Hello "World"<br>New Line</code>
+                        Restore escaped JSON strings to original content.<br><br>
+                        <strong>Example:</strong><br>
+                        Input: <code>Hello \"World\"\nNew Line</code><br>
+                        Output: <code>Hello "World"<br>New Line</code>
                     </p>
                 </div>
             </div>
-            
             <div class="feature-card mt-md" style="cursor: default; background: var(--primary-light);">
-                <h3 style="font-size: 1rem; color: var(--primary);">💡 使用场景</h3>
+                <h3 style="font-size: 1rem; color: var(--primary);">Use Cases</h3>
                 <p>
-                    <strong>API开发：</strong>将用户输入的特殊字符转换为JSON安全格式<br>
-                    <strong>数据存储：</strong>将字符串安全地存储在JSON中<br>
-                    <strong>配置管理：</strong>处理包含特殊字符的配置文件
+                    <strong>API Development:</strong> Convert user input with special characters to JSON-safe format<br>
+                    <strong>Data Storage:</strong> Safely store strings in JSON<br>
+                    <strong>Configuration:</strong> Handle config files with special characters
                 </p>
             </div>
-
-            <!-- 转义页面专属 FAQ -->
             <div class="faq-container mt-lg">
-                <h3 style="font-size: 1rem; margin-bottom: 1rem;">常见问题</h3>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem;">FAQ</h3>
                 <details class="faq-item">
-                    <summary class="faq-question">哪些字符需要转义？</summary>
+                    <summary class="faq-question">Which characters need escaping?</summary>
                     <div class="faq-answer">
-                        <p>JSON中需要转义的特殊字符包括：</p>
+                        <p>Special characters that need escaping in JSON:</p>
                         <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
-                            <li><code>"</code> 双引号 → <code>\"</code></li>
-                            <li><code>\</code> 反斜杠 → <code>\\</code></li>
-                            <li><code>\n</code> 换行符 → <code>\\n</code></li>
-                            <li><code>\t</code> 制表符 → <code>\\t</code></li>
-                            <li><code>\r</code> 回车符 → <code>\\r</code></li>
+                            <li><code>"</code> Double quote → <code>\"</code></li>
+                            <li><code>\</code> Backslash → <code>\\</code></li>
+                            <li><code>\n</code> Newline → <code>\\n</code></li>
+                            <li><code>\t</code> Tab → <code>\\t</code></li>
+                            <li><code>\r</code> Carriage return → <code>\\r</code></li>
                         </ul>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">JSON转义在什么场景下使用？</summary>
+                    <summary class="faq-question">When is JSON escaping used?</summary>
                     <div class="faq-answer">
-                        <p>主要应用场景：</p>
+                        <p>Main use cases:</p>
                         <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
-                            <li><strong>API请求</strong>：将用户输入的特殊字符安全地放入JSON请求体</li>
-                            <li><strong>日志记录</strong>：将包含特殊字符的日志信息序列化为JSON格式</li>
-                            <li><strong>数据导入</strong>：处理包含引号、换行等字符的CSV或文本数据</li>
-                            <li><strong>前端开发</strong>：生成动态JSON配置文件</li>
+                            <li><strong>API Requests:</strong> Safely include user input with special characters in JSON body</li>
+                            <li><strong>Logging:</strong> Serialize log messages with special characters to JSON format</li>
+                            <li><strong>Data Import:</strong> Process CSV or text data with quotes and newlines</li>
+                            <li><strong>Frontend Development:</strong> Generate dynamic JSON config files</li>
                         </ul>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">反转义后为什么看不到换行效果？</summary>
+                    <summary class="faq-question">What's the difference between escaping and encoding?</summary>
                     <div class="faq-answer">
-                        <p>这是正常的。在JSON转义中，<code>\\n</code> 代表换行符。当你反转义后，字符串中确实包含了换行字符，但纯文本框可能不显示换行效果。你可以将结果复制到支持富文本的编辑器中查看。</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question">转义和编码有什么区别？</summary>
-                    <div class="faq-answer">
-                        <p><strong>JSON转义</strong>（如 <code>"</code> → <code>\"</code>）是JSON格式规范要求的，将特殊字符转换为JSON安全的表示。</p>
-                        <p><strong>URL编码</strong>（如 <code>"</code> → <code>%22</code>）用于URL参数传递。</p>
-                        <p>两者用途不同，不要混淆。如果你要生成JSON字符串，使用JSON转义；如果是URL参数，使用URL编码。</p>
+                        <p><strong>JSON escaping</strong> (e.g., <code>"</code> → <code>\"</code>) is required by JSON format specification.</p>
+                        <p><strong>URL encoding</strong> (e.g., <code>"</code> → <code>%22</code>) is for URL parameter passing.</p>
+                        <p>They serve different purposes. Use JSON escaping for JSON strings; use URL encoding for URL parameters.</p>
                     </div>
                 </details>
             </div>
         </section>
     </main>
-
-    <!-- 页脚 -->
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Free client-side JSON processing. Your data stays private.</p>
     </footer>
-
     <script src="../js/app.js" defer></script>
 </body>
 </html>
-

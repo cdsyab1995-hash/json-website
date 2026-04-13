@@ -1,43 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
-    <meta name="description" content="免费JSON对比工具！在线找出两个JSON的差异，高亮显示增加、删除、修改。适合API调试、数据同步检查。无需注册，数据不上传。">
-    <meta name="keywords" content="JSON对比,JSON对比工具,JSON compare,JSON diff,JSON差异对比,JSON比较,JSON在线对比,JSON diff tool">
+    <meta name="description" content="Free JSON compare tool! Spot differences between two JSON documents instantly. Key-value level diff highlighting, perfect for API debugging and data comparison.">
+    <meta name="keywords" content="JSON compare, JSON diff, JSON compare tool, JSON difference, JSON compare online, JSON diff tool, free JSON diff, JSON comparator, JSON difference checker, JSON side by side">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/compare.html">
-    
+    <link rel="canonical" href="https://aijsons.com/pages/compare.html">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/compare.html">
-    <meta property="og:title" content="JSON对比工具 - 在线比较JSON差异">
-    <meta property="og:description" content="免费在线JSON对比工具，高亮显示差异，支持JSON Patch生成。">
-    
+    <meta property="og:url" content="https://aijsons.com/pages/compare.html">
+    <meta property="og:title" content="JSON Compare Tool - Free Online JSON Diff Checker">
+    <meta property="og:description" content="Free online JSON compare tool with diff highlighting. Detect additions, deletions, and modifications.">
     <!-- JSON-LD -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "JSON对比工具",
-        "url": "https://cdsyab1995-hash.github.io/json-website/pages/compare.html",
-        "description": "在线JSON文档对比工具，高亮显示差异",
+        "name": "JSON Compare Tool",
+        "url": "https://aijsons.com/pages/compare.html",
+        "description": "Free online JSON document comparison tool with diff highlighting",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
         "browserRequirements": "Requires modern web browser"
     }
     </script>
-    
-    <title>JSON对比工具 - 在线比较JSON差异/高亮显示不同 | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    
+    <title>JSON Compare Tool - Free Online JSON Diff with Highlight | JSON Web Tools</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
@@ -51,7 +45,7 @@
             </svg>
             JSON Web Tools
         </a>
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -64,7 +58,7 @@
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -72,34 +66,34 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -120,7 +114,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -142,40 +136,38 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
     <main class="main-container">
         <div class="page-header text-center">
-            <h1 class="page-title">JSON 对比工具</h1>
+            <h1 class="page-title">JSON Compare Tool</h1>
             <p class="page-description">
-                比较两个JSON文档，高亮显示差异。支持增加、删除、修改检测
+                Compare two JSON documents and highlight differences. Detect additions, deletions, and modifications
             </p>
             <div class="breadcrumb">
-                <a href="../index.html">首页</a> / <span>JSON对比</span>
+                <a href="../index.html">Home</a> / <span>JSON Compare</span>
             </div>
         </div>
-
         <div class="tool-area">
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
-                    <span class="status-text">等待输入...</span>
+                    <span class="status-text">Waiting for input...</span>
                 </div>
                 <div class="tool-actions">
                     <button class="btn btn-primary" id="compareBtn">
@@ -189,121 +181,111 @@
                             <path d="M21 21l-7-7"></path>
                             <path d="M3 21l7-7"></path>
                         </svg>
-                        对比
+                        Compare
                     </button>
                     <button class="btn btn-secondary" id="swapBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M7 16V4M7 4L3 8M7 4L11 8"></path>
                             <path d="M17 8V20M17 20L21 16M17 20L13 16"></path>
                         </svg>
-                        交换
+                        Swap
                     </button>
                     <button class="btn btn-danger" id="clearBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                         </svg>
-                        清空
+                        Clear
                     </button>
                 </div>
             </div>
-
             <div class="compare-container">
                 <div class="compare-panel">
-                    <div class="editor-label">原始 JSON（左侧）</div>
-                    <textarea id="inputLeft" class="code-editor" style="border-radius: 0; border: none; border-top: none;" placeholder='{"name": "张三", "age": 30}'></textarea>
+                    <div class="editor-label">Original JSON (Left)</div>
+                    <textarea id="inputLeft" class="code-editor" style="border-radius: 0; border: none; border-top: none;" placeholder='{"name": "John", "age": 30}'></textarea>
                 </div>
                 <div class="compare-panel">
-                    <div class="editor-label">新 JSON（右侧）</div>
-                    <textarea id="inputRight" class="code-editor" style="border-radius: 0; border: none; border-top: none;" placeholder='{"name": "李四", "age": 31}'></textarea>
+                    <div class="editor-label">Modified JSON (Right)</div>
+                    <textarea id="inputRight" class="code-editor" style="border-radius: 0; border: none; border-top: none;" placeholder='{"name": "Jane", "age": 31}'></textarea>
                 </div>
             </div>
-
             <div class="diff-output">
-                <div class="diff-summary" id="diffSummary">
-                    <!-- 统计信息 -->
-                </div>
+                <div class="diff-summary" id="diffSummary"></div>
                 <div class="diff-result" id="diffResult">
                     <pre></pre>
                 </div>
             </div>
         </div>
-
-        <!-- SEO内容增强 -->
+        <!-- SEO Content -->
         <section class="tool-area mt-lg">
-            <h2 class="section-label">JSON对比常见问题</h2>
+            <h2 class="section-label">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary class="faq-question">JSON对比工具的用途是什么？</summary>
+                    <summary class="faq-question">What is JSON Compare used for?</summary>
                     <div class="faq-answer">
-                        <p>JSON对比工具主要用于：</p>
+                        <p>JSON Compare tool is primarily used for:</p>
                         <ul>
-                            <li><strong>API测试</strong>：比较API响应与预期结果的差异</li>
-                            <li><strong>数据同步检查</strong>：验证数据库更新是否正确</li>
-                            <li><strong>配置对比</strong>：比较不同环境的配置文件差异</li>
-                            <li><strong>代码审查</strong>：在代码审查中快速发现JSON变更</li>
+                            <li><strong>API Testing</strong>: Compare API responses with expected results</li>
+                            <li><strong>Data Sync</strong>: Verify database updates are correct</li>
+                            <li><strong>Config Comparison</strong>: Compare configuration files across environments</li>
+                            <li><strong>Code Review</strong>: Quickly spot JSON changes during code review</li>
                         </ul>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">如何阅读对比结果？</summary>
+                    <summary class="faq-question">How to read the comparison results?</summary>
                     <div class="faq-answer">
-                        <p>对比结果用不同颜色标注：</p>
+                        <p>Results are color-coded:</p>
                         <ul>
-                            <li><span style="background: #d4edda; padding: 2px 6px; border-radius: 3px;">绿色</span> - 新增的内容</li>
-                            <li><span style="background: #f8d7da; padding: 2px 6px; border-radius: 3px;">红色</span> - 删除的内容</li>
-                            <li><span style="background: #fff3cd; padding: 2px 6px; border-radius: 3px;">黄色</span> - 修改的值</li>
+                            <li><span style="background: #d4edda; padding: 2px 6px; border-radius: 3px;">Green</span> - Added content</li>
+                            <li><span style="background: #f8d7da; padding: 2px 6px; border-radius: 3px;">Red</span> - Removed content</li>
+                            <li><span style="background: #fff3cd; padding: 2px 6px; border-radius: 3px;">Yellow</span> - Modified values</li>
                         </ul>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">支持嵌套JSON对象对比吗？</summary>
+                    <summary class="faq-question">Does it support nested JSON comparison?</summary>
                     <div class="faq-answer">
-                        <p>是的，完全支持！工具会递归比较嵌套的对象和数组，准确识别：</p>
+                        <p>Yes, fully supported! The tool recursively compares nested objects and arrays, accurately identifying:</p>
                         <ul>
-                            <li>新增的嵌套属性</li>
-                            <li>删除的嵌套属性</li>
-                            <li>深层嵌套值的修改</li>
+                            <li>New nested properties</li>
+                            <li>Deleted nested properties</li>
+                            <li>Deep nested value changes</li>
                         </ul>
                     </div>
                 </details>
             </div>
         </section>
-
         <section class="tool-area mt-lg">
-            <h2 class="section-label">JSON对比示例</h2>
+            <h2 class="section-label">JSON Compare Example</h2>
             <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                <p style="margin-bottom: 1rem;"><strong>左侧（原始）：</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>Left (Original):</strong></p>
                 <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">{
-  "name": "张三",
+  "name": "John",
   "age": 30,
   "skills": ["Python", "JavaScript"]
 }</pre>
-                
-                <p style="margin: 1rem 0;"><strong>右侧（修改后）：</strong></p>
+                <p style="margin: 1rem 0;"><strong>Right (Modified):</strong></p>
                 <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">{
-  "name": "李四",
+  "name": "Jane",
   "age": 31,
   "skills": ["Python", "Go"],
-  "city": "北京"
+  "city": "New York"
 }</pre>
-                
-                <p style="margin: 1rem 0;"><strong>对比结果：</strong></p>
+                <p style="margin: 1rem 0;"><strong>Result:</strong></p>
                 <ul style="margin-left: 1rem;">
-                    <li><span style="color: #155724; background: #d4edda; padding: 2px 6px; border-radius: 3px;">+</span> name: "李四" (修改)</li>
-                    <li><span style="color: #856404; background: #fff3cd; padding: 2px 6px; border-radius: 3px;">~</span> age: 30 → 31 (修改)</li>
-                    <li><span style="color: #721c24; background: #f8d7da; padding: 2px 6px; border-radius: 3px;">-</span> skills[1]: "JavaScript" (删除)</li>
-                    <li><span style="color: #155724; background: #d4edda; padding: 2px 6px; border-radius: 3px;">+</span> skills[1]: "Go" (新增)</li>
-                    <li><span style="color: #155724; background: #d4edda; padding: 2px 6px; border-radius: 3px;">+</span> city: "北京" (新增)</li>
+                    <li><span style="color: #155724; background: #d4edda; padding: 2px 6px; border-radius: 3px;">+</span> name: "Jane" (Modified)</li>
+                    <li><span style="color: #856404; background: #fff3cd; padding: 2px 6px; border-radius: 3px;">~</span> age: 30 → 31 (Modified)</li>
+                    <li><span style="color: #721c24; background: #f8d7da; padding: 2px 6px; border-radius: 3px;">-</span> skills[1]: "JavaScript" (Removed)</li>
+                    <li><span style="color: #155724; background: #d4edda; padding: 2px 6px; border-radius: 3px;">+</span> skills[1]: "Go" (Added)</li>
+                    <li><span style="color: #155724; background: #d4edda; padding: 2px 6px; border-radius: 3px;">+</span> city: "New York" (Added)</li>
                 </ul>
             </div>
         </section>
     </main>
-
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Pure frontend JSON processing, protecting your data privacy</p>
     </footer>
-
     <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -315,27 +297,21 @@
             const compareBtn = document.getElementById('compareBtn');
             const swapBtn = document.getElementById('swapBtn');
             const clearBtn = document.getElementById('clearBtn');
-
             function updateStatus(valid, message) {
                 const dot = status.querySelector('.status-dot');
                 const text = status.querySelector('.status-text');
                 dot.className = 'status-dot ' + (valid ? 'valid' : 'invalid');
                 text.textContent = message;
             }
-
             function deepCompare(obj1, obj2, path = '') {
                 const differences = [];
-                
                 const keys1 = obj1 === null || obj1 === undefined ? new Set() : new Set(Object.keys(obj1));
                 const keys2 = obj2 === null || obj2 === undefined ? new Set() : new Set(Object.keys(obj2));
-                
                 const allKeys = new Set([...keys1, ...keys2]);
-                
                 allKeys.forEach(key => {
                     const fullPath = path ? `${path}.${key}` : key;
                     const in1 = keys1.has(key);
                     const in2 = keys2.has(key);
-                    
                     if (!in1 && in2) {
                         differences.push({ type: 'added', path: fullPath, value: obj2[key] });
                     } else if (in1 && !in2) {
@@ -343,7 +319,6 @@
                     } else {
                         const val1 = obj1[key];
                         const val2 = obj2[key];
-                        
                         if (JSON.stringify(val1) !== JSON.stringify(val2)) {
                             if (typeof val1 === 'object' && typeof val2 === 'object' && val1 !== null && val2 !== null) {
                                 if (Array.isArray(val1) !== Array.isArray(val2)) {
@@ -360,33 +335,26 @@
                         }
                     }
                 });
-                
                 return differences;
             }
-
             function renderDiff(differences) {
                 const stats = { added: 0, removed: 0, modified: 0, unchanged: 0 };
-                
                 differences.forEach(d => {
                     if (d.type === 'unchanged') stats.unchanged++;
                     else if (d.type === 'added') stats.added++;
                     else if (d.type === 'removed') stats.removed++;
                     else if (d.type === 'modified') stats.modified++;
                 });
-                
                 diffSummary.innerHTML = `
-                    <div class="diff-stat added">+ ${stats.added} 新增</div>
-                    <div class="diff-stat removed">- ${stats.removed} 删除</div>
-                    <div class="diff-stat modified">~ ${stats.modified} 修改</div>
-                    <div class="diff-stat unchanged">= ${stats.unchanged} 不变</div>
+                    <div class="diff-stat added">+ ${stats.added} Added</div>
+                    <div class="diff-stat removed">- ${stats.removed} Removed</div>
+                    <div class="diff-stat modified">~ ${stats.modified} Modified</div>
+                    <div class="diff-stat unchanged">= ${stats.unchanged} Unchanged</div>
                 `;
-                
                 let html = '';
                 differences.forEach(d => {
                     if (d.type !== 'unchanged') {
                         let lineContent = '';
-                        let typeClass = d.type;
-                        
                         if (d.type === 'added') {
                             lineContent = `+ "${d.path}": ${formatValue(d.value)}`;
                         } else if (d.type === 'removed') {
@@ -400,18 +368,14 @@
                                 lineContent = `- "${d.path}": ${formatValue(d.oldValue)}`;
                             }
                         }
-                        
-                        html += `<div class="diff-line ${typeClass}">${escapeHtml(lineContent)}</div>`;
+                        html += `<div class="diff-line ${d.type === 'modified' ? 'modified' : d.type}">${escapeHtml(lineContent)}</div>`;
                     }
                 });
-                
                 if (!html) {
-                    html = '<div style="color: var(--text-secondary);">两个JSON完全相同</div>';
+                    html = '<div style="color: var(--text-secondary);">Both JSON are identical</div>';
                 }
-                
                 diffResult.innerHTML = html;
             }
-
             function formatValue(value) {
                 if (value === null) return 'null';
                 if (value === undefined) return 'undefined';
@@ -419,64 +383,53 @@
                 if (typeof value === 'object') return JSON.stringify(value);
                 return String(value);
             }
-
             function escapeHtml(text) {
                 return text.replace(/&/g, '&amp;')
                            .replace(/</g, '&lt;')
                            .replace(/>/g, '&gt;')
                            .replace(/"/g, '&quot;');
             }
-
             function compare() {
                 const left = inputLeft.value.trim();
                 const right = inputRight.value.trim();
-                
                 if (!left && !right) {
-                    updateStatus(false, '请输入JSON数据');
+                    updateStatus(false, 'Please enter JSON data');
                     diffSummary.innerHTML = '';
                     diffResult.innerHTML = '';
                     return;
                 }
-                
                 if (!left || !right) {
-                    updateStatus(false, '请在两侧都输入JSON');
+                    updateStatus(false, 'Please enter JSON on both sides');
                     return;
                 }
-                
                 try {
                     const obj1 = JSON.parse(left);
                     const obj2 = JSON.parse(right);
-                    
                     const differences = deepCompare(obj1, obj2);
                     renderDiff(differences);
-                    
                     const changes = differences.filter(d => d.type !== 'unchanged').length;
-                    updateStatus(true, `发现 ${changes} 处差异`);
+                    updateStatus(true, `Found ${changes} differences`);
                 } catch (e) {
-                    updateStatus(false, 'JSON格式错误: ' + e.message);
+                    updateStatus(false, 'JSON Error: ' + e.message);
                     diffSummary.innerHTML = '';
                     diffResult.innerHTML = `<span class="json-error">${escapeHtml(e.message)}</span>`;
                 }
             }
-
             inputLeft.addEventListener('input', compare);
             inputRight.addEventListener('input', compare);
-            
             compareBtn.addEventListener('click', compare);
-            
             swapBtn.addEventListener('click', function() {
                 const temp = inputLeft.value;
                 inputLeft.value = inputRight.value;
                 inputRight.value = temp;
                 compare();
             });
-            
             clearBtn.addEventListener('click', function() {
                 inputLeft.value = '';
                 inputRight.value = '';
                 diffSummary.innerHTML = '';
                 diffResult.innerHTML = '';
-                updateStatus(false, '等待输入...');
+                updateStatus(false, 'Waiting for input...');
                 inputLeft.focus();
             });
         });

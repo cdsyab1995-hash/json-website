@@ -1,42 +1,37 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
-    <meta name="description" content="JSON转CSV在线工具！免费将JSON转换为CSV/Excel格式，支持嵌套对象展平、自定义分隔符。无需注册，数据全程本地处理。一键下载！">
-    <meta name="keywords" content="JSON转CSV,JSON转CSV在线,JSON to CSV,JSON转Excel,JSON转换CSV,CSV转换工具,JSON数据导出,Excel导入JSON">
+    <meta name="description" content="Free JSON to CSV converter online - Convert JSON arrays to CSV format for Excel and Google Sheets. Custom delimiters, nested object flattening, download support.">
+    <meta name="keywords" content="JSON to CSV, JSON to Excel, JSON to CSV converter, JSON to CSV online, convert JSON to CSV, CSV converter, free online tool, JSON to spreadsheet, JSON data export, JSON to table">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/json2csv.html">
-    
+    <link rel="canonical" href="https://aijsons.com/pages/json2csv.html">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/json2csv.html">
-    <meta property="og:title" content="JSON转CSV工具 - 在线转换JSON数据为CSV格式">
-    <meta property="og:description" content="免费在线JSON转CSV工具，支持自定义分隔符、嵌套对象展平、一键下载CSV文件。">
-    
+    <meta property="og:url" content="https://aijsons.com/pages/json2csv.html">
+    <meta property="og:title" content="JSON to CSV Converter - Free Online Tool">
+    <meta property="og:description" content="Convert JSON to CSV online for free. Supports Excel import, custom delimiters, and nested object flattening.">
     <!-- JSON-LD -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "JSON转CSV工具",
-        "url": "https://cdsyab1995-hash.github.io/json-website/pages/json2csv.html",
-        "description": "在线JSON转CSV转换工具，支持Excel导入和自定义选项",
+        "name": "JSON to CSV Converter",
+        "url": "https://aijsons.com/pages/json2csv.html",
+        "description": "Free online JSON to CSV converter for Excel and data analysis",
         "applicationCategory": "DataProcessingApplication",
         "operatingSystem": "Any",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
         "browserRequirements": "Requires modern web browser"
     }
     </script>
-    
-    <title>JSON转CSV工具 - 在线JSON数据转换为CSV/Excel格式 | JSON Web Tools</title>
-    
+    <title>JSON to CSV Converter - Free Online JSON to Excel Tool | JSON Web Tools</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
@@ -50,7 +45,7 @@
             </svg>
             JSON Web Tools
         </a>
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -63,7 +58,7 @@
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -71,34 +66,34 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -119,7 +114,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -141,40 +136,38 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
     <main class="main-container">
         <div class="page-header text-center">
-            <h1 class="page-title">JSON 转 CSV 工具</h1>
+            <h1 class="page-title">JSON to CSV Converter</h1>
             <p class="page-description">
-                将JSON数据快速转换为CSV格式，支持Excel和Google Sheets导入
+                Convert JSON data to CSV format for Excel and Google Sheets import
             </p>
             <div class="breadcrumb">
-                <a href="../index.html">首页</a> / <span>JSON转CSV</span>
+                <a href="../index.html">Home</a> / <span>JSON to CSV</span>
             </div>
         </div>
-
         <div class="tool-area">
             <div class="tool-header">
                 <div class="tool-status" id="status">
                     <span class="status-dot"></span>
-                    <span class="status-text">等待输入...</span>
+                    <span class="status-text">Waiting for input...</span>
                 </div>
                 <div class="tool-actions">
                     <button class="btn btn-primary" id="convertBtn">
@@ -183,7 +176,7 @@
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        转换为CSV
+                        Convert to CSV
                     </button>
                     <button class="btn btn-secondary" id="downloadBtn" disabled>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -191,129 +184,114 @@
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        下载CSV
+                        Download CSV
                     </button>
                     <button class="btn btn-secondary" id="copyBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
-                        复制
+                        Copy
                     </button>
                     <button class="btn btn-danger" id="clearBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                         </svg>
-                        清空
+                        Clear
                     </button>
                 </div>
             </div>
-
             <div class="editor-container">
                 <div class="editor-panel">
-                    <div class="editor-label">输入 JSON（数组格式）</div>
+                    <div class="editor-label">Input JSON (Array format)</div>
                     <textarea id="inputJson" class="code-editor" placeholder='[
-  {"name": "张三", "age": 30, "city": "北京"},
-  {"name": "李四", "age": 25, "city": "上海"},
-  {"name": "王五", "age": 35, "city": "广州"}
+  {"name": "John", "age": 30, "city": "New York"},
+  {"name": "Jane", "age": 25, "city": "Los Angeles"},
+  {"name": "Bob", "age": 35, "city": "Chicago"}
 ]'></textarea>
                 </div>
                 <div class="editor-panel">
-                    <div class="editor-label">输出 CSV</div>
+                    <div class="editor-label">Output CSV</div>
                     <div id="outputCsv" class="code-output"><pre></pre></div>
                 </div>
             </div>
-
             <div class="options-row">
                 <label class="checkbox-label">
                     <input type="checkbox" id="includeHeaders" checked>
-                    <span>包含表头</span>
+                    <span>Include Headers</span>
                 </label>
                 <label class="checkbox-label">
-                    <span>分隔符:</span>
+                    <span>Delimiter:</span>
                 </label>
                 <select id="delimiter" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border);">
-                    <option value=",">逗号 (,)</option>
-                    <option value=";">分号 (;)</option>
-                    <option value="\t">制表符 (Tab)</option>
-                    <option value="|">竖线 (|)</option>
+                    <option value=",">Comma (,)</option>
+                    <option value=";">Semicolon (;)</option>
+                    <option value="\t">Tab</option>
+                    <option value="|">Pipe (|)</option>
                 </select>
                 <label class="checkbox-label" style="margin-left: 20px;">
                     <input type="checkbox" id="flattenNested" checked>
-                    <span>展平嵌套对象</span>
+                    <span>Flatten Nested Objects</span>
                 </label>
             </div>
-            
             <div class="info-box" style="margin-top: 1rem;">
-                <p><strong>提示：</strong>输入应为JSON数组格式，如 <code>[{"name":"张三","age":30}, ...]</code></p>
+                <p><strong>Tip:</strong> Input should be a JSON array, e.g. <code>[{"name":"John","age":30}, ...]</code></p>
             </div>
         </div>
-
-        <!-- SEO内容增强 -->
+        <!-- SEO Content -->
         <section class="tool-area mt-lg">
-            <h2 class="section-label">JSON转CSV常见问题</h2>
+            <h2 class="section-label">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary class="faq-question">什么是JSON和CSV格式？</summary>
+                    <summary class="faq-question">What are JSON and CSV formats?</summary>
                     <div class="faq-answer">
-                        <p><strong>JSON</strong>（JavaScript Object Notation）是一种轻量级的数据交换格式，易于阅读和编写，也易于机器解析和生成。它使用键值对的形式存储数据，支持嵌套结构。</p>
-                        <p><strong>CSV</strong>（Comma-Separated Values）是一种简单的表格数据格式，用逗号分隔值，每行代表一条记录。CSV文件可以用Excel、Google Sheets等电子表格软件打开和编辑。</p>
+                        <p><strong>JSON</strong> (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate.</p>
+                        <p><strong>CSV</strong> (Comma-Separated Values) is a simple tabular data format with values separated by commas. CSV files can be opened and edited in Excel, Google Sheets, and other spreadsheet applications.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">如何将JSON数组转换为CSV？</summary>
+                    <summary class="faq-question">How to convert JSON array to CSV?</summary>
                     <div class="faq-answer">
-                        <p>使用本工具，只需三步：</p>
+                        <p>Using this tool, just three steps:</p>
                         <ol>
-                            <li>将JSON数组粘贴到左侧输入框</li>
-                            <li>选择分隔符和选项</li>
-                            <li>点击"转换为CSV"按钮，获取结果</li>
+                            <li>Paste your JSON array into the left input box</li>
+                            <li>Choose delimiter and options</li>
+                            <li>Click "Convert to CSV" button</li>
                         </ol>
-                        <p>支持下载为.csv文件，可直接导入Excel。</p>
+                        <p>Supports downloading as .csv file for direct Excel import.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">嵌套的JSON对象如何处理？</summary>
+                    <summary class="faq-question">How are nested JSON objects handled?</summary>
                     <div class="faq-answer">
-                        <p>勾选"展平嵌套对象"选项后，嵌套的对象会被展平为用点号分隔的列名。例如：</p>
-                        <p><code>{"name":"张三","address":{"city":"北京"}}</code></p>
-                        <p>会转换为：<code>name,address.city</code></p>
-                        <p>取消勾选则只保留顶层键。</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question">支持数组类型的数据吗？</summary>
-                    <div class="faq-answer">
-                        <p>数组类型的数据会被转换为JSON字符串形式存储。如果需要处理数组，建议先使用我们的<a href="extract.html">JSON提取工具</a>提取所需字段。</p>
+                        <p>When "Flatten Nested Objects" is checked, nested objects are flattened with dot notation. For example:</p>
+                        <p><code>{"name":"John","address":{"city":"NYC"}}</code></p>
+                        <p>converts to: <code>name,address.city</code></p>
                     </div>
                 </details>
             </div>
         </section>
-
         <section class="tool-area mt-lg">
-            <h2 class="section-label">JSON转CSV示例</h2>
+            <h2 class="section-label">JSON to CSV Example</h2>
             <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
-                <p style="margin-bottom: 1rem;"><strong>输入JSON：</strong></p>
+                <p style="margin-bottom: 1rem;"><strong>Input JSON:</strong></p>
                 <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">[
-  {"name": "张三", "age": 30, "city": "北京"},
-  {"name": "李四", "age": 25, "city": "上海"},
-  {"name": "王五", "age": 35, "city": "广州"}
+  {"name": "John", "age": 30, "city": "New York"},
+  {"name": "Jane", "age": 25, "city": "Los Angeles"},
+  {"name": "Bob", "age": 35, "city": "Chicago"}
 ]</pre>
-                
-                <p style="margin: 1rem 0;"><strong>输出CSV：</strong></p>
+                <p style="margin: 1rem 0;"><strong>Output CSV:</strong></p>
                 <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">name,age,city
-张三,30,北京
-李四,25,上海
-王五,35,广州</pre>
+John,30,New York
+Jane,25,Los Angeles
+Bob,35,Chicago</pre>
             </div>
         </section>
     </main>
-
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Pure frontend JSON processing, protecting your data privacy</p>
     </footer>
-
     <script src="../js/app.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -327,35 +305,28 @@
             const includeHeaders = document.getElementById('includeHeaders');
             const delimiter = document.getElementById('delimiter');
             const flattenNested = document.getElementById('flattenNested');
-            
             let csvResult = '';
-
             function updateStatus(valid, message) {
                 const dot = status.querySelector('.status-dot');
                 const text = status.querySelector('.status-text');
                 dot.className = 'status-dot ' + (valid ? 'valid' : 'invalid');
                 text.textContent = message;
             }
-
             function escapeCsvValue(value, delim) {
                 if (value === null || value === undefined) {
                     return '';
                 }
                 let str = String(value);
-                // 如果值包含分隔符、引号或换行，需要用引号包裹
                 if (str.includes(delim) || str.includes('"') || str.includes('\n') || str.includes('\r')) {
                     str = '"' + str.replace(/"/g, '""') + '"';
                 }
                 return str;
             }
-
             function flattenObject(obj, prefix = '') {
                 const result = {};
-                
                 for (const key in obj) {
                     const newKey = prefix ? prefix + '.' + key : key;
                     const value = obj[key];
-                    
                     if (value !== null && typeof value === 'object' && !Array.isArray(value) && flattenNested.checked) {
                         Object.assign(result, flattenObject(value, newKey));
                     } else if (Array.isArray(value)) {
@@ -364,93 +335,72 @@
                         result[newKey] = value;
                     }
                 }
-                
                 return result;
             }
-
             function jsonToCsv() {
                 const input = inputJson.value.trim();
                 if (!input) {
-                    updateStatus(false, '请输入JSON数据');
+                    updateStatus(false, 'Please enter JSON data');
                     outputCsv.querySelector('pre').innerHTML = '';
                     csvResult = '';
                     downloadBtn.disabled = true;
                     return;
                 }
-
                 try {
                     const data = JSON.parse(input);
-                    
                     if (!Array.isArray(data)) {
-                        throw new Error('JSON必须是数组格式');
+                        throw new Error('JSON must be an array');
                     }
-                    
                     if (data.length === 0) {
-                        updateStatus(false, 'JSON数组为空');
+                        updateStatus(false, 'JSON array is empty');
                         outputCsv.querySelector('pre').innerHTML = '';
                         csvResult = '';
                         downloadBtn.disabled = true;
                         return;
                     }
-
                     const delim = delimiter.value;
-                    
-                    // 获取所有唯一的列名
                     const allKeys = new Set();
                     const flattenedData = data.map(item => {
                         if (typeof item !== 'object' || item === null) {
-                            throw new Error('数组元素必须是对象');
+                            throw new Error('Array elements must be objects');
                         }
                         const flat = flattenObject(item);
                         Object.keys(flat).forEach(key => allKeys.add(key));
                         return flat;
                     });
-                    
                     const columns = Array.from(allKeys).sort();
-                    
-                    // 构建CSV
                     const lines = [];
-                    
-                    // 表头
                     if (includeHeaders.checked) {
                         lines.push(columns.map(col => escapeCsvValue(col, delim)).join(delim));
                     }
-                    
-                    // 数据行
                     flattenedData.forEach(row => {
                         const values = columns.map(col => escapeCsvValue(row[col], delim));
                         lines.push(values.join(delim));
                     });
-                    
                     csvResult = lines.join('\n');
                     outputCsv.querySelector('pre').innerHTML = escapeHtml(csvResult);
-                    updateStatus(true, `转换成功，共 ${data.length} 行 ${columns.length} 列`);
+                    updateStatus(true, `Success! ${data.length} rows, ${columns.length} columns`);
                     downloadBtn.disabled = false;
                 } catch (e) {
-                    updateStatus(false, 'JSON格式错误: ' + e.message);
+                    updateStatus(false, 'JSON Error: ' + e.message);
                     outputCsv.querySelector('pre').innerHTML = '<span class="json-error">' + escapeHtml(e.message) + '</span>';
                     csvResult = '';
                     downloadBtn.disabled = true;
                 }
             }
-
             function escapeHtml(text) {
                 return text.replace(/&/g, '&amp;')
                            .replace(/</g, '&lt;')
                            .replace(/>/g, '&gt;')
                            .replace(/"/g, '&quot;');
             }
-
             inputJson.addEventListener('input', jsonToCsv);
             includeHeaders.addEventListener('change', jsonToCsv);
             delimiter.addEventListener('change', jsonToCsv);
             flattenNested.addEventListener('change', jsonToCsv);
-            
             convertBtn.addEventListener('click', jsonToCsv);
-            
             downloadBtn.addEventListener('click', function() {
                 if (!csvResult) return;
-                
                 const blob = new Blob(['\ufeff' + csvResult], { type: 'text/csv;charset=utf-8' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -460,25 +410,19 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                
-                const originalText = this.innerHTML;
-                this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 已下载!';
-                setTimeout(() => this.innerHTML = originalText, 2000);
             });
-            
             copyBtn.addEventListener('click', function() {
                 if (!csvResult) return;
                 navigator.clipboard.writeText(csvResult).then(() => {
                     const originalText = this.innerHTML;
-                    this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 已复制!';
+                    this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
                     setTimeout(() => this.innerHTML = originalText, 2000);
                 });
             });
-
             clearBtn.addEventListener('click', function() {
                 inputJson.value = '';
                 outputCsv.querySelector('pre').innerHTML = '';
-                updateStatus(false, '等待输入...');
+                updateStatus(false, 'Waiting for input...');
                 csvResult = '';
                 downloadBtn.disabled = true;
                 inputJson.focus();

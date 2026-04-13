@@ -1,40 +1,35 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="_DVI2os6LwG7Lms1VPUV2etlTfpqi5mUFYvlKWJV-fY" />
-    <meta name="description" content="JSON技术博客 - 深度解读2026年AI工作流中的JSON应用，分享程序员JSON格式常见错误与解决方案，探讨JSON在现代开发中的核心作用。">
-    <meta name="keywords" content="JSON博客,JSON技术文章,JSON教程,JSON学习,JSON AI应用,JSON开发技巧,2026 JSON趋势">
+    <meta name="description" content="JSON Tech Blog - Explore JSON in 2026 AI workflows, learn about AI-native APIs, and discover why structured data is powering the agent revolution.">
+    <meta name="keywords" content="JSON blog, JSON tech articles, JSON tutorial, JSON AI application, JSON development tips, 2026 JSON trends, structured data">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/blog.html">
-    
+    <link rel="canonical" href="https://aijsons.com/pages/blog.html">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/blog.html">
-    <meta property="og:title" content="JSON技术博客 - AI工作流时代的JSON应用指南">
-    <meta property="og:description" content="深度解读2026年AI工作流中的JSON应用，分享程序员JSON格式常见错误与解决方案。">
-    
-    <!-- JSON-LD -->
+    <meta property="og:url" content="https://aijsons.com/pages/blog.html">
+    <meta property="og:title" content="JSON Tech Blog - AI Workflows & the Structured Data Revolution">
+    <meta property="og:description" content="Explore JSON in 2026 AI workflows, learn about AI-native APIs, and discover structured data trends.">
+    <!-- Alternate -->
+<!-- JSON-LD -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Blog",
-        "headline": "JSON技术博客",
-        "description": "深度解读JSON在实际开发中的应用，分享实用技巧与行业洞察",
+        "headline": "JSON Tech Blog",
+        "description": "Expert insights on JSON in modern development, AI workflows, and structured data best practices",
         "author": {"@type": "Organization", "name": "JSON Web Tools"},
         "datePublished": "2026-04-01"
     }
     </script>
-    
-    <title>JSON技术博客 - AI工作流时代的JSON应用指南 | JSON Web Tools</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    
+    <title>JSON Tech Blog - AI Workflows & the Structured Data Revolution | JSON Web Tools</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
@@ -48,7 +43,7 @@
             </svg>
             JSON Web Tools
         </a>
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -61,7 +56,7 @@
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -69,34 +64,34 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -117,7 +112,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -139,64 +134,58 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
     <main class="main-container">
         <div class="page-header text-center">
-            <h1 class="page-title">JSON 技术博客</h1>
+            <h1 class="page-title">JSON Tech Blog</h1>
             <p class="page-description">
-                深度解读JSON在实际开发中的应用，分享实用技巧与行业洞察
+                Expert insights on JSON in modern development, AI workflows, and structured data
             </p>
             <div class="breadcrumb">
-                <a href="../index.html">首页</a> / <span>博客</span>
+                <a href="../index.html">Home</a> / <span>Blog</span>
             </div>
         </div>
-
         <div class="blog-content">
-            <!-- 最新文章 -->
+            <!-- Latest Articles -->
             <section id="latest-articles">
-                <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">最新文章</h2>
-                
+                <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">Latest Articles</h2>
                 <article id="ai-daily-20260413" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🧩 JSON合并策略：深度合并、浅合并与智能覆盖的实战对比</h3>
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🧩 JSON Merge Strategies: Deep vs Shallow vs Smart Override — A Practical Comparison</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月13日 | <strong>阅读时间：</strong>5分钟
+                        <strong>Published:</strong> April 13, 2026 | <strong>Reading time:</strong> 5 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>合并两个JSON对象，看似简单，实则暗藏玄机。</strong>lodash的merge、Object.assign、递归深度合并……不同的合并策略会产生截然不同的结果。本文用真实场景对比三种主流合并策略，帮你选择最适合的方案。</p>
-
-                        <h4>一、三种合并策略的本质区别</h4>
-                        <p><strong>1. 浅合并（Shallow Merge）</strong>：Object.assign()是典型的浅合并，只复制顶层属性，嵌套对象仍然共享引用。</p>
+                        <p><strong>Merging two JSON objects sounds simple — but the devil is in the details.</strong> lodash.merge vs Object.assign vs recursive deep merge produce drastically different results. This guide compares three major merge strategies with real-world scenarios to help you choose the right approach.</p>
+                        <h4>1. The Three Strategies: What's the Difference?</h4>
+                        <p><strong>Shallow Merge:</strong> Object.assign() only copies top-level properties. Nested objects remain shared references.</p>
                         <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>const a = { name: 'Alice', config: { theme: 'dark' } };
 const b = { name: 'Bob', config: { lang: 'en' } };
 const result = Object.assign({}, a, b);
-// 结果: { name: 'Bob', config: { lang: 'en' } }
-// 注意：config.theme 丢失了！</code></pre>
-                        <p><strong>2. 深度合并（Deep Merge）</strong>：lodash.merge()递归合并所有嵌套层级的属性。</p>
+// Result: { name: 'Bob', config: { lang: 'en' } }
+// Warning: config.theme is lost!</code></pre>
+                        <p><strong>Deep Merge:</strong> Recursively merges all nested properties.</p>
                         <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>import { merge } from 'lodash';
 const result = merge({}, a, b);
-// 结果: { name: 'Bob', config: { theme: 'dark', lang: 'en' } }
-// 两个配置对象被合并了</code></pre>
-                        <p><strong>3. 智能合并（Smart Merge）</strong>：在深度合并基础上，智能处理数组——用新数组覆盖旧数组，而非合并数组元素。</p>
-
-                        <h4>二、实战代码实现</h4>
-                        <p>JavaScript原生实现深度合并：</p>
+// Result: { name: 'Bob', config: { theme: 'dark', lang: 'en' } }
+// Both config objects are merged</code></pre>
+                        <p><strong>Smart Merge:</strong> Deep merge behavior, but replaces arrays instead of merging array items.</p>
+                        <h4>2. JavaScript Implementation</h4>
                         <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>function deepMerge(target, source) {
   const output = { ...target };
   for (const key of Object.keys(source)) {
@@ -208,185 +197,158 @@ const result = merge({}, a, b);
   }
   return output;
 }</code></pre>
-
-                        <h4>三、选择指南</h4>
+                        <h4>3. When to Use Each</h4>
                         <ul>
-                            <li>只需覆盖顶层配置：使用 <code>Object.assign()</code></li>
-                            <li>需要保留所有嵌套配置：使用深度合并</li>
-                            <li>用户配置与默认配置合并：推荐智能合并</li>
+                            <li>Override top-level config only: Use <code>Object.assign()</code></li>
+                            <li>Preserve all nested settings: Use deep merge</li>
+                            <li>Merge user config with defaults: Smart merge recommended</li>
                         </ul>
                     </div>
                 </article>
-
                 <article id="ai-daily-20260412" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">⚡ JSON性能优化：从解析到序列化的全链路加速</h3>
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">⚡ JSON Performance: End-to-End Optimization from Parsing to Serialization</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月12日 | <strong>阅读时间：</strong>6分钟
+                        <strong>Published:</strong> April 12, 2026 | <strong>Reading time:</strong> 6 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>当JSON数据量超过1MB时，JSON.parse和JSON.stringify可能成为性能瓶颈。</strong>内存峰值、GC压力、阻塞主线程……这些问题在处理大型配置文件、API响应或日志数据时尤为突出。2026年的新工具和算法可以帮你彻底解决这些问题。</p>
-
-                        <h4>一、传统方案的性能问题</h4>
-                        <p>原生JSON.parse需要将整个字符串加载到内存，然后构建完整的对象树。对于10MB的JSON文件，这可能导致：</p>
+                        <p><strong>When JSON data exceeds 1MB, JSON.parse and JSON.stringify become performance bottlenecks.</strong> Memory spikes, GC pressure, main thread blocking — these issues are especially prominent when handling large config files, API responses, or log data. New tools and algorithms in 2026 can help you solve these problems.</p>
+                        <h4>1. Performance Issues with Traditional Solutions</h4>
+                        <p>Native JSON.parse loads the entire string into memory, then builds a complete object tree. For a 10MB JSON file, this can cause:</p>
                         <ul>
-                            <li>内存峰值达到原始文件的2-3倍</li>
-                            <li>主线程阻塞数百毫秒</li>
-                            <li>频繁GC导致页面卡顿</li>
+                            <li>Memory spikes 2-3x the original file size</li>
+                            <li>Main thread blocking for hundreds of milliseconds</li>
+                            <li>Frequent GC causing page stuttering</li>
                         </ul>
-
-                        <h4>二、2026年新方案：流式解析</h4>
-                        <p><strong>simdjson</strong> 使用SIMD指令并行解析，实测速度是原生JSON.parse的2-5倍：</p>
-                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>// Node.js 使用 simdjson
+                        <h4>2. 2026 Solutions: Streaming Parsing</h4>
+                        <p><strong>simdjson</strong> uses SIMD instructions for parallel parsing, delivering 2-5x faster performance than native JSON.parse:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>// Node.js with simdjson
 import { parse } from 'simdjson';
-
 const jsonString = await Bun.file('large.json').text();
 const data = parse(jsonString);
-// 解析 100MB JSON 仅需 ~200ms</code></pre>
-
-                        <h4>三、增量序列化减少GC压力</h4>
-                        <p>对于频繁构建JSON响应的场景，增量JSON构建器可以复用缓冲区，避免频繁内存分配。</p>
-
-                        <h4>四、性能对比实测</h4>
+// Parsing 100MB JSON takes only ~200ms</code></pre>
+                        <h4>3. Benchmark Comparison</h4>
                         <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                            <tr style="border-bottom: 1px solid var(--border);"><th style="padding: 0.5rem;">方案</th><th style="padding: 0.5rem;">10MB解析</th><th style="padding: 0.5rem;">内存峰值</th></tr>
+                            <tr style="border-bottom: 1px solid var(--border);"><th style="padding: 0.5rem;">Solution</th><th style="padding: 0.5rem;">10MB Parse</th><th style="padding: 0.5rem;">Memory Peak</th></tr>
                             <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem;">JSON.parse</td><td style="padding: 0.5rem;">1200ms</td><td style="padding: 0.5rem;">85MB</td></tr>
                             <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem;">simdjson</td><td style="padding: 0.5rem;">180ms</td><td style="padding: 0.5rem;">32MB</td></tr>
-                            <tr><td style="padding: 0.5rem;">流式解析</td><td style="padding: 0.5rem;">按需</td><td style="padding: 0.5rem;">8MB</td></tr>
+                            <tr><td style="padding: 0.5rem;">Streaming</td><td style="padding: 0.5rem;">On-demand</td><td style="padding: 0.5rem;">8MB</td></tr>
                         </table>
                     </div>
                 </article>
-
                 <article id="ai-daily-20260411" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">⚡ JSON流式输出实战：如何优雅处理AI大模型的流式响应</h3>
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">⚡ Streaming JSON Parsing: Handling Real-Time AI Responses Efficiently</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月11日 | <strong>阅读时间：</strong>7分钟
+                        <strong>Published:</strong> April 11, 2026 | <strong>Reading time:</strong> 7 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>2026年，流式输出（Streaming）已成为AI应用的标配体验。</strong>ChatGPT的逐字打字效果、Claude实时推理的滚动文字……这些流畅的用户体验背后，是一套被开发者频繁踩坑的技术：流式JSON解析。与普通JSON响应不同，流式响应传输的是"半成品"数据，需要特殊处理才能正确解析。</p>
-
-                        <h4>一、流式JSON是什么？不是你想象中的JSON</h4>
-                        <p>当你调用OpenAI或Claude的流式接口时，收到的数据格式大致如下：</p>
-                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":"你"}}]}
-
-data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":"好"}}]}
-
+                        <p><strong>In 2026, streaming output has become a baseline expectation for AI applications.</strong> The typewriter effect in ChatGPT, the real-time reasoning scroll in Claude — these smooth experiences rely on a technology that trips up many developers: streaming JSON parsing. Unlike standard JSON responses, streaming responses deliver "in-progress" data that requires special handling to parse correctly.</p>
+                        <h4>1. What Is Streaming JSON? It's Not What You Think</h4>
+                        <p>When you call the streaming endpoint of OpenAI or Claude, the response looks roughly like this:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":"Hello"}}]}
+data: {"id":"chatcmpl-xxx","object":"chat.completion.chunk","choices":[{"delta":{"content":" there"}}]}
 data: [DONE]</code></pre>
-                        <p>这是 <strong>Server-Sent Events (SSE)</strong> 格式，每行以 <code>data: </code> 开头，后跟一个独立的JSON对象。注意：<strong>这不是一个大JSON，而是多个独立的JSON行</strong>，即 NDJSON（Newline Delimited JSON）。</p>
-
-                        <h4>二、用 Fetch + ReadableStream 解析流式响应</h4>
-                        <p>现代浏览器可以用 <code>fetch</code> 的 <code>body.getReader()</code> 来读取流式数据：</p>
+                        <p>This is <strong>Server-Sent Events (SSE)</strong> format — each line starts with <code>data: </code> followed by an independent JSON object. Importantly: <strong>this is NOT one large JSON blob, but multiple independent JSON lines</strong>, known as NDJSON (Newline Delimited JSON).</p>
+                        <h4>2. Parsing Streaming Responses with Fetch + ReadableStream</h4>
+                        <p>Modern browsers can consume streaming responses using <code>body.getReader()</code>:</p>
                         <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>const response = await fetch('/api/chat', {
   method: 'POST',
-  body: JSON.stringify({ message: '你好' })
+  body: JSON.stringify({ message: 'Hello' })
 });
-
 const reader = response.body.getReader();
 const decoder = new TextDecoder();
 let buffer = '';
-
 while (true) {
   const { done, value } = await reader.read();
   if (done) break;
-  
   buffer += decoder.decode(value, { stream: true });
   const lines = buffer.split('\n');
-  buffer = lines.pop(); // 保留未完成的行
-  
+  buffer = lines.pop(); // keep the incomplete last line
   for (const line of lines) {
     if (line.startsWith('data: ') && line !== 'data: [DONE]') {
       const json = JSON.parse(line.slice(6));
       const content = json.choices[0]?.delta?.content || '';
-      process.stdout.write(content); // 实时输出
+      process.stdout.write(content); // stream to UI
     }
   }
 }</code></pre>
-
-                        <h4>三、三个关键边界问题</h4>
+                        <h4>3. Three Critical Edge Cases</h4>
                         <ul>
-                            <li><strong>chunk 断行问题：</strong>网络传输的chunk边界可能在JSON行中间切断，必须用 <code>buffer</code> 缓存未完成的行，等待下一个chunk补全后再解析。</li>
-                            <li><strong>编码问题：</strong>使用 <code>TextDecoder</code> 时传入 <code>{ stream: true }</code>，确保多字节字符（如中文）不会被错误切割。</li>
-                            <li><strong>[DONE] 信号处理：</strong>OpenAI格式以 <code>data: [DONE]</code> 作为结束标志，需要跳过此行而非尝试解析。</li>
+                            <li><strong>Cross-chunk line breaks:</strong> Network chunks can split mid-line. Use a <code>buffer</code> to hold incomplete lines and wait for the next chunk to complete them before parsing.</li>
+                            <li><strong>Encoding issues:</strong> Always pass <code>{ stream: true }</code> to <code>TextDecoder</code> so multi-byte characters (e.g., CJK) aren't incorrectly split across chunks.</li>
+                            <li><strong>[DONE] signal handling:</strong> OpenAI's format ends with <code>data: [DONE]</code>. Skip this line instead of trying to parse it as JSON.</li>
                         </ul>
-
-                        <h4>四、Anthropic Claude 的流式格式略有不同</h4>
-                        <p>Claude API的流式响应使用不同的事件类型，每个SSE消息有 <code>event:</code> 字段：</p>
+                        <h4>4. Anthropic Claude Has a Slightly Different Format</h4>
+                        <p>Claude's streaming API uses explicit event type fields in each SSE message:</p>
                         <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>event: content_block_delta
-data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"你好"}}</code></pre>
-                        <p>解析时需要先检查 <code>event</code> 类型，再按需提取 <code>data</code> 中的文本。</p>
-
-                        <h4>五、实用技巧：用 JSON 校验工具调试流式响应</h4>
-                        <p>调试流式JSON时，推荐这个工作流：将接收到的每一行 <code>data:</code> 内容复制到 <a href="../pages/format.html" style="color: var(--primary);">JSON格式化工具</a> 中验证结构是否完整，或用 <a href="../pages/compare.html" style="color: var(--primary);">JSON对比工具</a> 比较不同模型的响应差异，快速发现字段变化。</p>
-
-                        <h4>小结</h4>
-                        <p>流式JSON解析的核心要点：① 按行处理，不要整体解析；② 用buffer处理跨chunk的行；③ TextDecoder加 <code>stream: true</code>；④ 正确处理结束信号。掌握这些技巧，你的AI应用用户体验将显著提升。</p>
+data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"Hello"}}</code></pre>
+                        <p>You need to check the <code>event</code> type first, then extract text from the corresponding <code>data</code> fields.</p>
+                        <h4>5. Pro Tip: Use JSON Tools to Debug Streaming Payloads</h4>
+                        <p>When debugging streaming JSON, try this workflow: copy individual <code>data:</code> lines into our <a href="../pages/format.html" style="color: var(--primary);">JSON Formatter</a> to inspect the structure, or use the <a href="../pages/compare.html" style="color: var(--primary);">JSON Compare tool</a> to spot field differences between model versions quickly.</p>
+                        <h4>Summary</h4>
+                        <p>Key takeaways for streaming JSON: ① Process line-by-line, never parse the whole buffer at once; ② Use a buffer to handle cross-chunk lines; ③ Pass <code>stream: true</code> to TextDecoder; ④ Handle the [DONE] terminator correctly. Master these, and your AI app's UX will feel dramatically more responsive.</p>
                     </div>
                 </article>
                 <hr style="border: none; border-top: 1px solid var(--border); margin: 2rem 0;">
-
                 <article id="ai-daily-20260410" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">📊 93%的API都在用它：2026年JSON为何仍是数据交换王者</h3>
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">📊 93% of APIs Use It: Why JSON Remains the Data Exchange King in 2026</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月10日 | <strong>阅读时间：</strong>6分钟
+                        <strong>Published:</strong> April 10, 2026 | <strong>Reading time:</strong> 6 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>2026年，尽管挑战者众多，JSON依然是Web API领域毫无争议的统治者。</strong>据Postman发布的《2025年API状况报告》显示，93%的开发者使用REST API，其中JSON牢牢占据主要数据格式的地位。Cloudflare的流量数据更是揭示，约97%的API流量采用JSON传输。十年过去了，JSON凭什么能够持续称王？</p>
-
-                        <h4>一、JSON的"护城河"：生态系统优势</h4>
-                        <p>JSON的成功不仅仅是技术上的胜利，更是生态系统的胜利：</p>
+                        <p><strong>In 2026, despite numerous challengers, JSON remains the undisputed ruler of the Web API landscape.</strong> According to Postman's "State of the API 2025" report, 93% of developers use REST APIs with JSON firmly holding the position as the primary data format. Cloudflare traffic data reveals approximately 97% of API traffic uses JSON transmission. A decade after its rise, what makes JSON continue to dominate?</p>
+                        <h4>JSON's "Moat": Ecosystem Advantages</h4>
+                        <p>JSON's success isn't just a technical victory — it's an ecosystem victory:</p>
                         <ul>
-                            <li><strong>无处不在的支持：</strong>从JavaScript到Python、从Java到Go，所有主流编程语言都内置原生JSON解析，无需任何依赖库。</li>
-                            <li><strong>工具链成熟：</strong>格式化、校验、转换、可视化——JSON拥有最完善的工具生态系统。</li>
-                            <li><strong>学习成本低：</strong>JSON语法极其简单，任何开发者15分钟就能完全掌握。</li>
-                            <li><strong>调试友好：</strong>人类可读的文本格式，便于日志记录和问题排查。</li>
+                            <li><strong>Ubiquitous Support:</strong> From JavaScript to Python, Java to Go — all mainstream languages have native JSON parsing, no external libraries needed.</li>
+                            <li><strong>Mature Toolchain:</strong> Formatting, validation, conversion, visualization — JSON has the most complete tool ecosystem.</li>
+                            <li><strong>Low Learning Curve:</strong> JSON syntax is extremely simple; any developer can master it in 15 minutes.</li>
+                            <li><strong>Debugging Friendly:</strong> Human-readable text format makes logging and troubleshooting straightforward.</li>
                         </ul>
-
-                        <h4>二、2026年API趋势：JSON的进化方向</h4>
-                        <p>据Apidog发布的《2026年十大API趋势》，JSON正在向以下方向进化：</p>
+                        <h4>2026 API Trends: JSON's Evolution</h4>
+                        <p>According to Apidog's "Top 10 API Trends for 2026", JSON is evolving in these directions:</p>
                         <ol>
-                            <li><strong>AI驱动的API设计：</strong>AI工具自动生成JSON Schema，让API文档和实现保持同步。</li>
-                            <li><strong>流式JSON响应：</strong>Server-Sent Events (SSE) + JSON chunks，支持实时数据传输。</li>
-                            <li><strong>增强的JSON Schema：</strong>Draft 2020-12版本引入更强大的类型约束和条件逻辑。</li>
-                            <li><strong>JSON Schema即文档：</strong>不再需要单独的API文档，Schema本身就是完整规范。</li>
+                            <li><strong>AI-Driven API Design:</strong> AI tools automatically generate JSON Schema, keeping API documentation and implementation in sync.</li>
+                            <li><strong>Streaming JSON Responses:</strong> Server-Sent Events (SSE) + JSON chunks support real-time data transmission.</li>
+                            <li><strong>Enhanced JSON Schema:</strong> Draft 2020-12 introduces more powerful type constraints and conditional logic.</li>
+                            <li><strong>JSON Schema as Documentation:</strong> No need for separate API docs — Schema is the complete specification.</li>
                         </ol>
-
-                        <h4>三、JSON vs 其他格式：为什么对手都"输了"</h4>
-                        <p>让我们看看JSON的主要竞争对手为何未能取代它的地位：</p>
+                        <h4>JSON vs Other Formats: Why the Competition "Lost"</h4>
+                        <p>Let's see why JSON's main competitors haven't been able to replace it:</p>
                         <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>格式</th>
-                                        <th>优势</th>
-                                        <th>为何未能取代JSON</th>
+                                        <th>Format</th>
+                                        <th>Advantages</th>
+                                        <th>Why It Failed to Replace JSON</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>XML</td>
-                                        <td>命名空间、Schema验证</td>
-                                        <td>冗长、解析慢、学习曲线陡峭</td>
+                                        <td>Namespaces, Schema validation</td>
+                                        <td>Verbose, slow parsing, steep learning curve</td>
                                     </tr>
                                     <tr>
                                         <td>Protocol Buffers</td>
-                                        <td>二进制、高效、类型安全</td>
-                                        <td>需要编译、调试困难、生态有限</td>
+                                        <td>Binary, efficient, type-safe</td>
+                                        <td>Requires compilation, hard to debug, limited ecosystem</td>
                                     </tr>
                                     <tr>
                                         <td>GraphQL</td>
-                                        <td>按需取数、类型安全</td>
-                                        <td>复杂度高、适合特定场景、非替代品</td>
+                                        <td>Fetch exactly what you need, type-safe</td>
+                                        <td>High complexity, situational, not a replacement</td>
                                     </tr>
                                     <tr>
                                         <td>YAML</td>
-                                        <td>可读性强、支持注释</td>
-                                        <td>主要用于配置文件，非数据传输</td>
+                                        <td>Highly readable, supports comments</td>
+                                        <td>Primarily for config files, not data transmission</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
-                        <h4>四、典型API响应格式</h4>
-                        <p>2026年，一个典型的API响应仍然采用JSON格式：</p>
+                        <h4>Typical API Response Format</h4>
+                        <p>In 2026, a typical API response still uses JSON format:</p>
                         <pre><code>{
   "success": true,
   "data": {
@@ -405,41 +367,36 @@ data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text
     "processingTime": "45ms"
   }
 }</code></pre>
-
-                        <h4>五、开发者的最佳实践</h4>
+                        <h4>Developer Best Practices</h4>
                         <div class="tip-box">
-                            <strong>💡 实战建议</strong><br>
+                            <strong>Practical Tips</strong><br>
                             <ul style="margin-bottom: 0;">
-                                <li>始终使用JSON Schema定义API响应格式，便于自动化测试和文档生成</li>
-                                <li>在API入口处进行JSON校验，拒绝格式不合规的请求</li>
-                                <li>使用分页响应格式（包含page、pageSize、total字段），便于前端处理</li>
-                                <li>错误响应应包含明确的error.code和error.message，便于客户端做分支处理</li>
-                                <li>日期时间统一使用ISO 8601格式（YYYY-MM-DDTHH:mm:ssZ）</li>
+                                <li>Always use JSON Schema to define API response formats for automated testing and documentation generation</li>
+                                <li>Validate JSON at API entry points to reject non-compliant requests</li>
+                                <li>Use pagination response format (with page, pageSize, total fields) for easier frontend handling</li>
+                                <li>Error responses should include clear error.code and error.message for client-side branching</li>
+                                <li>DateTime should uniformly use ISO 8601 format (YYYY-MM-DDTHH:mm:ssZ)</li>
                             </ul>
                         </div>
-
-                        <p style="margin-top: 1.5rem;">JSON在2026年的统治地位并非偶然。它的成功源于简单性、普遍性和完善的生态系统。无论未来出现什么新技术，JSON作为人类可读、结构清晰、工具完善的数据格式，将继续在Web开发领域发挥核心作用。掌握JSON处理技能，仍然是每个开发者的必修课。</p>
+                        <p style="margin-top: 1.5rem;">JSON's dominance in 2026 is no accident. Its success stems from simplicity, ubiquity, and a mature ecosystem. No matter what new technologies emerge, JSON — as a human-readable, clearly structured, and well-tooled data format — will continue to play a central role in web development. Mastering JSON processing remains an essential skill for every developer.</p>
                     </div>
                 </article>
-
                 <article id="ai-daily-20260409" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🚀 2026年4月AI大模型爆发：JSON在API设计中的新角色</h3>
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🚀 April 2026 AI Model Explosion: JSON's Evolving Role in API Design</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月9日 | <strong>阅读时间：</strong>7分钟
+                        <strong>Published:</strong> April 9, 2026 | <strong>Reading time:</strong> 7 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>2026年4月，AI大模型领域迎来前所未有的密集发布期。</strong>短短48小时内，阿里Wan2.7-Image、谷歌Gemma 4、微软GLM-5V-Turbo等5款重磅模型相继亮相。Anthropic的Claude Mythos Preview更是以93.9%的SWE-bench成绩刷新全球大模型编程纪录。在这场AI军备竞赛中，JSON作为模型与开发者之间的通用语言，其设计模式正在发生深刻变革。</p>
-
-                        <h4>一、AI API响应格式的三大新趋势</h4>
-                        <p>随着模型能力边界不断拓展，API返回的JSON结构也在进化：</p>
+                        <p><strong>April 2026 has seen an unprecedented wave of AI model releases.</strong> Within just 48 hours, five major models launched: Alibaba's Wan2.7-Image, Google's Gemma 4, Microsoft's GLM-5V-Turbo, and more. Anthropic's Claude Mythos Preview shattered records with 93.9% on SWE-bench. In this AI arms race, JSON — the universal language between models and developers — is undergoing profound evolution.</p>
+                        <h4>Three Major Trends in AI API Response Formats</h4>
+                        <p>As model capabilities expand, the JSON structures returned by APIs are evolving:</p>
                         <ul>
-                            <li><strong>推理过程透明化：</strong>Claude Mythos等新一代模型开始返回<code>reasoning</code>字段，展示模型的思考链条，帮助开发者理解模型决策逻辑。</li>
-                            <li><strong>多模态统一格式：</strong>Gemma 4支持文本、图像、视频的统一JSON表示，<code>content</code>字段可包含多种类型的数组元素。</li>
-                            <li><strong>置信度与元数据：</strong>API响应中<code>confidence</code>、<code>latency_ms</code>、<code>tokens_used</code>等元数据字段成为标配，便于开发者优化调用策略。</li>
+                            <li><strong>Transparent Reasoning:</strong> Newer models like Claude Mythos now return a <code>reasoning</code> field showing the model's chain of thought, helping developers understand decision logic.</li>
+                            <li><strong>Unified Multimodal Format:</strong> Gemma 4 supports unified JSON representation for text, images, and video, with the <code>content</code> field containing mixed-type array elements.</li>
+                            <li><strong>Confidence & Metadata:</strong> Fields like <code>confidence</code>, <code>latency_ms</code>, and <code>tokens_used</code> have become standard, enabling developers to optimize their calling strategies.</li>
                         </ul>
-
-                        <h4>二、新一代AI API响应示例</h4>
-                        <p>以下是2026年主流AI API的典型JSON响应结构：</p>
+                        <h4>New-Generation AI API Response Example</h4>
+                        <p>Here's a typical JSON response structure from 2026's leading AI APIs:</p>
                         <pre><code>{
   "id": "msg_20260409_001",
   "model": "claude-mythos-preview",
@@ -447,12 +404,12 @@ data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text
   "content": [
     {
       "type": "thinking",
-      "thinking": "我需要分析这个代码库的架构...",
+      "thinking": "I need to analyze this codebase's architecture...",
       "signature": "Ep8DCkYICxgCKkC..."
     },
     {
       "type": "text",
-      "text": "根据代码分析，建议采用微服务架构..."
+      "text": "Based on the code analysis, I recommend a microservices architecture..."
     }
   ],
   "usage": {
@@ -466,356 +423,327 @@ data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text
     "finish_reason": "stop"
   }
 }</code></pre>
-
-                        <h4>三、MoE架构对JSON设计的影响</h4>
-                        <p>2026年混合专家模型（MoE）成为主流架构，Gemma 4、Grok 4.1等均采用此架构。这带来了新的JSON设计考量：</p>
+                        <h4>Impact of MoE Architecture on JSON Design</h4>
+                        <p>Mixture of Experts (MoE) has become the dominant architecture in 2026, with Gemma 4, Grok 4.1, and others adopting it. This brings new JSON design considerations:</p>
                         <ul>
-                            <li><strong>专家路由信息：</strong>部分API开始返回<code>routing</code>字段，显示哪些专家参与了当前响应，便于调试和优化。</li>
-                            <li><strong>分层响应结构：</strong>对于复杂任务，API可能返回分层的JSON结构，将思考过程、工具调用、最终结果分离。</li>
-                            <li><strong>流式JSON片段：</strong>256K上下文窗口的普及使得流式响应更加重要，每个JSON片段需要包含<code>delta</code>和<code>index</code>字段以便客户端重组。</li>
+                            <li><strong>Expert Routing Info:</strong> Some APIs now return a <code>routing</code> field showing which experts contributed to the response, aiding debugging and optimization.</li>
+                            <li><strong>Hierarchical Response Structure:</strong> For complex tasks, APIs may return layered JSON structures separating thinking processes, tool calls, and final results.</li>
+                            <li><strong>Streaming JSON Fragments:</strong> With 256K context windows becoming standard, streaming responses are more important. Each JSON fragment needs <code>delta</code> and <code>index</code> fields for client-side reassembly.</li>
                         </ul>
-
-                        <h4>四、开发者应对策略</h4>
-                        <p>面对快速演进的AI API生态，开发者需要：</p>
+                        <h4>Developer Strategies</h4>
+                        <p>To navigate the rapidly evolving AI API ecosystem, developers should:</p>
                         <ol>
-                            <li><strong>使用灵活的JSON解析器：</strong>不要硬编码字段路径，使用JSONPath或类似工具动态提取数据。</li>
-                            <li><strong>建立Schema版本管理：</strong>不同模型版本的响应格式可能不同，使用JSON Schema进行版本控制。</li>
-                            <li><strong>实现优雅降级：</strong>当新字段不存在时，代码应能正常处理，避免因为API更新导致服务中断。</li>
-                            <li><strong>利用在线工具验证：</strong>使用<a href="format.html" style="color: var(--primary);">JSON格式化工具</a>快速检查AI返回的数据结构，确保符合预期。</li>
+                            <li><strong>Use Flexible JSON Parsers:</strong> Avoid hardcoding field paths. Use JSONPath or similar tools for dynamic data extraction.</li>
+                            <li><strong>Implement Schema Versioning:</strong> Different model versions may have different response formats. Use JSON Schema for version control.</li>
+                            <li><strong>Build Graceful Degradation:</strong> When new fields are absent, code should handle it gracefully without breaking.</li>
+                            <li><strong>Leverage Online Tools:</strong> Use our <a href="format.html" style="color: var(--primary);">JSON Formatter</a> to quickly validate AI response structures.</li>
                         </ol>
-
                         <div class="tip-box" style="margin-top: 1.5rem;">
-                            <strong>💡 实战建议</strong><br>
-                            在对接新发布的AI API时，先用JSON查看器工具分析响应结构，再编写解析代码。这能帮你快速理解模型的输出格式，避免反复调试。
+                            <strong>💡 Pro Tip</strong><br>
+                            When integrating with newly released AI APIs, analyze the response structure with a JSON viewer tool before writing parsing code. This helps you quickly understand the model's output format and avoids repetitive debugging.
                         </div>
-
-                        <p>2026年的AI API竞争才刚刚开始。作为开发者，掌握JSON处理技能，理解不同模型的响应格式差异，将是构建可靠AI应用的基础能力。</p>
+                        <p>The AI API competition of 2026 is just beginning. For developers, mastering JSON processing and understanding the differences between model response formats will be foundational skills for building reliable AI applications.</p>
                     </div>
                 </article>
-
                 <article id="ai-daily-20260403" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🔐 JSON Schema 严格验证：终结 AI 返回数据的不确定性</h3>
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🔌 MCP Protocol Deep Dive: How JSON Powers the Model Context Revolution</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月3日 | <strong>阅读时间：</strong>8分钟
+                        <strong>Published:</strong> April 3, 2026 | <strong>Reading time:</strong> 7 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>AI 大模型的 JSON 输出不可靠，已成为 2026 年最让开发者头疼的问题之一。</strong>即便是顶级模型，也会在特定上下文下返回字段缺失、类型错误或包含幻觉字段的 JSON 数据。本文介绍如何用 JSON Schema 严格验证策略，将 AI 输出的不确定性降到最低。</p>
-
-                        <h4>一、AI JSON 输出的典型问题</h4>
-                        <p>以下是开发者在实际项目中遇到的三类高频问题：</p>
-                        <ul>
-                            <li><strong>字段缺失：</strong>模型认为某些字段"显而易见"，直接省略。例如要求返回 <code>{"name": "...", "age": 0, "email": "..."}</code>，结果 <code>email</code> 消失了。</li>
-                            <li><strong>类型漂移：</strong>数值字段返回字符串（<code>"age": "28"</code> 而非 <code>"age": 28</code>），布尔字段返回 <code>"true"</code> 字符串。</li>
-                            <li><strong>幻觉字段：</strong>模型自作主张添加 Schema 中未定义的字段，污染下游数据管道。</li>
-                        </ul>
-
-                        <h4>二、JSON Schema 严格模式实战</h4>
-                        <p>核心武器是 <code>"additionalProperties": false</code>，配合 <code>"required"</code> 数组强制必填：</p>
+                        <p><strong>Anthropic's Model Context Protocol (MCP) has quietly become one of the most important open standards in the AI ecosystem.</strong> As of early 2026, MCP is supported by Claude, Cursor, Zed, and dozens of third-party tools — and every single message in the protocol is a carefully structured JSON object.</p>
+                        <h4>What Is MCP?</h4>
+                        <p>MCP defines how AI assistants communicate with external tools, databases, and data sources. Think of it as a universal adapter: instead of every AI tool reinventing its own API, MCP provides a standardized JSON-based protocol that any client and server can speak.</p>
+                        <p>The protocol is built on JSON-RPC 2.0, which means every request and response follows a predictable JSON structure:</p>
                         <pre><code>{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "name":  { "type": "string", "minLength": 1 },
-    "age":   { "type": "integer", "minimum": 0, "maximum": 150 },
-    "email": { "type": "string", "format": "email" },
-    "score": { "type": "number", "minimum": 0, "maximum": 100 }
-  },
-  "required": ["name", "age", "email", "score"],
-  "additionalProperties": false
-}</code></pre>
-                        <p>当 AI 输出中出现 Schema 之外的字段时，校验器会立即报错，让你在数据进入系统之前就能拦截问题。</p>
-
-                        <h4>三、三层防御体系</h4>
-                        <p>仅靠 JSON Schema 校验还不够，建议构建三层防御：</p>
-                        <ol>
-                            <li><strong>Prompt 层：</strong>在系统提示中明确给出 JSON Schema 或示例，要求模型严格遵循。使用"你必须只返回符合以下 Schema 的 JSON，不得添加任何解释文字"。</li>
-                            <li><strong>API 层：</strong>OpenAI、Anthropic 等主流平台均支持 <code>response_format: {type: "json_schema"}</code> 或 <code>tool_use</code> 模式，在模型推理阶段就约束输出格式。</li>
-                            <li><strong>运行时层：</strong>使用 <code>ajv</code>（Node.js）、<code>jsonschema</code>（Python）等库在代码层面做最终校验，对不合规数据触发重试或降级逻辑。</li>
-                        </ol>
-
-                        <h4>四、自动修复策略</h4>
-                        <p>校验失败时，不必直接抛错。可以采用"宽容解析 + 自动修复"策略：</p>
-                        <ul>
-                            <li>类型错误可尝试自动强制转换（<code>"28"</code> → <code>28</code>）</li>
-                            <li>缺失字段可填入默认值，同时记录告警日志</li>
-                            <li>多余字段直接剔除，保留合规部分</li>
-                            <li>严重错误（如必填字段缺失且无法推断）则触发模型重试，最多重试 3 次</li>
-                        </ul>
-
-                        <h4>五、使用在线工具快速验证</h4>
-                        <p>在开发阶段，可使用本站的 <a href="format.html" style="color: var(--primary);">JSON 格式化与校验工具</a> 快速检查 AI 返回的 JSON 是否符合预期结构，以及 <a href="compare.html" style="color: var(--primary);">JSON 对比工具</a> 来比对不同模型输出之间的差异。</p>
-                        <p>掌握 JSON Schema 严格验证，是在 AI 时代构建可靠数据管道的必备技能。数据的可靠性不应依赖模型的"好心情"，而应由代码来保障。</p>
-                    </div>
-                </article>
-
-                <article id="ai-structured-output" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🤖 AI时代结构化输出：JSON如何成为大模型与应用的数据桥梁</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月2日 | <strong>阅读时间：</strong>9分钟
-                    </p>
-                    <div style="line-height: 1.8;">
-                        <p><strong>2026年，JSON已从简单的配置文件格式，进化为AI应用时代最核心的数据协议。</strong>从GPT-5到Claude 3.5，从Gemini Ultra到国产通义千问，所有主流大模型都全面拥抱结构化JSON输出。为什么JSON在这个AI时代扮演如此关键的角色？本文为你深度解析。</p>
-
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">一、大模型为何必须输出JSON</h4>
-                        <p>大语言模型天然生成的是自由文本，但程序需要的是结构化数据。当你在开发一个AI客服系统或自动化工作流时，你需要的不是一段描述性文字，而是可以精确解析和使用的JSON对象。JSON Schema验证显示，<strong>在API入口点严格校验JSON格式，可以阻止60%-70%的常见API集成错误</strong>。</p>
-                        <p>以一个典型的AI数据提取场景为例，你需要从一段文本中提取用户信息：</p>
-                        <pre><code>{
-  "name": "李明",
-  "email": "liming@example.com",
-  "phone": "138-1234-5678",
-  "department": "技术部"
-}</code></pre>
-
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">二、三大主流方案对比：JSON Mode vs Function Calling vs Strict Mode</h4>
-                        <p>2026年主流AI厂商提供了三种结构化输出方案，各有优劣：</p>
-                        <ul>
-                            <li><strong>JSON Mode</strong>：仅约束输出格式为合法JSON，不保证字段存在，灵活性高但可靠性一般</li>
-                            <li><strong>Function Calling</strong>：通过预定义的JSON Schema严格约束工具参数，GPT和Claude均支持</li>
-                            <li><strong>Strict Mode</strong>：GPT-5独家特性，100%保证输出符合Schema，代价是Tokens消耗增加约20%</li>
-                        </ul>
-
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">三、JSON Schema：大模型输出的"契约"</h4>
-                        <p>Function Calling的核心是JSON Schema——一种描述JSON数据结构的声明式语言。定义好Schema，大模型就知道你期望什么格式的数据：</p>
-                        <pre><code>{
-  "name": "extract_user_info",
-  "description": "从文本中提取用户基本信息",
-  "parameters": {
-    "type": "object",
-    "properties": {
-      "name": {"type": "string", "description": "用户全名"},
-      "email": {"type": "string", "format": "email", "description": "邮箱地址"},
-      "phone": {"type": "string", "pattern": "^1[3-9]\\d{9}$", "description": "手机号"}
-    },
-    "required": ["name", "email"]
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "search_files",
+    "arguments": {
+      "query": "JSON schema validation",
+      "path": "/src"
+    }
   }
 }</code></pre>
-
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">四、开发者实践建议</h4>
-                        <div class="tip-box">
-                            <strong>💡 实战技巧</strong><br>
-                            <ul style="margin-bottom: 0;">
-                                <li>在AI应用中使用JSON Schema前，先用JSON校验工具验证Schema本身是否合法</li>
-                                <li>Strict Mode适合对数据准确性要求极高的场景（如金融、医疗），普通场景用Function Calling即可</li>
-                                <li>AI返回的JSON永远是"字符串"，需要用 <code>JSON.parse()</code> 解析后才可使用</li>
-                                <li>在生产环境中，建议对AI返回的每个字段做运行时类型校验，防止意外数据</li>
-                            </ul>
-                        </div>
-
-                        <p style="margin-top: 1.5rem;">JSON与AI的结合是2026年最值得掌握的开发者技能之一。无论你是构建AI Agent、处理AI返回数据，还是设计AI优先的API，JSON处理能力都是你不可或缺的工具箱组成部分。</p>
+                        <h4>The Four Core MCP Message Types</h4>
+                        <p>Understanding these JSON structures is essential for building MCP-compatible tools:</p>
+                        <ul>
+                            <li><strong>Request:</strong> Client sends a <code>method</code> with <code>params</code>. Always has an <code>id</code> for correlation.</li>
+                            <li><strong>Response:</strong> Server returns a <code>result</code> or <code>error</code> matching the request <code>id</code>.</li>
+                            <li><strong>Notification:</strong> One-way message with no <code>id</code>, no response expected. Used for progress updates.</li>
+                            <li><strong>Tool Definition:</strong> JSON Schema describing what a tool accepts and returns, enabling the model to understand capabilities.</li>
+                        </ul>
+                        <h4>Tool Schemas: Where JSON Schema Shines</h4>
+                        <p>The most critical JSON structure in MCP is the tool definition. Each tool exposes an <code>inputSchema</code> that the model uses to understand what arguments to provide:</p>
+                        <pre><code>{
+  "name": "read_file",
+  "description": "Read the contents of a file at the given path",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Absolute path to the file"
+      }
+    },
+    "required": ["path"],
+    "additionalProperties": false
+  }
+}</code></pre>
+                        <p>Notice the <code>"additionalProperties": false</code> — this strict schema ensures the model cannot hallucinate extra parameters that would break your tool implementation.</p>
+                        <h4>Validating MCP Payloads in Practice</h4>
+                        <p>When building MCP servers, always validate incoming JSON against your tool schemas before execution. A malformed tool call should return a structured JSON error, not a crash:</p>
+                        <pre><code>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "error": {
+    "code": -32602,
+    "message": "Invalid params: 'path' is required"
+  }
+}</code></pre>
+                        <p>Use our <a href="format.html" style="color: var(--primary);">JSON Formatter</a> to inspect MCP messages during development, and the <a href="compare.html" style="color: var(--primary);">JSON Compare tool</a> to diff tool schemas between MCP server versions to catch breaking changes early.</p>
+                        <h4>Why This Matters</h4>
+                        <p>MCP is standardizing how AI agents interact with the world — and it's all JSON under the hood. Mastering MCP's JSON structures today means you'll be ready to build the AI-native tools of tomorrow. The teams who understand the protocol deeply will ship more reliable AI integrations, faster.</p>
                     </div>
                 </article>
-                
-                <article id="ai-workflow" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🤖 2026年AI工作流时代：JSON如何成为人机协作的桥梁</h3>
+                <article id="ai-structured-output" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">Structured JSON Output: The New Standard for AI Model Integration</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月 | <strong>阅读时间：</strong>8分钟
+                        <strong>Published:</strong> April 2, 2026 | <strong>Reading time:</strong> 7 minutes
                     </p>
                     <div style="line-height: 1.8;">
-                        <p><strong>2026年是AI Agent爆发元年。</strong>从ChatGPT插件到各种AI工作流工具，几乎所有AI应用都依赖JSON作为数据交换格式。本文探讨JSON在AI Prompt工程、API调用返回、Agent状态管理中的核心作用，以及为什么每个开发者都需要掌握JSON处理技能。</p>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">一、Prompt工程中的JSON</h4>
-                        <p>现代AI Prompt越来越多地使用结构化输出（Structured Output），这意味着AI返回的结果本身就是JSON格式。例如，当你对GPT说"返回一个用户列表，包含姓名和邮箱"时，返回的结果就是：</p>
-                        <pre><code>{
-  "users": [
-    {"name": "张三", "email": "zhang@example.com"},
-    {"name": "李四", "email": "li@example.com"}
-  ]
-}</code></pre>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">二、Agent状态管理</h4>
-                        <p>AI Agent需要维护复杂的内部状态。JSON是存储Agent记忆、上下文、工具调用历史的最佳格式。一个典型的Agent状态可能包含：</p>
-                        <pre><code>{
-  "agent_id": "agent_001",
-  "current_task": "数据分析",
-  "memory": [...],
-  "tool_calls": [...],
-  "conversation_history": [...]
-}</code></pre>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">三、工具调用的标准格式</h4>
-                        <p>Function Calling（函数调用）是Agent与外部世界交互的核心方式。OpenAI、Anthropic等主流AI厂商都使用JSON Schema来定义工具接口：</p>
+                        <p><strong>In 2026, structured JSON output is no longer optional — it's the foundation of reliable AI applications.</strong> GPT-5 guarantees 100% schema consistency, Claude uses tool_use for schema enforcement, and Gemini natively supports response schemas. If your AI application still parses free-text JSON, you're behind the curve.</p>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Why Structured Output Matters</h4>
+                        <p>LLMs naturally produce free-form text, but programs need structured data. When building AI agents, data extraction pipelines, or automated workflows, you need predictable JSON output that your code can reliably parse. JSON Schema validation at your API entry point prevents <strong>60-70% of common integration errors</strong> before they reach your business logic.</p>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Three Approaches Compared</h4>
+                        <ul>
+                            <li><strong>JSON Mode</strong>: Constrains output to valid JSON only, no field guarantees. High flexibility, lower reliability.</li>
+                            <li><strong>Function Calling</strong>: Uses JSON Schema to define tool parameters with strict constraints. Supported by GPT and Claude.</li>
+                            <li><strong>Strict Mode</strong>: GPT-5's exclusive feature — 100% schema consistency guaranteed, at ~20% token cost.</li>
+                        </ul>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Function Calling in Action</h4>
+                        <p>Modern AI APIs use JSON Schema to define structured tool interfaces:</p>
                         <pre><code>{
   "name": "get_weather",
-  "description": "获取指定城市的天气信息",
+  "description": "Get weather for a specific city",
   "parameters": {
     "type": "object",
     "properties": {
-      "city": {"type": "string", "description": "城市名称"},
+      "city": {"type": "string", "description": "City name"},
       "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}
     },
     "required": ["city"]
   }
 }</code></pre>
-                        
                         <div class="tip-box" style="margin-top: 1.5rem;">
-                            <strong>💡 开发者建议</strong><br>
-                            如果你在2026年做AI相关开发，精通JSON处理是必备技能。使用我们的JSON格式化工具可以快速验证AI返回的输出格式是否正确。
-                        </div>
-                    </div>
-                </article>
-                
-                <article id="developer-pain" style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">💡 为什么2026年程序员仍在为JSON格式头疼？</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
-                        <strong>发布时间：</strong>2026年4月 | <strong>阅读时间：</strong>6分钟
-                    </p>
-                    <div style="line-height: 1.8;">
-                        <p><strong>数字化转型加速，API无处不在。</strong>统计显示，超过60%的API调用失败源于JSON格式错误。无论是微信小程序、支付宝开放平台还是各类企业内部系统，JSON格式问题仍是导致bug的主要原因之一。掌握JSON处理技能，让你的开发效率提升50%。</p>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">一、JSON错误的常见场景</h4>
-                        <div class="warning-box">
+                            <strong>Practical Tips</strong><br>
                             <ul style="margin-bottom: 0;">
-                                <li><strong>微信小程序开发</strong>：wx.request返回的数据解析失败</li>
-                                <li><strong>后端API对接</strong>：POST请求body格式不正确</li>
-                                <li><strong>配置文件编写</strong>：package.json、config.json语法错误</li>
-                                <li><strong>数据库导入</strong>：JSON数据与表结构不匹配</li>
+                                <li>Always validate AI-returned JSON with a JSON validator before parsing</li>
+                                <li>Use Strict Mode only when data accuracy is critical (finance, healthcare)</li>
+                                <li>AI output is always a JSON string — always call <code>JSON.parse()</code></li>
+                                <li>Add runtime type checking for AI-returned fields in production</li>
                             </ul>
                         </div>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">二、典型错误案例分析</h4>
-                        <pre><code>// ❌ 错误：多余的逗号
-{
-  "name": "张三",
-  "age": 28,  // ← 这里多了逗号
-}
-
-// ✅ 正确：移除尾随逗号
-{
-  "name": "张三",
-  "age": 28
+                    </div>
+                </article>
+                <article id="json-revival" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">The JSON Revival: Why 2026 is the Year of Structured Data</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Published:</strong> April 2026 | <strong>Reading time:</strong> 8 minutes
+                    </p>
+                    <div style="line-height: 1.8;">
+                        <p><strong>From WebAssembly to Edge Computing, 2026 has seen a massive shift toward server-side rendering and efficient data formats.</strong> JSON's lightweight nature makes it the perfect choice for high-performance web applications. Discover why top tech companies are doubling down on JSON-based architectures.</p>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">The Performance Revolution</h4>
+                        <p>Modern frameworks like Next.js 15 and Nuxt 4 have shifted back to server-side rendering for better performance. JSON plays a crucial role in serializing data between server and client:</p>
+                        <pre><code>{
+  "pageProps": {
+    "user": {"id": 1, "name": "John"},
+    "data": [...]
+  },
+  "buildTime": "2026-04-01T10:30:00Z"
 }</code></pre>
-                        
-                        <pre><code>// ❌ 错误：单引号
-{"name": '张三'}
-
-// ✅ 正确：使用双引号
-{"name": "张三"}</code></pre>
-                        
-                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">三、提升效率的实战技巧</h4>
-                        <ol>
-                            <li><strong>使用JSON格式化工具</strong>：快速美化杂乱代码，发现隐藏错误</li>
-                            <li><strong>开启实时校验</strong>：边写边检查，及时发现语法问题</li>
-                            <li><strong>对比工具</strong>：快速找出两个JSON文档的差异</li>
-                            <li><strong>模板功能</strong>：使用现成模板，避免从零开始</li>
-                        </ol>
-                        
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Edge Computing & JSON</h4>
+                        <p>Edge functions require lightweight, fast-parsing data formats. JSON dominates in edge computing scenarios:</p>
+                        <pre><code>// Cloudflare Worker example
+export default {
+  async fetch(request) {
+    const data = await request.json();
+    return new Response(JSON.stringify({
+      status: "processed",
+      edge: " ближний",
+      timestamp: Date.now()
+    }));
+  }
+}</code></pre>
                         <div class="tip-box" style="margin-top: 1.5rem;">
-                            <strong>💡 实测数据</strong><br>
-                            使用JSON工具后，开发者平均每天节省约2小时的调试时间，API对接成功率从70%提升到95%以上。
+                            <strong>Key Insight</strong><br>
+                            In 2026, JSON isn't just for APIs anymore. It's the backbone of modern web architectures, AI systems, and edge computing platforms.
+                        </div>
+                    </div>
+                </article>
+                <article id="ai-apis" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">AI-Native APIs: How JSON is Powering the Agent Revolution</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Published:</strong> April 2026 | <strong>Reading time:</strong> 10 minutes
+                    </p>
+                    <div style="line-height: 1.8;">
+                        <p><strong>The AI agent explosion has fundamentally changed API design.</strong> Modern AI APIs return rich JSON structures with confidence scores, metadata, and structured reasoning. Learn how to handle these new JSON formats and build robust AI-integrated applications.</p>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">The New API Response Format</h4>
+                        <p>AI-native APIs return much richer data than traditional REST APIs:</p>
+                        <pre><code>{
+  "id": "msg_001",
+  "role": "assistant",
+  "content": "Here's the weather for New York...",
+  "reasoning": "The user asked about weather in a major US city...",
+  "confidence": 0.94,
+  "metadata": {
+    "model": "gpt-5",
+    "tokens_used": 127,
+    "latency_ms": 320
+  },
+  "tool_calls": [
+    {"name": "get_weather", "args": {"city": "New York"}}
+  ]
+}</code></pre>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Streaming Responses</h4>
+                        <p>Modern AI APIs use SSE (Server-Sent Events) with JSON chunks:</p>
+                        <pre><code>event: content
+data: {"delta": "The", "index": 0}
+data: {"delta": " weather", "index": 1}
+data: {"delta": " in", "index": 2}
+event: done
+data: {"full_content": "The weather in New York is sunny...", "usage": {...}}</code></pre>
+                        <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Best Practices for AI JSON Handling</h4>
+                        <ol>
+                            <li><strong>Always validate AI responses</strong> - Use JSON validators to check structure</li>
+                            <li><strong>Handle streaming chunks</strong> - Parse incremental JSON data correctly</li>
+                            <li><strong>Extract structured data</strong> - Use JSONPath for complex nested responses</li>
+                            <li><strong>Cache intelligently</strong> - Store parsed JSON for repeated queries</li>
+                        </ol>
+                        <div class="tip-box" style="margin-top: 1.5rem;">
+                            <strong>Developer Tip</strong><br>
+                            Use our JSON Path extractor to pull specific data from complex AI responses. Perfect for extracting structured data from LLM outputs.
                         </div>
                     </div>
                 </article>
             </section>
-
-            <!-- 原有目录导航 -->
+            <!-- Original tutorial TOC -->
             <nav class="toc" id="json-guide">
-                <h4>📚 JSON完整教程目录</h4>
+                <h4>JSON Tutorial Index</h4>
                 <ul>
-                    <li><a href="#what-is-json">1. 什么是JSON？</a></li>
-                    <li><a href="#json-syntax">2. JSON基础语法</a></li>
-                    <li><a href="#data-types">3. JSON数据类型</a></li>
-                    <li><a href="#json-vs-javascript">4. JSON与JavaScript对象</a></li>
-                    <li><a href="#common-errors">5. 常见错误与解决方案</a></li>
-                    <li><a href="#api-usage">6. API开发中的JSON</a></li>
-                    <li><a href="#best-practices">7. 最佳实践</a></li>
-                    <li><a href="#tools">8. 实用工具推荐</a></li>
-                    <li><a href="#templates">9. 常用JSON模板</a></li>
-                    <li><a href="#datasets">10. 常见JSON数据集</a></li>
+                    <li><a href="#what-is-json">1. What is JSON?</a></li>
+                    <li><a href="#json-syntax">2. JSON Syntax Basics</a></li>
+                    <li><a href="#data-types">3. JSON Data Types</a></li>
+                    <li><a href="#json-vs-javascript">4. JSON vs JavaScript Objects</a></li>
+                    <li><a href="#common-errors">5. Common Errors & Solutions</a></li>
+                    <li><a href="#api-usage">6. JSON in API Development</a></li>
+                    <li><a href="#best-practices">7. Best Practices</a></li>
+                    <li><a href="#tools">8. Recommended Tools</a></li>
+                    <li><a href="#templates">9. Common JSON Templates</a></li>
+                    <li><a href="#datasets">10. Sample JSON Datasets</a></li>
                 </ul>
             </nav>
-
             <section id="what-is-json">
-                <h2>什么是JSON？</h2>
-                <p><strong>JSON (JavaScript Object Notation)</strong> 是一种轻量级的数据交换格式，由Douglas Crockford在2001年推广。它基于JavaScript的一个子集，但独立于编程语言，几乎所有现代编程语言都支持JSON。</p>
-                
+                <h4>Table of Contents</h4>
+                <ul>
+                    <li><a href="#what-is-json">1. What is JSON?</a></li>
+                    <li><a href="#json-syntax">2. JSON Basic Syntax</a></li>
+                    <li><a href="#data-types">3. JSON Data Types</a></li>
+                    <li><a href="#json-vs-javascript">4. JSON vs JavaScript Objects</a></li>
+                    <li><a href="#common-errors">5. Common Errors & Solutions</a></li>
+                    <li><a href="#api-usage">6. JSON in API Development</a></li>
+                    <li><a href="#best-practices">7. Best Practices</a></li>
+                    <li><a href="#tools">8. Recommended Tools</a></li>
+                    <li><a href="#templates">9. Common JSON Templates</a></li>
+                    <li><a href="#datasets">10. Common JSON Datasets</a></li>
+                </ul>
+            </nav>
+            <section id="what-is-json">
+                <h2>What is JSON?</h2>
+                <p><strong>JSON (JavaScript Object Notation)</strong> is a lightweight data interchange format, popularized by Douglas Crockford in 2001. It is based on a subset of JavaScript but is language-independent, with nearly all modern programming languages providing native support for JSON.</p>
                 <div class="example-box">
-                    <strong>为什么学习JSON？</strong>
+                    <strong>Why Learn JSON?</strong>
                     <ul>
-                        <li><strong>API开发</strong>：95%以上的Web API使用JSON传输数据</li>
-                        <li><strong>配置文件</strong>：package.json、tsconfig.json等</li>
-                        <li><strong>数据存储</strong>：NoSQL数据库、配置文件</li>
-                        <li><strong>日志系统</strong>：结构化日志记录</li>
+                        <li><strong>API Development</strong>: Over 95% of web APIs use JSON for data transmission</li>
+                        <li><strong>Configuration Files</strong>: package.json, tsconfig.json, and more</li>
+                        <li><strong>Data Storage</strong>: NoSQL databases, configuration files</li>
+                        <li><strong>Logging Systems</strong>: Structured log recording</li>
                     </ul>
                 </div>
-
-                <h3>JSON的特点</h3>
+                <h3>JSON Characteristics</h3>
                 <ul>
-                    <li><strong>简洁易读</strong>：相比XML更紧凑，结构清晰</li>
-                    <li><strong>易于解析</strong>：所有主流编程语言都有内置支持</li>
-                    <li><strong>跨平台</strong>：语言无关，任意系统间可交换</li>
-                    <li><strong>类型安全</strong>：支持多种数据类型</li>
+                    <li><strong>Clean & Readable</strong>: More compact than XML with clear structure</li>
+                    <li><strong>Easy to Parse</strong>: Built-in support in all major programming languages</li>
+                    <li><strong>Cross-Platform</strong>: Language-independent, exchangeable between any systems</li>
+                    <li><strong>Type-Safe</strong>: Supports multiple data types</li>
                 </ul>
             </section>
-
             <section id="json-syntax">
-                <h2>JSON基础语法</h2>
-                <p>JSON有严格的语法规则，违反了任何一条都会导致解析失败。</p>
-
-                <h3>基本结构</h3>
+                <h2>JSON Basic Syntax</h2>
+                <p>JSON has strict syntax rules. Violating any of them will cause parsing to fail.</p>
+                <h3>Basic Structure</h3>
                 <pre><code>{
-  "name": "张三",
+  "name": "John Smith",
   "age": 28,
   "isStudent": false,
   "skills": ["JavaScript", "Python", "SQL"],
   "address": {
-    "city": "北京",
-    "district": "朝阳区"
+    "city": "New York",
+    "district": "Manhattan"
   }
 }</code></pre>
-
-                <h3>核心规则</h3>
+                <h3>Core Rules</h3>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>规则</th>
-                                <th>正确示例</th>
-                                <th>错误示例</th>
+                                <th>Rule</th>
+                                <th>Correct Example</th>
+                                <th>Incorrect Example</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>键必须用双引号</td>
+                                <td>Keys must use double quotes</td>
                                 <td><code>"name"</code></td>
-                                <td><code>name</code> 或 <code>'name'</code></td>
+                                <td><code>name</code> or <code>'name'</code></td>
                             </tr>
                             <tr>
-                                <td>字符串必须双引号</td>
+                                <td>Strings must use double quotes</td>
                                 <td><code>"Hello"</code></td>
                                 <td><code>'Hello'</code></td>
                             </tr>
                             <tr>
-                                <td>不能有尾随逗号</td>
+                                <td>No trailing commas</td>
                                 <td><code>[1, 2, 3]</code></td>
                                 <td><code>[1, 2, 3, ]</code></td>
                             </tr>
                             <tr>
-                                <td>不能有注释</td>
-                                <td>（无注释）</td>
-                                <td><code>// 注释</code></td>
+                                <td>No comments</td>
+                                <td>(No comments)</td>
+                                <td><code>// comment</code></td>
                             </tr>
                             <tr>
-                                <td>不能有undefined</td>
-                                <td>使用 <code>null</code></td>
+                                <td>No undefined</td>
+                                <td>Use <code>null</code></td>
                                 <td><code>"value": undefined</code></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
-
             <section id="data-types">
-                <h2>JSON数据类型</h2>
-                <p>JSON支持6种基本数据类型。</p>
-
-                <h3>1. 字符串 (String)</h3>
+                <h2>JSON Data Types</h2>
+                <p>JSON supports 6 primitive data types.</p>
+                <h3>1. String</h3>
                 <pre><code>{
   "message": "Hello World",
-  "unicode": "中文和emoji😊",
-  "escape": "换行符\\n和制表符\\t"
+  "unicode": "Chinese and emoji",
+  "escape": "newline\\n and tab\\t"
 }</code></pre>
-
-                <h3>2. 数字 (Number)</h3>
+                <h3>2. Number</h3>
                 <pre><code>{
   "integer": 42,
   "float": 3.14159,
@@ -823,29 +751,25 @@ data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text
   "scientific": 1.5e10,
   "hex": 0xFF
 }</code></pre>
-
-                <h3>3. 布尔值 (Boolean)</h3>
+                <h3>3. Boolean</h3>
                 <pre><code>{
   "isActive": true,
   "isDeleted": false
 }</code></pre>
-
-                <h3>4. 空值 (Null)</h3>
+                <h3>4. Null</h3>
                 <pre><code>{
   "middleName": null,
   "deletedAt": null
 }</code></pre>
-
-                <h3>5. 对象 (Object)</h3>
+                <h3>5. Object</h3>
                 <pre><code>{
   "user": {
     "id": 1,
-    "name": "李四",
-    "email": "li@example.com"
+    "name": "Jane Doe",
+    "email": "jane@example.com"
   }
 }</code></pre>
-
-                <h3>6. 数组 (Array)</h3>
+                <h3>6. Array</h3>
                 <pre><code>{
   "colors": ["red", "green", "blue"],
   "numbers": [1, 2, 3, 4, 5],
@@ -856,202 +780,174 @@ data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text
   ]
 }</code></pre>
             </section>
-
             <section id="json-vs-javascript">
-                <h2>JSON与JavaScript对象</h2>
-                <p>虽然名字相似，但JSON和JavaScript对象有重要区别。</p>
-
+                <h2>JSON vs JavaScript Objects</h2>
+                <p>Despite similar names, JSON and JavaScript objects have important differences.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>特性</th>
+                                <th>Feature</th>
                                 <th>JSON</th>
-                                <th>JavaScript对象</th>
+                                <th>JavaScript Object</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>键引号</td>
-                                <td>必须双引号</td>
-                                <td>可选，通常无引号</td>
+                                <td>Key quotes</td>
+                                <td>Must use double quotes</td>
+                                <td>Optional, usually without quotes</td>
                             </tr>
                             <tr>
-                                <td>值类型</td>
-                                <td>字符串、数值、布尔、null、对象、数组</td>
-                                <td>上述 + undefined、函数、Symbol</td>
+                                <td>Value types</td>
+                                <td>String, Number, Boolean, Null, Object, Array</td>
+                                <td>Above + undefined, functions, Symbol</td>
                             </tr>
                             <tr>
-                                <td>注释</td>
-                                <td>不支持</td>
-                                <td>支持 <code>//</code> 和 <code>/* */</code></td>
+                                <td>Comments</td>
+                                <td>Not supported</td>
+                                <td>Supports <code>//</code> and <code>/* */</code></td>
                             </tr>
                             <tr>
-                                <td>trailing comma</td>
-                                <td>不允许</td>
-                                <td>现代JS允许</td>
+                                <td>Trailing comma</td>
+                                <td>Not allowed</td>
+                                <td>Allowed in modern JS</td>
                             </tr>
                             <tr>
-                                <td>类型</td>
-                                <td>数据格式</td>
-                                <td>语言内置对象</td>
+                                <td>Type</td>
+                                <td>Data format</td>
+                                <td>Language-built-in object</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <h3>JavaScript中处理JSON</h3>
-                <pre><code>// 对象转JSON字符串
-const obj = { name: "张三", age: 30 };
+                <h3>Working with JSON in JavaScript</h3>
+                <pre><code>// Object to JSON string
+const obj = { name: "John", age: 30 };
 const jsonString = JSON.stringify(obj);
-console.log(jsonString); // {"name":"张三","age":30}
-
-// JSON字符串转对象
+console.log(jsonString); // {"name":"John","age":30}
+// JSON string to object
 const parsed = JSON.parse(jsonString);
-console.log(parsed.name); // 张三
-
-// 带格式化的输出
+console.log(parsed.name); // John
+// Formatted output
 console.log(JSON.stringify(obj, null, 2));</code></pre>
             </section>
-
             <section id="common-errors">
-                <h2>常见错误与解决方案</h2>
-                
-                <h3>错误1: Unexpected token</h3>
+                <h2>Common Errors & Solutions</h2>
+                <h3>Error 1: Unexpected token</h3>
                 <div class="warning-box">
-                    <strong>原因：</strong>JSON字符串中包含了特殊字符未转义<br>
-                    <strong>解决：</strong>使用转义字符，如 <code>\"</code>、<code>\\</code>、<code>\n</code>
+                    <strong>Cause:</strong> Special characters in JSON string not escaped<br>
+                    <strong>Solution:</strong> Use escape characters like <code>\"</code>, <code>\\</code>, <code>\n</code>
                 </div>
-                <pre><code>// 错误
-{"text": "他说: "你好""}
-
-// 正确
-{"text": "他说: \"你好\""}</code></pre>
-
-                <h3>错误2: Trailing comma</h3>
+                <pre><code>// Incorrect
+{"text": "He said: "Hello""}
+// Correct
+{"text": "He said: \"Hello\""}</code></pre>
+                <h3>Error 2: Trailing comma</h3>
                 <div class="warning-box">
-                    <strong>原因：</strong>最后一个元素后面有逗号<br>
-                    <strong>解决：</strong>移除尾随逗号
+                    <strong>Cause:</strong> Comma after last element<br>
+                    <strong>Solution:</strong> Remove trailing comma
                 </div>
-                <pre><code>// 错误
+                <pre><code>// Incorrect
 [1, 2, 3, ]
-
-// 正确
+// Correct
 [1, 2, 3]</code></pre>
-
-                <h3>错误3: Unquoted keys</h3>
+                <h3>Error 3: Unquoted keys</h3>
                 <div class="warning-box">
-                    <strong>原因：</strong>JSON的键必须用双引号包裹<br>
-                    <strong>解决：</strong>给所有键加上双引号
+                    <strong>Cause:</strong> JSON keys must be wrapped in double quotes<br>
+                    <strong>Solution:</strong> Add double quotes to all keys
                 </div>
-                <pre><code>// 错误
-{name: "张三"}
-
-// 正确
-{"name": "张三"}</code></pre>
-
-                <h3>错误4: Single quotes</h3>
+                <pre><code>// Incorrect
+{name: "John"}
+// Correct
+{"name": "John"}</code></pre>
+                <h3>Error 4: Single quotes</h3>
                 <div class="warning-box">
-                    <strong>原因：</strong>JSON只支持双引号<br>
-                    <strong>解决：</strong>将单引号替换为双引号
+                    <strong>Cause:</strong> JSON only supports double quotes<br>
+                    <strong>Solution:</strong> Replace single quotes with double quotes
                 </div>
-                <pre><code>// 错误
-{'name': '张三'}
-
-// 正确
-{"name": "张三"}</code></pre>
+                <pre><code>// Incorrect
+{'name': 'John'}
+// Correct
+{"name": "John"}</code></pre>
             </section>
-
             <section id="api-usage">
-                <h2>API开发中的JSON</h2>
-                
-                <h3>RESTful API 请求</h3>
-                <pre><code>// GET 请求 - 获取数据
+                <h2>JSON in API Development</h2>
+                <h3>RESTful API Requests</h3>
+                <pre><code>// GET request - fetch data
 fetch('https://api.example.com/users')
   .then(response => response.json())
   .then(data => console.log(data));
-
-// POST 请求 - 发送JSON数据
+// POST request - send JSON data
 fetch('https://api.example.com/users', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    name: '张三',
-    email: 'zhang@example.com'
+    name: 'John',
+    email: 'john@example.com'
   })
 });</code></pre>
-
-                <h3>JSON请求体示例</h3>
+                <h3>JSON Request Body Example</h3>
                 <pre><code>{
   "action": "createUser",
   "data": {
-    "username": "zhangsan",
+    "username": "johndoe",
     "password": "encrypted_password",
     "profile": {
-      "realName": "张三",
+      "realName": "John Doe",
       "avatar": "https://example.com/avatar.jpg",
-      "tags": ["开发者", "设计师"],
+      "tags": ["developer", "designer"],
       "settings": {
         "theme": "dark",
         "notifications": true,
-        "language": "zh-CN"
+        "language": "en-US"
       }
     },
     "createdAt": "2026-03-26T10:30:00Z"
   }
 }</code></pre>
-
-                <h3>错误响应格式</h3>
+                <h3>Error Response Format</h3>
                 <pre><code>{
   "success": false,
   "error": {
     "code": "VALIDATION_ERROR",
-    "message": "邮箱格式不正确",
+    "message": "Invalid email format",
     "field": "email",
     "details": {
-      "expected": "有效的邮箱地址",
+      "expected": "Valid email address",
       "received": "invalid-email"
     }
   }
 }</code></pre>
             </section>
-
             <section id="best-practices">
-                <h2>JSON最佳实践</h2>
-
+                <h2>JSON Best Practices</h2>
                 <div class="tip-box">
-                    <strong>命名规范</strong>
+                    <strong>Naming Conventions</strong>
                     <ul>
-                        <li>键名使用 camelCase：如 <code>firstName</code>、<code>lastName</code></li>
-                        <li>布尔值用 is/has/can 前缀：如 <code>isActive</code>、<code>hasPermission</code></li>
-                        <li>保持一致性：整个项目使用统一的命名风格</li>
+                        <li>Use camelCase for key names: e.g., <code>firstName</code>, <code>lastName</code></li>
+                        <li>Use is/has/can prefixes for booleans: e.g., <code>isActive</code>, <code>hasPermission</code></li>
+                        <li>Maintain consistency: use uniform naming style throughout the project</li>
                     </ul>
                 </div>
-
-                <h3>1. 使用有意义的数据结构</h3>
-                <pre><code>// 不推荐：扁平结构，扩展性差
-{"user_id": 1, "user_name": "张三", "user_city": "北京"}
-
-// 推荐：嵌套结构，清晰易扩展
-{"user": {"id": 1, "name": "张三", "address": {"city": "北京"}}}</code></pre>
-
-                <h3>2. 正确处理日期时间</h3>
-                <pre><code>// 推荐：ISO 8601格式
+                <h3>1. Use Meaningful Data Structures</h3>
+                <pre><code>// Not recommended: flat structure, poor scalability
+{"user_id": 1, "user_name": "John", "user_city": "New York"}
+// Recommended: nested structure, clear and extensible
+{"user": {"id": 1, "name": "John", "address": {"city": "New York"}}}</code></pre>
+                <h3>2. Handle DateTime Correctly</h3>
+                <pre><code>// Recommended: ISO 8601 format
 {"createdAt": "2026-03-26T10:30:00.000Z"}
-
-// 不推荐：自定义格式
+// Not recommended: custom format
 {"createdAt": "2026/3/26 10:30:00"}</code></pre>
-
-                <h3>3. 枚举值使用字符串</h3>
-                <pre><code>// 推荐：清晰的枚举值
+                <h3>3. Use Strings for Enums</h3>
+                <pre><code>// Recommended: clear enum values
 {"status": "pending", "role": "admin"}
-
-// 不推荐：数字魔法值
+// Not recommended: numeric magic values
 {"status": 0, "role": 1}</code></pre>
-
-                <h3>4. 分页响应格式</h3>
+                <h3>4. Pagination Response Format</h3>
                 <pre><code>{
   "success": true,
   "data": [...],
@@ -1063,44 +959,40 @@ fetch('https://api.example.com/users', {
   }
 }</code></pre>
             </section>
-
             <section id="tools">
-                <h2>实用工具推荐</h2>
-                <p>使用好的工具可以大大提高JSON处理效率。</p>
-
+                <h2>Recommended Tools</h2>
+                <p>Using good tools can greatly improve JSON processing efficiency.</p>
                 <div class="feature-grid" style="margin-top: 1rem;">
                     <div class="feature-card">
-                        <h3>JSON格式化工具</h3>
-                        <p>快速格式化、美化、压缩JSON。实时预览语法高亮。</p>
-                        <a href="format.html" class="btn btn-primary" style="margin-top: 0.5rem;">立即使用</a>
+                        <h3>JSON Formatter</h3>
+                        <p>Quickly format, beautify, and compress JSON. Real-time preview with syntax highlighting.</p>
+                        <a href="format.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
                     </div>
                     <div class="feature-card">
-                        <h3>JSON校验工具</h3>
-                        <p>检查JSON语法错误，定位错误位置。</p>
-                        <a href="format.html" class="btn btn-primary" style="margin-top: 0.5rem;">立即使用</a>
+                        <h3>JSON Validator</h3>
+                        <p>Check JSON syntax errors and locate error positions.</p>
+                        <a href="format.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
                     </div>
                     <div class="feature-card">
-                        <h3>JSON转义工具</h3>
-                        <p>处理特殊字符转义，适合API开发。</p>
-                        <a href="escape.html" class="btn btn-primary" style="margin-top: 0.5rem;">立即使用</a>
+                        <h3>JSON Escape Tool</h3>
+                        <p>Handle special character escaping, perfect for API development.</p>
+                        <a href="escape.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
                     </div>
                     <div class="feature-card">
-                        <h3>JSONPath提取</h3>
-                        <p>使用JSONPath语法提取复杂数据。</p>
-                        <a href="extract.html" class="btn btn-primary" style="margin-top: 0.5rem;">立即使用</a>
+                        <h3>JSONPath Extractor</h3>
+                        <p>Extract complex data using JSONPath syntax.</p>
+                        <a href="extract.html" class="btn btn-primary" style="margin-top: 0.5rem;">Use Now</a>
                     </div>
                 </div>
             </section>
-
             <section id="templates">
-                <h2>常用JSON模板</h2>
-                <p>以下是开发中常用的JSON模板，可以直接复制使用或加载到格式化工具中。</p>
-
-                <h3>1. package.json (npm项目配置)</h3>
+                <h2>Common JSON Templates</h2>
+                <p>Here are commonly used JSON templates in development. Copy directly or load into the formatter.</p>
+                <h3>1. package.json (npm Project Config)</h3>
                 <pre><code>{
   "name": "my-project",
   "version": "1.0.0",
-  "description": "项目描述",
+  "description": "Project description",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -1116,14 +1008,13 @@ fetch('https://api.example.com/users', {
     "jest": "^29.0.0"
   }
 }</code></pre>
-
-                <h3>2. API响应格式</h3>
+                <h3>2. API Response Format</h3>
                 <pre><code>{
   "success": true,
-  "message": "操作成功",
+  "message": "Operation successful",
   "data": {
     "id": 1001,
-    "name": "示例数据",
+    "name": "Sample Data",
     "timestamp": "2026-03-26T10:30:00Z"
   },
   "meta": {
@@ -1132,13 +1023,12 @@ fetch('https://api.example.com/users', {
     "total": 100
   }
 }</code></pre>
-
-                <h3>3. 用户配置文件</h3>
+                <h3>3. User Configuration</h3>
                 <pre><code>{
   "user": {
     "id": "u12345",
-    "username": "zhangsan",
-    "email": "zhang@example.com",
+    "username": "johndoe",
+    "email": "john@example.com",
     "avatar": "https://example.com/avatar.jpg",
     "role": "admin",
     "verified": true,
@@ -1146,15 +1036,14 @@ fetch('https://api.example.com/users', {
   },
   "preferences": {
     "theme": "dark",
-    "language": "zh-CN",
+    "language": "en-US",
     "notifications": {
       "email": true,
       "push": false
     }
   }
 }</code></pre>
-
-                <h3>4. 数据库配置</h3>
+                <h3>4. Database Configuration</h3>
                 <pre><code>{
   "development": {
     "host": "localhost",
@@ -1172,19 +1061,8 @@ fetch('https://api.example.com/users', {
     "ssl": true
   }
 }</code></pre>
-
-                <h3>5. 国际化(i18n)配置</h3>
+                <h3>5. Internationalization (i18n) Config</h3>
                 <pre><code>{
-  "zh-CN": {
-    "welcome": "欢迎",
-    "login": "登录",
-    "logout": "退出登录",
-    "profile": {
-      "title": "个人资料",
-      "name": "姓名",
-      "email": "邮箱"
-    }
-  },
   "en-US": {
     "welcome": "Welcome",
     "login": "Login",
@@ -1194,10 +1072,19 @@ fetch('https://api.example.com/users', {
       "name": "Name",
       "email": "Email"
     }
+  },
+  "zh-CN": {
+    "welcome": "欢迎",
+    "login": "登录",
+    "logout": "退出登录",
+    "profile": {
+      "title": "个人资料",
+      "name": "姓名",
+      "email": "邮箱"
+    }
   }
 }</code></pre>
-
-                <h3>6. Docker Compose配置</h3>
+                <h3>6. Docker Compose Configuration</h3>
                 <pre><code>{
   "version": "3.8",
   "services": {
@@ -1229,95 +1116,87 @@ fetch('https://api.example.com/users', {
   }
 }</code></pre>
             </section>
-
             <section id="datasets">
-                <h2>常见JSON数据集</h2>
-                <p>实际开发中常用的JSON数据示例。</p>
-
-                <h3>HTTP状态码列表</h3>
+                <h2>Common JSON Datasets</h2>
+                <p>Frequently used JSON data examples in real development.</p>
+                <h3>HTTP Status Codes</h3>
                 <pre><code>{
   "codes": [
-    {"code": 200, "status": "OK", "description": "请求成功"},
-    {"code": 201, "status": "Created", "description": "资源创建成功"},
-    {"code": 400, "status": "Bad Request", "description": "请求参数错误"},
-    {"code": 401, "status": "Unauthorized", "description": "未授权访问"},
-    {"code": 403, "status": "Forbidden", "description": "禁止访问"},
-    {"code": 404, "status": "Not Found", "description": "资源不存在"},
-    {"code": 500, "status": "Internal Server Error", "description": "服务器内部错误"}
+    {"code": 200, "status": "OK", "description": "Request successful"},
+    {"code": 201, "status": "Created", "description": "Resource created successfully"},
+    {"code": 400, "status": "Bad Request", "description": "Invalid request parameters"},
+    {"code": 401, "status": "Unauthorized", "description": "Not authorized"},
+    {"code": 403, "status": "Forbidden", "description": "Access denied"},
+    {"code": 404, "status": "Not Found", "description": "Resource not found"},
+    {"code": 500, "status": "Internal Server Error", "description": "Server error"}
   ]
 }</code></pre>
-
-                <h3>国家列表</h3>
+                <h3>Countries List</h3>
                 <pre><code>{
   "countries": [
-    {"code": "CN", "name": "中国", "capital": "北京", "currency": "CNY"},
-    {"code": "US", "name": "美国", "capital": "华盛顿", "currency": "USD"},
-    {"code": "JP", "name": "日本", "capital": "东京", "currency": "JPY"},
-    {"code": "GB", "name": "英国", "capital": "伦敦", "currency": "GBP"}
+    {"code": "US", "name": "United States", "capital": "Washington D.C.", "currency": "USD"},
+    {"code": "CN", "name": "China", "capital": "Beijing", "currency": "CNY"},
+    {"code": "JP", "name": "Japan", "capital": "Tokyo", "currency": "JPY"},
+    {"code": "GB", "name": "United Kingdom", "capital": "London", "currency": "GBP"}
   ]
 }</code></pre>
-
-                <h3>商品数据</h3>
+                <h3>Products Data</h3>
                 <pre><code>{
   "products": [
     {
       "id": "P001",
       "name": "iPhone 15 Pro",
-      "category": "手机",
-      "price": 7999.00,
+      "category": "Smartphone",
+      "price": 999.00,
       "stock": 100,
-      "tags": ["苹果", "5G", "旗舰"],
+      "tags": ["Apple", "5G", "Flagship"],
       "specs": {
-        "screen": "6.1英寸",
+        "screen": "6.1 inches",
         "storage": "256GB",
-        "color": "钛金属色"
+        "color": "Titanium"
       }
     },
     {
       "id": "P002",
       "name": "MacBook Air M3",
-      "category": "电脑",
-      "price": 9999.00,
+      "category": "Laptop",
+      "price": 1299.00,
       "stock": 50,
-      "tags": ["苹果", "轻薄", "M3芯片"],
+      "tags": ["Apple", "Lightweight", "M3 chip"],
       "specs": {
-        "screen": "13.6英寸",
+        "screen": "13.6 inches",
         "storage": "512GB",
-        "color": "午夜色"
+        "color": "Midnight"
       }
     }
   ]
 }</code></pre>
             </section>
-
             <section>
-                <h2>总结</h2>
-                <p>JSON是现代Web开发的基础设施之一。掌握JSON的语法规则、数据类型，以及API开发中的最佳实践，是每个开发者的必备技能。</p>
-                <p>通过本教程，你应该已经掌握了：</p>
+                <h2>Summary</h2>
+                <p>JSON is one of the foundations of modern web development. Mastering JSON syntax rules, data types, and best practices in API development is an essential skill for every developer.</p>
+                <p>Through this tutorial, you should now understand:</p>
                 <ul>
-                    <li>JSON的基础语法和6种数据类型</li>
-                    <li>JSON与JavaScript对象的区别</li>
-                    <li>常见的JSON解析错误及解决方案</li>
-                    <li>API开发中JSON的使用规范</li>
-                    <li>JSON处理的最佳实践</li>
+                    <li>JSON basic syntax and 6 data types</li>
+                    <li>Differences between JSON and JavaScript objects</li>
+                    <li>Common JSON parsing errors and solutions</li>
+                    <li>JSON usage specifications in API development</li>
+                    <li>Best practices for JSON processing</li>
                 </ul>
                 <div class="tip-box tip-box.dark">
-                    <strong>继续学习</strong><br>
-                    使用我们的在线JSON工具进行实践，加深对JSON的理解！
+                    <strong>Continue Learning</strong><br>
+                    Practice with our online JSON tools to deepen your understanding of JSON!
                 </div>
             </section>
         </div>
     </main>
-
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Pure client-side JSON processing. Your data stays private.</p>
         <p style="margin-top: 0.5rem; font-size: 0.875rem;">
-            <a href="format.html" style="color: var(--primary);">JSON格式化</a> | 
-            <a href="blog.html" style="color: var(--primary);">JSON教程</a>
+            <a href="format.html" style="color: var(--primary);">JSON Formatter</a> | 
+            <a href="blog.html" style="color: var(--primary);">JSON Tutorial</a>
         </p>
     </footer>
-
     <script src="../js/app.js" defer></script>
 </body>
 </html>
-

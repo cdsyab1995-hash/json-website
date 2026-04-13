@@ -1,78 +1,62 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="在线JSON提取工具，使用JSONPath语法从复杂的JSON数据中快速提取需要的内容。支持多种路径查询方式，适合API开发和数据分析。">
-    <meta name="keywords" content="JSON提取,JSON提取在线,JSONPath提取,JSON提取工具,JSONPath,JSON数据提取,JSON解析工具,JSON查询">
+    <meta name="description" content="Free JSON data extraction tool using JSONPath syntax. Extract specific data from complex JSON structures. Supports multiple query methods for flexible data extraction.">
+    <meta name="keywords" content="JSON extract, JSONPath, JSON data extraction, JSON query, JSONPath syntax, JSON parser, JSON data mining, extract JSON data, JSON online">
     <meta name="author" content="JSON Web Tools">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://cdsyab1995-hash.github.io/json-website/pages/extract.html">
-    
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cdsyab1995-hash.github.io/json-website/pages/extract.html">
-    <meta property="og:title" content="JSON 提取工具 - JSONPath数据提取 | JSON Web Tools">
-    <meta property="og:description" content="免费在线JSON提取工具，使用JSONPath语法快速提取JSON数据，支持多种查询方式。">
+    <link rel="canonical" href="https://aijsons.com/pages/extract.html">
+<meta property="og:type" content="website">
+    <meta property="og:url" content="https://aijsons.com/pages/extract.html">
+    <meta property="og:title" content="JSON Extractor with JSONPath - Free Online Tool">
+    <meta property="og:description" content="Extract JSON data using JSONPath syntax. Query nested objects and arrays easily.">
     <meta property="og:site_name" content="JSON Web Tools">
-    
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "JSON提取工具",
-        "url": "https://cdsyab1995-hash.github.io/json-website/pages/extract.html",
-        "description": "在线JSON提取工具，使用JSONPath语法从复杂JSON数据中提取内容",
+        "name": "JSON Data Extractor with JSONPath",
+        "url": "https://aijsons.com/pages/extract.html",
+        "description": "Free online JSON data extractor using JSONPath syntax for complex JSON structures",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": ["JSON提取", "JSONPath", "JSON路径查询", "JSON数据分析"]
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "featureList": ["JSON data extraction", "JSONPath queries", "Nested data access", "Array indexing"]
     }
     </script>
-    
-    <title>JSON数据提取 - 用JSONPath精准获取所需数据 | JSON Web Tools</title>
-    
+    <title>JSON Data Extractor - Extract Data Using JSONPath Syntax</title>
     <!-- Preconnect to critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <!-- Preload critical CSS (async loading, non-blocking) -->
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="navbar">
         <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
             </svg>
             JSON Web Tools
         </a>
-        
-        <button class="menu-toggle" aria-label="菜单">
+        <button class="menu-toggle" aria-label="Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
         </button>
-        
         <div class="navbar-links">
             <a href="../index.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
-                首页
+                Home
             </a>
             <a href="format.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -80,34 +64,34 @@
                     <line x1="9" y1="20" x2="15" y2="20"></line>
                     <line x1="12" y1="4" x2="12" y2="20"></line>
                 </svg>
-                格式化
+                Format
             </a>
             <a href="escape.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                 </svg>
-                转义
+                Escape
             </a>
             <a href="extract.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                提取
+                Extract
             </a>
             <a href="sort.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
                 </svg>
-                排序
+                Sort
             </a>
             <a href="clean.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
-                清理
+                Clean
             </a>
             <a href="xml.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -128,7 +112,7 @@
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                查看器
+                Viewer
             </a>
             <a href="json2csv.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -150,260 +134,157 @@
                     <path d="M21 21l-7-7"></path>
                     <path d="M3 21l7-7"></path>
                 </svg>
-                对比
+                Compare
             </a>
             <a href="blog.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                教程
+                Tutorial
             </a>
             <a href="news.html" class="nav-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                 </svg>
-                资讯
+                News
             </a>
         </div>
     </nav>
-
-    <!-- 主内容 -->
     <main class="main-container">
         <div class="page-header">
-            <h1 class="page-title">JSON 提取</h1>
+            <h1 class="page-title">JSON Extractor</h1>
             <p class="page-description">
-                使用JSONPath语法从复杂的JSON数据中快速提取需要的内容
+                Extract specific data from complex JSON using JSONPath syntax
             </p>
         </div>
-
-        <!-- 提取工具区域 -->
         <section class="tool-area">
-            <!-- 步骤指示器 -->
-            <div class="step-indicator">
-                <div class="step active">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                    </svg>
-                    输入
-                </div>
-                <span class="step-arrow">→</span>
-                <div class="step">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    路径
-                </div>
-                <span class="step-arrow">→</span>
-                <div class="step">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    结果
-                </div>
-            </div>
-
-            <!-- JSON输入 -->
-            <div class="input-section">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                    </svg>
-                    JSON 字符串
-                </label>
+            <div class="tool-section">
+                <label class="section-label">JSON String</label>
                 <textarea 
                     id="extractInput" 
                     class="input-area" 
-                    placeholder='在此粘贴JSON数据，例如：
+                    placeholder='Enter JSON string, for example:
 {
-  "name": "张三",
+  "name": "John",
   "age": 30,
-  "address": {"city": "北京"},
-  "skills": ["JavaScript", "Python"]
+  "address": {
+    "city": "New York",
+    "district": "Manhattan"
+  },
+  "skills": ["JavaScript", "Python", "Go"],
+  "projects": [
+    {"name": "Project A", "status": "Completed"},
+    {"name": "Project B", "status": "In Progress"}
+  ]
 }'
-                    style="min-height: 200px;"
-                ></textarea>
+                    style="min-height: 250px;"></textarea>
             </div>
-
-            <!-- 路径输入 + 操作按钮 -->
-            <div class="action-section" style="margin-top: 1.5rem;">
-                <label class="section-label" style="border-bottom: none; margin-bottom: 0.5rem;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    JSONPath 路径
-                </label>
+            <div class="tool-section mt-lg">
+                <label class="section-label">JSONPath Path</label>
                 <input 
                     type="text" 
                     id="pathInput" 
                     class="input-field" 
-                    placeholder='输入路径，例如：$.name 或 address.city 或 skills[0]'
-                    style="margin-bottom: 1.25rem;"
-                />
-                <div class="btn-group">
-                    <button class="btn btn-primary btn-action" id="btnExtract">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                        提取数据
-                    </button>
+                    placeholder='Enter JSONPath, for example: $.name or $.address.city or $.skills[0]'/>
+                <div class="toolbar mt-md">
+                    <div class="toolbar-title"><span>Extract Action</span></div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-lg" id="btnExtract">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            Extract Data
+                        </button>
+                    </div>
                 </div>
+                <div id="msgExtract" class="message"></div>
             </div>
-
-            <!-- 消息提示 -->
-            <div id="msgExtract" class="message" style="margin-top: 1rem;"></div>
-
-            <!-- 提取结果 -->
-            <div class="output-section" style="margin-top: 1.5rem;">
-                <label class="section-label">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    提取结果
-                </label>
+            <div class="tool-section mt-lg">
+                <label class="section-label">Extracted Result</label>
                 <textarea 
                     id="extractOutput" 
                     class="output-area" 
-                    placeholder="提取的数据将显示在这里..."
+                    placeholder="Extracted data will appear here..."
                     readonly
-                    style="min-height: 150px;"
-                ></textarea>
-                <div id="extractHighlight" class="json-highlight" style="margin-top: 1rem;"></div>
+                    style="min-height: 150px;"></textarea>
+            </div>
+            <div class="tool-section mt-lg">
+                <label class="section-label">Result Preview (Syntax Highlighted)</label>
+                <div id="extractHighlight" class="json-highlight"></div>
             </div>
         </section>
-
-        <!-- 功能说明 -->
         <section class="tool-area">
-            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">JSONPath 语法说明</h2>
-            
+            <h2 class="section-label" style="font-size: 1.125rem; margin-bottom: 1rem;">JSONPath Syntax Guide</h2>
             <div class="feature-grid" style="margin-top: 0;">
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">基础语法</h3>
-                    <p>
-                        <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.key</code><br>
-                        提取对象的指定键值
-                    </p>
+                    <h3 style="font-size: 1rem;">Basic Syntax</h3>
+                    <p><code>$.key</code><br>Extract specific key from object</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">嵌套访问</h3>
-                    <p>
-                        <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.parent.child</code><br>
-                        访问嵌套对象
-                    </p>
+                    <h3 style="font-size: 1rem;">Nested Access</h3>
+                    <p><code>$.parent.child</code><br>Access nested objects</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">数组索引</h3>
-                    <p>
-                        <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.array[0]</code><br>
-                        访问数组指定元素
-                    </p>
+                    <h3 style="font-size: 1rem;">Array Index</h3>
+                    <p><code>$.array[0]</code><br>Access array element</p>
                 </div>
                 <div class="feature-card" style="cursor: default;">
-                    <h3 style="font-size: 1rem;">省略 $</h3>
-                    <p>
-                        <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">key.subkey</code><br>
-                        可以省略开头的 $
-                    </p>
+                    <h3 style="font-size: 1rem;">Skip $ Prefix</h3>
+                    <p><code>key.subkey</code><br>Can omit leading $</p>
                 </div>
             </div>
-
             <div class="feature-card mt-md" style="cursor: default; background: var(--primary-light);">
-                <h3 style="font-size: 1rem; color: var(--primary);">💡 使用示例</h3>
+                <h3 style="font-size: 1rem; color: var(--primary);">Examples</h3>
                 <div style="margin-top: 1rem;">
-                    <p style="margin-bottom: 0.5rem;">
-                        <strong>从上面的示例JSON中：</strong>
-                    </p>
                     <ul style="list-style: none; padding-left: 0;">
-                        <li style="margin-bottom: 0.5rem;">
-                            <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.name</code>
-                            → "张三"
-                        </li>
-                        <li style="margin-bottom: 0.5rem;">
-                            <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.address.city</code>
-                            → "北京"
-                        </li>
-                        <li style="margin-bottom: 0.5rem;">
-                            <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.skills[0]</code>
-                            → "JavaScript"
-                        </li>
-                        <li style="margin-bottom: 0.5rem;">
-                            <code style="background: #f1f5f9; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">$.projects[1].name</code>
-                            → "项目B"
-                        </li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.name</code> → "John"</li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.address.city</code> → "New York"</li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.skills[0]</code> → "JavaScript"</li>
+                        <li style="margin-bottom: 0.5rem;"><code>$.projects[1].name</code> → "Project B"</li>
                     </ul>
                 </div>
             </div>
-
-            <!-- 提取页面专属 FAQ -->
             <div class="faq-container mt-lg">
-                <h3 style="font-size: 1rem; margin-bottom: 1rem;">常见问题</h3>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem;">FAQ</h3>
                 <details class="faq-item">
-                    <summary class="faq-question">JSONPath 和 XPath 有什么区别？</summary>
+                    <summary class="faq-question">What is the difference between JSONPath and XPath?</summary>
                     <div class="faq-answer">
-                        <p>JSONPath 是 XPath 概念的JSON版本。XPath用于XML文档，而JSONPath用于JSON文档。</p>
-                        <p>主要区别：JSONPath使用<code>$</code>表示根节点（类似XPath的<code>/</code>），使用<code>.</code>访问属性（类似XPath的<code>/</code>）。</p>
+                        <p>JSONPath is the JSON version of XPath concept. XPath is for XML documents, JSONPath is for JSON documents.</p>
+                        <p>Main difference: JSONPath uses <code>$</code> for root (like XPath's <code>/</code>) and <code>.</code> for property access (like XPath's <code>/</code>).</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">为什么提取结果为空？</summary>
+                    <summary class="faq-question">Why is the extraction result empty?</summary>
                     <div class="faq-answer">
-                        <p>常见原因：</p>
+                        <p>Common reasons:</p>
                         <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
-                            <li>JSONPath路径拼写错误</li>
-                            <li>键名不存在或大小写不匹配</li>
-                            <li>数组索引超出范围</li>
-                            <li>输入的JSON格式有误</li>
+                            <li>JSONPath spelling error</li>
+                            <li>Key doesn't exist or case mismatch</li>
+                            <li>Array index out of range</li>
+                            <li>Input JSON format error</li>
                         </ul>
-                        <p>请先确认JSON结构，再检查路径是否正确。</p>
+                        <p>Please verify the JSON structure first, then check if the path is correct.</p>
                     </div>
                 </details>
                 <details class="faq-item">
-                    <summary class="faq-question">可以提取数组中的多个元素吗？</summary>
+                    <summary class="faq-question">Can I extract multiple elements from an array?</summary>
                     <div class="faq-answer">
-                        <p>支持。基本语法：</p>
+                        <p>Yes. Common array operations:</p>
                         <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
-                            <li><code>$.items[0]</code> - 提取第一个元素</li>
-                            <li><code>$.items[-1]</code> - 提取最后一个元素</li>
-                            <li><code>$.items[0:3]</code> - 提取前3个元素（切片）</li>
+                            <li><code>$.items[0]</code> - First element</li>
+                            <li><code>$.items[-1]</code> - Last element</li>
+                            <li><code>$.items[0:3]</code> - First 3 elements (slice)</li>
                         </ul>
-                        <p>本工具支持常见的数组索引和切片操作。</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question">路径前面的 $ 符号可以省略吗？</summary>
-                    <div class="faq-answer">
-                        <p>可以。为了方便使用，本工具支持省略开头的 <code>$</code> 符号。</p>
-                        <p>例如 <code>$.user.name</code> 和 <code>user.name</code> 的效果是一样的。</p>
-                    </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question">支持模糊匹配或通配符吗？</summary>
-                    <div class="faq-answer">
-                        <p>支持的通配符：</p>
-                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
-                            <li><code>$.items[*]</code> 或 <code>$.items[:]</code> - 提取所有元素</li>
-                            <li><code>$..key</code> - 递归匹配所有名为key的属性</li>
-                        </ul>
-                        <p>这些通配符在处理复杂嵌套结构时非常有用。</p>
                     </div>
                 </details>
             </div>
         </section>
     </main>
-
-    <!-- 页脚 -->
     <footer class="footer">
-        <p>JSON Web Tools - 纯前端JSON处理工具，保护您的数据隐私</p>
+        <p>JSON Web Tools - Free client-side JSON processing. Your data stays private.</p>
     </footer>
-
     <script src="../js/app.js" defer></script>
 </body>
 </html>
-
