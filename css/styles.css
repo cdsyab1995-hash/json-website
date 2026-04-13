@@ -76,6 +76,13 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    overflow-x: auto;
+}
+
+.navbar-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-shrink: 0;
 }
 
 .navbar-brand {
@@ -86,15 +93,12 @@ body {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .navbar-brand:hover {
     color: var(--primary-light);
-}
-
-.navbar-links {
-    display: flex;
-    gap: var(--space-md);
 }
 
 .nav-link {
