@@ -11,6 +11,11 @@ commit_msg = sys.argv[1] if len(sys.argv) > 1 else "Update: code improvements"
 subprocess.run([git_path, "-C", repo_path, "config", "--local", "user.name", "cdsyab1995"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
 subprocess.run([git_path, "-C", repo_path, "config", "--local", "user.email", "cdsyab1995@users.noreply.github.com"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
 
+# Configure proxy and SSL for Git (required in China)
+subprocess.run([git_path, "-C", repo_path, "config", "--local", "http.proxy", "127.0.0.1:7890"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+subprocess.run([git_path, "-C", repo_path, "config", "--local", "https.proxy", "127.0.0.1:7890"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+subprocess.run([git_path, "-C", repo_path, "config", "--local", "http.sslVerify", "false"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+
 # Add all files
 result = subprocess.run([git_path, "-C", repo_path, "add", "-A"], capture_output=True, text=True, encoding='utf-8', errors='ignore')
 print("[OK] Files added")
@@ -22,20 +27,9 @@ if result.returncode == 0:
 else:
     print("Nothing to commit" if "nothing to commit" in result.stderr.lower() else result.stderr)
 
-# Test HTTPS connection first
-print("\n[DEBUG] Testing HTTPS connection...")
-import urllib.request
-try:
-    urllib.request.urlopen('https://github.com', timeout=10)
-    print("[OK] HTTPS connection: SUCCESS")
-except Exception as e:
-    print(f"[FAIL] HTTPS connection: {e}")
-
 # Push
-print("\n[DEBUG] Starting git push...")
 result = subprocess.run([git_path, "-C", repo_path, "push", "origin", "main"], capture_output=True, text=True, encoding='utf-8', errors='ignore', timeout=60)
 if result.returncode == 0:
     print("[OK] Pushed to GitHub!")
 else:
     print(f"Push failed: {result.stderr}")
-    print(f"Push stdout: {result.stdout}")
