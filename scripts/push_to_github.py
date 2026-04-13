@@ -27,6 +27,11 @@ if result.returncode == 0:
 else:
     print("Nothing to commit" if "nothing to commit" in result.stderr.lower() else result.stderr)
 
+# Pull --rebase first
+result = subprocess.run([git_path, "-C", repo_path, "pull", "--rebase", "origin", "main"], capture_output=True, text=True, encoding='utf-8', errors='ignore', timeout=60)
+if result.returncode != 0 and "already up to date" not in result.stderr.lower():
+    print(f"Pull warning: {result.stderr}")
+
 # Push
 result = subprocess.run([git_path, "-C", repo_path, "push", "origin", "main"], capture_output=True, text=True, encoding='utf-8', errors='ignore', timeout=60)
 if result.returncode == 0:
