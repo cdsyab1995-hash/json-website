@@ -21,36 +21,13 @@
     <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
     <style>
-        .legal-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        .legal-content h1 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        .legal-content h2 {
-            color: var(--text);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-        .legal-content p, .legal-content li {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        .legal-content ul {
-            margin-left: 1.5rem;
-        }
-        .legal-content li {
-            margin-bottom: 0.5rem;
-        }
-        .last-updated {
-            color: var(--text-light);
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-        }
+        .legal-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) var(--space-md); }
+        .legal-content h1 { color: var(--primary); margin-bottom: var(--space-md); }
+        .legal-content h2 { color: var(--text-primary); margin-top: var(--space-xl); margin-bottom: var(--space-md); font-size: 1.25rem; }
+        .legal-content p, .legal-content li { color: var(--text-secondary); line-height: 1.7; }
+        .legal-content ul { margin-left: 1.5rem; }
+        .legal-content li { margin-bottom: var(--space-sm); }
+        .last-updated { color: var(--text-light); font-size: 0.875rem; margin-bottom: var(--space-xl); }
     </style>
 </head>
 <body>

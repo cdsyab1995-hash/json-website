@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Clean URL redirect - remove index.html from URL -->
+    <script>
+        if (location.href.indexOf('/index.html') > -1) {
+            location.replace(location.href.replace('/index.html', ''));
+        }
+    </script>
     <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
     <meta name="description" content="Free Online JSON Formatter, Validator & Minifier for US Developers. 12 JSON tools: format, beautify, compress, escape, extract, sort, clean, convert XML/YAML/CSV. 100% browser-based, no data upload. Try it free now!">
     <meta name="keywords" content="JSON formatter, JSON validator, JSON minifier, JSON beautifier, JSON compress, JSON escape, JSON unescape, JSONPath extractor, JSON sort, JSON clean, free JSON tools, JSON online, JSON parser, JSON syntax checker, JSON viewer, JSON editor, JSON linter, JSON formatter free, JSON validator online, JSON beautifier free, JSON compress online, JSON escape tool, JSONPath query, JSON data extractor, JSON cleaner, JSON fixer, XML to JSON, YAML to JSON, JSON to CSV">

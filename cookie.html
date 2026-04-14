@@ -21,53 +21,17 @@
     <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
     <style>
-        .legal-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        .legal-content h1 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        .legal-content h2 {
-            color: var(--text);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-        .legal-content p, .legal-content li {
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        .legal-content ul {
-            margin-left: 1.5rem;
-        }
-        .legal-content li {
-            margin-bottom: 0.5rem;
-        }
-        .last-updated {
-            color: var(--text-light);
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-        }
-        .cookie-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        .cookie-table th, .cookie-table td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        .cookie-table th {
-            color: var(--text);
-            font-weight: 600;
-        }
-        .cookie-table td {
-            color: var(--text-light);
-        }
+        .legal-content { max-width: 800px; margin: 0 auto; padding: var(--space-xl) var(--space-md); }
+        .legal-content h1 { color: var(--primary); margin-bottom: var(--space-md); }
+        .legal-content h2 { color: var(--text-primary); margin-top: var(--space-xl); margin-bottom: var(--space-md); font-size: 1.25rem; }
+        .legal-content p, .legal-content li { color: var(--text-secondary); line-height: 1.7; }
+        .legal-content ul { margin-left: 1.5rem; }
+        .legal-content li { margin-bottom: var(--space-sm); }
+        .last-updated { color: var(--text-light); font-size: 0.875rem; margin-bottom: var(--space-xl); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--bg-tertiary); }
+        th { background: var(--bg-secondary); font-weight: 600; }
+        td { color: var(--text-secondary); }
     </style>
 </head>
 <body>
