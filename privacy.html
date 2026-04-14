@@ -55,24 +55,34 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="logo" aria-label="AI JSON Home">
-                <span class="logo-icon">{ }</span>
-                <span class="logo-text">AI JSON</span>
-            </a>
-            <nav class="nav" aria-label="Main navigation">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="pages/format.html" class="nav-link">Formatter</a>
-                <a href="pages/escape.html" class="nav-link">Escape</a>
-                <a href="pages/extract.html" class="nav-link">Extract</a>
-                <a href="pages/viewer.html" class="nav-link">Viewer</a>
-                <a href="pages/blog.html" class="nav-link">Blog</a>
-                <a href="pages/news.html" class="nav-link">News</a>
-            </nav>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            AI JSON
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="pages/format.html" class="nav-link">Formatter</a>
+            <a href="pages/escape.html" class="nav-link">Escape</a>
+            <a href="pages/extract.html" class="nav-link">Extract</a>
+            <a href="pages/viewer.html" class="nav-link">Viewer</a>
+            <a href="pages/blog.html" class="nav-link">Blog</a>
+            <a href="pages/news.html" class="nav-link">News</a>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
     <main id="main-content" class="main">
