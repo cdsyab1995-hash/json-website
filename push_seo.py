@@ -7,8 +7,11 @@ import time
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 
-# GitHub Token
-TOKEN = "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"
+# GitHub Token - 从环境变量读取
+TOKEN = os.environ.get("GITHUB_TOKEN")
+if not TOKEN:
+    raise ValueError("请设置环境变量 GITHUB_TOKEN")
+
 REPO = "cdsyab1995-hash/json-website"
 BRANCH = "main"
 
