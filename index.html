@@ -134,11 +134,36 @@
         }
     }
     </script>
-    <!-- FAQ Structured Data - US Developer Focused -->
+    <!-- JSON-LD Structured Data - WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "AI JSON - Free JSON Toolkit for US Developers",
+        "url": "https://aijsons.com/",
+        "description": "The #1 free JSON toolkit for American developers. Format, validate, compress, escape & extract JSON data with 12 powerful tools. 100% browser-based.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://aijsons.com/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "JSON Tools",
+            "description": "Free online JSON formatter, validator, minifier, and converter tools for developers"
+        }
+    }
+    </script>
+    <!-- JSON-LD Structured Data - FAQPage with WebSite context -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "name": "AI JSON - Frequently Asked Questions",
+        "description": "Common questions about AI JSON free online JSON tools for US developers",
         "mainEntity": [
             {
                 "@type": "Question",
