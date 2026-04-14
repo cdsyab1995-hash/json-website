@@ -106,4 +106,28 @@
         <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/compare.html"/>
         <geo:geotype>USA</geo:geotype>
     </url>
+    <url>
+        <loc>https://aijsons.com/privacy.html</loc>
+        <lastmod>2026-04-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/privacy.html"/>
+        <geo:geotype>USA</geo:geotype>
+    </url>
+    <url>
+        <loc>https://aijsons.com/terms.html</loc>
+        <lastmod>2026-04-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/terms.html"/>
+        <geo:geotype>USA</geo:geotype>
+    </url>
+    <url>
+        <loc>https://aijsons.com/cookie.html</loc>
+        <lastmod>2026-04-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/cookie.html"/>
+        <geo:geotype>USA</geo:geotype>
+    </url>
 </urlset>
