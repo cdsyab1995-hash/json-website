@@ -47,6 +47,8 @@ body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-seri
 .nav-link svg{width:16px;height:16px;flex-shrink:0}
 .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
 .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%}
+.category-title{display:flex;align-items:center;gap:.5rem;font-size:1.125rem;font-weight:600;color:var(--text-primary);margin-bottom:1rem}
+.category-title svg{width:20px;height:20px;flex-shrink:0;color:var(--primary)}
 </style>
     <!-- Favicon & App Icons -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
@@ -168,7 +170,13 @@ body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-seri
                 </svg>
                 Compare
             </a>
-            <a href="blog.html" class="nav-link">Tutorial</a>
+            <a href="blog.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Blog
+            </a>
             <a href="best-practices.html" class="nav-link">Best Practices</a>
             <a href="news.html" class="nav-link active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
