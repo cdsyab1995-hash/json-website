@@ -11,6 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile dropdown toggle
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
+            }
+        });
+    });
+
     // ===== JSON Syntax Highlighter =====
     const syntaxHighlight = (json) => {
         if (typeof json !== 'string') json = JSON.stringify(json, null, 2);
@@ -31,34 +41,105 @@ document.addEventListener('DOMContentLoaded', () => {
     const jsonHighlight = document.getElementById('jsonHighlight');
     const msgFormat = document.getElementById('msgFormat');
     const statusBadge = document.getElementById('statusBadge');
+    const errorPanel = document.getElementById('errorPanel');
+    const errorType = document.getElementById('errorType');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorLine = document.getElementById('errorLine');
 
-    const formatJSON = () => {
-        try {
-            const formatted = JSON.stringify(JSON.parse(jsonInput.value), null, 2);
-            if (jsonOutput) jsonOutput.value = formatted;
-            if (jsonHighlight) jsonHighlight.innerHTML = syntaxHighlight(formatted);
-            showMsg(msgFormat, 'JSON formatted successfully!', 'success');
-            setStatus(statusBadge, 'Valid JSON', true);
-        } catch (e) {
-            if (jsonOutput) jsonOutput.value = '';
-            if (jsonHighlight) jsonHighlight.innerHTML = '';
-            showMsg(msgFormat, 'JSON Error: ' + e.message, 'error');
-            setStatus(statusBadge, 'Invalid JSON', false);
+    // Error panel helper
+    const showError = (type, message, line) => {
+        if (errorPanel) {
+            if (errorType) errorType.textContent = type;
+            if (errorMessage) errorMessage.textContent = message;
+            if (errorLine) errorLine.textContent = line ? `Error at line ${line}` : '';
+            errorPanel.classList.add('show');
+        }
+    };
+    const hideError = () => {
+        if (errorPanel) errorPanel.classList.remove('show');
+    };
+
+    // Button loading state
+    const setLoading = (btn, loading) => {
+        if (!btn) return;
+        if (loading) {
+            btn.classList.add('btn-loading');
+            btn.disabled = true;
+        } else {
+            btn.classList.remove('btn-loading');
+            btn.disabled = false;
         }
     };
 
+    const formatJSON = () => {
+        const btn = document.getElementById('btnFormat');
+        setLoading(btn, true);
+        setTimeout(() => {
+            try {
+                const formatted = JSON.stringify(JSON.parse(jsonInput.value), null, 2);
+                if (jsonOutput) jsonOutput.value = formatted;
+                if (jsonHighlight) jsonHighlight.innerHTML = syntaxHighlight(formatted);
+                showMsg(msgFormat, 'JSON formatted successfully!', 'success');
+                setStatus(statusBadge, 'Valid JSON', true);
+                hideError();
+            } catch (e) {
+                if (jsonOutput) jsonOutput.value = '';
+                if (jsonHighlight) jsonHighlight.innerHTML = '';
+                showMsg(msgFormat, 'JSON Error: ' + e.message, 'error');
+                setStatus(statusBadge, 'Invalid JSON', false);
+                const lineMatch = e.message.match(/position\s+(\d+)/);
+                const line = lineMatch ? getLineFromPosition(jsonInput.value, parseInt(lineMatch[1])) : null;
+                showError('SyntaxError', e.message, line);
+            }
+            setLoading(btn, false);
+        }, 100);
+    };
+
     const validateJSON = () => {
-        try { JSON.parse(jsonInput.value); showMsg(msgFormat, '✓ Valid JSON!', 'success'); setStatus(statusBadge, 'Valid JSON', true); }
-        catch (e) { showMsg(msgFormat, '✗ JSON Error: ' + e.message, 'error'); setStatus(statusBadge, 'Invalid JSON', false); }
+        const btn = document.getElementById('btnValidate');
+        setLoading(btn, true);
+        setTimeout(() => {
+            try {
+                JSON.parse(jsonInput.value);
+                showMsg(msgFormat, '✓ Valid JSON!', 'success');
+                setStatus(statusBadge, 'Valid JSON', true);
+                hideError();
+            } catch (e) {
+                showMsg(msgFormat, '✗ JSON Error: ' + e.message, 'error');
+                setStatus(statusBadge, 'Invalid JSON', false);
+                const lineMatch = e.message.match(/position\s+(\d+)/);
+                const line = lineMatch ? getLineFromPosition(jsonInput.value, parseInt(lineMatch[1])) : null;
+                showError('SyntaxError', e.message, line);
+            }
+            setLoading(btn, false);
+        }, 100);
     };
 
     const compressJSON = () => {
-        try {
-            const compressed = JSON.stringify(JSON.parse(jsonInput.value));
-            if (jsonOutput) jsonOutput.value = compressed;
-            if (jsonHighlight) jsonHighlight.innerHTML = syntaxHighlight(compressed);
-            showMsg(msgFormat, 'JSON compressed successfully!', 'success');
-        } catch (e) { showMsg(msgFormat, 'Cannot compress: ' + e.message, 'error'); }
+        const btn = document.getElementById('btnCompress');
+        setLoading(btn, true);
+        setTimeout(() => {
+            try {
+                const compressed = JSON.stringify(JSON.parse(jsonInput.value));
+                if (jsonOutput) jsonOutput.value = compressed;
+                if (jsonHighlight) jsonHighlight.innerHTML = syntaxHighlight(compressed);
+                showMsg(msgFormat, 'JSON compressed successfully!', 'success');
+                hideError();
+            } catch (e) {
+                showMsg(msgFormat, 'Cannot compress: ' + e.message, 'error');
+                showError('SyntaxError', e.message, null);
+            }
+            setLoading(btn, false);
+        }, 100);
+    };
+
+    // Get line number from character position
+    const getLineFromPosition = (str, pos) => {
+        let line = 1;
+        for (let i = 0; i < pos && i < str.length; i++) {
+            if (str[i] === '\n') line++;
+        }
+        return line;
     };
 
     document.getElementById('btnFormat')?.addEventListener('click', formatJSON);
@@ -71,8 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (output) {
             try {
                 await navigator.clipboard.writeText(output);
+                const original = this.innerHTML;
                 this.innerHTML = '✓ Copied';
-                setTimeout(() => { this.innerHTML = this.dataset.original || 'Copy'; }, 2000);
+                setTimeout(() => { this.innerHTML = original; }, 2000);
             } catch (err) { console.error('Copy failed:', err); }
         }
     });
@@ -83,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (jsonOutput) jsonOutput.value = '';
         if (jsonHighlight) jsonHighlight.innerHTML = '';
         hideMsg(msgFormat);
+        hideError();
         if (statusBadge) statusBadge.innerHTML = '';
     });
 
@@ -90,13 +173,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (jsonInput) {
         jsonInput.addEventListener('input', debounce(() => {
             const input = jsonInput.value;
-            if (!input.trim()) { if (jsonHighlight) jsonHighlight.innerHTML = ''; if (statusBadge) statusBadge.innerHTML = ''; return; }
+            if (!input.trim()) {
+                if (jsonHighlight) jsonHighlight.innerHTML = '';
+                if (statusBadge) statusBadge.innerHTML = '';
+                hideError();
+                return;
+            }
             try {
                 if (jsonHighlight) jsonHighlight.innerHTML = syntaxHighlight(JSON.stringify(JSON.parse(input), null, 2));
                 setStatus(statusBadge, 'Valid JSON', true);
+                hideError();
             } catch (e) {
                 if (jsonHighlight) jsonHighlight.innerHTML = '<span style="color: var(--error)">Invalid: ' + e.message + '</span>';
                 setStatus(statusBadge, 'Invalid JSON', false);
+                const lineMatch = e.message.match(/position\s+(\d+)/);
+                const line = lineMatch ? getLineFromPosition(input, parseInt(lineMatch[1])) : null;
+                showError('SyntaxError', e.message, line);
             }
         }, 300));
     }
