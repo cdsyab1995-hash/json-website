@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2d4a"/>
+      <stop offset="100%" style="stop-color:#0d1829"/>
+    </linearGradient>
+    <linearGradient id="braceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="50%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="jGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#86efac"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#22c55e" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background: rounded square -->
+  <rect width="512" height="512" rx="88" ry="88" fill="url(#bgGrad)"/>
+
+  <!-- Subtle inner border glow -->
+  <rect width="512" height="512" rx="88" ry="88" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.15"/>
+
+  <!-- Left brace { -->
+  <g filter="url(#shadow)">
+    <!-- Top horizontal connector -->
+    <rect x="148" y="126" width="38" height="22" rx="11" fill="url(#braceGrad)"/>
+    <!-- Top curve going left -->
+    <path d="M148 137 Q122 137 122 163 L122 224 Q122 248 98 248" fill="none" stroke="url(#braceGrad)" stroke-width="22" stroke-linecap="round"/>
+    <!-- Center notch (left bump) -->
+    <circle cx="87" cy="256" r="16" fill="url(#braceGrad)"/>
+    <!-- Bottom curve going right -->
+    <path d="M98 264 Q122 264 122 288 L122 349 Q122 375 148 375" fill="none" stroke="url(#braceGrad)" stroke-width="22" stroke-linecap="round"/>
+    <!-- Bottom horizontal connector -->
+    <rect x="148" y="364" width="38" height="22" rx="11" fill="url(#braceGrad)"/>
+  </g>
+
+  <!-- Right brace } -->
+  <g filter="url(#shadow)">
+    <!-- Top horizontal connector -->
+    <rect x="326" y="126" width="38" height="22" rx="11" fill="url(#braceGrad)"/>
+    <!-- Top curve going right -->
+    <path d="M364 137 Q390 137 390 163 L390 224 Q390 248 414 248" fill="none" stroke="url(#braceGrad)" stroke-width="22" stroke-linecap="round"/>
+    <!-- Center notch (right bump) -->
+    <circle cx="425" cy="256" r="16" fill="url(#braceGrad)"/>
+    <!-- Bottom curve going left -->
+    <path d="M414 264 Q390 264 390 288 L390 349 Q390 375 364 375" fill="none" stroke="url(#braceGrad)" stroke-width="22" stroke-linecap="round"/>
+    <!-- Bottom horizontal connector -->
+    <rect x="326" y="364" width="38" height="22" rx="11" fill="url(#braceGrad)"/>
+  </g>
+
+  <!-- Center "J" letterform -->
+  <g filter="url(#glow)">
+    <!-- J vertical stem -->
+    <rect x="241" y="148" width="34" height="176" rx="8" fill="url(#jGrad)"/>
+    <!-- J top serif -->
+    <rect x="220" y="148" width="76" height="22" rx="11" fill="url(#jGrad)"/>
+    <!-- J bottom curve left -->
+    <path d="M275 324 Q275 364 240 364 Q205 364 205 340" fill="none" stroke="url(#jGrad)" stroke-width="34" stroke-linecap="round"/>
+    <!-- Inner erase of curve for J shape -->
+    <path d="M275 324 Q275 358 243 358 Q214 358 214 340" fill="none" stroke="#172036" stroke-width="14" stroke-linecap="round"/>
+  </g>
+
+  <!-- Decorative data flow lines at bottom -->
+  <g opacity="0.25">
+    <rect x="170" y="418" width="52" height="4" rx="2" fill="#22c55e"/>
+    <rect x="232" y="418" width="30" height="4" rx="2" fill="#22c55e"/>
+    <rect x="272" y="418" width="68" height="4" rx="2" fill="#22c55e"/>
+    <rect x="190" y="430" width="38" height="4" rx="2" fill="#22c55e"/>
+    <rect x="240" y="430" width="76" height="4" rx="2" fill="#22c55e"/>
+  </g>
+
+  <!-- Small circuit dots -->
+  <g opacity="0.12" fill="#22c55e">
+    <circle cx="160" cy="90" r="4"/>
+    <circle cx="220" cy="80" r="3"/>
+    <circle cx="292" cy="80" r="3"/>
+    <circle cx="352" cy="90" r="4"/>
+    <circle cx="80" cy="180" r="3"/>
+    <circle cx="432" cy="180" r="3"/>
+    <circle cx="80" cy="332" r="3"/>
+    <circle cx="432" cy="332" r="3"/>
+  </g>
+</svg>
