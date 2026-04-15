@@ -114,6 +114,13 @@
         <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/cookie.html"/>
 </url>
     <url>
+        <loc>https://aijsons.com/pages/best-practices.html</loc>
+        <lastmod>2026-04-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/best-practices.html"/>
+</url>
+    <url>
         <loc>https://aijsons.com/pages/about.html</loc>
         <lastmod>2026-04-15</lastmod>
         <changefreq>monthly</changefreq>
