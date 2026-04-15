@@ -113,4 +113,67 @@
         <priority>0.5</priority>
         <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/cookie.html"/>
 </url>
+    <url>
+        <loc>https://aijsons.com/pages/about.html</loc>
+        <lastmod>2026-04-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/about.html"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/changelog.html</loc>
+        <lastmod>2026-04-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/changelog.html"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/blog/</loc>
+        <lastmod>2026-04-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/blog/"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/blog/ai-tool-calling-mcp-2026.html</loc>
+        <lastmod>2026-04-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/blog/ai-tool-calling-mcp-2026.html"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/blog/json-api-error-handling-2026.html</loc>
+        <lastmod>2026-04-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/blog/json-api-error-handling-2026.html"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/blog/json-schema-complete-guide-2026.html</loc>
+        <lastmod>2026-04-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/blog/json-schema-complete-guide-2026.html"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/news/</loc>
+        <lastmod>2026-04-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/news/"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/news/api-transformations-2026.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/news/api-transformations-2026.html"/>
+</url>
+    <url>
+        <loc>https://aijsons.com/pages/news/json-schema-w3c-recommendation.html</loc>
+        <lastmod>2026-04-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://aijsons.com/pages/news/json-schema-w3c-recommendation.html"/>
+</url>
 </urlset>
