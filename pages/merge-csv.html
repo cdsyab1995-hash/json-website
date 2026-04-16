@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
-    <meta name="description" content="Convert CSV to Excel instantly. Import spreadsheet data with formulas, multiple sheets, and formatting. Client-side processing for US developers.">
-    <meta name="keywords" content="CSV to Excel, convert CSV to XLSX, spreadsheet converter, import CSV Excel, data import tool, CSV to worksheet, US developers">
+    <meta name="description" content="Merge multiple CSV files into one. Combine CSV data with headers. Instant client-side processing for US developers.">
+    <meta name="keywords" content="merge CSV files, combine CSV, merge spreadsheet data, CSV combiner, spreadsheet merger, US developers">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.aijsons.com/pages/csv-to-excel.html">
+    <link rel="canonical" href="https://www.aijsons.com/pages/merge-csv.html">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.aijsons.com/pages/csv-to-excel.html">
-    <meta property="og:title" content="CSV to Excel Converter - Import Spreadsheet Data | AI JSON">
-    <meta property="og:description" content="Convert CSV to Excel with formatting. Instant XLSX export for US developers. Client-side processing.">
+    <meta property="og:url" content="https://www.aijsons.com/pages/merge-csv.html">
+    <meta property="og:title" content="Merge CSV Files - Combine Spreadsheet Data | AI JSON">
+    <meta property="og:description" content="Merge multiple CSV files into one. Combine CSV data instantly with header alignment. Client-side processing.">
     <!-- JSON-LD -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "CSV to Excel Converter",
-        "url": "https://www.aijsons.com/pages/csv-to-excel.html",
-        "description": "CSV to Excel converter for US developers. Convert CSV files to XLSX format with proper formatting.",
+        "name": "Merge CSV Files - Combine Spreadsheet Data",
+        "url": "https://www.aijsons.com/pages/merge-csv.html",
+        "description": "Merge multiple CSV files into one. Combine spreadsheet data for US developers.",
         "applicationCategory": "DataProcessingApplication",
         "operatingSystem": "Web Browser",
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
         "areaServed": {"@type": "Country", "name": "United States"}
     }
     </script>
-    <title>CSV to Excel Converter - Convert Spreadsheet Data to XLSX | AI JSON</title>
+    <title>Merge CSV Files - Combine Spreadsheet Data | AI JSON</title>
     <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px;font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif}
@@ -51,6 +51,56 @@
     .btn-danger:hover{background:rgba(239,68,68,.1)}
     .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
     .footer a{color:var(--primary);text-decoration:none}
+    .page-header{text-align:center;padding:2rem 0}
+    .page-title{font-size:2rem;font-weight:700;margin-bottom:0.5rem}
+    .page-description{color:var(--text-secondary);font-size:1.125rem;margin-bottom:1rem}
+    .breadcrumb{font-size:0.875rem;color:var(--text-secondary)}
+    .breadcrumb a{color:var(--primary);text-decoration:none}
+    .tool-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
+    .tool-status{display:flex;align-items:center;gap:0.5rem}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--text-secondary)}
+    .status-dot.valid{background:var(--primary)}
+    .status-dot.invalid{background:#ef4444}
+    .status-text{font-size:0.875rem;color:var(--text-secondary)}
+    .tool-actions{display:flex;gap:0.5rem;flex-wrap:wrap}
+    .editor-container{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+    @media (max-width:768px){.editor-container{grid-template-columns:1fr}}
+    .editor-panel{position:relative}
+    .editor-label{position:absolute;top:0.5rem;left:0.75rem;font-size:0.75rem;color:var(--text-secondary);background:var(--bg-card);padding:0 0.25rem;z-index:1}
+    .editor-panel .code-editor{padding-top:2rem}
+    .code-output{min-height:200px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;background:var(--bg-dark);overflow:auto;white-space:pre-wrap}
+    .options-row{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}
+    .checkbox-label{display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--text-secondary)}
+    .info-box{background:var(--bg-secondary);padding:1rem;border-radius:var(--radius-md);font-size:0.875rem}
+    .section-label{font-size:1.25rem;font-weight:600;margin-bottom:1rem;color:var(--text-primary)}
+    .mt-lg{margin-top:2rem}
+    .file-input-wrapper{position:relative}
+    .file-input{display:none}
+    .file-input-label{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--bg-secondary);color:var(--text-primary);border-radius:var(--radius-md);cursor:pointer;font-size:0.875rem;font-weight:500;transition:all 0.2s}
+    .file-input-label:hover{background:var(--bg-card)}
+    .file-list{margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem}
+    .file-item{display:flex;align-items:center;justify-content:space-between;padding:0.75rem;background:var(--bg-secondary);border-radius:var(--radius-md);font-size:0.875rem}
+    .file-item-name{font-family:monospace;word-break:break-all}
+    .file-item-remove{color:#ef4444;cursor:pointer;padding:0.25rem;background:none;border:none}
+    .file-item-remove:hover{background:rgba(239,68,68,0.1);border-radius:4px}
+    .faq-container{display:flex;flex-direction:column;gap:0.5rem}
+    .faq-item{background:var(--bg-secondary);border-radius:var(--radius-md)}
+    .faq-question{padding:1rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center}
+    .faq-question:hover{color:var(--primary)}
+    .faq-answer{padding:0 1rem 1rem;color:var(--text-secondary);font-size:0.875rem}
+    .menu-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;padding:0.5rem}
+    @media (max-width:900px){
+        .menu-toggle{display:block}
+        .navbar-links{position:fixed;top:64px;left:0;right:0;background:var(--bg-dark);flex-direction:column;padding:1rem;display:none;border-bottom:1px solid var(--bg-secondary);max-height:calc(100vh - 64px);overflow-y:auto}
+        .navbar-links.active{display:flex}
+        .nav-dropdown{width:100%}
+        .nav-dropdown-menu{position:static;box-shadow:none;padding:0.5rem 0 0.5rem 1rem}
+    }
+    .nav-dropdown{position:relative}
+    .nav-dropdown-menu{position:absolute;top:100%;left:0;background:var(--bg-card);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);padding:0.5rem;min-width:200px;display:none;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+    .nav-dropdown:hover .nav-dropdown-menu{display:block}
+    .navbar-cta{background:var(--primary);color:var(--bg-dark) !important;border-radius:var(--radius-md) !important;font-weight:600 !important}
+    .navbar-cta:hover{background:#1da34a !important}
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,7 +209,7 @@
                     </svg>
                     CSV
                 </a>
-                <a href="csv-to-excel.html" class="nav-link active">
+                <a href="csv-to-excel.html" class="nav-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="3" y1="9" x2="21" y2="9"></line>
@@ -174,28 +224,12 @@
                     </svg>
                     Remove Duplicates
                 </a>
-                <a href="merge-csv.html" class="nav-link">
+                <a href="merge-csv.html" class="nav-link active">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
                         <path d="M8 12v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2"></path>
                     </svg>
                     Merge CSV
-                </a>
-                <a href="batch-file-renamer.html" class="nav-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg>
-                    Batch Rename
-                </a>
-                <a href="pdf-split.html" class="nav-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="12" y1="18" x2="12" y2="12"></line>
-                        <line x1="9" y1="15" x2="15" y2="15"></line>
-                    </svg>
-                    PDF Split
                 </a>
                 <a href="compare.html" class="nav-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -253,10 +287,10 @@
 
 <main class="main-container">
     <div class="page-header text-center">
-        <h1 class="page-title">CSV to Excel Converter</h1>
-        <p class="page-description">Convert CSV data to Excel XLSX format with proper formatting</p>
+        <h1 class="page-title">Merge CSV Files</h1>
+        <p class="page-description">Combine multiple CSV files into one with automatic header alignment</p>
         <div class="breadcrumb">
-            <a href="../index.html">Home</a> / <span>CSV to Excel</span>
+            <a href="../index.html">Home</a> / <span>Merge CSV</span>
         </div>
     </div>
 
@@ -264,16 +298,15 @@
         <div class="tool-header">
             <div class="tool-status" id="status">
                 <span class="status-dot"></span>
-                <span class="status-text">Waiting for input...</span>
+                <span class="status-text">Waiting for files...</span>
             </div>
             <div class="tool-actions">
-                <button class="btn btn-primary" id="convertBtn">
+                <button class="btn btn-primary" id="mergeBtn" disabled>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                        <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
+                        <path d="M8 12v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2"></path>
                     </svg>
-                    Convert to XLSX
+                    Merge Files
                 </button>
                 <button class="btn btn-secondary" id="downloadBtn" disabled>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -281,16 +314,16 @@
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Download XLSX
+                    Download
                 </button>
-                <button class="btn btn-secondary" id="copyBtn">
+                <button class="btn btn-secondary" id="copyBtn" disabled>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                     </svg>
                     Copy
                 </button>
-                <button class="btn btn-danger" id="clearBtn">
+                <button class="btn btn-danger" id="clearBtn" disabled>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="3 6 5 6 21 6"></polyline>
                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -300,30 +333,24 @@
             </div>
         </div>
 
-        <div class="editor-container">
-            <div class="editor-panel">
-                <div class="editor-label">Input CSV</div>
-                <textarea id="inputCsv" class="code-editor" placeholder='name,age,city&#10;John,30,New York&#10;Jane,25,Los Angeles&#10;Bob,35,Chicago'></textarea>
-            </div>
-            <div class="editor-panel">
-                <div class="editor-label">Preview</div>
-                <div id="preview" class="code-output"><pre></pre></div>
-            </div>
-        </div>
-
         <div class="options-row">
-            <label class="checkbox-label">
-                <input type="checkbox" id="includeHeaders" checked>
-                <span>First Row is Header</span>
+            <label class="file-input-wrapper">
+                <input type="file" id="fileInput" class="file-input" accept=".csv,.txt" multiple>
+                <span class="file-input-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Add CSV Files
+                </span>
             </label>
             <label class="checkbox-label">
-                <span>Delimiter:</span>
+                <span>Header row:</span>
             </label>
-            <select id="delimiter" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--bg-secondary); background: var(--bg-dark); color: var(--text-primary);">
-                <option value=",">Comma (,)</option>
-                <option value=";">Semicolon (;)</option>
-                <option value="tab">Tab</option>
-                <option value="|">Pipe (|)</option>
+            <select id="headerRow" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--bg-secondary); background: var(--bg-dark); color: var(--text-primary);">
+                <option value="first">First file only</option>
+                <option value="none">None (no headers)</option>
             </select>
             <label class="checkbox-label" style="margin-left: 20px;">
                 <input type="checkbox" id="trimWhitespace" checked>
@@ -331,25 +358,38 @@
             </label>
         </div>
 
-        <div class="info-box" style="margin-top: 1rem;">
-            <p><strong>Tip:</strong> Paste your CSV data and click "Convert to XLSX" to download as Excel file.</p>
+        <div id="fileList" class="file-list"></div>
+
+        <div class="editor-container" style="margin-top: 1rem;">
+            <div class="editor-panel">
+                <div class="editor-label">Or paste CSV text directly</div>
+                <textarea id="manualInput" class="code-editor" placeholder="Paste CSV content here...&#10;&#10;Each section separated by ---&#10;&#10;---&#10;name,age,city&#10;John,30,NYC&#10;&#10;---&#10;name,age,city&#10;Jane,25,LA"></textarea>
+            </div>
+            <div class="editor-panel">
+                <div class="editor-label">Merged Output</div>
+                <div id="outputData" class="code-output"><pre></pre></div>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 1rem; background: rgba(34,197,94,0.1); border: 1px solid var(--primary);">
+            <p><strong>Stats:</strong> <span id="stats">0 files loaded, 0 total rows</span></p>
         </div>
     </div>
 
     <!-- FAQ Section -->
     <section class="tool-area mt-lg">
-        <h2 class="section-label">CSV to Excel FAQ</h2>
+        <h2 class="section-label">Merge CSV FAQ</h2>
         <div class="faq-container">
             <details class="faq-item">
-                <summary class="faq-question">How to convert CSV to Excel?</summary>
+                <summary class="faq-question">How does CSV merging work?</summary>
                 <div class="faq-answer">
-                    <p>Simply paste your CSV data, choose your delimiter, and click "Convert to XLSX". The file will download automatically.</p>
+                    <p>The tool combines multiple CSV files, aligning columns by header names. All files must have compatible column headers to merge correctly.</p>
                 </div>
             </details>
             <details class="faq-item">
-                <summary class="faq-question">What is the difference between CSV and Excel?</summary>
+                <summary class="faq-question">What if files have different columns?</summary>
                 <div class="faq-answer">
-                    <p><strong>CSV</strong> is a plain text format with comma-separated values. <strong>Excel (XLSX)</strong> is a spreadsheet format that supports formulas, multiple sheets, and formatting.</p>
+                    <p>The tool will only include columns that appear in all files. Missing values will be shown as empty cells.</p>
                 </div>
             </details>
             <details class="faq-item">
@@ -377,19 +417,21 @@
 <script src="../js/app.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const inputCsv = document.getElementById('inputCsv');
-    const preview = document.getElementById('preview');
+    const fileInput = document.getElementById('fileInput');
+    const manualInput = document.getElementById('manualInput');
+    const outputData = document.getElementById('outputData');
     const status = document.getElementById('status');
-    const convertBtn = document.getElementById('convertBtn');
+    const stats = document.getElementById('stats');
+    const mergeBtn = document.getElementById('mergeBtn');
     const downloadBtn = document.getElementById('downloadBtn');
     const copyBtn = document.getElementById('copyBtn');
     const clearBtn = document.getElementById('clearBtn');
-    const includeHeaders = document.getElementById('includeHeaders');
-    const delimiter = document.getElementById('delimiter');
+    const headerRow = document.getElementById('headerRow');
     const trimWhitespace = document.getElementById('trimWhitespace');
+    const fileList = document.getElementById('fileList');
 
-    let csvData = [];
-    let csvResult = '';
+    let csvFiles = [];
+    let mergedResult = '';
 
     function updateStatus(valid, message) {
         const dot = status.querySelector('.status-dot');
@@ -402,174 +444,266 @@ document.addEventListener('DOMContentLoaded', function() {
         return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
-    function parseCSV(text, delim) {
+    function parseCSV(text) {
         const lines = text.split(/\r?\n/);
-        const delimiter = delim === 'tab' ? '\t' : delim;
         const rows = [];
-        
+        let currentRow = '';
+        let inQuotes = false;
+
         for (const line of lines) {
-            if (!line.trim()) continue;
-            const values = line.split(delimiter).map(v => {
-                let val = v.trim();
-                if (trimWhitespace.checked) {
-                    val = val.trim();
+            let newRow = '';
+            let i = 0;
+            while (i < line.length) {
+                const char = line[i];
+                if (char === '"') {
+                    if (inQuotes && line[i + 1] === '"') {
+                        newRow += '"';
+                        i += 2;
+                    } else {
+                        inQuotes = !inQuotes;
+                        i++;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    currentRow += newRow + '|DELIM|';
+                    newRow = '';
+                    i++;
+                } else {
+                    newRow += char;
+                    i++;
                 }
-                // Remove surrounding quotes
-                if ((val.startsWith('"') && val.endsWith('"')) ||
-                    (val.startsWith("'") && val.endsWith("'"))) {
-                    val = val.slice(1, -1);
+            }
+            currentRow += newRow;
+            if (!inQuotes) {
+                rows.push(currentRow.split('|DELIM|'));
+                currentRow = '';
+            } else {
+                currentRow += '\n';
+            }
+        }
+        if (currentRow) {
+            rows.push(currentRow.split('|DELIM|'));
+        }
+        return rows.filter(row => row.some(cell => cell.trim()));
+    }
+
+    function parseManualInput() {
+        const text = manualInput.value.trim();
+        if (!text) return [];
+
+        // Split by --- separator
+        const sections = text.split(/---/).filter(s => s.trim());
+        const allRows = [];
+
+        for (const section of sections) {
+            const rows = parseCSV(section.trim());
+            allRows.push(...rows);
+        }
+
+        return allRows;
+    }
+
+    function detectDelimiter(text) {
+        const firstLine = text.split(/\r?\n/)[0];
+        if (firstLine.includes('\t')) return '\t';
+        if (firstLine.includes(';') && !firstLine.includes(',')) return ';';
+        if (firstLine.includes('|') && !firstLine.includes(',')) return '|';
+        return ',';
+    }
+
+    function renderFileList() {
+        fileList.innerHTML = '';
+        csvFiles.forEach((file, index) => {
+            const item = document.createElement('div');
+            item.className = 'file-item';
+            item.innerHTML = `
+                <span class="file-item-name">${escapeHtml(file.name)} (${file.rows} rows)</span>
+                <button class="file-item-remove" data-index="${index}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            `;
+            fileList.appendChild(item);
+        });
+
+        // Add remove handlers
+        fileList.querySelectorAll('.file-item-remove').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                csvFiles.splice(index, 1);
+                renderFileList();
+                updateStats();
+                mergeBtn.disabled = csvFiles.length < 2 && !manualInput.value.trim();
+            });
+        });
+    }
+
+    function updateStats() {
+        const totalFiles = csvFiles.length;
+        const totalRows = csvFiles.reduce((sum, f) => sum + f.rows, 0);
+        stats.textContent = `${totalFiles} file${totalFiles !== 1 ? 's' : ''} loaded, ${totalRows} total rows`;
+    }
+
+    fileInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+        let loaded = 0;
+
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                const rows = parseCSV(text);
+                csvFiles.push({
+                    name: file.name,
+                    content: text,
+                    rows: rows.length,
+                    data: rows
+                });
+                loaded++;
+                if (loaded === files.length) {
+                    renderFileList();
+                    updateStats();
+                    mergeBtn.disabled = csvFiles.length < 2 && !manualInput.value.trim();
+                    updateStatus(false, `${csvFiles.length} file${csvFiles.length !== 1 ? 's' : ''} loaded`);
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        fileInput.value = '';
+    });
+
+    manualInput.addEventListener('input', function() {
+        mergeBtn.disabled = csvFiles.length < 2 && !manualInput.value.trim();
+    });
+
+    mergeBtn.addEventListener('click', function() {
+        let allRows = [];
+
+        // Collect rows from files
+        csvFiles.forEach((file, fileIndex) => {
+            file.data.forEach((row, rowIndex) => {
+                let processedRow = row.map(cell => {
+                    let val = cell;
+                    if (trimWhitespace.checked) val = val.trim();
+                    return val;
+                });
+                allRows.push({
+                    source: fileIndex,
+                    rowIndex: rowIndex,
+                    isHeader: headerRow.value === 'first' && fileIndex === 0 && rowIndex === 0,
+                    data: processedRow
+                });
+            });
+        });
+
+        // Add manual input rows
+        if (manualInput.value.trim()) {
+            const manualRows = parseManualInput();
+            manualRows.forEach((row, rowIndex) => {
+                let processedRow = row.map(cell => {
+                    let val = cell;
+                    if (trimWhitespace.checked) val = val.trim();
+                    return val;
+                });
+                allRows.push({
+                    source: -1,
+                    rowIndex: rowIndex,
+                    isHeader: headerRow.value === 'first' && rowIndex === 0,
+                    data: processedRow
+                });
+            });
+        }
+
+        if (allRows.length === 0) {
+            updateStatus(false, 'No data to merge');
+            return;
+        }
+
+        // Find common columns (union of all columns)
+        const allColumns = new Set();
+        allRows.forEach(item => {
+            item.data.forEach((_, i) => allColumns.add(i));
+        });
+        const columns = Array.from(allColumns).sort((a, b) => a - b);
+
+        // Get header row
+        let header = [];
+        if (headerRow.value === 'first') {
+            const headerRowData = allRows.find(r => r.isHeader);
+            if (headerRowData) {
+                header = headerRowData.data;
+            }
+        }
+
+        // Build output
+        let output = [];
+
+        // Add header if exists
+        if (header.length > 0) {
+            output.push(header.join(','));
+        }
+
+        // Add data rows (skip header rows based on setting)
+        allRows.forEach(item => {
+            if (headerRow.value === 'first' && item.isHeader) return;
+            const row = columns.map(i => {
+                let val = item.data[i] || '';
+                if (val.includes(',') || val.includes('"') || val.includes('\n')) {
+                    val = '"' + val.replace(/"/g, '""') + '"';
                 }
                 return val;
             });
-            rows.push(values);
-        }
-        return rows;
-    }
+            output.push(row.join(','));
+        });
 
-    function convertToTable(rows, hasHeader) {
-        if (rows.length === 0) return '<p>No data</p>';
-        
-        let html = '<table style="width:100%;border-collapse:collapse;font-size:0.875rem;">';
-        
-        // Header row
-        if (hasHeader && rows.length > 0) {
-            html += '<thead><tr>';
-            rows[0].forEach(cell => {
-                html += `<th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--primary);color:var(--primary);">${escapeHtml(cell)}</th>`;
-            });
-            html += '</tr></thead>';
-        }
-        
-        html += '<tbody>';
-        const start = hasHeader ? 1 : 0;
-        for (let i = start; i < rows.length; i++) {
-            html += '<tr>';
-            rows[i].forEach(cell => {
-                html += `<td style="padding:8px 12px;border-bottom:1px solid var(--bg-secondary);">${escapeHtml(cell)}</td>`;
-            });
-            html += '</tr>';
-        }
-        html += '</tbody></table>';
-        
-        return html;
-    }
+        mergedResult = output.join('\n');
+        outputData.innerHTML = '<pre>' + escapeHtml(mergedResult) + '</pre>';
 
-    function convertCSV() {
-        const input = inputCsv.value.trim();
-        if (!input) {
-            updateStatus(false, 'Please enter CSV data');
-            preview.innerHTML = '<pre></pre>';
-            csvResult = '';
-            downloadBtn.disabled = true;
-            return;
-        }
-
-        const delim = delimiter.value;
-        csvData = parseCSV(input, delim);
-        
-        if (csvData.length === 0) {
-            updateStatus(false, 'No valid data found');
-            return;
-        }
-
-        // Build CSV for download
-        const delimChar = delim === 'tab' ? '\t' : delim;
-        csvResult = csvData.map(row => row.map(v => {
-            if (v.includes(delimChar) || v.includes('"') || v.includes('\n')) {
-                return '"' + v.replace(/"/g, '""') + '"';
-            }
-            return v;
-        }).join(delimChar)).join('\n');
-
-        const hasHeader = includeHeaders.checked;
-        preview.innerHTML = convertToTable(csvData, hasHeader);
-        
-        updateStatus(true, `Success! ${csvData.length} rows, ${csvData[0]?.length || 0} columns`);
+        updateStatus(true, 'Merge complete');
         downloadBtn.disabled = false;
-    }
-
-    // Generate XLSX using SheetJS library (inline minimal implementation)
-    function generateXLSX(csv, hasHeader) {
-        // Simple XLSX generation using base64 encoding
-        // This creates a minimal valid XLSX file
-        const lines = csv.split('\n');
-        const delim = delimiter.value === 'tab' ? '\t' : delimiter.value;
-        
-        // Build XML content
-        let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-        xml += '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet">\n';
-        xml += '<Worksheet ss:Name="Sheet1">\n';
-        xml += '<Table>\n';
-        
-        const startRow = hasHeader ? 0 : 0;
-        for (let i = startRow; i < lines.length; i++) {
-            if (!lines[i].trim()) continue;
-            xml += '<Row>\n';
-            const cells = lines[i].split(delim);
-            cells.forEach(cell => {
-                xml += `<Cell><Data ss:Type="String">${escapeXml(cell)}</Data></Cell>\n`;
-            });
-            xml += '</Row>\n';
-        }
-        
-        xml += '</Table>\n';
-        xml += '</Worksheet>\n';
-        xml += '</Workbook>\n';
-
-        // Wrap in Office 2003 XML format (simpler, widely compatible)
-        const fullXml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-            '<?mso-application progid="Excel.Sheet"?>\n' +
-            xml;
-
-        return 'data:application/vnd.ms-excel;base64,' + btoa(unescape(encodeURIComponent(fullXml)));
-    }
-
-    function escapeXml(str) {
-        return str.replace(/&/g, '&amp;')
-                  .replace(/</g, '&lt;')
-                  .replace(/>/g, '&gt;')
-                  .replace(/"/g, '&quot;')
-                  .replace(/'/g, '&apos;');
-    }
-
-    inputCsv.addEventListener('input', convertCSV);
-    includeHeaders.addEventListener('change', convertCSV);
-    delimiter.addEventListener('change', convertCSV);
-    trimWhitespace.addEventListener('change', convertCSV);
-
-    convertBtn.addEventListener('click', convertCSV);
+        copyBtn.disabled = false;
+        clearBtn.disabled = false;
+    });
 
     downloadBtn.addEventListener('click', function() {
-        if (!csvResult) return;
-        
-        // Generate and download XLSX
-        const hasHeader = includeHeaders.checked;
-        const dataUrl = generateXLSX(csvResult, hasHeader);
-        
+        const blob = new Blob([mergedResult], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = 'data.xlsx';
-        document.body.appendChild(a);
+        a.href = url;
+        a.download = 'merged.csv';
         a.click();
-        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     });
 
     copyBtn.addEventListener('click', function() {
-        if (!csvResult) return;
-        navigator.clipboard.writeText(csvResult).then(() => {
-            const originalText = this.innerHTML;
-            this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
-            setTimeout(() => this.innerHTML = originalText, 2000);
+        navigator.clipboard.writeText(mergedResult).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
         });
     });
 
     clearBtn.addEventListener('click', function() {
-        inputCsv.value = '';
-        preview.innerHTML = '<pre></pre>';
-        updateStatus(false, 'Waiting for input...');
-        csvResult = '';
+        csvFiles = [];
+        manualInput.value = '';
+        mergedResult = '';
+        outputData.innerHTML = '<pre></pre>';
+        fileList.innerHTML = '';
+        updateStats();
+        updateStatus(false, 'Waiting for files...');
+        mergeBtn.disabled = true;
         downloadBtn.disabled = true;
-        inputCsv.focus();
+        copyBtn.disabled = true;
+        clearBtn.disabled = true;
+    });
+
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.navbar-links').classList.toggle('active');
     });
 });
 </script>
