@@ -80,14 +80,28 @@
 </url>
     <url>
         <loc>https://www.aijsons.com/pages/json2csv.html</loc>
-        <lastmod>2026-04-13</lastmod>
+        <lastmod>2026-04-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/json2csv.html"/>
 </url>
     <url>
+        <loc>https://www.aijsons.com/pages/csv-to-excel.html</loc>
+        <lastmod>2026-04-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/csv-to-excel.html"/>
+</url>
+    <url>
+        <loc>https://www.aijsons.com/pages/excel-remove-duplicates.html</loc>
+        <lastmod>2026-04-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/excel-remove-duplicates.html"/>
+</url>
+    <url>
         <loc>https://www.aijsons.com/pages/compare.html</loc>
-        <lastmod>2026-04-13</lastmod>
+        <lastmod>2026-04-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
         <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/compare.html"/>

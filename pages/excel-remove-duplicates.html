@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Remove duplicate rows from CSV or Excel data instantly. Clean spreadsheet data with one click. Client-side processing for US developers.">
+    <meta name="keywords" content="remove duplicates Excel, deduplicate CSV, find duplicate rows, spreadsheet cleaner, data cleanup tool, US developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/pages/excel-remove-duplicates.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aijsons.com/pages/excel-remove-duplicates.html">
+    <meta property="og:title" content="Remove Duplicates - Clean Spreadsheet Data | AI JSON">
+    <meta property="og:description" content="Remove duplicate rows from CSV or Excel data. Instant deduplication for US developers. Client-side processing.">
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Remove Duplicates - Excel Spreadsheet Cleaner",
+        "url": "https://www.aijsons.com/pages/excel-remove-duplicates.html",
+        "description": "Remove duplicate rows from CSV or Excel data. Clean spreadsheet data for US developers.",
+        "applicationCategory": "DataProcessingApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "areaServed": {"@type": "Country", "name": "United States"}
+    }
+    </script>
+    <title>Remove Duplicates - Clean Spreadsheet Data | AI JSON</title>
+    <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px;font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif}
+    body{background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+    .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
+    .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap}
+    .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem}
+    .nav-link svg{width:16px;height:16px;flex-shrink:0}
+    .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
+    .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%}
+    .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:var(--space-xl);border:1px solid var(--bg-secondary)}
+    .code-editor{width:100%;min-height:200px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
+    .code-editor:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s}
+    .btn-primary{background:var(--primary);color:var(--bg-dark)}
+    .btn-primary:hover{background:#1da34a;box-shadow:0 4px 12px rgba(34,197,94,.3)}
+    .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+    .btn-secondary:hover{background:rgba(34,197,94,.1)}
+    .btn-danger{background:transparent;color:#ef4444;border:1px solid #ef4444}
+    .btn-danger:hover{background:rgba(239,68,68,.1)}
+    .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
+    .footer a{color:var(--primary);text-decoration:none}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<nav class="navbar">
+    <a href="../index.html" class="navbar-brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
+        AI JSON
+    </a>
+    <button class="menu-toggle" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+    <div class="navbar-links">
+        <a href="../index.html" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+        </a>
+        <!-- Tools Dropdown -->
+        <div class="nav-dropdown">
+            <a href="#" class="nav-link nav-dropdown-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                Tools
+            </a>
+            <div class="nav-dropdown-menu">
+                <a href="format.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                        <line x1="9" y1="20" x2="15" y2="20"></line>
+                        <line x1="12" y1="4" x2="12" y2="20"></line>
+                    </svg>
+                    Format
+                </a>
+                <a href="escape.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Escape
+                </a>
+                <a href="extract.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    Extract
+                </a>
+                <a href="sort.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                    Sort
+                </a>
+                <a href="clean.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    Clean
+                </a>
+                <a href="xml.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    XML
+                </a>
+                <a href="yaml.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4l4 16 4-16"></path>
+                        <path d="M12 4l4 16"></path>
+                    </svg>
+                    YAML
+                </a>
+                <a href="viewer.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Viewer
+                </a>
+                <a href="json2csv.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="8" y1="13" x2="16" y2="13"></line>
+                        <line x1="8" y1="17" x2="16" y2="17"></line>
+                    </svg>
+                    CSV
+                </a>
+                <a href="csv-to-excel.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    Excel
+                </a>
+                <a href="excel-remove-duplicates.html" class="nav-link active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Remove Duplicates
+                </a>
+                <a href="compare.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 3h5v5"></path>
+                        <path d="M8 3H3v5"></path>
+                        <path d="M21 3l-7 7"></path>
+                        <path d="M3 3l7 7"></path>
+                        <path d="M16 21h5v-5"></path>
+                        <path d="M8 21H3v-5"></path>
+                        <path d="M21 21l-7-7"></path>
+                        <path d="M3 21l7-7"></path>
+                    </svg>
+                    Compare
+                </a>
+            </div>
+        </div>
+        <a href="blog.html" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            Tutorial
+        </a>
+        <a href="best-practices.html" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            Practices
+        </a>
+        <a href="news.html" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            News
+        </a>
+        <a href="changelog.html" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            Changelog
+        </a>
+        <a href="about.html" class="nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            About
+        </a>
+        <a href="format.html" class="nav-link navbar-cta"> Try Formatter </a>
+    </div>
+</nav>
+
+<main class="main-container">
+    <div class="page-header text-center">
+        <h1 class="page-title">Remove Duplicates</h1>
+        <p class="page-description">Remove duplicate rows from CSV or spreadsheet data</p>
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <span>Remove Duplicates</span>
+        </div>
+    </div>
+
+    <div class="tool-area">
+        <div class="tool-header">
+            <div class="tool-status" id="status">
+                <span class="status-dot"></span>
+                <span class="status-text">Waiting for input...</span>
+            </div>
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="dedupeBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Remove Duplicates
+                </button>
+                <button class="btn btn-secondary" id="downloadBtn" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download CSV
+                </button>
+                <button class="btn btn-secondary" id="copyBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy
+                </button>
+                <button class="btn btn-danger" id="clearBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear
+                </button>
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <div class="editor-panel">
+                <div class="editor-label">Input Data (CSV or JSON array)</div>
+                <textarea id="inputData" class="code-editor" placeholder='name,email,city&#10;John,john@email.com,NYC&#10;Jane,jane@email.com,LA&#10;John,john@email.com,NYC&#10;Bob,bob@email.com,Chicago'></textarea>
+            </div>
+            <div class="editor-panel">
+                <div class="editor-label">Output (Duplicates Removed)</div>
+                <div id="outputData" class="code-output"><pre></pre></div>
+            </div>
+        </div>
+
+        <div class="options-row">
+            <label class="checkbox-label">
+                <span>Check columns:</span>
+            </label>
+            <select id="checkColumns" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--bg-secondary); background: var(--bg-dark); color: var(--text-primary);">
+                <option value="all">All Columns</option>
+                <option value="first">First Column Only</option>
+                <option value="last">Last Column Only</option>
+            </select>
+            <label class="checkbox-label" style="margin-left: 20px;">
+                <input type="checkbox" id="caseSensitive">
+                <span>Case Sensitive</span>
+            </label>
+            <label class="checkbox-label" style="margin-left: 20px;">
+                <input type="checkbox" id="trimWhitespace" checked>
+                <span>Trim Whitespace</span>
+            </label>
+        </div>
+
+        <div class="info-box" style="margin-top: 1rem; background: rgba(34,197,94,0.1); border: 1px solid var(--primary);">
+            <p><strong>Stats:</strong> <span id="stats">0 duplicates found, 0 unique rows</span></p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="tool-area mt-lg">
+        <h2 class="section-label">Remove Duplicates FAQ</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary class="faq-question">How does duplicate detection work?</summary>
+                <div class="faq-answer">
+                    <p>The tool compares rows based on selected columns. By default, it checks all columns - rows that match on all columns are considered duplicates.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">What data formats are supported?</summary>
+                <div class="faq-answer">
+                    <p>Supports CSV format with various delimiters (comma, semicolon, tab, pipe). JSON arrays are also supported.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">Is my data uploaded to a server?</summary>
+                <div class="faq-answer">
+                    <p>No. All processing happens in your browser. Your data never leaves your device.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>AI JSON - Instant client-side data processing. Your data stays private.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+        <a href="../privacy.html">Privacy Policy</a> |
+        <a href="../terms.html">Terms of Service</a> |
+        <a href="../cookie.html">Cookie Policy</a>
+    </p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-light);">
+        &copy; 2026 AI JSON. All rights reserved.
+    </p>
+</footer>
+
+<script src="../js/app.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const inputData = document.getElementById('inputData');
+    const outputData = document.getElementById('outputData');
+    const status = document.getElementById('status');
+    const stats = document.getElementById('stats');
+    const dedupeBtn = document.getElementById('dedupeBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const checkColumns = document.getElementById('checkColumns');
+    const caseSensitive = document.getElementById('caseSensitive');
+    const trimWhitespace = document.getElementById('trimWhitespace');
+
+    let csvResult = '';
+    let parsedRows = [];
+
+    function updateStatus(valid, message) {
+        const dot = status.querySelector('.status-dot');
+        const text = status.querySelector('.status-text');
+        dot.className = 'status-dot ' + (valid ? 'valid' : 'invalid');
+        text.textContent = message;
+    }
+
+    function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function parseInput(text) {
+        text = text.trim();
+        
+        // Try JSON array first
+        if (text.startsWith('[') || text.startsWith('{')) {
+            try {
+                const data = JSON.parse(text);
+                if (Array.isArray(data)) {
+                    return { format: 'json', data: data };
+                }
+            } catch (e) {}
+        }
+        
+        // Parse as CSV
+        const lines = text.split(/\r?\n/);
+        const rows = [];
+        
+        // Detect delimiter
+        let delim = ',';
+        if (lines.length > 0) {
+            const firstLine = lines[0];
+            if (firstLine.includes('\t')) delim = '\t';
+            else if (firstLine.includes(';') && !firstLine.includes(',')) delim = ';';
+            else if (firstLine.includes('|') && !firstLine.includes(',')) delim = '|';
+        }
+        
+        for (const line of lines) {
+            if (!line.trim()) continue;
+            const values = line.split(delim).map(v => {
+                let val = v;
+                if (trimWhitespace.checked) {
+                    val = val.trim();
+                }
+                if (!caseSensitive.checked) {
+                    val = val.toLowerCase();
+                }
+                // Remove surrounding quotes
+                if ((val.startsWith('"') && val.endsWith('"')) ||
+                    (val.startsWith("'") && val.endsWith("'"))) {
+                    val = val.slice(1, -1);
+                }
+                return val;
+            });
+            rows.push(values);
+        }
+        
+        return { format: 'csv', data: rows, delim: delim };
+    }
+
+    function convertToTable(rows) {
+        if (rows.length === 0) return '<p>No data</p>';
+        
+        let html = '<table style="width:100%;border-collapse:collapse;font-size:0.875rem;">';
+        
+        // Header row (first row)
+        if (rows.length > 0) {
+            html += '<thead><tr>';
+            rows[0].forEach((cell, i) => {
+                const isDuplicate = i > 0 && checkColumns.value === 'last';
+                html += `<th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--primary);color:var(--primary);">${escapeHtml(cell)}</th>`;
+            });
+            html += '</tr></thead>';
+        }
+        
+        html += '<tbody>';
+        const start = 1; // Skip header
+        for (let i = start; i < rows.length; i++) {
+            html += '<tr>';
+            rows[i].forEach(cell => {
+                html += `<td style="padding:8px 12px;border-bottom:1px solid var(--bg-secondary);">${escapeHtml(cell)}</td>`;
+            });
+            html += '</tr>';
+        }
+        html += '</tbody></table>';
+        
+        return html;
+    }
+
+    function removeDuplicates() {
+        const input = inputData.value.trim();
+        if (!input) {
+            updateStatus(false, 'Please enter data');
+            outputData.innerHTML = '<pre></pre>';
+            csvResult = '';
+            downloadBtn.disabled = true;
+            stats.textContent = '0 duplicates found, 0 unique rows';
+            return;
+        }
+
+        const parsed = parseInput(input);
+        parsedRows = parsed.data;
+        
+        if (parsedRows.length === 0) {
+            updateStatus(false, 'No valid data found');
+            return;
+        }
+
+        const checkCol = checkColumns.value;
+        const seen = new Set();
+        const unique = [parsedRows[0]]; // Keep header
+        let duplicateCount = 0;
+
+        for (let i = 1; i < parsedRows.length; i++) {
+            const row = parsedRows[i];
+            let key;
+            
+            switch (checkCol) {
+                case 'first':
+                    key = row[0];
+                    break;
+                case 'last':
+                    key = row[row.length - 1];
+                    break;
+                default:
+                    key = JSON.stringify(row);
+            }
+            
+            if (seen.has(key)) {
+                duplicateCount++;
+            } else {
+                seen.add(key);
+                unique.push(row);
+            }
+        }
+
+        // Build CSV output
+        const delim = parsed.delim || ',';
+        csvResult = unique.map(row => row.join(delim)).join('\n');
+        
+        outputData.innerHTML = convertToTable(unique);
+        
+        const totalRows = parsedRows.length - 1; // Exclude header
+        const uniqueRows = unique.length - 1;
+        stats.textContent = `${duplicateCount} duplicates removed, ${uniqueRows} unique rows`;
+        
+        updateStatus(true, `Success! Removed ${duplicateCount} duplicate(s)`);
+        downloadBtn.disabled = false;
+    }
+
+    inputData.addEventListener('input', removeDuplicates);
+    checkColumns.addEventListener('change', removeDuplicates);
+    caseSensitive.addEventListener('change', removeDuplicates);
+    trimWhitespace.addEventListener('change', removeDuplicates);
+
+    dedupeBtn.addEventListener('click', removeDuplicates);
+
+    downloadBtn.addEventListener('click', function() {
+        if (!csvResult) return;
+        
+        const blob = new Blob(['\ufeff' + csvResult], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'deduplicated.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    copyBtn.addEventListener('click', function() {
+        if (!csvResult) return;
+        navigator.clipboard.writeText(csvResult).then(() => {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+            setTimeout(() => this.innerHTML = originalText, 2000);
+        });
+    });
+
+    clearBtn.addEventListener('click', function() {
+        inputData.value = '';
+        outputData.innerHTML = '<pre></pre>';
+        updateStatus(false, 'Waiting for input...');
+        csvResult = '';
+        downloadBtn.disabled = true;
+        stats.textContent = '0 duplicates found, 0 unique rows';
+        inputData.focus();
+    });
+});
+</script>
+</body>
+</html>
