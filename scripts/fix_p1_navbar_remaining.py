@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-更新导航栏添加 P1 工具：JWT Decoder, Hash Generator, UUID Generator
+修复剩余页面的 P1 工具导航栏
 """
 import os
 import re
@@ -39,16 +39,14 @@ NEW_TOOLS = [
 ]
 
 def update_navbar(content):
-    """在 URL Encoder 链接后添加新工具"""
+    """在 Compare 链接后添加新工具"""
     for tool in NEW_TOOLS:
         tool_href = tool['href']
         if f'href="{tool_href}"' not in content:
-            # 在 url-encoder.html 链接后添加
-            pattern = 'href="url-encoder.html"'
+            # 尝试在 compare.html 链接后添加
+            pattern = 'href="compare.html"'
             if pattern in content:
-                # 找到该链接并在其后添加新链接
                 idx = content.find(pattern)
-                # 找到链接的结束位置
                 end_idx = content.find('</a>', idx) + 4
                 
                 new_link = f'''
@@ -58,13 +56,27 @@ def update_navbar(content):
                     </a>'''
                 
                 content = content[:end_idx] + new_link + content[end_idx:]
-                print(f'[OK] Added {tool["name"]}')
+                print(f'[OK] Added {tool["name"]} after Compare')
             else:
-                print(f'[WARN] url-encoder link not found, skipping {tool["name"]}')
+                # 如果也没有 compare，在 PDF Split 后添加
+                pattern = 'href="pdf-split.html"'
+                if pattern in content:
+                    idx = content.find(pattern)
+                    end_idx = content.find('</a>', idx) + 4
+                    
+                    new_link = f'''
+                    <a href="{tool_href}" class="nav-link">
+                        {tool['icon']}
+                        {tool['name']}
+                    </a>'''
+                    
+                    content = content[:end_idx] + new_link + content[end_idx:]
+                    print(f'[OK] Added {tool["name"]} after PDF Split')
+                else:
+                    print(f'[WARN] Could not find anchor for {tool["name"]}')
     return content
 
 def process_file(filepath):
-    """处理单个文件"""
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
@@ -78,26 +90,20 @@ def process_file(filepath):
     return False
 
 def main():
-    print('=' * 50)
-    print('Updating Navigation Bars for P1 Tools')
-    print('=' * 50)
-    
-    # 获取所有 HTML 文件
-    html_files = []
-    for root, dirs, files in os.walk(PAGES_DIR):
-        for file in files:
-            if file.endswith('.html'):
-                html_files.append(os.path.join(root, file))
-    
-    # 处理所有文件
-    updated = 0
-    for filepath in sorted(html_files):
-        if process_file(filepath):
-            updated += 1
-            print(f'[OK] Updated: {os.path.basename(filepath)}')
+    files_to_fix = [
+        r'd:\网站开发-json\pages\about.html',
+        r'd:\网站开发-json\pages\blog.html',
+        r'd:\网站开发-json\pages\news.html'
+    ]
     
     print('=' * 50)
-    print(f'Updated {updated} files')
+    print('Fixing remaining P1 Navigation Bars')
+    print('=' * 50)
+    
+    for fp in files_to_fix:
+        print(f'\nProcessing: {os.path.basename(fp)}')
+        process_file(fp)
+    
     print('=' * 50)
 
 if __name__ == '__main__':
