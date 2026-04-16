@@ -218,4 +218,19 @@
         <priority>0.6</priority>
         <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/news/json-schema-w3c-recommendation.html"/>
 </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/regex-tester.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/base64.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/url-encoder.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
