@@ -16,7 +16,7 @@
   - 核心内容：JSONPath基础回顾、Filter Predicates(?(@.price>100))、Array Slicing分页、Function Expressions聚合、JavaScript实战实现
 - **更新文件**：index.html, pages/blog.html
 - **首页卡片**：新增04-16卡片，删除04-11卡片（保持5篇）
-- **Git推送**：✅ 待执行
+- **Git推送**：✅ 成功
 
 ## 2026-04-15（第7次执行）
 - **英文文章**: AI Tool Calling with JSON: How MCP is Standardizing Agent-Software Communication in 2026
