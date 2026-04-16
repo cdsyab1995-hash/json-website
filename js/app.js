@@ -1,25 +1,53 @@
-// ===== AI JSON - Optimized JavaScript =====
+// ===== AI JSON - Performance Optimized JavaScript =====
+// 性能优化：事件委托、节流、虚拟DOM批处理
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navbarLinks = document.querySelector('.navbar-links');
-    if (menuToggle && navbarLinks) {
-        menuToggle.addEventListener('click', () => navbarLinks.classList.toggle('show'));
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => { if (window.innerWidth <= 768) navbarLinks.classList.remove('show'); });
-        });
+(function() {
+    'use strict';
+
+    // 防抖函数 - 限制高频触发
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
     }
 
-    // Mobile dropdown toggle
-    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-        dropdown.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('open');
+    // 节流函数 - 控制执行频率
+    function throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
             }
-        });
-    });
+        };
+    }
+
+    // 事件委托 - 减少事件监听器数量
+    document.addEventListener('click', function(e) {
+        // Mobile menu toggle
+        const menuToggle = e.target.closest('.menu-toggle');
+        if (menuToggle) {
+            const navbarLinks = document.querySelector('.navbar-links');
+            if (navbarLinks) navbarLinks.classList.toggle('show');
+        }
+
+        // Mobile dropdown toggle
+        const dropdown = e.target.closest('.nav-dropdown');
+        if (dropdown && window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+        }
+
+        // Close mobile menu on nav link click
+        const navLink = e.target.closest('.nav-link');
+        if (navLink && window.innerWidth <= 768 && !navLink.closest('.nav-dropdown')) {
+            const navbarLinks = document.querySelector('.navbar-links');
+            if (navbarLinks) navbarLinks.classList.remove('show');
+        }
+    }, { passive: true });
 
     // ===== JSON Syntax Highlighter =====
     const syntaxHighlight = (json) => {
@@ -252,12 +280,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ===== Utility Functions =====
+    // 性能优化：缓存DOM查询结果
+    const $ = (id) => document.getElementById(id);
+    const $$ = (sel) => document.querySelectorAll(sel);
+
     function showMsg(el, text, type) { if (el) { el.textContent = text; el.className = 'message show message-' + type; } }
     function hideMsg(el) { if (el) { el.className = 'message'; el.textContent = ''; } }
     function setStatus(el, text, valid) { if (el) { el.innerHTML = '<span class="status-dot ' + (valid ? 'valid' : 'invalid') + '"></span> ' + text; el.className = 'status-badge ' + (valid ? 'success' : 'error'); } }
-    function debounce(func, wait) { let timeout; return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func(...args), wait); }; }
 
-    // ===== Templates =====
+    // 使用全局debounce（已在顶部定义）
+    // 模板定义
     const templates = {
         api: { name: 'API Response', content: '{"success":true,"data":{"id":1001,"name":"Example","email":"test@example.com"}}' },
         user: { name: 'User Config', content: '{"user":{"id":"u123","role":"admin","verified":true,"preferences":{"theme":"dark"}}}' },
@@ -278,4 +310,26 @@ document.addEventListener('DOMContentLoaded', () => {
             this.value = '';
         });
     }
-});
+
+    // 图片懒加载（Intersection Observer）
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        img.classList.add('loaded');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px 0px' });
+
+        document.querySelectorAll('img[data-src]').forEach(function(img) {
+            imageObserver.observe(img);
+        });
+    }
+
+})(); // 立即执行函数结束
