@@ -10,6 +10,14 @@
 - **更新文件**：index.html, index-en.html, pages/blog.html, pages/blog-en.html
 - **Git提交**：`每日文章更新: JSON Schema严格验证终结AI数据不确定性 | MCP Protocol JSON深度解析` ✅
 
+## 2026-04-16（第8次执行）
+- **英文文章**: JSONPath Query Mastery: Advanced Extraction Patterns for US Production Systems
+  - 锚点：`#ai-daily-20260416`
+  - 核心内容：JSONPath基础回顾、Filter Predicates(?(@.price>100))、Array Slicing分页、Function Expressions聚合、JavaScript实战实现
+- **更新文件**：index.html, pages/blog.html
+- **首页卡片**：新增04-16卡片，删除04-11卡片（保持5篇）
+- **Git推送**：✅ 待执行
+
 ## 2026-04-15（第7次执行）
 - **英文文章**: AI Tool Calling with JSON: How MCP is Standardizing Agent-Software Communication in 2026
   - 锚点：`#ai-daily-20260415`
@@ -54,6 +62,7 @@
 - Streaming JSON / NDJSON（2026-04-11）
 - JSON数据交换之王（2026-04-10）
 - AI Tool Calling + MCP Standardization（2026-04-15）
+- JSONPath Query Mastery / Advanced Extraction（2026-04-16）
 
 ## 待选话题池（下次可用）
-- 英文：JSON Patch (RFC 6902) for Efficient API Updates, tRPC vs REST JSON trade-offs, JSON Web Tokens (JWT) Best Practices 2026, JSON Schema 2020-12 Advanced Features, JSON in Edge Computing / Cloudflare Workers, JSON Path Query Best Practices, JSON Lines (JSONL) for Big Data Pipelines, JSONata - Advanced JSON Query Language
+- 英文：JSON Patch (RFC 6902) for Efficient API Updates, tRPC vs REST JSON trade-offs, JSON Web Tokens (JWT) Best Practices 2026, JSON Schema 2020-12 Advanced Features, JSON in Edge Computing / Cloudflare Workers, JSON Lines (JSONL) for Big Data Pipelines, JSONata - Advanced JSON Query Language

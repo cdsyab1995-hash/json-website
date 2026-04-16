@@ -254,6 +254,113 @@ body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-seri
             <!-- Latest Articles -->
             <section id="latest-articles">
                 <h2 style="color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--primary);">Latest Articles</h2>
+                <article id="ai-daily-20260416" style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🎯 JSONPath Query Mastery: Advanced Extraction Patterns for US Production Systems</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        <strong>Published:</strong> April 16, 2026 | <strong>Reading time:</strong> 6 minutes | <strong>Target:</strong> US & Canada Developers
+                    </p>
+                    <figure style="margin: 1.5rem 0; text-align: center;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 280'%3E%3Crect fill='%231a1a2e' width='800' height='280'/%3E%3Ctext x='400' y='30' fill='%23fff' font-family='Arial' font-size='18' text-anchor='middle' font-weight='bold'%3EJSONPath Query Patterns Comparison%3C/text%3E%3Crect x='30' y='60' width='230' height='180' fill='%23374151' rx='8'/%3E%3Ctext x='145' y='85' fill='%23fff' font-family='Arial' font-size='12' text-anchor='middle'%3EInput JSON Structure%3C/text%3E%3Ctext x='145' y='110' fill='%2310b981' font-family='monospace' font-size='10' text-anchor='middle'%3E%7B"store":%7B%7D%7D%3C/text%3E%3Crect x='285' y='60' width='230' height='180' fill='%230f172a' rx='8' stroke='%2322c55e' stroke-width='2'/%3E%3Ctext x='400' y='85' fill='%23fff' font-family='Arial' font-size='12' text-anchor='middle'%3EJSONPath Expression%3C/text%3E%3Ctext x='400' y='115' fill='%2322c55e' font-family='monospace' font-size='11' text-anchor='middle'%3E$.store.book[*].author%3C/text%3E%3Ctext x='400' y='140' fill='%239ca3af' font-family='monospace' font-size='10' text-anchor='middle'%3E$.items[?(@.price%3E50)]%3C/text%3E%3Ctext x='400' y='165' fill='%239ca3af' font-family='monospace' font-size='10' text-anchor='middle'%3E$..book[?(@.category==='tech')]%3C/text%3E%3Crect x='540' y='60' width='230' height='180' fill='%2306362d' rx='8'/%3E%3Ctext x='655' y='85' fill='%23fff' font-family='Arial' font-size='12' text-anchor='middle'%3EExtracted Results%3C/text%3E%3Ctext x='655' y='115' fill='%2322c55e' font-family='monospace' font-size='10' text-anchor='middle'%3E["Nightingale","Bloch"]%3C/text%3E%3Ctext x='655' y='140' fill='%2322c55e' font-family='monospace' font-size='10' text-anchor='middle'%3E%5B%7B"id":2,"name":"..."%7D%5D%3C/text%3E%3Ctext x='655' y='165' fill='%2322c55e' font-family='monospace' font-size='10' text-anchor='middle'%3E%5B%7B"title":"..."%7D%5D%3C/text%3E%3Ctext x='400' y='265' fill='%239ca3af' font-family='Arial' font-size='11' text-anchor='middle'%3EJSONPath enables flexible querying of nested JSON structures with filters and recursive search%3C/text%3E%3C/svg%3E"
+                             alt="JSONPath Query Patterns Diagram"
+                             style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);"
+                             loading="lazy">
+                        <figcaption style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">JSONPath enables powerful querying of nested JSON structures with filters and recursive search</figcaption>
+                    </figure>
+                    <div style="line-height: 1.8;">
+                        <p><strong>JSONPath is the XPath of JSON</strong> — but most developers only use the basics like <code>$.name</code> or <code>$[0]</code>. For US developers working with complex API responses, AI tool outputs, and multi-layer data structures, mastering advanced JSONPath patterns is essential. This guide covers production-ready techniques used by teams at Netflix, Airbnb, and Stripe.</p>
+                        
+                        <h4>1. The JSONPath Fundamentals (Quick Recap)</h4>
+                        <p>JSONPath expressions start with <code>$</code> (root) and use dot or bracket notation:</p>
+                        <ul style="padding-left: 1.5rem; margin: 1rem 0;">
+                            <li><code>$.store.book[0].title</code> — Direct path to first book title</li>
+                            <li><code>$.store.book[*].author</code> — All book authors (wildcard)</li>
+                            <li><code>$..price</code> — Recursive descent to all prices</li>
+                        </ul>
+                        
+                        <h4>2. Filter Predicates: The Power Feature</h4>
+                        <p>Filter predicates use <code>?()</code> syntax to select elements based on conditions:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>// Extract expensive items over $100
+$.store.products[?(@.price > 100)]
+
+// Multiple conditions with AND
+$.orders[?(@.status == 'shipped' && @.total > 500)]
+
+// Nested property access in filters
+$.users[?(@.address.city == 'Seattle')]
+
+// Array length comparison
+$.carts[?(@.items.length > 3)]</code></pre>
+                        
+                        <h4>3. Array Slicing for Pagination</h4>
+                        <p>Python-style array slicing works perfectly for paginated data:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>// First 10 items (offset:0, limit:10)
+$.apiResponse.data[:10]
+
+// Skip first 20, take next 10 (page 3)
+$.apiResponse.data[20:30]
+
+// Last 5 items (negative index)
+$.recentActivity[-5:]
+
+// Every other item (step)
+$.notifications[::2]</code></pre>
+                        
+                        <h4>4. Function Expressions in JSONPath</h4>
+                        <p>JSONPath supports built-in functions for aggregation:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>// Count items
+length($.store.book)
+
+ // Sum values
+sum($.transactions[*].amount)
+
+// Get unique values
+distinct($.tags[*])
+
+// Min/Max
+min($.prices[*])
+max($.prices[*])</code></pre>
+                        
+                        <h4>5. Real-World Production Patterns</h4>
+                        <p>Here are battle-tested patterns from US production systems:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>// Extract all error messages from a log structure
+$..errors[*].message
+
+// Flatten nested API response for CSV export
+$.data[*].{name: name, value: metrics.value}
+
+// Deep search with recursive descent
+$..[?(@.id.startsWith('usr_'))]
+
+// Extract unique categories
+distinct($..category)</code></pre>
+                        
+                        <h4>6. JavaScript Implementation</h4>
+                        <p>Using the popular <code>jsonpath-plus</code> library:</p>
+                        <pre style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;"><code>import { JSONPath } from 'jsonpath-plus';
+
+// Complex query with filter and sorting
+const results = JSONPath({
+  path: '$.store.books[?(@.price > 10)].author',
+  json: apiResponse,
+  resultType: 'value'
+});
+
+// Recursive search across entire document
+const allPrices = JSONPath({
+  path: '$..price',
+  json: deepNestedData
+});
+
+// With callback for streaming results
+JSONPath({
+  path: '$.events[*]',
+  json: largeDataset,
+  callback: (payload) => processEvent(payload.value)
+});</code></pre>
+                        
+                        <p><strong>Key Takeaway:</strong> JSONPath transforms complex JSON extraction from imperative loops into declarative queries. For US developers building data pipelines, API integrations, and AI workflows, these patterns reduce code complexity and improve maintainability. Bookmark this guide and refer back when you need to extract nested data from your next API response.</p>
+                    </div>
+                </article>
                 <article id="ai-daily-20260415" style="margin-bottom: 3rem;">
                     <h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 1rem;">🤖 AI Tool Calling with JSON: How MCP is Standardizing Agent-Software Communication in 2026</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
