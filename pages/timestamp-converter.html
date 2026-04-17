@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timestamp Converter - Convert Unix Time & Human-Readable Dates | AI JSON</title>
+    <meta name="description" content="Free online Unix timestamp converter. Convert between Unix timestamp, ISO 8601, human-readable dates, and timezone. Instant timestamp to date and date to timestamp conversion.">
+    <link rel="canonical" href="https://www.aijsons.com/pages/timestamp-converter.html">
+    <meta property="og:url" content="https://www.aijsons.com/pages/timestamp-converter.html">
+    <meta property="og:title" content="Timestamp Converter - Convert Unix Time & Dates">
+    <meta property="og:description" content="Free online Unix timestamp converter. Convert between Unix timestamp, ISO 8601, human-readable dates, and timezone.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Timestamp Converter - Convert Unix Time & Dates">
+    <meta name="twitter:description" content="Free online Unix timestamp converter. Convert between Unix timestamp, ISO 8601, human-readable dates, and timezone.">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="../css/styles.css" as="style">
+    <link rel="stylesheet" href="../css/styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
+    <style>
+        .timestamp-input {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        @media (max-width: 768px) {
+            .timestamp-input { grid-template-columns: 1fr; }
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .input-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+        .input-group input, .input-group select {
+            padding: var(--space-md);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .result-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--bg-secondary);
+        }
+        .result-row:last-child { border-bottom: none; }
+        .result-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .result-value {
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text-primary);
+            font-weight: 500;
+            cursor: pointer;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            transition: background 0.2s;
+        }
+        .result-value:hover {
+            background: var(--bg-secondary);
+        }
+        .result-value.copied {
+            background: var(--success-light);
+            color: var(--success);
+        }
+        .quick-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-lg);
+        }
+        .quick-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        .quick-btn:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+        }
+        .timezone-info {
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            AI JSON
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <!-- Tools Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Tools
+                </a>
+                <div class="nav-dropdown-menu">
+                    <a href="format.html" class="nav-link">Format</a>
+                    <a href="escape.html" class="nav-link">Escape</a>
+                    <a href="extract.html" class="nav-link">Extract</a>
+                    <a href="sort.html" class="nav-link">Sort</a>
+                    <a href="clean.html" class="nav-link">Clean</a>
+                    <a href="xml.html" class="nav-link">XML</a>
+                    <a href="yaml.html" class="nav-link">YAML</a>
+                    <a href="viewer.html" class="nav-link">Viewer</a>
+                    <a href="json2csv.html" class="nav-link">CSV</a>
+                    <a href="compare.html" class="nav-link">Compare</a>
+                    <a href="regex-tester.html" class="nav-link">Regex</a>
+                    <a href="base64.html" class="nav-link">Base64</a>
+                    <a href="url-encoder.html" class="nav-link">URL Encoder</a>
+                    <a href="csv-to-excel.html" class="nav-link">Excel</a>
+                    <a href="excel-remove-duplicates.html" class="nav-link">Remove Duplicates</a>
+                    <a href="merge-csv.html" class="nav-link">Merge CSV</a>
+                    <a href="batch-file-renamer.html" class="nav-link">Batch Rename</a>
+                    <a href="pdf-split.html" class="nav-link">PDF Split</a>
+                    <a href="jwt-decoder.html" class="nav-link">JWT</a>
+                    <a href="hash-generator.html" class="nav-link">Hash</a>
+                    <a href="uuid-generator.html" class="nav-link">UUID</a>
+                    <a href="timestamp-converter.html" class="nav-link active">Timestamp</a>
+                </div>
+            </div>
+            <a href="blog.html" class="nav-link">Tutorial</a>
+            <a href="best-practices.html" class="nav-link">Practices</a>
+            <a href="news.html" class="nav-link">News</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="changelog.html" class="nav-link">Changelog</a>
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            <a href="format.html" class="nav-link navbar-cta">Try Formatter</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">Timestamp Converter</h1>
+            <p class="page-description">Convert between Unix timestamps, ISO 8601 dates, and human-readable formats. Supports all timezones.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="tool-area">
+            <div class="timestamp-input">
+                <div class="input-group">
+                    <label for="timestampInput">Unix Timestamp (seconds)</label>
+                    <input type="text" id="timestampInput" placeholder="Enter Unix timestamp (e.g., 1713368400)">
+                </div>
+                <div class="input-group">
+                    <label for="dateInput">Date & Time</label>
+                    <input type="datetime-local" id="dateInput">
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="setCurrentTimestamp()">Now</button>
+                <button class="quick-btn" onclick="setTodayMidnight()">Today Midnight</button>
+                <button class="quick-btn" onclick="setTomorrowMidnight()">Tomorrow Midnight</button>
+                <button class="quick-btn" onclick="setWeekLater()">+1 Week</button>
+                <button class="quick-btn" onclick="setMonthLater()">+1 Month</button>
+                <button class="quick-btn" onclick="setYearLater()">+1 Year</button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="result-panel" style="margin-top: var(--space-xl);">
+            <h3 class="section-label">Converted Values</h3>
+            <div class="result-row">
+                <span class="result-label">Unix Timestamp (s)</span>
+                <span class="result-value" id="unixSeconds" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Unix Timestamp (ms)</span>
+                <span class="result-value" id="unixMs" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">UTC</span>
+                <span class="result-value" id="utcDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">ISO 8601</span>
+                <span class="result-value" id="isoDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Local Time</span>
+                <span class="result-value" id="localDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Relative Time</span>
+                <span class="result-value" id="relativeDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+
+            <!-- Timezone Info -->
+            <div class="timezone-info">
+                <strong>Current Timezone:</strong> <span id="timezone">-</span><br>
+                <strong>UTC Offset:</strong> <span id="utcOffset">-</span>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="tool-area" style="margin-top: var(--space-xl);">
+            <h3 class="section-label">About Unix Timestamp</h3>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                A Unix timestamp is the number of seconds that have elapsed since January 1, 1970 (UTC), 
+                not counting leap seconds. It's widely used in programming, databases, and APIs for 
+                representing dates and times in a consistent format.
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <a href="about.html">About</a> |
+            <a href="changelog.html">Changelog</a> |
+            <a href="../privacy.html">Privacy Policy</a> |
+            <a href="../terms.html">Terms of Service</a>
+        </p>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        (function() {
+            var toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
+
+            function initTheme() {
+                var saved = localStorage.getItem('theme');
+                if (saved) {
+                    applyTheme(saved);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    applyTheme('light');
+                }
+            }
+
+            toggle.addEventListener('click', function() {
+                var current = document.documentElement.getAttribute('data-theme');
+                var next = current === 'light' ? 'dark' : 'light';
+                applyTheme(next);
+                localStorage.setItem('theme', next);
+            });
+
+            initTheme();
+        })();
+
+        // Timestamp Converter Logic
+        var timestampInput = document.getElementById('timestampInput');
+        var dateInput = document.getElementById('dateInput');
+        var unixSeconds = document.getElementById('unixSeconds');
+        var unixMs = document.getElementById('unixMs');
+        var utcDate = document.getElementById('utcDate');
+        var isoDate = document.getElementById('isoDate');
+        var localDate = document.getElementById('localDate');
+        var relativeDate = document.getElementById('relativeDate');
+        var timezone = document.getElementById('timezone');
+        var utcOffset = document.getElementById('utcOffset');
+
+        // Update timezone info
+        timezone.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        utcOffset.textContent = new Date().getTimezoneOffset() + ' minutes';
+
+        // Format date
+        function formatDate(ts) {
+            if (!ts || isNaN(ts)) return '-';
+            var d = new Date(ts);
+
+            unixSeconds.textContent = Math.floor(ts / 1000);
+            unixMs.textContent = ts;
+            utcDate.textContent = d.toUTCString();
+            isoDate.textContent = d.toISOString();
+            localDate.textContent = d.toLocaleString();
+            relativeDate.textContent = getRelativeTime(d);
+        }
+
+        // Get relative time
+        function getRelativeTime(date) {
+            var now = new Date();
+            var diff = date - now;
+            var absDiff = Math.abs(diff);
+            var past = diff > 0;
+
+            var units = [
+                { name: 'year', ms: 365.25 * 24 * 60 * 60 * 1000 },
+                { name: 'month', ms: 30.44 * 24 * 60 * 60 * 1000 },
+                { name: 'day', ms: 24 * 60 * 60 * 1000 },
+                { name: 'hour', ms: 60 * 60 * 1000 },
+                { name: 'minute', ms: 60 * 1000 },
+                { name: 'second', ms: 1000 }
+            ];
+
+            for (var i = 0; i < units.length; i++) {
+                var unit = units[i];
+                var value = absDiff / unit.ms;
+                if (value >= 1) {
+                    var rounded = Math.floor(value);
+                    return (past ? 'in ' : '') + rounded + ' ' + unit.name + (rounded > 1 ? 's' : '') + (past ? '' : ' ago');
+                }
+            }
+            return 'just now';
+        }
+
+        // Parse timestamp input
+        timestampInput.addEventListener('input', function() {
+            var val = this.value.trim();
+            if (!val) {
+                unixSeconds.textContent = '-';
+                unixMs.textContent = '-';
+                utcDate.textContent = '-';
+                isoDate.textContent = '-';
+                localDate.textContent = '-';
+                relativeDate.textContent = '-';
+                return;
+            }
+
+            // Handle both seconds and milliseconds
+            var ts = parseInt(val, 10);
+            if (isNaN(ts)) return;
+
+            // If the number is less than 10000000000, assume seconds
+            if (ts < 10000000000) {
+                ts = ts * 1000;
+            }
+
+            dateInput.value = formatDateTimeLocal(new Date(ts));
+            formatDate(ts);
+        });
+
+        // Parse date input
+        dateInput.addEventListener('input', function() {
+            if (!this.value) return;
+            var d = new Date(this.value);
+            if (isNaN(d.getTime())) return;
+
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            formatDate(d.getTime());
+        });
+
+        // Format datetime-local input value
+        function formatDateTimeLocal(d) {
+            var pad = function(n) { return n < 10 ? '0' + n : n; };
+            return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+        }
+
+        // Quick actions
+        function setCurrentTimestamp() {
+            var now = new Date();
+            timestampInput.value = Math.floor(now.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(now);
+            formatDate(now.getTime());
+        }
+
+        function setTodayMidnight() {
+            var d = new Date();
+            d.setHours(0, 0, 0, 0);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setTomorrowMidnight() {
+            var d = new Date();
+            d.setHours(0, 0, 0, 0);
+            d.setDate(d.getDate() + 1);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setWeekLater() {
+            var d = new Date();
+            d.setDate(d.getDate() + 7);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setMonthLater() {
+            var d = new Date();
+            d.setMonth(d.getMonth() + 1);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setYearLater() {
+            var d = new Date();
+            d.setFullYear(d.getFullYear() + 1);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(el) {
+            var text = el.textContent;
+            if (text === '-') return;
+            navigator.clipboard.writeText(text).then(function() {
+                el.classList.add('copied');
+                setTimeout(function() { el.classList.remove('copied'); }, 1000);
+            });
+        }
+
+        // Initialize with current time
+        setCurrentTimestamp();
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+            document.querySelector('.navbar-links')?.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
