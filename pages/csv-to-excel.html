@@ -64,6 +64,14 @@
     <meta name="twitter:description" content="Convert CSV to Excel with formatting. Instant XLSX export for US developers. Client-side processing.">
     <meta name="twitter:image" content="https://aijsons.com/og-image.png">
     <meta name="twitter:url" content="https://www.aijsons.com/pages/csv-to-excel.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#22C55E">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JSON Tools">
+    <link rel="apple-touch-icon" href="../images/icon-192.png">
 </head>
 <body>
 <nav class="navbar">
@@ -245,6 +253,14 @@
                         </svg>
                         Timestamp
                     </a>
+                        <a href="css-minifier.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                            CSS Minifier
+                        </a>
+                        <a href="html-encoder.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            HTML Encoder
+                        </a>
                     </div>
                 </div>
                 <a href="blog.html" class="nav-link">
@@ -660,5 +676,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initTheme();
 })();
-<\/script></body>
+<\/script>
+    <!-- PWA Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                console.log('[PWA] SW registered:', reg.scope);
+            }).catch(function(err) {
+                console.warn('[PWA] SW registration failed:', err);
+            });
+        });
+    }
+    </script>
+</body>
 </html>

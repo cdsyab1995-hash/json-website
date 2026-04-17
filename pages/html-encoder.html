@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS & JS Minifier - Free Online Code Compressor | JSON Tools</title>
-    <meta name="description" content="Free online CSS and JavaScript minifier/compressor. Reduce file size by removing whitespace, comments, and optimizing code. No server upload needed - works in your browser.">
-    <meta name="keywords" content="css minifier, js minifier, javascript compressor, code minifier online, minify css, minify js free">
+    <title>HTML Encoder/Decoder - Free Online HTML Entity Converter | JSON Tools</title>
+    <meta name="description" content="Free online HTML encoder and decoder. Convert special characters to HTML entities and decode back. Essential tool for web developers to safely display HTML content.">
+    <meta name="keywords" content="html encoder, html decoder, html entity encoder, html entity decoder, special characters converter online">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
-    <link rel="canonical" href="https://aijsons.com/pages/css-minifier.html">
+    <link rel="canonical" href="https://aijsons.com/pages/html-encoder.html">
     
     <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
     
-    <meta property="og:title" content="CSS & JS Minifier - Free Online Code Compressor">
-    <meta property="og:description" content="Free online CSS and JavaScript minifier/compressor. Reduce file size instantly.">
-    <meta property="og:url" content="https://aijsons.com/pages/css-minifier.html">
+    <meta property="og:title" content="HTML Encoder/Decoder - Free Online Tool">
+    <meta property="og:description" content="Convert special characters to HTML entities and decode them back. Free and instant.">
+    <meta property="og:url" content="https://aijsons.com/pages/html-encoder.html">
     <meta property="og:type" content="website">
     
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "CSS & JS Minifier",
-        "description": "Free online CSS and JavaScript minifier/compressor",
-        "url": "https://aijsons.com/pages/css-minifier.html",
+        "name": "HTML Encoder/Decoder",
+        "description": "Free online HTML encoder and decoder for web developers",
+        "url": "https://aijsons.com/pages/html-encoder.html",
         "applicationCategory": "DeveloperTool",
         "operatingSystem": "Any",
         "offers": {
@@ -164,11 +164,11 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
                             PDF Split
                         </a>
-                        <a href="css-minifier.html" class="nav-link active">
+                        <a href="css-minifier.html" class="nav-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
                             CSS Minifier
                         </a>
-                        <a href="html-encoder.html" class="nav-link">
+                        <a href="html-encoder.html" class="nav-link active">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                             HTML Encoder
                         </a>
@@ -220,14 +220,14 @@
 
     <main class="main-container">
         <section class="hero">
-            <h1>CSS & JS Minifier</h1>
-            <p class="hero-subtitle">Free online code compressor. Reduce CSS and JavaScript file size by removing whitespace, comments, and optimizing code. Works entirely in your browser - no files uploaded.</p>
+            <h1>HTML Encoder/Decoder</h1>
+            <p class="hero-subtitle">Free online tool to encode HTML special characters to entities and decode them back. Essential for safely displaying user-generated content on web pages.</p>
         </section>
 
         <section class="tool-section">
             <div class="tool-tabs">
-                <button class="tool-tab active" onclick="switchTab('css')">CSS Minifier</button>
-                <button class="tool-tab" onclick="switchTab('js')">JS Minifier</button>
+                <button class="tool-tab active" onclick="switchMode('encode')">Encode</button>
+                <button class="tool-tab" onclick="switchMode('decode')">Decode</button>
             </div>
 
             <div class="tool-content">
@@ -243,20 +243,20 @@
                             </button>
                         </div>
                     </div>
-                    <textarea id="inputCode" class="code-input" placeholder="Paste your CSS or JavaScript code here..." spellcheck="false"></textarea>
+                    <textarea id="inputText" class="code-input" placeholder="Enter text to encode/decode..." spellcheck="false"></textarea>
                     <div class="stats-bar">
-                        <span id="inputSize">0 bytes</span>
+                        <span id="inputSize">0 characters</span>
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-primary" onclick="minifyCode()">
+                    <button class="btn-primary" id="actionBtn" onclick="processText()">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                        Minify
+                        <span id="actionText">Encode</span>
                     </button>
-                    <button class="btn-secondary" onclick="beautifyCode()">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
-                        Beautify
+                    <button class="btn-secondary" onclick="swapInputOutput()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                        Swap
                     </button>
                 </div>
 
@@ -267,37 +267,30 @@
                             <button class="btn-icon" onclick="copyOutput()" title="Copy to clipboard">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             </button>
-                            <button class="btn-icon" onclick="downloadOutput()" title="Download file">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                            </button>
                         </div>
                     </div>
-                    <textarea id="outputCode" class="code-output" placeholder="Minified output will appear here..." spellcheck="false" readonly></textarea>
+                    <textarea id="outputText" class="code-output" placeholder="Result will appear here..." spellcheck="false" readonly></textarea>
                     <div class="stats-bar">
-                        <span id="outputSize">0 bytes</span>
-                        <span id="savings" class="savings"></span>
+                        <span id="outputSize">0 characters</span>
+                        <span id="charCount"></span>
                     </div>
                 </div>
             </div>
 
             <div class="options-panel">
-                <h3>Options</h3>
+                <h3>Encoding Options</h3>
                 <div class="options-grid">
                     <label class="checkbox-label">
-                        <input type="checkbox" id="removeComments" checked>
-                        <span>Remove comments</span>
+                        <input type="checkbox" id="encodeAll" checked>
+                        <span>Encode all special characters</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" id="removeWhitespace" checked>
-                        <span>Remove whitespace</span>
+                        <input type="checkbox" id="encodeQuotes" checked>
+                        <span>Encode quotes (" ')</span>
                     </label>
                     <label class="checkbox-label">
-                        <input type="checkbox" id="shortenVars">
-                        <span>Shorten variable names (JS)</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="removeEmptyLines" checked>
-                        <span>Remove empty lines</span>
+                        <input type="checkbox" id="preserveNewlines">
+                        <span>Preserve newlines</span>
                     </label>
                 </div>
             </div>
@@ -306,30 +299,32 @@
         <section class="info-section">
             <div class="info-cards">
                 <div class="info-card">
-                    <h3>Why Minify?</h3>
+                    <h3>Common Entities</h3>
+                    <table class="entity-table">
+                        <tr><td>&lt;</td><td>&amp;lt;</td></tr>
+                        <tr><td>&gt;</td><td>&amp;gt;</td></tr>
+                        <tr><td>&amp;</td><td>&amp;amp;</td></tr>
+                        <tr><td>"</td><td>&amp;quot;</td></tr>
+                        <tr><td>'</td><td>&amp;apos;</td></tr>
+                        <tr><td>&nbsp;</td><td>&amp;nbsp;</td></tr>
+                    </table>
+                </div>
+                <div class="info-card">
+                    <h3>Why Encode HTML?</h3>
                     <ul>
-                        <li>Smaller file sizes = faster load times</li>
-                        <li>Reduced bandwidth costs</li>
-                        <li>Better Core Web Vitals scores</li>
-                        <li>Improved SEO performance</li>
+                        <li>Prevent XSS attacks</li>
+                        <li>Display user input safely</li>
+                        <li>Show code snippets on websites</li>
+                        <li>Escape special characters in forms</li>
                     </ul>
                 </div>
                 <div class="info-card">
-                    <h3>Safe & Secure</h3>
+                    <h3>Use Cases</h3>
                     <ul>
-                        <li>100% client-side processing</li>
-                        <li>No files uploaded to servers</li>
-                        <li>Your code never leaves your browser</li>
-                        <li>Works offline after first load</li>
-                    </ul>
-                </div>
-                <div class="info-card">
-                    <h3>Features</h3>
-                    <ul>
-                        <li>CSS & JavaScript support</li>
-                        <li>Preserves string literals</li>
-                        <li>Configurable options</li>
-                        <li>One-click copy & download</li>
+                        <li>Blog comment systems</li>
+                        <li>Wiki and CMS platforms</li>
+                        <li>Code documentation</li>
+                        <li>Email HTML templates</li>
                     </ul>
                 </div>
             </div>
@@ -342,261 +337,148 @@
 
     <script src="../js/app.js" defer></script>
     <script>
-        let currentTab = 'css';
-        const sampleCSS = `/* Sample CSS */
-.header {
-    /* Main header styles */
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-}
+        let currentMode = 'encode';
+        const sampleText = `<div class="container">
+    <h1>Welcome to JSON Tools!</h1>
+    <p>This is a "sample" text with <strong>HTML</strong> content.</p>
+    <button onclick="alert('Hello & Welcome!')">Click Me</button>
+</div>`;
 
-.header .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333;
-}
-
-.header .nav {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: center;
-}
-
-.header .nav-item {
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #666666;
-    text-decoration: none;
-}
-
-.header .nav-item:hover {
-    color: #22C55E;
-}`;
-
-        const sampleJS = `// Sample JavaScript
-function calculateSum(numbers) {
-    // Calculate the sum of an array
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        sum += numbers[i];
-    }
-    return sum;
-}
-
-// Calculate average
-function calculateAverage(numbers) {
-    const sum = calculateSum(numbers);
-    const average = sum / numbers.length;
-    return average;
-}
-
-// Test the functions
-const numbers = [10, 20, 30, 40, 50];
-console.log("Sum:", calculateSum(numbers));
-console.log("Average:", calculateAverage(numbers));`;
-
-        function switchTab(tab) {
-            currentTab = tab;
+        function switchMode(mode) {
+            currentMode = mode;
             document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
             event.target.classList.add('active');
-            document.getElementById('inputCode').value = '';
-            document.getElementById('outputCode').value = '';
+            document.getElementById('actionText').textContent = mode === 'encode' ? 'Encode' : 'Decode';
             updateStats();
         }
 
         function loadSample() {
-            document.getElementById('inputCode').value = currentTab === 'css' ? sampleCSS : sampleJS;
+            document.getElementById('inputText').value = sampleText;
             updateStats();
         }
 
         function clearInput() {
-            document.getElementById('inputCode').value = '';
-            document.getElementById('outputCode').value = '';
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
             updateStats();
         }
 
         function updateStats() {
-            const input = document.getElementById('inputCode').value;
-            const output = document.getElementById('outputCode').value;
-            document.getElementById('inputSize').textContent = formatBytes(new Blob([input]).size);
-            document.getElementById('outputSize').textContent = formatBytes(new Blob([output]).size);
+            const input = document.getElementById('inputText').value;
+            const output = document.getElementById('outputText').value;
+            document.getElementById('inputSize').textContent = input.length + ' characters';
+            document.getElementById('outputSize').textContent = output.length + ' characters';
             
-            if (input.length > 0 && output.length > 0) {
-                const savings = ((1 - output.length / input.length) * 100).toFixed(1);
-                document.getElementById('savings').textContent = `Saved ${savings}%`;
+            if (output.length > 0 && input.length > 0) {
+                const count = (output.match(/&[#\w]+;/g) || []).length;
+                document.getElementById('charCount').textContent = `${count} entities`;
             } else {
-                document.getElementById('savings').textContent = '';
+                document.getElementById('charCount').textContent = '';
             }
         }
 
-        function formatBytes(bytes) {
-            if (bytes === 0) return '0 bytes';
-            const k = 1024;
-            const sizes = ['bytes', 'KB', 'MB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-
-        function minifyCode() {
-            const input = document.getElementById('inputCode').value;
+        function processText() {
+            const input = document.getElementById('inputText').value;
             if (!input.trim()) return;
 
             const options = {
-                removeComments: document.getElementById('removeComments').checked,
-                removeWhitespace: document.getElementById('removeWhitespace').checked,
-                removeEmptyLines: document.getElementById('removeEmptyLines').checked
+                encodeAll: document.getElementById('encodeAll').checked,
+                encodeQuotes: document.getElementById('encodeQuotes').checked,
+                preserveNewlines: document.getElementById('preserveNewlines').checked
             };
 
             let output;
-            if (currentTab === 'css') {
-                output = minifyCSS(input, options);
+            if (currentMode === 'encode') {
+                output = encodeHTML(input, options);
             } else {
-                output = minifyJS(input, options);
+                output = decodeHTML(input, options);
             }
 
-            document.getElementById('outputCode').value = output;
+            document.getElementById('outputText').value = output;
             updateStats();
         }
 
-        function beautifyCode() {
-            const input = document.getElementById('inputCode').value;
-            if (!input.trim()) return;
+        function encodeHTML(text, options) {
+            const entities = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&apos;'
+            };
 
-            let output;
-            if (currentTab === 'css') {
-                output = beautifyCSS(input);
-            } else {
-                output = beautifyJS(input);
+            let result = text;
+
+            if (options.encodeAll) {
+                result = result.replace(/&/g, entities['&']);
             }
 
-            document.getElementById('outputCode').value = output;
-            updateStats();
-        }
+            if (!options.encodeQuotes) {
+                delete entities['"'];
+                delete entities["'"];
+            }
 
-        function minifyCSS(code, options) {
-            let result = code;
-            
-            if (options.removeComments) {
-                result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+            for (const [char, entity] of Object.entries(entities)) {
+                if (char !== '&' || options.encodeAll) {
+                    if (char !== '&') {
+                        result = result.split(char).join(entity);
+                    }
+                }
             }
-            
-            if (options.removeWhitespace) {
-                result = result.replace(/\s+/g, ' ');
-                result = result.replace(/\s*({|}|:|;|,|>|~|+)\s*/g, '$1');
-            }
-            
-            if (options.removeEmptyLines) {
-                result = result.replace(/^\s*[\r\n]/gm, '');
-            }
-            
-            result = result.replace(/\s*({\s*})/g, '{}');
-            result = result.replace(/;}/g, '}');
-            
-            return result.trim();
-        }
 
-        function beautifyCSS(code) {
-            let result = code;
-            result = result.replace(/\s*({|}|:|;|,|>|~|\+)\s*/g, '\n$1 ');
-            result = result.replace(/\{([^}]+)\}/g, '{\n    $1\n}');
-            result = result.replace(/;/g, ';\n    ');
-            result = result.replace(/\n\s*\n/g, '\n');
-            result = result.trim();
+            if (!options.preserveNewlines) {
+                result = result.replace(/\n/g, '&#10;');
+                result = result.replace(/\r/g, '&#13;');
+            }
+
             return result;
         }
 
-        function minifyJS(code, options) {
-            let result = code;
-            
-            if (options.removeComments) {
-                result = result.replace(/\/\*[\s\S]*?\*\//g, '');
-                result = result.replace(/\/\/.*/g, '');
+        function decodeHTML(text, options) {
+            const entities = {
+                '&amp;': '&',
+                '&lt;': '<',
+                '&gt;': '>',
+                '&quot;': '"',
+                '&apos;': "'",
+                '&#10;': '\n',
+                '&#13;': '\r',
+                '&nbsp;': ' '
+            };
+
+            let result = text;
+
+            for (const [entity, char] of Object.entries(entities)) {
+                result = result.split(entity).join(char);
             }
-            
-            if (options.removeWhitespace) {
-                result = result.replace(/\s+/g, ' ');
-                result = result.replace(/\s*({|}|:|,|;|=|\+|\-|\*|\/|%|<|>|&&|\|\|)\s*/g, '$1');
-            }
-            
-            if (options.removeEmptyLines) {
-                result = result.replace(/^\s*[\r\n]/gm, '');
-            }
-            
-            result = result.replace(/\s*({\s*})/g, '{}');
-            result = result.replace(/;}/g, '}');
-            
-            return result.trim();
+
+            result = result.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec));
+            result = result.replace(/&#x([0-9a-fA-F]+);/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)));
+
+            return result;
         }
 
-        function beautifyJS(code) {
-            let result = code;
-            let indent = 0;
-            let output = '';
-            let inString = false;
-            let stringChar = '';
+        function swapInputOutput() {
+            const input = document.getElementById('inputText').value;
+            const output = document.getElementById('outputText').value;
             
-            for (let i = 0; i < result.length; i++) {
-                const char = result[i];
-                const prev = result[i - 1] || '';
-                
-                if ((char === '"' || char === "'" || char === '`') && prev !== '\\') {
-                    if (!inString) {
-                        inString = true;
-                        stringChar = char;
-                    } else if (char === stringChar) {
-                        inString = false;
-                    }
-                }
-                
-                if (!inString) {
-                    if (char === '{') {
-                        output += ' {\n' + '    '.repeat(++indent);
-                        continue;
-                    }
-                    if (char === '}') {
-                        output = output.trimEnd() + '\n' + '    '.repeat(--indent) + '}';
-                        continue;
-                    }
-                    if (char === ';') {
-                        output += ';\n' + '    '.repeat(indent);
-                        continue;
-                    }
-                    if (char === ',') {
-                        output += ',\n' + '    '.repeat(indent);
-                        continue;
-                    }
-                }
-                
-                output += char;
+            document.getElementById('inputText').value = output;
+            document.getElementById('outputText').value = '';
+            
+            if (output) {
+                switchMode(currentMode === 'encode' ? 'decode' : 'encode');
             }
             
-            return output.trim();
+            updateStats();
         }
 
         function copyOutput() {
-            const output = document.getElementById('outputCode').value;
+            const output = document.getElementById('outputText').value;
             if (!output) return;
             
             navigator.clipboard.writeText(output).then(() => {
                 showToast('Copied to clipboard!');
             });
-        }
-
-        function downloadOutput() {
-            const output = document.getElementById('outputCode').value;
-            if (!output) return;
-            
-            const ext = currentTab === 'css' ? 'css' : 'js';
-            const blob = new Blob([output], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `minified.${ext}`;
-            a.click();
-            URL.revokeObjectURL(url);
         }
 
         function showToast(message) {
@@ -607,7 +489,7 @@ console.log("Average:", calculateAverage(numbers));`;
             setTimeout(() => toast.remove(), 2000);
         }
 
-        document.getElementById('inputCode').addEventListener('input', updateStats);
+        document.getElementById('inputText').addEventListener('input', updateStats);
 
         const style = document.createElement('style');
         style.textContent = `
@@ -626,7 +508,7 @@ console.log("Average:", calculateAverage(numbers));`;
             .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
             .checkbox-label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary); }
             .checkbox-label input { accent-color: var(--primary); width: 18px; height: 18px; }
-            .savings { color: var(--success); font-weight: 600; margin-left: auto; }
+            .char-count { color: var(--success); font-weight: 600; }
             .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); animation: fadeIn 0.2s; z-index: 1000; }
             @keyframes fadeIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
             .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
@@ -635,6 +517,10 @@ console.log("Average:", calculateAverage(numbers));`;
             .info-card ul { list-style: none; padding: 0; margin: 0; }
             .info-card li { color: var(--text-secondary); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
             .info-card li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); }
+            .entity-table { width: 100%; border-collapse: collapse; }
+            .entity-table td { padding: 0.5rem; text-align: left; color: var(--text-secondary); border-bottom: 1px solid var(--bg-secondary); }
+            .entity-table td:first-child { font-family: monospace; color: var(--json-string); }
+            .entity-table td:last-child { font-family: monospace; color: var(--json-number); }
         `;
         document.head.appendChild(style);
     </script>
