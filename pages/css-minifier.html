@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS & JS Minifier - Free Online Code Compressor | JSON Tools</title>
+    <meta name="description" content="Free online CSS and JavaScript minifier/compressor. Reduce file size by removing whitespace, comments, and optimizing code. No server upload needed - works in your browser.">
+    <meta name="keywords" content="css minifier, js minifier, javascript compressor, code minifier online, minify css, minify js free">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
+    <link rel="canonical" href="https://aijsons.com/pages/css-minifier.html">
+    
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    
+    <meta property="og:title" content="CSS & JS Minifier - Free Online Code Compressor">
+    <meta property="og:description" content="Free online CSS and JavaScript minifier/compressor. Reduce file size instantly.">
+    <meta property="og:url" content="https://aijsons.com/pages/css-minifier.html">
+    <meta property="og:type" content="website">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CSS & JS Minifier",
+        "description": "Free online CSS and JavaScript minifier/compressor",
+        "url": "https://aijsons.com/pages/css-minifier.html",
+        "applicationCategory": "DeveloperTool",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="6" fill="#22C55E"/>
+                    <path d="M8 16L12 12L16 16L20 12L24 16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 20L12 16L16 20L20 16L24 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>JSON Tools</span>
+            </a>
+            
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="nav-links">
+                <div class="nav-item">
+                    <button class="nav-link" onclick="toggleDropdown('tools-dropdown')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        Tools
+                        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown" id="tools-dropdown">
+                        <a href="format.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                            JSON Formatter
+                        </a>
+                        <a href="escape.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            JSON Escape
+                        </a>
+                        <a href="extract.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            JSON Extract
+                        </a>
+                        <a href="sort.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="14" y2="15"></line><line x1="4" y1="21" x2="10" y2="21"></line></svg>
+                            JSON Sort
+                        </a>
+                        <a href="clean.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                            JSON Clean
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="xml.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            JSON ↔ XML
+                        </a>
+                        <a href="yaml.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l8 8 8-8"></path><path d="M4 12h16"></path><path d="M4 20h16"></path></svg>
+                            JSON ↔ YAML
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="viewer.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            JSON Viewer
+                        </a>
+                        <a href="json2csv.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>
+                            JSON → CSV
+                        </a>
+                        <a href="compare.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"></path><path d="M8 21H3v-5"></path><path d="M21 3l-9 9"></path><path d="M3 21l9-9"></path></svg>
+                            JSON Compare
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="regex-tester.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            Regex Tester
+                        </a>
+                        <a href="base64.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            Base64 Encode
+                        </a>
+                        <a href="url-encoder.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            URL Encoder
+                        </a>
+                        <a href="jwt-decoder.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            JWT Decoder
+                        </a>
+                        <a href="hash-generator.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+                            Hash Generator
+                        </a>
+                        <a href="uuid-generator.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            UUID Generator
+                        </a>
+                        <a href="timestamp-converter.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Timestamp
+                        </a>
+                        <div class="nav-dropdown-divider"></div>
+                        <a href="merge-csv.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg>
+                            Merge CSV
+                        </a>
+                        <a href="batch-file-renamer.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            Batch Rename
+                        </a>
+                        <a href="pdf-split.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                            PDF Split
+                        </a>
+                        <a href="css-minifier.html" class="nav-link active">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                            CSS Minifier
+                        </a>
+                        <a href="html-encoder.html" class="nav-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            HTML Encoder
+                        </a>
+                    </div>
+                </div>
+                <a href="blog.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Tutorial
+                </a>
+                <a href="best-practices.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Best Practices
+                </a>
+                <a href="news.html" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V9a2 2 0 0 0-2-2h-1"></path>
+                        <polyline points="17 9 19 9 19 11"></polyline>
+                    </svg>
+                    News
+                </a>
+            </div>
+            
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark mode">
+                <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            
+            <a href="format.html" class="navbar-cta">Try Formatter</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero">
+            <h1>CSS & JS Minifier</h1>
+            <p class="hero-subtitle">Free online code compressor. Reduce CSS and JavaScript file size by removing whitespace, comments, and optimizing code. Works entirely in your browser - no files uploaded.</p>
+        </section>
+
+        <section class="tool-section">
+            <div class="tool-tabs">
+                <button class="tool-tab active" onclick="switchTab('css')">CSS Minifier</button>
+                <button class="tool-tab" onclick="switchTab('js')">JS Minifier</button>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-panel">
+                    <div class="panel-header">
+                        <h3>Input</h3>
+                        <div class="panel-actions">
+                            <button class="btn-icon" onclick="loadSample()" title="Load sample">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            </button>
+                            <button class="btn-icon" onclick="clearInput()" title="Clear">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="inputCode" class="code-input" placeholder="Paste your CSS or JavaScript code here..." spellcheck="false"></textarea>
+                    <div class="stats-bar">
+                        <span id="inputSize">0 bytes</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="minifyCode()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Minify
+                    </button>
+                    <button class="btn-secondary" onclick="beautifyCode()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+                        Beautify
+                    </button>
+                </div>
+
+                <div class="output-panel">
+                    <div class="panel-header">
+                        <h3>Output</h3>
+                        <div class="panel-actions">
+                            <button class="btn-icon" onclick="copyOutput()" title="Copy to clipboard">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                            <button class="btn-icon" onclick="downloadOutput()" title="Download file">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="outputCode" class="code-output" placeholder="Minified output will appear here..." spellcheck="false" readonly></textarea>
+                    <div class="stats-bar">
+                        <span id="outputSize">0 bytes</span>
+                        <span id="savings" class="savings"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="options-panel">
+                <h3>Options</h3>
+                <div class="options-grid">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeComments" checked>
+                        <span>Remove comments</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeWhitespace" checked>
+                        <span>Remove whitespace</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="shortenVars">
+                        <span>Shorten variable names (JS)</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="removeEmptyLines" checked>
+                        <span>Remove empty lines</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Why Minify?</h3>
+                    <ul>
+                        <li>Smaller file sizes = faster load times</li>
+                        <li>Reduced bandwidth costs</li>
+                        <li>Better Core Web Vitals scores</li>
+                        <li>Improved SEO performance</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Safe & Secure</h3>
+                    <ul>
+                        <li>100% client-side processing</li>
+                        <li>No files uploaded to servers</li>
+                        <li>Your code never leaves your browser</li>
+                        <li>Works offline after first load</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>CSS & JavaScript support</li>
+                        <li>Preserves string literals</li>
+                        <li>Configurable options</li>
+                        <li>One-click copy & download</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 JSON Tools. All rights reserved. | <a href="../privacy.html">Privacy</a> | <a href="../terms.html">Terms</a></p>
+    </footer>
+
+    <script src="../js/app.js" defer></script>
+    <script>
+        let currentTab = 'css';
+        const sampleCSS = `/* Sample CSS */
+.header {
+    /* Main header styles */
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.header .nav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.header .nav-item {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #666666;
+    text-decoration: none;
+}
+
+.header .nav-item:hover {
+    color: #22C55E;
+}`;
+
+        const sampleJS = `// Sample JavaScript
+function calculateSum(numbers) {
+    // Calculate the sum of an array
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+    return sum;
+}
+
+// Calculate average
+function calculateAverage(numbers) {
+    const sum = calculateSum(numbers);
+    const average = sum / numbers.length;
+    return average;
+}
+
+// Test the functions
+const numbers = [10, 20, 30, 40, 50];
+console.log("Sum:", calculateSum(numbers));
+console.log("Average:", calculateAverage(numbers));`;
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('inputCode').value = '';
+            document.getElementById('outputCode').value = '';
+            updateStats();
+        }
+
+        function loadSample() {
+            document.getElementById('inputCode').value = currentTab === 'css' ? sampleCSS : sampleJS;
+            updateStats();
+        }
+
+        function clearInput() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('outputCode').value = '';
+            updateStats();
+        }
+
+        function updateStats() {
+            const input = document.getElementById('inputCode').value;
+            const output = document.getElementById('outputCode').value;
+            document.getElementById('inputSize').textContent = formatBytes(new Blob([input]).size);
+            document.getElementById('outputSize').textContent = formatBytes(new Blob([output]).size);
+            
+            if (input.length > 0 && output.length > 0) {
+                const savings = ((1 - output.length / input.length) * 100).toFixed(1);
+                document.getElementById('savings').textContent = `Saved ${savings}%`;
+            } else {
+                document.getElementById('savings').textContent = '';
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 bytes';
+            const k = 1024;
+            const sizes = ['bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function minifyCode() {
+            const input = document.getElementById('inputCode').value;
+            if (!input.trim()) return;
+
+            const options = {
+                removeComments: document.getElementById('removeComments').checked,
+                removeWhitespace: document.getElementById('removeWhitespace').checked,
+                removeEmptyLines: document.getElementById('removeEmptyLines').checked
+            };
+
+            let output;
+            if (currentTab === 'css') {
+                output = minifyCSS(input, options);
+            } else {
+                output = minifyJS(input, options);
+            }
+
+            document.getElementById('outputCode').value = output;
+            updateStats();
+        }
+
+        function beautifyCode() {
+            const input = document.getElementById('inputCode').value;
+            if (!input.trim()) return;
+
+            let output;
+            if (currentTab === 'css') {
+                output = beautifyCSS(input);
+            } else {
+                output = beautifyJS(input);
+            }
+
+            document.getElementById('outputCode').value = output;
+            updateStats();
+        }
+
+        function minifyCSS(code, options) {
+            let result = code;
+            
+            if (options.removeComments) {
+                result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+            }
+            
+            if (options.removeWhitespace) {
+                result = result.replace(/\s+/g, ' ');
+                result = result.replace(/\s*({|}|:|;|,|>|~|+)\s*/g, '$1');
+            }
+            
+            if (options.removeEmptyLines) {
+                result = result.replace(/^\s*[\r\n]/gm, '');
+            }
+            
+            result = result.replace(/\s*({\s*})/g, '{}');
+            result = result.replace(/;}/g, '}');
+            
+            return result.trim();
+        }
+
+        function beautifyCSS(code) {
+            let result = code;
+            result = result.replace(/\s*({|}|:|;|,|>|~|\+)\s*/g, '\n$1 ');
+            result = result.replace(/\{([^}]+)\}/g, '{\n    $1\n}');
+            result = result.replace(/;/g, ';\n    ');
+            result = result.replace(/\n\s*\n/g, '\n');
+            result = result.trim();
+            return result;
+        }
+
+        function minifyJS(code, options) {
+            let result = code;
+            
+            if (options.removeComments) {
+                result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+                result = result.replace(/\/\/.*/g, '');
+            }
+            
+            if (options.removeWhitespace) {
+                result = result.replace(/\s+/g, ' ');
+                result = result.replace(/\s*({|}|:|,|;|=|\+|\-|\*|\/|%|<|>|&&|\|\|)\s*/g, '$1');
+            }
+            
+            if (options.removeEmptyLines) {
+                result = result.replace(/^\s*[\r\n]/gm, '');
+            }
+            
+            result = result.replace(/\s*({\s*})/g, '{}');
+            result = result.replace(/;}/g, '}');
+            
+            return result.trim();
+        }
+
+        function beautifyJS(code) {
+            let result = code;
+            let indent = 0;
+            let output = '';
+            let inString = false;
+            let stringChar = '';
+            
+            for (let i = 0; i < result.length; i++) {
+                const char = result[i];
+                const prev = result[i - 1] || '';
+                
+                if ((char === '"' || char === "'" || char === '`') && prev !== '\\') {
+                    if (!inString) {
+                        inString = true;
+                        stringChar = char;
+                    } else if (char === stringChar) {
+                        inString = false;
+                    }
+                }
+                
+                if (!inString) {
+                    if (char === '{') {
+                        output += ' {\n' + '    '.repeat(++indent);
+                        continue;
+                    }
+                    if (char === '}') {
+                        output = output.trimEnd() + '\n' + '    '.repeat(--indent) + '}';
+                        continue;
+                    }
+                    if (char === ';') {
+                        output += ';\n' + '    '.repeat(indent);
+                        continue;
+                    }
+                    if (char === ',') {
+                        output += ',\n' + '    '.repeat(indent);
+                        continue;
+                    }
+                }
+                
+                output += char;
+            }
+            
+            return output.trim();
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputCode').value;
+            if (!output) return;
+            
+            navigator.clipboard.writeText(output).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+
+        function downloadOutput() {
+            const output = document.getElementById('outputCode').value;
+            if (!output) return;
+            
+            const ext = currentTab === 'css' ? 'css' : 'js';
+            const blob = new Blob([output], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `minified.${ext}`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        document.getElementById('inputCode').addEventListener('input', updateStats);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .tool-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+            .tool-tab { padding: 0.75rem 1.5rem; background: var(--bg-secondary); border: 1px solid var(--bg-tertiary); border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer; font-weight: 500; transition: all 0.2s; }
+            .tool-tab:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+            .tool-tab.active { background: var(--primary); border-color: var(--primary); color: white; }
+            .action-buttons { display: flex; gap: 0.5rem; justify-content: center; margin: 1rem 0; }
+            .btn-primary, .btn-secondary { padding: 0.75rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+            .btn-primary { background: var(--primary); color: white; border: none; }
+            .btn-primary:hover { background: var(--primary-hover); }
+            .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--bg-tertiary); }
+            .btn-secondary:hover { background: var(--bg-secondary); border-color: var(--primary); }
+            .options-panel { margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--bg-secondary); }
+            .options-panel h3 { margin-bottom: 1rem; font-size: 1rem; color: var(--text-primary); }
+            .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
+            .checkbox-label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary); }
+            .checkbox-label input { accent-color: var(--primary); width: 18px; height: 18px; }
+            .savings { color: var(--success); font-weight: 600; margin-left: auto; }
+            .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); animation: fadeIn 0.2s; z-index: 1000; }
+            @keyframes fadeIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+            .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+            .info-card { background: var(--bg-card); border: 1px solid var(--bg-secondary); border-radius: var(--radius-lg); padding: 1.5rem; }
+            .info-card h3 { color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem; }
+            .info-card ul { list-style: none; padding: 0; margin: 0; }
+            .info-card li { color: var(--text-secondary); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+            .info-card li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
