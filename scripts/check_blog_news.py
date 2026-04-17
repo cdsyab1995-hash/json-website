@@ -1,38 +1,38 @@
-# -*- coding: utf-8 -*-
-import os
 import re
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
-# 检查 pages 目录
-pages_dir = r'd:\网站开发-json\pages'
-files = sorted([f for f in os.listdir(pages_dir) if f.endswith('.html')])
-print('=== pages/ 目录 ===')
-for f in files:
-    print(f)
+# Check blog.html
+with open(r'd:\网站开发-json\pages\blog.html', 'r', encoding='utf-8') as f:
+    blog = f.read()
 
-# 检查 blog.html 和 news.html 是否存在
-print('\n=== 文件存在性检查 ===')
-for f in ['blog.html', 'news.html']:
-    path = os.path.join(pages_dir, f)
-    print(f'{f}: {"存在" if os.path.exists(path) else "不存在"}')
+articles = re.findall(r'<article id="([^"]+)"', blog)
+dates = re.findall(r'<strong>Published:</strong>\s*([A-Za-z0-9 ,-]+)', blog)
+titles = re.findall(r'<h3[^>]*>([^<]+)</h3>', blog)
 
-# 检查 index.html 中的 blog 和 news 链接
+print('=== BLOG.HTML Articles ===')
+print(f'Found {len(articles)} articles, {len(dates)} dates, {len(titles)} titles')
+for i, (a, d, t) in enumerate(zip(articles, dates, titles)):
+    print(f'  {i+1}. [{a}] | {d} | {t[:70]}')
 print()
-print('=== index.html 中的 Blog/News 链接 ===')
-with open(r'd:\网站开发-json\index.html', 'r', encoding='utf-8') as f:
-    content = f.read()
 
-links = re.findall(r'href="([^"]+)"[^>]*>([^<]+)', content)
-for href, text in links:
-    if 'blog' in href.lower() or 'news' in href.lower() or 'Blog' in text or 'News' in text:
-        print(f'{text} -> {href}')
+# Check news.html
+with open(r'd:\网站开发-json\pages\news.html', 'r', encoding='utf-8') as f:
+    news = f.read()
 
-# 检查 sitemap.xml
+news_articles = re.findall(r'<article id="([^"]+)"', news)
+news_dates = re.findall(r'<strong>Published:</strong>\s*([A-Za-z0-9 ,-]+)', news)
+news_titles = re.findall(r'<h3[^>]*>([^<]+)</h3>', news)
+
+print('=== NEWS.HTML Articles ===')
+print(f'Found {len(news_articles)} articles, {len(news_dates)} dates, {len(news_titles)} titles')
+for i, (a, d, t) in enumerate(zip(news_articles, news_dates, news_titles)):
+    print(f'  {i+1}. [{a}] | {d} | {t[:70]}')
+
+# Check if 2026-04-17 content exists
 print()
-print('=== sitemap.xml 中的 Blog/News ===')
-with open(r'd:\网站开发-json\sitemap.xml', 'r', encoding='utf-8') as f:
-    sitemap = f.read()
-    
-blog_count = sitemap.count('blog.html')
-news_count = sitemap.count('news.html')
-print(f'blog.html: {blog_count} 次')
-print(f'news.html: {news_count} 次')
+print('=== Today 2026-04-17 content ===')
+has_blog_today = '2026-04-17' in blog or 'April 17, 2026' in blog
+has_news_today = '2026-04-17' in news or 'April 17, 2026' in news
+print(f'Blog has 2026-04-17 content: {has_blog_today}')
+print(f'News has 2026-04-17 content: {has_news_today}')
