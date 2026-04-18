@@ -1,312 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-    <url>
-        <loc>https://www.aijsons.com/</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/format.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/format.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/escape.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/escape.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/extract.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/extract.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/sort.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/sort.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/clean.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/clean.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/xml.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/xml.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/yaml.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/yaml.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/blog.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/news.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/news.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/viewer.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/viewer.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/json2csv.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/json2csv.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/csv-to-excel.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/csv-to-excel.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/excel-remove-duplicates.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/excel-remove-duplicates.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/merge-csv.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/merge-csv.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/batch-file-renamer.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/batch-file-renamer.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/pdf-split.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/pdf-split.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/compare.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/compare.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/privacy.html</loc>
-        <lastmod>2026-04-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/privacy.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/terms.html</loc>
-        <lastmod>2026-04-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/terms.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/cookie.html</loc>
-        <lastmod>2026-04-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/cookie.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/best-practices.html</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/best-practices.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/about.html</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/about.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/changelog.html</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/changelog.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/blog/"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/ai-tool-calling-mcp-2026.html</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/blog/ai-tool-calling-mcp-2026.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/json-api-error-handling-2026.html</loc>
-        <lastmod>2026-04-14</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/blog/json-api-error-handling-2026.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/json-schema-complete-guide-2026.html</loc>
-        <lastmod>2026-04-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/blog/json-schema-complete-guide-2026.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/news/</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.7</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/news/"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/news/api-transformations-2026.html</loc>
-        <lastmod>2026-04-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/news/api-transformations-2026.html"/>
-</url>
-    <url>
-        <loc>https://www.aijsons.com/pages/news/json-schema-w3c-recommendation.html</loc>
-        <lastmod>2026-04-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-        <xhtml:link rel="alternate" hreflang="en-us" href="https://www.aijsons.com/pages/news/json-schema-w3c-recommendation.html"/>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.aijsons.com/pages/regex-tester.html</loc>
-    <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.aijsons.com/pages/about.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/pages/base64.html</loc>
-    <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.aijsons.com/pages/url-encoder.html</loc>
-    <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/jwt-decoder.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/hash-generator.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/uuid-generator.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/timestamp-converter.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/css-minifier.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/html-encoder.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/json-parsing-performance-comparison.html</loc>
-        <lastmod>2026-04-17</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/zod-json-schema-validation-ai.html</loc>
-        <lastmod>2026-04-16</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/pages/blog/mcp-json-standardizing-ai-tools.html</loc>
-        <lastmod>2026-04-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-  <url>
-    <loc>https://www.aijsons.com/pages/blog/index.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/pages/blog/json-patch-vs-merge-patch.html</loc>
+    <loc>https://www.aijsons.com/pages/batch-file-renamer.html</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/best-practices.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/ai-tool-calling-mcp-2026.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/pages/blog/curl-json-api-guide.html</loc>
     <lastmod>2026-04-18</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/json-api-error-handling-2026.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/json-parsing-performance-comparison.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/json-patch-vs-merge-patch.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/json-schema-complete-guide-2026.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/mcp-json-standardizing-ai-tools.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/blog/zod-json-schema-validation-ai.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/changelog.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/clean.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/compare.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/css-minifier.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/csv-to-excel.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/escape.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/excel-remove-duplicates.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/extract.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/format.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/hash-generator.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/html-encoder.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/json2csv.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/jwt-decoder.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/merge-csv.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/api-transformations-2026.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/index.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/json-schema-w3c-recommendation.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/pdf-split.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/regex-tester.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/sort.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/timestamp-converter.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/url-encoder.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/uuid-generator.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/viewer.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/xml.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/yaml.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
