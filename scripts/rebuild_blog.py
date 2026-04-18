@@ -1,4 +1,24 @@
-<!DOCTYPE html>
+# -*- coding: utf-8 -*-
+import re, os
+
+BLOG_FILE = r'd:\网站开发-json\pages\blog.html'
+
+with open(BLOG_FILE, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# 1. Extract the featured article (full content)
+start = content.find('<article id="ai-daily-20260418"')
+end = content.find('</article>', start) + len('</article>')
+featured_article = content[start:end]
+
+# 2. Extract 3 preview article cards
+remaining = content[end:]
+article_cards = re.findall(r'<article class="article-card">[\s\S]*?</article>', remaining)
+print(f'Featured article: {len(featured_article)} chars')
+print(f'Preview cards: {len(article_cards)} cards')
+
+# ==================== BUILD NEW BLOG.HTML ====================
+new_blog = '''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -140,139 +160,19 @@
         <!-- Featured Article -->
         <section>
             <h2 class="section-title">Latest Article</h2>
-            <article id="ai-daily-20260418" class="article-card">
-                <div class="article-category">API Design</div>
-                <h3>🔧 JSON Patch (RFC 6902): Stop Sending Full Objects — Use Partial Updates for Your APIs</h3>
-                <p class="article-excerpt">Sending entire JSON payloads for small field updates wastes bandwidth and creates race conditions. JSON Patch (RFC 6902) provides a standardized way to describe exactly what changed.</p>
-                <div class="article-meta">
-                    <span>2026-04-18</span> | 
-                    <span>6-8 minutes</span>
-                </div>
-                <div class="article-content" style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem;">
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">The Problem: PUT vs PATCH</h4>
-                    <p>Most REST APIs use <code>PUT /users/123</code> with the entire user object when updating a single field. Want to change a display name? You send everything — email, address, preferences, phone number — back to the server. This approach has three major problems:</p>
-                    <ul style="margin: 0.5rem 0 1rem 1.5rem; padding: 0;">
-                        <li><strong>Bandwidth waste:</strong> Sending 50 fields to update 1 field is inefficient, especially on mobile networks</li>
-                        <li><strong>Race conditions:</strong> Two concurrent updates overwrite each other's changes — a classic lost-update problem</li>
-                        <li><strong>Over-exposure:</strong> Clients must know and send fields they may not even have permission to modify</li>
-                    </ul>
-                    <p>Enter <code>PATCH</code> — but what format should the patch body use? That's where <strong>JSON Patch (RFC 6902)</strong> comes in.</p>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">How JSON Patch Works</h4>
-                    <p>A JSON Patch document is a JSON array of operation objects. Each object has an <code>"op"</code> field (the operation), a <code>"path"</code> (JSON Pointer targeting the location), and optionally a <code>"value"</code>. Here's a real-world example:</p>
-                    <pre style="background: var(--bg-dark); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 0.75rem 0 1rem; font-size: 0.875rem; color: #a5d6ff;"><code>[
-  { "op": "replace", "path": "/displayName", "value": "Jane Doe" },
-  { "op": "add", "path": "/preferences/notifications", "value": true },
-  { "op": "remove", "path": "/legacyField" }
-]</code></pre>
-                    <p>This patch tells the server: change the display name, enable notifications, and remove a deprecated field — all in one atomic request. The server applies operations sequentially, and if any operation fails, the entire patch is rolled back.</p>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">The Six Operations</h4>
-                    <ul style="margin: 0.5rem 0 1rem 1.5rem; padding: 0;">
-                        <li><strong><code>add</code></strong> — Insert a value at the target path. If the target is an array, inserts before the specified index</li>
-                        <li><strong><code>remove</code></strong> — Delete the value at the target path</li>
-                        <li><strong><code>replace</code></strong> — Replace the value at the target path (equivalent to remove + add)</li>
-                        <li><strong><code>move</code></strong> — Move a value from one path to another</li>
-                        <li><strong><code>copy</code></strong> — Copy a value from one path to another</li>
-                        <li><strong><code>test</code></strong> — Verify that a value at the given path equals the specified value; fails the entire patch if not</li>
-                    </ul>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">The <code>test</code> Operation: Optimistic Concurrency Done Right</h4>
-                    <p>The <code>test</code> operation is JSON Patch's secret weapon for handling concurrent edits. Before applying changes, you can assert the current state:</p>
-                    <pre style="background: var(--bg-dark); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 0.75rem 0 1rem; font-size: 0.875rem; color: #a5d6ff;"><code>[
-  { "op": "test", "path": "/version", "value": 7 },
-  { "op": "replace", "path": "/displayName", "value": "Jane Doe" },
-  { "op": "replace", "path": "/version", "value": 8 }
-]</code></pre>
-                    <p>If another client updated the resource and bumped the version to 8, the test fails and the server returns <code>409 Conflict</code>. This is <strong>optimistic concurrency control</strong> without needing ETags or custom headers.</p>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">Real-World Adoption</h4>
-                    <p>Major platforms already use JSON Patch in production:</p>
-                    <ul style="margin: 0.5rem 0 1rem 1.5rem; padding: 0;">
-                        <li><strong>GitHub API:</strong> Uses JSON Patch for updating issue and PR labels in batch</li>
-                        <li><strong>Microsoft Graph API:</strong> Leverages JSON Patch for OneDrive and Outlook partial updates</li>
-                        <li><strong>OpenStack:</strong> Uses JSON Patch for resource attribute modification</li>
-                        <li><strong>Kubernetes:</strong> Strategic Merge Patch extends JSON Patch concepts for declarative config updates</li>
-                    </ul>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">JavaScript Implementation</h4>
-                    <p>Applying JSON Patch in JavaScript is straightforward using <code>fast-json-patch</code>, the most popular library with 3M+ weekly downloads:</p>
-                    <pre style="background: var(--bg-dark); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 0.75rem 0 1rem; font-size: 0.875rem; color: #a5d6ff;"><code>import * as jsonpatch from 'fast-json-patch';
-
-const user = { name: "John", email: "john@example.com", role: "user" };
-
-const patch = [
-  { op: "replace", path: "/name", value: "Jane" },
-  { op: "add", path: "/preferences/theme", value: "dark" }
-];
-
-// Apply patch (mutates document)
-jsonpatch.applyPatch(user, patch);
-
-// Generate patch from diff
-const observer = jsonpatch.observe(user);
-user.email = "jane@example.com";
-const changes = jsonpatch.generate(observer);
-// [{ op: "replace", path: "/email", value: "jane@example.com" }]</code></pre>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">When to Use JSON Patch</h4>
-                    <ul style="margin: 0.5rem 0 1rem 1.5rem; padding: 0;">
-                        <li><strong>Collaborative editing:</strong> Real-time apps where multiple users edit the same resource</li>
-                        <li><strong>Mobile APIs:</strong> Reduce data transfer on metered connections</li>
-                        <li><strong>Offline-first apps:</strong> Queue patches locally and sync when online</li>
-                        <li><strong>Configuration management:</strong> Apply targeted changes to complex nested configs</li>
-                        <li><strong>CRUD optimization:</strong> Transform batch PUT operations into efficient partial updates</li>
-                    </ul>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">When NOT to Use JSON Patch</h4>
-                    <ul style="margin: 0.5rem 0 1rem 1.5rem; padding: 0;">
-                        <li>Your resources are small (under 10 fields)</li>
-                        <li>Updates are infrequent and simple</li>
-                        <li>Your team isn't familiar with JSON Pointer syntax</li>
-                        <li>You need GraphQL-style fine-grained field selection (use GraphQL instead)</li>
-                    </ul>
-
-                    <h4 style="color: var(--text-primary); margin: 1.5rem 0 0.75rem;">Key Takeaways</h4>
-                    <p>JSON Patch (RFC 6902) is an underused but powerful standard for partial API updates. Combined with the <code>test</code> operation, it provides atomic, conflict-free updates that scale. For any API handling collaborative editing, mobile clients, or large nested documents, JSON Patch deserves a place in your developer toolkit.</p>
-                </div>
-            </article>
+            ''' + featured_article + '''
         </section>
 
         <!-- More Articles -->
         <section>
             <h2 class="section-title">More Articles</h2>
             <div class="articles-grid">
-<article class="article-card">
-                <div class="article-category">Performance</div>
-                <h3><a href="blog/json-parsing-performance-comparison.html">JSON Parsing Performance: Comparing Native vs Library Implementations</a></h3>
-                <p class="article-excerpt">Benchmark results comparing JSON parsing speeds across Python, JavaScript, Rust, and Go.</p>
-                <div class="article-meta">
-                    <span>2026-04-17</span> | 
-                    <span>5-7 minutes</span>
-                </div>
-                <a href="blog/json-parsing-performance-comparison.html" class="read-more">Read more →</a>
-            </article>
-<article class="article-card">
-                <div class="article-category">AI Development</div>
-                <h3><a href="blog/zod-json-schema-validation-ai.html">Zod v4 + JSON Schema: Runtime Validation for AI Agent Responses</a></h3>
-                <p class="article-excerpt">TypeScript types only check at compile time — but LLMs respond at runtime. Zod v4 enables runtime validation.</p>
-                <div class="article-meta">
-                    <span>2026-04-16</span> | 
-                    <span>6-8 minutes</span>
-                </div>
-                <a href="blog/zod-json-schema-validation-ai.html" class="read-more">Read more →</a>
-            </article>
-<article class="article-card">
-                <div class="article-category">AI Development</div>
-                <h3><a href="blog/mcp-json-standardizing-ai-tools.html">How MCP is Standardizing AI Tool Communication with JSON</a></h3>
-                <p class="article-excerpt">The Model Context Protocol (MCP) is becoming the universal standard for AI tool interfaces.</p>
-                <div class="article-meta">
-                    <span>2026-04-15</span> | 
-                    <span>4-6 minutes</span>
-                </div>
-                <a href="blog/mcp-json-standardizing-ai-tools.html" class="read-more">Read more →</a>
-            </article>
-            </div>
+'''
+
+for card in article_cards:
+    new_blog += card + '\n'
+
+new_blog += '''            </div>
         </section>
 
         <!-- JSON Templates Section -->
@@ -413,4 +313,10 @@ const changes = jsonpatch.generate(observer);
         </p>
     </footer>
 </body>
-</html>
+</html>'''
+
+# Write the new blog.html
+with open(BLOG_FILE, 'w', encoding='utf-8') as f:
+    f.write(new_blog)
+
+print(f'Written: {len(new_blog)} chars')
