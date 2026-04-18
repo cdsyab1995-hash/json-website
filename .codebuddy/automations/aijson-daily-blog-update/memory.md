@@ -33,10 +33,11 @@
 - Format: `ai-daily-YYYYMMDDb`, `ai-daily-YYYYMMDDc` for additional articles same day
 
 ### 2026-04-18
-- **Status:** ✅ Success
-- **Article:** "Stream JSON Data Efficiently: Handling Large Payloads Without Memory Issues"
-- **Topic:** Streaming JSON, NDJSON, JSON lines, data pipeline, stream parsing for massive files
-- **Commit:** "Daily blog: Stream JSON Data Efficiently: Handling Large Payloads Without Memory Issues (ai-daily-20260418)" ✅ pushed to GitHub
+- **Status:** ✅ Success (with cleanup)
+- **Article (kept):** "🔧 JSON Patch (RFC 6902): Stop Sending Full Objects — Use Partial Updates for Your APIs" (id: ai-daily-20260418) — already existed from earlier today
+- **Note:** daily_blog.py ran and found existing ai-daily-20260418. Script inserted "Streaming JSON" as a duplicate (same date ID). Auto-detected and removed duplicates from blog.html and index.html. Final state: only the RFC 6902 article is published.
+- **⚠️ Known issue:** daily_blog.py does NOT check if today's article ID already exists before inserting. Causes duplicate IDs when script runs after a manual article has been published.
+- **Commits:** two pushes — initial by script, then cleanup fix ✅
 
 ## Topics Used (avoid repetition)
 - Streaming JSON / NDJSON ✓ (04-18)
