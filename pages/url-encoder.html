@@ -43,7 +43,12 @@
         .nav-dropdown:hover .nav-dropdown-menu{display:block}
         .menu-toggle{display:none}
         @media (max-width:768px){.navbar-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg-dark);flex-direction:column;padding:var(--space-md);border-bottom:1px solid var(--bg-secondary)}.menu-toggle{display:flex}}
-    </style>
+    
+/* P0: CLS Prevention */
+img { contain: layout; }
+.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+</style>
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free URL Encoder & Decoder - Encode Special Characters">
     <meta name="twitter:description" content="Encode URLs or decode URL-encoded strings instantly. Handles special characters and Unicode.">

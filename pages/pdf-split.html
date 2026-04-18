@@ -98,7 +98,12 @@
     .pdf-preview{margin-top:1rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--radius-md);max-height:400px;overflow:auto}
     .pdf-preview canvas{max-width:100%;height:auto;border:1px solid var(--bg-card);margin-bottom:0.5rem}
     .loading{text-align:center;padding:2rem;color:var(--text-secondary)}
-    </style>
+    
+/* P0: CLS Prevention */
+img { contain: layout; }
+.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+</style>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">

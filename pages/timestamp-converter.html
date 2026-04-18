@@ -112,7 +112,12 @@
             font-size: 0.875rem;
             color: var(--text-secondary);
         }
-    </style>
+    
+/* P0: CLS Prevention */
+img { contain: layout; }
+.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+</style>
     <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#22C55E">
