@@ -176,21 +176,25 @@ body {
 .nav-dropdown-menu {
     display: none;
     position: absolute;
-    top: calc(100% + 4px);
+    top: 100%;
     left: 0;
+    z-index: 200;
+    padding-top: 6px; /* transparent bridge - keeps hover active between toggle and menu */
+}
+.nav-dropdown-menu-box {
     background: var(--bg-dark);
     border: 1px solid var(--bg-secondary);
     border-radius: var(--radius-lg);
     padding: 0.5rem;
     min-width: 180px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    z-index: 200;
+    display: flex;
     flex-direction: column;
     gap: 0;
 }
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown.open .nav-dropdown-menu {
-    display: flex;
+    display: block;
 }
 .nav-dropdown-menu .nav-link {
     justify-content: flex-start;
@@ -199,16 +203,14 @@ body {
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius-sm);
 }
-.nav-dropdown-menu.wide {
-    min-width: 400px;
-    flex-wrap: wrap;
-    flex-direction: row;
+/* Wide dropdown - 3 column grid */
+.nav-dropdown-menu.wide .nav-dropdown-menu-box {
+    min-width: 540px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
 }
-.nav-dropdown:hover .nav-dropdown-menu.wide,
-.nav-dropdown.open .nav-dropdown-menu.wide {
-    display: flex;
-}
-.nav-dropdown-menu.wide .nav-link { width: 48%; }
+.nav-dropdown-menu.wide .nav-link { width: 100%; }
 
 /* MAIN LAYOUT */
 .main-container {
@@ -483,12 +485,19 @@ button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
     .nav-link { width: 100%; justify-content: flex-start; }
     .nav-dropdown-menu, .nav-dropdown-menu.wide {
         position: static;
+        padding-top: 0;
+        width: 100%;
+    }
+    .nav-dropdown-menu-box, .nav-dropdown-menu.wide .nav-dropdown-menu-box {
         box-shadow: none;
         border: none;
         padding-left: var(--space-lg);
         min-width: 0;
         width: 100%;
         background: transparent;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
     }
     .nav-dropdown-menu.wide .nav-link { width: 100%; }
     .main-container { padding: var(--space-md); }
