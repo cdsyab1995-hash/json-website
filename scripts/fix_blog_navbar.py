@@ -1,55 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
-    <meta name="description" content="JSON practices for developers. Learn AI workflows, API development patterns, and structured data techniques. Expert guides on JSON tips and modern web development.">
-    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.aijsons.com/pages/blog.html">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.aijsons.com/pages/blog.html">
-    <meta property="og:title" content="JSON Practices Blog - API Development & AI Workflows | AI JSON">
-    <meta property="og:description" content="Expert guides on JSON practices, AI workflows, and API development patterns for developers worldwide.">
-    
-    <title>JSON Practices Blog - API Development & AI Workflows | AI JSON</title>
-    
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px}
-        body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-        .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
-        .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
-        .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;display:inline-flex;align-items:center}
-        .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
-        .main-container{flex:1;max-width:1000px;margin:0 auto;padding:var(--space-xl);width:100%}
-        .page-header{text-align:center;margin-bottom:3rem}
-        .page-title{font-size:2.5rem;margin-bottom:0.5rem;color:var(--primary)}
-        .page-description{color:var(--text-secondary);font-size:1.1rem}
-        .breadcrumb{margin-bottom:1rem;color:var(--text-secondary)}
-        .breadcrumb a{color:var(--primary);text-decoration:none}
-        .articles-grid{display:grid;gap:1.5rem}
-        .article-card{background:var(--bg-card);border-radius:var(--radius-lg);padding:1.5rem;border:1px solid var(--bg-secondary)}
-        .article-category{display:inline-block;background:var(--primary);color:var(--bg-dark);padding:0.25rem 0.75rem;border-radius:20px;font-size:0.75rem;font-weight:600;margin-bottom:0.75rem}
-        .article-card h3{font-size:1.25rem;margin-bottom:0.75rem;color:var(--text-primary)}
-        .article-card h3 a{color:inherit;text-decoration:none}
-        .article-card h3 a:hover{color:var(--primary)}
-        .article-excerpt{color:var(--text-secondary);margin-bottom:1rem;line-height:1.6}
-        .article-meta{color:var(--text-secondary);font-size:0.85rem;margin-bottom:1rem}
-        .read-more{color:var(--primary);text-decoration:none;font-weight:500}
-        .read-more:hover{text-decoration:underline}
-        .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
-        .footer a{color:var(--primary);text-decoration:none}
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"></noscript>
-</head>
-<body>
-    <nav class="navbar">
+#!/usr/bin/env python3
+"""
+Fix blog pages navbar to match index.html with full tools dropdown
+"""
+import os
+
+# The complete navbar from index.html
+NAVBAR = '''    <nav class="navbar">
         <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -275,105 +231,93 @@
                 Changelog
             </a>
         </div>
-    </nav>
-    
-    <main class="main-container">
-        <div class="page-header">
-            <h1 class="page-title">JSON Tech Blog</h1>
-            <p class="page-description">Expert insights on JSON in modern development, AI workflows, and structured data</p>
-            <div class="breadcrumb">
-                <a href="../index.html">Home</a> / <span>Blog</span>
-            </div>
-        </div>
+    </nav>'''
+
+# Old simple navbar pattern to replace (blog.html)
+OLD_NAVBAR_BLOG = '''    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            AI JSON
+        </a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+    </nav>'''
+
+# Old simple navbar pattern (blog article pages)
+OLD_NAVBAR_ARTICLE = '''    <nav class="navbar">
+        <a href="../../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            AI JSON
+        </a>
+        <a href="../blog.html" class="nav-link" style="color:var(--primary)">← Back to Blog</a>
+    </nav>'''
+
+def fix_blog_html():
+    """Fix blog.html"""
+    file_path = r"d:\网站开发-json\pages\blog.html"
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
         
-        <section class="articles-grid">
-            
-            <article id="ai-daily-20260418">
-    <h3>Stream JSON Data Efficiently: Handling Large Payloads Without Memory Issues</h3>
-    <p><strong>Published:</strong> 2026-04-18 | <strong>Reading time:</strong> 5-7 minutes | <strong>Target:</strong> US & Canada Developers</p>
-    <div class="article-content">
-        <div class="article-diagram">
-            
-<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-    <rect x="20" y="20" width="360" height="80" rx="8" fill="#1f2940" stroke="#22C55E" stroke-width="2"/>
-    <text x="200" y="55" text-anchor="middle" fill="#F8FAFC" font-family="Arial" font-size="14" font-weight="bold">JSON Workflow</text>
-    <text x="200" y="80" text-anchor="middle" fill="#94A3B8" font-family="Arial" font-size="12">Format → Validate → Process → Export</text>
-</svg>
-        </div>
-        <p>Traditional JSON parsing loads entire documents into memory. Stream parsing allows processing of massive JSON files with minimal memory footprint. Perfect for log processing and data pipelines.</p>
+        if OLD_NAVBAR_BLOG in content:
+            content = content.replace(OLD_NAVBAR_BLOG, NAVBAR)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            return True
+        return False
+    except Exception as e:
+        print(f"  Error: {e}")
+        return False
+
+def fix_article_html(file_path):
+    """Fix blog article pages"""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
         
-<p>In the rapidly evolving landscape of modern web development, streaming json has become an essential skill for developers building production-grade applications. This article explores key concepts, best practices, and practical implementation strategies.</p>
+        if OLD_NAVBAR_ARTICLE in content:
+            content = content.replace(OLD_NAVBAR_ARTICLE, NAVBAR)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            return True
+        return False
+    except Exception as e:
+        print(f"  Error: {e}")
+        return False
 
-<h4>Understanding the Fundamentals</h4>
-<p>When working with JSON in production environments, developers face common challenges that require thoughtful solutions. Whether you're building REST APIs, processing webhook payloads, or handling real-time data streams, understanding streaming json is crucial for maintaining clean, maintainable code.</p>
-
-<h4>Practical Implementation</h4>
-<p>Modern development workflows benefit from tools that handle JSON processing efficiently. AI JSON provides browser-based utilities that work entirely client-side, ensuring your data never leaves your machine while providing the formatting, validation, and conversion capabilities you need.</p>
-
-<pre><code>{
-  "example": "structured_data",
-  "tools": ["formatter", "validator", "converter"],
-  "benefits": {
-    "speed": "instant_processing",
-    "privacy": "client_side_only",
-    "compatibility": "all_browsers"
-  }
-}</code></pre>
-
-<h4>Industry Best Practices</h4>
-<p>Leading companies like Stripe, Twilio, and GitHub have established patterns for JSON API design that balance flexibility with predictability. Following these patterns helps teams build APIs that are both developer-friendly and robust against edge cases.</p>
-
-<h4>Performance Considerations</h4>
-<p>When processing large JSON payloads, performance becomes critical. Modern JavaScript engines have optimized JSON parsing significantly, but understanding when to use streaming approaches versus batch processing can make the difference between a responsive application and one that freezes during data processing.</p>
-
-        <h4>Key Takeaways</h4>
-        <ul>
-            <li>Structured JSON data enables better API contracts and documentation</li>
-            <li>Client-side processing ensures data privacy and reduces server load</li>
-            <li>Modern development workflows benefit from JSON's ubiquity and tooling</li>
-        </ul>
-    </div>
-</article>
-
-
-<article class="article-card">
-                <div class="article-category">Performance</div>
-                <h3><a href="blog/json-parsing-performance-comparison.html">JSON Parsing Performance: Comparing Native vs Library Implementations</a></h3>
-                <p class="article-excerpt">Benchmark results comparing JSON parsing speeds across Python, JavaScript, Rust, and Go.</p>
-                <div class="article-meta">
-                    <span>2026-04-17</span> | 
-                    <span>5-7 minutes</span>
-                </div>
-                <a href="blog/json-parsing-performance-comparison.html" class="read-more">Read more →</a>
-            </article>
-            <article class="article-card">
-                <div class="article-category">AI Development</div>
-                <h3><a href="blog/zod-json-schema-validation-ai.html">Zod v4 + JSON Schema: Runtime Validation for AI Agent Responses</a></h3>
-                <p class="article-excerpt">TypeScript types only check at compile time — but LLMs respond at runtime. Zod v4 enables runtime validation.</p>
-                <div class="article-meta">
-                    <span>2026-04-16</span> | 
-                    <span>6-8 minutes</span>
-                </div>
-                <a href="blog/zod-json-schema-validation-ai.html" class="read-more">Read more →</a>
-            </article>
-            <article class="article-card">
-                <div class="article-category">AI Development</div>
-                <h3><a href="blog/mcp-json-standardizing-ai-tools.html">How MCP is Standardizing AI Tool Communication with JSON</a></h3>
-                <p class="article-excerpt">The Model Context Protocol (MCP) is becoming the universal standard for AI tool interfaces.</p>
-                <div class="article-meta">
-                    <span>2026-04-15</span> | 
-                    <span>4-6 minutes</span>
-                </div>
-                <a href="blog/mcp-json-standardizing-ai-tools.html" class="read-more">Read more →</a>
-            </article>
-        </section>
-    </main>
+def main():
+    print("[FIX] Fixing blog pages navbar...")
+    print()
     
-    <footer class="footer">
-        <p>AI JSON - Free JSON Tools for Developers</p>
-        <p style="margin-top:0.5rem;font-size:0.875rem;">
-            <a href="about.html">About</a> | <a href="changelog.html">Changelog</a> | <a href="../index.html">Home</a>
-        </p>
-    </footer>
-</body>
-</html>
+    # Fix blog.html
+    if fix_blog_html():
+        print("  [OK] Fixed: blog.html")
+    else:
+        print("  [--] No change: blog.html")
+    
+    # Fix blog article pages
+    articles = [
+        r"d:\网站开发-json\pages\blog\json-parsing-performance-comparison.html",
+        r"d:\网站开发-json\pages\blog\zod-json-schema-validation-ai.html",
+        r"d:\网站开发-json\pages\blog\mcp-json-standardizing-ai-tools.html",
+    ]
+    
+    for article in articles:
+        if os.path.exists(article):
+            if fix_article_html(article):
+                print(f"  [OK] Fixed: {os.path.basename(article)}")
+            else:
+                print(f"  [--] No change: {os.path.basename(article)}")
+        else:
+            print(f"  [!!] Not found: {os.path.basename(article)}")
+    
+    print()
+    print("[DONE] Blog pages navbar fixed")
+
+if __name__ == "__main__":
+    main()

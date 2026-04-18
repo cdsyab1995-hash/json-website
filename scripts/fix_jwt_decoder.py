@@ -1,0 +1,328 @@
+#!/usr/bin/env python3
+"""Fix jwt-decoder.html to be a proper JWT Decoder page"""
+import re
+
+# JWT Decoder HTML template
+jwt_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online JWT decoder. Decode and inspect JWT tokens - view Header, Payload, and Claims. Debug authentication tokens instantly without verification.">
+    <meta name="keywords" content="JWT decoder, JSON Web Token, decode JWT, JWT payload, token debugger, JWT claims, auth token decode">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/pages/jwt-decoder.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aijsons.com/pages/jwt-decoder.html">
+    <meta property="og:title" content="Free JWT Decoder - Decode & Inspect JSON Web Tokens">
+    <meta property="og:description" content="Decode JWT tokens instantly. View Header, Payload, and Claims. Debug auth tokens without signature verification.">
+    <title>Free JWT Decoder - Decode & Inspect JSON Web Tokens | AI JSON</title>
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--error:#EF4444;--warning:#F59E0B;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px}
+        body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+        .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
+        .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
+        .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap}
+        .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem}
+        .nav-link svg{width:16px;height:16px;flex-shrink:0}
+        .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
+        .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)}
+        .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:var(--space-xl);border:1px solid var(--bg-secondary);margin-bottom:var(--space-xl)}
+        .section-label{display:block;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary)}
+        .input-area{width:100%;min-height:100px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
+        .input-area:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+        .btn-primary{background:var(--primary);color:var(--bg-dark)}
+        .btn-primary:hover{background:#1ea54d}
+        .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+        .btn-secondary:hover{background:rgba(34,197,94,.1)}
+        .btn-group{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md)}
+        .result-box{background:var(--bg-dark);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);padding:var(--space-lg);margin-top:var(--space-md)}
+        .result-box h3{color:var(--primary);font-size:0.875rem;margin-bottom:var(--space-sm);text-transform:uppercase;letter-spacing:0.05em}
+        .result-content{font-family:'Consolas','Monaco',monospace;font-size:0.875rem;white-space:pre-wrap;word-break:break-all}
+        .claim-row{display:flex;justify-content:space-between;padding:var(--space-xs) 0;border-bottom:1px solid var(--bg-secondary)}
+        .claim-row:last-child{border-bottom:none}
+        .claim-name{color:var(--text-secondary);font-size:0.875rem}
+        .claim-value{color:var(--primary);font-family:monospace;font-size:0.875rem}
+        .claim-value.expired{color:var(--error)}
+        .claim-value.valid{color:var(--primary)}
+        .warning-box{padding:var(--space-md);background:rgba(245,158,11,.1);border:1px solid var(--warning);border-radius:var(--radius-md);margin-top:var(--space-md)}
+        .warning-box strong{color:var(--warning)}
+        .error-box{padding:var(--space-md);background:rgba(239,68,68,.1);border:1px solid var(--error);border-radius:var(--radius-md);margin-top:var(--space-md)}
+        .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
+        .footer a{color:var(--primary);text-decoration:none}
+        .nav-dropdown{position:relative}
+        .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--bg-dark);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);padding:var(--space-sm);min-width:200px;z-index:1000}
+        .nav-dropdown:hover .nav-dropdown-menu{display:block}
+        .nav-dropdown-menu a{white-space:nowrap}
+        .menu-toggle{display:none}
+        @media (max-width:768px){
+            .navbar-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg-dark);flex-direction:column;padding:var(--space-md);border-bottom:1px solid var(--bg-secondary)}
+            .navbar-links.active{display:flex}
+            .menu-toggle{display:flex}
+        }
+    </style>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free JWT Decoder - Decode & Inspect JSON Web Tokens">
+    <meta name="twitter:description" content="Decode JWT tokens instantly. View Header, Payload, and Claims. Debug auth tokens without signature verification.">
+    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
+    <meta name="twitter:url" content="https://www.aijsons.com/pages/jwt-decoder.html">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            AI JSON
+        </a>
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+        <div class="navbar-links">
+            <a href="../index.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>Home</a>
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>Tools</a>
+                <div class="nav-dropdown-menu">
+                    <a href="format.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>Format</a>
+                    <a href="viewer.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Viewer</a>
+                    <a href="json2csv.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>CSV</a>
+                    <a href="compare.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path d="M21 3l-7 7"></path><path d="M3 3l7 7"></path></svg>Compare</a>
+                    <a href="timestamp-converter.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Timestamp</a>
+                    <a href="base64.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="8" y1="12" x2="16" y2="12"></line></svg>Base64</a>
+                </div>
+            </div>
+            <a href="blog.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>Tutorial</a>
+            <a href="news.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>News</a>
+            <a href="changelog.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Changelog</a>
+        </div>
+    </nav>
+    <main class="main-container">
+        <div class="tool-area">
+            <h1 class="section-label" style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;">JWT Decoder & Debugger</h1>
+            <p style="color:var(--text-secondary);margin-bottom:var(--space-lg);">Decode and inspect JSON Web Tokens (JWT). View Header, Payload, and Claims without signature verification.</p>
+            
+            <label class="section-label">Paste Your JWT Token</label>
+            <textarea id="jwtInput" class="input-area" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
+            
+            <div class="btn-group">
+                <button class="btn btn-primary" id="btnDecode">Decode Token</button>
+                <button class="btn btn-secondary" id="btnClear">Clear</button>
+            </div>
+
+            <div id="errorBox" class="error-box" style="display:none;"></div>
+
+            <div id="resultSection" style="display:none;">
+                <div class="result-box">
+                    <h3>Header</h3>
+                    <div id="headerResult" class="result-content"></div>
+                </div>
+                
+                <div class="result-box">
+                    <h3>Payload</h3>
+                    <div id="payloadResult" class="result-content"></div>
+                </div>
+
+                <div class="result-box">
+                    <h3>Token Info</h3>
+                    <div id="tokenInfo"></div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Security Note:</strong> This tool decodes tokens without verifying signatures. A valid-looking token doesn't mean it's authentic. Always verify signatures server-side!
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Section -->
+        <div class="tool-area">
+            <h2 style="font-size:1.25rem;margin-bottom:1rem;color:var(--primary);">JWT Tokens Explained: Structure, Claims, and Debugging</h2>
+            
+            <div style="display:grid;gap:1.5rem;">
+                <div>
+                    <h3 style="font-size:1rem;color:var(--primary);margin-bottom:0.5rem;">What is a JWT Token?</h3>
+                    <p style="color:var(--text-secondary);line-height:1.7;">
+                        A JSON Web Token (JWT) is a compact, URL-safe way to securely transmit information between parties. JWTs are commonly used for authentication and authorization in modern web applications.
+                    </p>
+                    <div style="background:var(--bg-dark);padding:1rem;border-radius:8px;margin-top:0.75rem;font-family:monospace;font-size:0.8rem;overflow-x:auto;">
+                        <div style="color:var(--text-secondary);margin-bottom:0.5rem;">Example JWT Structure:</div>
+                        <span style="color:#FF6B6B;">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.<br>
+                        <span style="color:#4ECDC4;">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0</span>.<br>
+                        <span style="color:#FFE66D;">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+                        <div style="margin-top:0.5rem;font-size:0.75rem;">
+                            <span style="color:#FF6B6B;">Header</span> . 
+                            <span style="color:#4ECDC4;">Payload</span> . 
+                            <span style="color:#FFE66D;">Signature</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size:1rem;color:var(--primary);margin-bottom:0.5rem;">JWT Structure Explained</h3>
+                    <div style="display:grid;gap:0.75rem;">
+                        <div style="padding:0.75rem;background:var(--bg-secondary);border-radius:8px;">
+                            <div style="font-weight:600;color:#FF6B6B;margin-bottom:0.25rem;">1. Header</div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">Contains metadata about the token: algorithm (HS256, RS256) and type (JWT)</div>
+                        </div>
+                        <div style="padding:0.75rem;background:var(--bg-secondary);border-radius:8px;">
+                            <div style="font-weight:600;color:#4ECDC4;margin-bottom:0.25rem;">2. Payload</div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">Contains the claims: user data (sub, name), metadata (iat, exp), and custom data</div>
+                        </div>
+                        <div style="padding:0.75rem;background:var(--bg-secondary);border-radius:8px;">
+                            <div style="font-weight:600;color:#FFE66D;margin-bottom:0.25rem;">3. Signature</div>
+                            <div style="font-size:0.8rem;color:var(--text-secondary);">Verifies the token wasn't tampered with. Created using Header + Payload + Secret</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size:1rem;color:var(--primary);margin-bottom:0.5rem;">Common JWT Claims</h3>
+                    <div class="result-box" style="margin-top:0;">
+                        <div class="claim-row"><span class="claim-name">iss (Issuer)</span><span class="claim-value">Who issued the token</span></div>
+                        <div class="claim-row"><span class="claim-name">sub (Subject)</span><span class="claim-value">Who the token is about (user ID)</span></div>
+                        <div class="claim-row"><span class="claim-name">aud (Audience)</span><span class="claim-value">Who the token is intended for</span></div>
+                        <div class="claim-row"><span class="claim-name">exp (Expiration)</span><span class="claim-value">When the token expires</span></div>
+                        <div class="claim-row"><span class="claim-name">nbf (Not Before)</span><span class="claim-value">When the token becomes valid</span></div>
+                        <div class="claim-row"><span class="claim-name">iat (Issued At)</span><span class="claim-value">When the token was created</span></div>
+                        <div class="claim-row"><span class="claim-name">jti (JWT ID)</span><span class="claim-value">Unique identifier for the token</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size:1rem;color:var(--primary);margin-bottom:0.5rem;">HS256 vs RS256: Which Algorithm?</h3>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin-top:0.5rem;">
+                        <div style="padding:0.75rem;background:var(--bg-secondary);border-radius:8px;">
+                            <div style="font-weight:600;margin-bottom:0.25rem;color:#F59E0B;">HS256 (HMAC)</div>
+                            <div style="font-size:0.75rem;color:var(--text-secondary);">Symmetric - same secret for signing and verifying. Use for: simple APIs, microservices with shared secrets.</div>
+                        </div>
+                        <div style="padding:0.75rem;background:var(--bg-secondary);border-radius:8px;">
+                            <div style="font-weight:600;margin-bottom:0.25rem;color:#22C55E;">RS256 (RSA)</div>
+                            <div style="font-size:0.75rem;color:var(--text-secondary);">Asymmetric - private key signs, public key verifies. Use for: OAuth, OpenID, public APIs.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size:1rem;color:var(--primary);margin-bottom:0.5rem;">Related Tools</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <a href="hash-generator.html" style="padding:0.5rem 1rem;background:var(--bg-secondary);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Hash Generator</a>
+                        <a href="base64.html" style="padding:0.5rem 1rem;background:var(--bg-secondary);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Base64 Encoder</a>
+                        <a href="timestamp-converter.html" style="padding:0.5rem 1rem;background:var(--bg-secondary);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Timestamp Converter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p style="margin-top:0.5rem;font-size:0.875rem;"><a href="../about.html">About</a> | <a href="../changelog.html">Changelog</a> | <a href="../privacy.html">Privacy</a></p>
+    </footer>
+    <script>
+        var jwtInput = document.getElementById('jwtInput');
+        var btnDecode = document.getElementById('btnDecode');
+        var btnClear = document.getElementById('btnClear');
+        var resultSection = document.getElementById('resultSection');
+        var errorBox = document.getElementById('errorBox');
+        var headerResult = document.getElementById('headerResult');
+        var payloadResult = document.getElementById('payloadResult');
+        var tokenInfo = document.getElementById('tokenInfo');
+
+        function decodeBase64Url(str) {
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (str.length % 4) str += '=';
+            return decodeURIComponent(atob(str).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+        }
+
+        function formatJson(str) {
+            try {
+                return JSON.stringify(JSON.parse(str), null, 2);
+            } catch (e) {
+                return str;
+            }
+        }
+
+        function decodeJwt() {
+            var token = jwtInput.value.trim();
+            if (!token) {
+                errorBox.textContent = 'Please paste a JWT token';
+                errorBox.style.display = 'block';
+                resultSection.style.display = 'none';
+                return;
+            }
+
+            var parts = token.split('.');
+            if (parts.length !== 3) {
+                errorBox.textContent = 'Invalid JWT format. Expected 3 parts separated by dots.';
+                errorBox.style.display = 'block';
+                resultSection.style.display = 'none';
+                return;
+            }
+
+            errorBox.style.display = 'none';
+
+            try {
+                var header = JSON.parse(decodeBase64Url(parts[0]));
+                var payload = JSON.parse(decodeBase64Url(parts[1]));
+
+                headerResult.textContent = formatJson(JSON.stringify(header));
+                payloadResult.textContent = formatJson(JSON.stringify(payload));
+
+                var infoHtml = '';
+                
+                // Algorithm
+                if (header.alg) {
+                    infoHtml += '<div class="claim-row"><span class="claim-name">Algorithm</span><span class="claim-value">' + header.alg + '</span></div>';
+                }
+                
+                // Subject
+                if (payload.sub) {
+                    infoHtml += '<div class="claim-row"><span class="claim-name">Subject</span><span class="claim-value">' + payload.sub + '</span></div>';
+                }
+                
+                // Issuer
+                if (payload.iss) {
+                    infoHtml += '<div class="claim-row"><span class="claim-name">Issuer</span><span class="claim-value">' + payload.iss + '</span></div>';
+                }
+                
+                // Issued At
+                if (payload.iat) {
+                    var iatDate = new Date(payload.iat * 1000);
+                    infoHtml += '<div class="claim-row"><span class="claim-name">Issued At</span><span class="claim-value">' + iatDate.toLocaleString() + '</span></div>';
+                }
+                
+                // Expiration
+                if (payload.exp) {
+                    var expDate = new Date(payload.exp * 1000);
+                    var isExpired = expDate < new Date();
+                    var expClass = isExpired ? 'expired' : 'valid';
+                    var expText = isExpired ? ' (Expired)' : ' (Valid)';
+                    infoHtml += '<div class="claim-row"><span class="claim-name">Expires</span><span class="claim-value ' + expClass + '">' + expDate.toLocaleString() + expText + '</span></div>';
+                }
+
+                tokenInfo.innerHTML = infoHtml || '<div class="claim-row"><span class="claim-name">No standard claims found</span></div>';
+
+                resultSection.style.display = 'block';
+            } catch (e) {
+                errorBox.textContent = 'Failed to decode token: ' + e.message;
+                errorBox.style.display = 'block';
+                resultSection.style.display = 'none';
+            }
+        }
+
+        btnDecode.addEventListener('click', decodeJwt);
+        btnClear.addEventListener('click', function() {
+            jwtInput.value = '';
+            resultSection.style.display = 'none';
+            errorBox.style.display = 'none';
+        });
+
+        jwtInput.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') decodeJwt();
+        });
+    </script>
+</body>
+</html>'''
+
+with open(r'd:\网站开发-json\pages\jwt-decoder.html', 'w', encoding='utf-8') as f:
+    f.write(jwt_html)
+
+print('JWT Decoder page created successfully!')
