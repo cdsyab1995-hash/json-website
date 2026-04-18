@@ -212,6 +212,18 @@ body {
 }
 .nav-dropdown-menu.wide .nav-link { width: 100%; }
 
+/* Chevron down arrow for Tools dropdown */
+.nav-dropdown-toggle .chevron-down {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    transition: transform 0.2s;
+}
+.nav-dropdown:hover .nav-dropdown-toggle .chevron-down,
+.nav-dropdown.open .nav-dropdown-toggle .chevron-down {
+    transform: rotate(180deg);
+}
+
 /* MAIN LAYOUT */
 .main-container {
     flex: 1;
