@@ -81,7 +81,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    overflow: hidden;
+    /* overflow: hidden removed - needed for nav-dropdown position:absolute */
 }
 .nav-link {
     color: var(--text-secondary);
