@@ -22,57 +22,128 @@ img { contain: layout; }
     <meta name="apple-mobile-web-app-title" content="JSON Tools">
     <link rel="apple-touch-icon" href="../images/icon-192.png">
 <link rel="stylesheet" href="../css/styles.css">
-</head> <body> <nav class="navbar"> <a href="../index.html" class="navbar-brand"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path> <polyline points="14 2 14 8 20 8"></polyline> </svg> AI JSON </a> <button class="menu-toggle" aria-label="Menu"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="3" y1="12" x2="21" y2="12"></line> <line x1="3" y1="6" x2="21" y2="6"></line> <line x1="3" y1="18" x2="21" y2="18"></line> </svg> </button> <div class="navbar-links"> <a href="../index.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path> <polyline points="9 22 9 12 15 12 15 22"></polyline> </svg> Home </a> <!-- Tools Dropdown --> <div class="nav-dropdown"> <a href="#" class="nav-link nav-dropdown-toggle"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="3" y="3" width="7" height="7"></rect> <rect x="14" y="3" width="7" height="7"></rect> <rect x="14" y="14" width="7" height="7"></rect> <rect x="3" y="14" width="7" height="7"></rect> </svg> Tools </a> <div class="nav-dropdown-menu wide">
-<div class="nav-dropdown-menu-box"> <a href="format.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <polyline points="4 7 4 4 20 4 20 7"></polyline> <line x1="9" y1="20" x2="15" y2="20"></line> <line x1="12" y1="4" x2="12" y2="20"></line> </svg> Format </a> <a href="escape.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <polyline points="16 18 22 12 16 6"></polyline> <polyline points="8 6 2 12 8 18"></polyline> </svg> Escape </a> <a href="extract.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> Extract </a> <a href="sort.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="12" y1="5" x2="12" y2="19"></line> <polyline points="19 12 12 19 5 12"></polyline> </svg> Sort </a> <a href="clean.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path> </svg> Clean </a> <a href="xml.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path> <polyline points="14 2 14 8 20 8"></polyline> </svg> XML </a> <a href="yaml.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M4 4l4 16 4-16"></path> <path d="M12 4l4 16"></path> </svg> YAML </a> <a href="viewer.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path> <circle cx="12" cy="12" r="3"></circle> </svg> Viewer </a> <a href="json2csv.html" class="nav-link active"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path> <polyline points="14 2 14 8 20 8"></polyline> <line x1="8" y1="13" x2="16" y2="13"></line> <line x1="8" y1="17" x2="16" y2="17"></line> </svg> CSV </a>
-                <a href="csv-to-excel.html" class="nav-link">
+</head> <body> <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            AI JSON
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="../index.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+            </a>
+            <!-- Tools Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="3" y1="9" x2="21" y2="9"></line>
-                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
                     </svg>
-                    Excel
+                    Tools
                 </a>
-                <a href="excel-remove-duplicates.html" class="nav-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                    Remove Duplicates
-                </a>
-                <a href="merge-csv.html" class="nav-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
-                        <path d="M8 12v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2"></path>
-                    </svg>
-                    Merge CSV
-                </a>
-                <a href="batch-file-renamer.html" class="nav-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg>
-                    Batch Rename
-                </a>
-                <a href="pdf-split.html" class="nav-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="12" y1="18" x2="12" y2="12"></line>
-                        <line x1="9" y1="15" x2="15" y2="15"></line>
-                    </svg>
-                    PDF Split
-                </a>
-                <a href="compare.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M16 3h5v5"></path> <path d="M8 3H3v5"></path> <path d="M21 3l-7 7"></path> <path d="M3 3l7 7"></path> <path d="M16 21h5v-5"></path> <path d="M8 21H3v-5"></path> <path d="M21 21l-7-7"></path> <path d="M3 21l7-7"></path> </svg> Compare </a> 
+                <div class="nav-dropdown-menu wide">
+<div class="nav-dropdown-menu-box">
+                    <a href="format.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                            <line x1="9" y1="20" x2="15" y2="20"></line>
+                            <line x1="12" y1="4" x2="12" y2="20"></line>
+                        </svg>
+                        Format
+                    </a>
+                    <a href="escape.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Escape
+                    </a>
+                    <a href="extract.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Extract
+                    </a>
+                    <a href="sort.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <polyline points="19 12 12 19 5 12"></polyline>
+                        </svg>
+                        Sort
+                    </a>
+                    <a href="clean.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        Clean
+                    </a>
+                    <a href="xml.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        XML
+                    </a>
+                    <a href="yaml.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        YAML
+                    </a>
+                    <a href="viewer.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        Viewer
+                    </a>
+                    <a href="json2csv.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="8" y1="13" x2="16" y2="13"></line>
+                            <line x1="8" y1="17" x2="16" y2="17"></line>
+                        </svg>
+                        CSV
+                    </a>
+                    <a href="compare.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 20V10"></path>
+                            <path d="M12 20V4"></path>
+                            <path d="M6 20v-6"></path>
+                        </svg>
+                        Compare
+                    </a>
                     <a href="regex-tester.html" class="nav-link">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
                         </svg>
                         Regex
                     </a>
                     <a href="base64.html" class="nav-link">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                         </svg>
                         Base64
                     </a>
@@ -83,6 +154,41 @@ img { contain: layout; }
                         </svg>
                         URL Encoder
                     </a>
+                    <a href="csv-to-excel.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        Excel
+                    </a>
+                    <a href="excel-remove-duplicates.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        Remove Duplicates
+                    </a>
+                    <a href="merge-csv.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                        </svg>
+                        Merge CSV
+                    </a>
+                    <a href="batch-file-renamer.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Batch Rename
+                    </a>
+                    <a href="pdf-split.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        PDF Split
+                    </a>
                     <a href="timestamp-converter.html" class="nav-link">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -90,35 +196,88 @@ img { contain: layout; }
                         </svg>
                         Timestamp
                     </a>
-                        <a href="css-minifier.html" class="nav-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                            CSS Minifier
-                        </a>
-                        <a href="html-encoder.html" class="nav-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                            HTML Encoder
-                        </a>
-                    </div>
-</div>
+                    <a href="css-minifier.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        CSS Minifier
+                    </a>
+                    <a href="html-encoder.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        HTML Encoder
+                    </a>
+                    <a href="jwt-decoder.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        JWT
+                    </a>
+                    <a href="hash-generator.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="8" y2="21"></line>
+                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                        </svg>
+                        Hash
+                    </a>
+                    <a href="uuid-generator.html" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        UUID
+                    </a>
                 </div>
-                <a href="blog.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path> <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path> </svg> Tutorial </a> <a href="best-practices.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path> <polyline points="22 4 12 14.01 9 11.01"></polyline> </svg> Practices </a> <a href="news.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path> </svg> News </a> <a href="changelog.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="12" cy="12" r="10"></circle> <polyline points="12 6 12 12 16 14"></polyline> </svg> Changelog </a> <a href="about.html" class="nav-link"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="12" cy="12" r="10"></circle> <line x1="12" y1="16" x2="12" y2="12"></line> <line x1="12" y1="8" x2="12.01" y2="8"></line> </svg> About </a> <!-- CTA Button --> <!-- Theme Toggle -->
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-</button>
-<a href="format.html" class="nav-link navbar-cta"> Try Formatter </a> </div> </nav> <main class="main-container"> <div class="page-header text-center"> <h1 class="page-title">JSON to CSV Converter - Convert JSON to Excel</h1> <p class="page-description"> Convert JSON data to CSV format for Excel and Google Sheets import </p> <div class="breadcrumb"> <a href="../index.html">Home</a> / <span>JSON to CSV</span> </div> </div> <div class="tool-area"> <div class="tool-header"> <div class="tool-status" id="status"> <span class="status-dot"></span> <span class="status-text">Waiting for input...</span> </div> <div class="tool-actions"> <button class="btn btn-primary" id="convertBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path> <polyline points="7 10 12 15 17 10"></polyline> <line x1="12" y1="15" x2="12" y2="3"></line> </svg> Convert to CSV </button> <button class="btn btn-secondary" id="downloadBtn" disabled> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path> <polyline points="7 10 12 15 17 10"></polyline> <line x1="12" y1="15" x2="12" y2="3"></line> </svg> Download CSV </button> <button class="btn btn-secondary" id="copyBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> Copy </button> <button class="btn btn-danger" id="clearBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <polyline points="3 6 5 6 21 6"></polyline> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path> </svg> Clear </button> </div> </div> <div class="editor-container"> <div class="editor-panel"> <div class="editor-label">Input JSON (Array format)</div> <textarea id="inputJson" class="code-editor" placeholder='[ {"name": "John", "age": 30, "city": "New York"}, {"name": "Jane", "age": 25, "city": "Los Angeles"}, {"name": "Bob", "age": 35, "city": "Chicago"} ]'></textarea> </div> <div class="editor-panel"> <div class="editor-label">Output CSV</div> <div id="outputCsv" class="code-output"><pre></pre></div> </div> </div> <div class="options-row"> <label class="checkbox-label"> <input type="checkbox" id="includeHeaders" checked> <span>Include Headers</span> </label> <label class="checkbox-label"> <span>Delimiter:</span> </label> <select id="delimiter" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border);"> <option value=",">Comma (,)</option> <option value=";">Semicolon (;)</option> <option value="\t">Tab</option> <option value="|">Pipe (|)</option> </select> <label class="checkbox-label" style="margin-left: 20px;"> <input type="checkbox" id="flattenNested" checked> <span>Flatten Nested Objects</span> </label> </div> <div class="info-box" style="margin-top: 1rem;"> <p><strong>Tip:</strong> Input should be a JSON array, e.g. <code>[{"name":"John","age":30}, ...]</code></p> </div> </div> <!-- SEO Content --> <section class="tool-area mt-lg"> <h2 class="section-label">JSON to CSV FAQ - Common Questions Answered</h2> <div class="faq-container"> <details class="faq-item"> <summary class="faq-question">What are JSON and CSV formats?</summary> <div class="faq-answer"> <p><strong>JSON</strong> (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate.</p> <p><strong>CSV</strong> (Comma-Separated Values) is a simple tabular data format with values separated by commas. CSV files can be opened and edited in Excel, Google Sheets, and other spreadsheet applications.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">How to convert JSON array to CSV?</summary> <div class="faq-answer"> <p>Using this tool, just three steps:</p> <ol> <li>Paste your JSON array into the left input box</li> <li>Choose delimiter and options</li> <li>Click "Convert to CSV" button</li> </ol> <p>Supports downloading as .csv file for direct Excel import.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">How are nested JSON objects handled?</summary> <div class="faq-answer"> <p>When "Flatten Nested Objects" is checked, nested objects are flattened with dot notation. For example:</p> <p><code>{"name":"John","address":{"city":"NYC"}}</code></p> <p>converts to: <code>name,address.city</code></p> </div> </details> </div> </section> <section class="tool-area mt-lg"> <h2 class="section-label">JSON to CSV Example - How to Convert JSON to Spreadsheet</h2> <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 1rem;"> <p style="margin-bottom: 1rem;"><strong>Input JSON:</strong></p> <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">[ {"name": "John", "age": 30, "city": "New York"}, {"name": "Jane", "age": 25, "city": "Los Angeles"}, {"name": "Bob", "age": 35, "city": "Chicago"} ]</pre> <p style="margin: 1rem 0;"><strong>Output CSV:</strong></p> <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">name,age,city John,30,New York Jane,25,Los Angeles Bob,35,Chicago</pre> </div> </section> <div class="tutorial-section" style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:0;">
+                </div>
+            </div>
+            <!-- Right-side links -->
+            <a href="tutorial.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Tutorial
+            </a>
+            <a href="best-practices.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Practices
+            </a>
+            <a href="news.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                News
+            </a>
+            <a href="about.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                About
+            </a>
+            <a href="changelog.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Changelog
+            </a>
+            <!-- CTA Button -->
+            <a href="format.html" class="nav-link cta">Try Formatter</a>
+        </div>
+    </nav> <main class="main-container"> <div class="page-header text-center"> <h1 class="page-title">JSON to CSV Converter - Convert JSON to Excel</h1> <p class="page-description"> Convert JSON data to CSV format for Excel and Google Sheets import </p> <div class="breadcrumb"> <a href="../index.html">Home</a> / <span>JSON to CSV</span> </div> </div> <div class="tool-area"> <div class="tool-header"> <div class="tool-status" id="status"> <span class="status-dot"></span> <span class="status-text">Waiting for input...</span> </div> <div class="tool-actions"> <button class="btn btn-primary" id="convertBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path> <polyline points="7 10 12 15 17 10"></polyline> <line x1="12" y1="15" x2="12" y2="3"></line> </svg> Convert to CSV </button> <button class="btn btn-secondary" id="downloadBtn" disabled> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path> <polyline points="7 10 12 15 17 10"></polyline> <line x1="12" y1="15" x2="12" y2="3"></line> </svg> Download CSV </button> <button class="btn btn-secondary" id="copyBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> Copy </button> <button class="btn btn-danger" id="clearBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <polyline points="3 6 5 6 21 6"></polyline> <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path> </svg> Clear </button> </div> </div> <div class="editor-container"> <div class="editor-panel"> <div class="editor-label">Input JSON (Array format)</div> <textarea id="inputJson" class="code-editor" placeholder='[ {"name": "John", "age": 30, "city": "New York"}, {"name": "Jane", "age": 25, "city": "Los Angeles"}, {"name": "Bob", "age": 35, "city": "Chicago"} ]'></textarea> </div> <div class="editor-panel"> <div class="editor-label">Output CSV</div> <div id="outputCsv" class="code-output"><pre></pre></div> </div> </div> <div class="options-row"> <label class="checkbox-label"> <input type="checkbox" id="includeHeaders" checked> <span>Include Headers</span> </label> <label class="checkbox-label"> <span>Delimiter:</span> </label> <select id="delimiter" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border);"> <option value=",">Comma (,)</option> <option value=";">Semicolon (;)</option> <option value="\t">Tab</option> <option value="|">Pipe (|)</option> </select> <label class="checkbox-label" style="margin-left: 20px;"> <input type="checkbox" id="flattenNested" checked> <span>Flatten Nested Objects</span> </label> </div> <div class="info-box" style="margin-top: 1rem;"> <p><strong>Tip:</strong> Input should be a JSON array, e.g. <code>[{"name":"John","age":30}, ...]</code></p> </div> </div> <!-- SEO Content --> <section class="tool-area mt-lg"> <h2 class="section-label">JSON to CSV FAQ - Common Questions Answered</h2> <div class="faq-container"> <details class="faq-item"> <summary class="faq-question">What are JSON and CSV formats?</summary> <div class="faq-answer"> <p><strong>JSON</strong> (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate.</p> <p><strong>CSV</strong> (Comma-Separated Values) is a simple tabular data format with values separated by commas. CSV files can be opened and edited in Excel, Google Sheets, and other spreadsheet applications.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">How to convert JSON array to CSV?</summary> <div class="faq-answer"> <p>Using this tool, just three steps:</p> <ol> <li>Paste your JSON array into the left input box</li> <li>Choose delimiter and options</li> <li>Click "Convert to CSV" button</li> </ol> <p>Supports downloading as .csv file for direct Excel import.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">How are nested JSON objects handled?</summary> <div class="faq-answer"> <p>When "Flatten Nested Objects" is checked, nested objects are flattened with dot notation. For example:</p> <p><code>{"name":"John","address":{"city":"NYC"}}</code></p> <p>converts to: <code>name,address.city</code></p> </div> </details> </div> </section> <section class="tool-area mt-lg"> <h2 class="section-label">JSON to CSV Example - How to Convert JSON to Spreadsheet</h2> <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 1rem;"> <p style="margin-bottom: 1rem;"><strong>Input JSON:</strong></p> <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">[ {"name": "John", "age": 30, "city": "New York"}, {"name": "Jane", "age": 25, "city": "Los Angeles"}, {"name": "Bob", "age": 35, "city": "Chicago"} ]</pre> <p style="margin: 1rem 0;"><strong>Output CSV:</strong></p> <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.875rem;">name,age,city John,30,New York Jane,25,Los Angeles Bob,35,Chicago</pre> </div> </section> <div class="tutorial-section" style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:0;">
     <h2 style="font-size:1.5rem;margin-bottom:1rem;color:var(--primary);">JSON to CSV: Complete Guide</h2>
     <div style="display:grid;gap:1.5rem;">
         <div>

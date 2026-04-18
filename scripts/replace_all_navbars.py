@@ -1,28 +1,15 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="AI JSON changelog - Track updates, new features, and improvements to our JSON utilities."> <meta name="keywords" content="AI JSON changelog, JSON utilities updates, new features, version history"> <meta name="author" content="AI JSON - JSON Tools for Developers"> <meta name="robots" content="index, follow"> <link rel="canonical" href="https://www.aijsons.com/pages/changelog.html"> <meta property="og:type" content="website"> <meta property="og:url" content="https://www.aijsons.com/pages/changelog.html"> <meta property="og:title" content="AI JSON Changelog - Track Updates & New Features"> <meta property="og:description" content="Track updates, new features, and improvements to our JSON utilities."> <title>AI JSON Changelog - Track Updates & New Features | AI JSON</title> <style> *,*::before,*::after{margin:0;padding:0;box-sizing:border-box} :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px;} body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column} .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100} .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)} .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap} .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem} .nav-link svg{width:16px;height:16px;flex-shrink:0} .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)} .main-container{flex:1;max-width:800px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)} .footer{background:var(--bg-dark);padding:var(--space-xl);text-align:center;border-top:1px solid var(--bg-secondary);margin-top:auto} .footer a{color:var(--primary);text-decoration:none} .footer a:hover{text-decoration:underline} .page-header{text-align:center;margin-bottom:var(--space-xl)} .page-title{font-size:2rem;color:var(--primary);margin-bottom:var(--space-md)} .page-description{color:var(--text-secondary);font-size:1.1rem} .breadcrumb{font-size:0.875rem;color:var(--text-secondary);margin-top:var(--space-md)} .breadcrumb a{color:var(--primary);text-decoration:none} .breadcrumb a:hover{text-decoration:underline} .changelog-timeline{margin-top:var(--space-xl)} .version-entry{margin-bottom:var(--space-xl);padding-left:var(--space-xl);border-left:2px solid var(--bg-secondary);position:relative} .version-entry::before{content:'';position:absolute;left:-6px;top:0;width:10px;height:10px;border-radius:50%;background:var(--primary)} .version-date{color:var(--text-secondary);font-size:0.875rem;margin-bottom:0.5rem} .version-title{color:var(--primary);font-size:1.25rem;margin-bottom:1rem} .version-changes{list-style:none;padding:0} .version-changes li{margin-bottom:0.5rem;padding-left:1.5rem;position:relative;color:var(--text-secondary)} .version-changes li::before{content:'+';position:absolute;left:0;color:var(--primary);font-weight:bold} .version-changes li.breaking::before{content:'!';color:#ef4444} @media(max-width:768px){.main-container{padding:var(--space-md)}.page-title{font-size:1.5rem}} 
-/* P0: CLS Prevention */
-img { contain: layout; }
-.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+#!/usr/bin/env python3
+"""Replace all navbars with a consistent template"""
+import os
+import re
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
-</style> <link rel="icon" type="image/x-icon" href="../images/favicon.ico"> <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png"> <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png"> <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png"> <link rel="icon" type="image/svg+xml" href="../images/logo.svg"> <meta name="msapplication-TileColor" content="#131c2e"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"> <!-- DNS Prefetch & Preconnect --> <link rel="dns-prefetch" href="https://fonts.googleapis.com"> <link rel="dns-prefetch" href="https://fonts.gstatic.com"> <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Preload 关键字体 --> <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHQ.woff2" onload="this.onload=null"> <!-- Google Fonts 异步加载 --> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'"> <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"></noscript> <!-- 关键CSS内联 --> <style> *,*::before,*::after{margin:0;padding:0;box-sizing:border-box} :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px;font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif} body{background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column} .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100} .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)} .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap} .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem} .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)} .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)} .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:var(--space-xl);border:1px solid var(--bg-secondary)} .code-editor{width:100%;min-height:200px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)} .code-editor:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(34,197,94,.15)} .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s;transform:translateZ(0);will-change:transform,box-shadow} .btn-primary{background:var(--primary);color:var(--bg-dark)} .btn-primary:hover{background:var(--primary-hover);box-shadow:0 4px 12px rgba(34,197,94,.3)} .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)} .btn-secondary:hover{background:rgba(34,197,94,.1)} .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)} .footer a{color:var(--primary);text-decoration:none} 
-/* P0: CLS Prevention */
-img { contain: layout; }
-.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+pages_dir = r'd:\网站开发-json\pages'
 
-</style> <!-- 预加载资源 --> <link rel="preload" href="js/app.js" as="script"> <!-- 异步加载完整CSS --> <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI JSON Changelog - Track Updates & New Features">
-    <meta name="twitter:description" content="Track updates, new features, and improvements to our JSON utilities.">
-    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
-    <meta name="twitter:url" content="https://www.aijsons.com/pages/changelog.html">
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#22C55E">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="JSON Tools">
-    <link rel="apple-touch-icon" href="../images/icon-192.png">
-<link rel="stylesheet" href="../css/styles.css">
-</head> <body> <nav class="navbar">
+# Standard navbar template for pages/ directory
+# Note: Home link uses ../index.html, tools use direct paths (no ../)
+NAVBAR_TEMPLATE_PAGES = '''<nav class="navbar">
         <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -277,52 +264,77 @@ img { contain: layout; }
             <!-- CTA Button -->
             <a href="format.html" class="nav-link cta">Try Formatter</a>
         </div>
-    </nav> <main class="main-container"> <div class="page-header"> <h1 class="page-title">Changelog</h1> <p class="page-description">Track updates, new features, and improvements</p> <div class="breadcrumb"> <a href="../index.html">Home</a> / <span>Changelog</span> </div> </div> <div class="changelog-timeline"> <div class="version-entry"> <div class="version-date">April 15, 2026</div> <div class="version-title">Version 2.0</div> <ul class="version-changes"> <li>Added professional logo and favicon</li> <li>Added About page with project information</li> <li>Added Changelog to track updates</li> <li>Split blog and news into individual article pages for better SEO</li> <li>Added newsletter subscription to homepage</li> <li>Improved SEO metadata across all pages</li> <li>Added FAQ sections to tool pages</li> <li>Performance optimizations for faster loading</li> </ul> </div> <div class="version-entry"> <div class="version-date">April 10, 2026</div> <div class="version-title">Version 1.5</div> <ul class="version-changes"> <li>Added JSON to CSV converter</li> <li>Added JSON Compare tool for diffing documents</li> <li>Improved navigation with News section</li> <li>Added technical blog with developer guides</li> <li>SEO improvements for developers</li> <li>Fixed accessibility issues for better Lighthouse scores</li> </ul> </div> <div class="version-entry"> <div class="version-date">April 1, 2026</div> <div class="version-title">Version 1.0 - Launch</div> <ul class="version-changes"> <li>Initial release with core JSON utilities</li> <li>JSON Formatter with syntax highlighting</li> <li>JSON Escape/Unescape</li> <li>JSON Data Extractor</li> <li>JSON Sorter</li> <li>JSON Cleaner</li> <li>JSON/XML Converter</li> <li>JSON/YAML Converter</li> <li>JSON Viewer with tree view</li> </ul> </div> </div> </main> <footer class="footer"> <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p> <p style="margin-top: 0.5rem; font-size: 0.875rem;"> <a href="../privacy.html">Privacy Policy</a> | <a href="../terms.html">Terms of Service</a> </p> <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary);"> &copy; 2026 AI JSON. All rights reserved. </p> </footer> <script src="../js/app.js" defer></script> <script>
-// Theme Toggle
-(function() {
-    var toggle = document.getElementById('themeToggle');
-    if (!toggle) return;
+    </nav>'''
 
-    // Apply saved theme or system preference
-    function applyTheme(theme) {
-        if (theme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-        }
-    }
+# Blog pages have slightly different navbar (no Tutorial)
+NAVBAR_TEMPLATE_BLOG = NAVBAR_TEMPLATE_PAGES.replace(
+    '''            <a href="tutorial.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Tutorial
+            </a>
+''',
+    ''
+)
 
-    // Initialize theme
-    function initTheme() {
-        var saved = localStorage.getItem('theme');
-        if (saved) {
-            applyTheme(saved);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            applyTheme('light');
-        }
-    }
+def replace_navbar(content, fname):
+    """Replace the navbar in a page"""
+    # Detect if it's a blog page
+    is_blog = 'blog' in fname.lower()
+    
+    template = NAVBAR_TEMPLATE_BLOG if is_blog else NAVBAR_TEMPLATE_PAGES
+    
+    # Find old navbar
+    old_navbar_match = re.search(r'<nav[^>]*class="navbar[^"]*"[^>]*>.*?</nav>', content, re.DOTALL)
+    if old_navbar_match:
+        old_navbar = old_navbar_match.group(0)
+        # Check if they're the same
+        if old_navbar.strip() == template.strip():
+            return content, False  # No change needed
+        
+        # Replace
+        content = content[:old_navbar_match.start()] + template + content[old_navbar_match.end():]
+        return content, True
+    
+    # No navbar found - need to insert one
+    # Find <header> or <main> tag
+    header_match = re.search(r'<header[^>]*>', content)
+    if header_match:
+        # Insert after header opening tag (but navbar goes before header content)
+        insert_pos = header_match.end()
+        content = content[:insert_pos] + '\n' + template + '\n' + content[insert_pos:]
+        return content, True
+    
+    return content, False
 
-    // Toggle theme
-    toggle.addEventListener('click', function() {
-        var current = document.documentElement.getAttribute('data-theme');
-        var next = current === 'light' ? 'dark' : 'light';
-        applyTheme(next);
-        localStorage.setItem('theme', next);
-    });
+# Process all pages
+html_files = sorted([f for f in os.listdir(pages_dir) if f.endswith('.html')])
 
-    initTheme();
-})();
-<\/script>
-    <!-- PWA Service Worker -->
-    <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                console.log('[PWA] SW registered:', reg.scope);
-            }).catch(function(err) {
-                console.warn('[PWA] SW registration failed:', err);
-            });
-        });
-    }
-    </script>
-</body> </html> 
+fixed = 0
+ok = 0
+no_nav = []
+
+for fname in html_files:
+    fpath = os.path.join(pages_dir, fname)
+    with open(fpath, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    new_content, changed = replace_navbar(content, fname)
+    
+    if changed:
+        with open(fpath, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+        fixed += 1
+        print(f"Fixed: {fname}")
+    elif 'class="navbar"' in content:
+        ok += 1
+        print(f"OK: {fname}")
+    else:
+        no_nav.append(fname)
+        print(f"No navbar: {fname}")
+
+print(f"\nSummary: {fixed} fixed, {ok} OK, {len(no_nav)} no navbar")
+if no_nav:
+    print(f"Pages without navbar: {no_nav}")
