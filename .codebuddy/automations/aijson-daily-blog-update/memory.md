@@ -32,7 +32,14 @@
 - Format: `ai-daily-YYYYMMDD` for first article of the day
 - Format: `ai-daily-YYYYMMDDb`, `ai-daily-YYYYMMDDc` for additional articles same day
 
+### 2026-04-18
+- **Status:** ✅ Success
+- **Article:** "Stream JSON Data Efficiently: Handling Large Payloads Without Memory Issues"
+- **Topic:** Streaming JSON, NDJSON, JSON lines, data pipeline, stream parsing for massive files
+- **Commit:** "Daily blog: Stream JSON Data Efficiently: Handling Large Payloads Without Memory Issues (ai-daily-20260418)" ✅ pushed to GitHub
+
 ## Topics Used (avoid repetition)
+- Streaming JSON / NDJSON ✓ (04-18)
 - JSONPath advanced patterns ✓ (04-16)
 - Zod v4 + JSON Schema for AI agents ✓ (04-16)
 - MCP tool calling ✓ (04-15)
@@ -40,5 +47,4 @@
 - JSON Merge Strategies ✓ (04-13)
 - JSONPath Query ✓ (04-12)
 - JSON Performance/SIMD ✓ (04-12)
-- Streaming JSON NDJSON ✓ (04-11)
 - WebAssembly + JSON ✓ (older)

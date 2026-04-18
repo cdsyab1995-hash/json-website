@@ -1,5 +1,14 @@
 # 每日JSON技术文章更新 - 执行历史
 
+## 2026-04-18（第10次执行）
+- **英文文章**: JSON Patch (RFC 6902): Stop Sending Full Objects — Use Partial Updates for Your APIs
+  - 锚点：`#ai-daily-20260418`
+  - 核心内容：PUT vs PATCH问题、JSON Patch 6种操作（add/remove/replace/move/copy/test）、test操作实现乐观并发控制、GitHub/Microsoft Graph/Kubernetes生产案例、fast-json-patch库实战、适用与不适用场景
+- **替换内容**：博客页已有的低质量streaming JSON文章（泛泛而谈）被替换为高质量JSON Patch文章
+- **更新文件**：index.html, pages/blog.html
+- **首页卡片**：新增04-18卡片，删除04-14卡片（保持5篇）；Use Cases区域文章也同步更新
+- **Git推送**：✅ 成功
+
 ## 2026-04-17（第9次执行）
 - **英文文章**: JSONata: The XPath for JSON - Advanced Query and Transformation Language for US Developers
   - 锚点：`#ai-daily-20260417`
@@ -75,6 +84,7 @@
 - JSONPath Query Mastery / Advanced Extraction（2026-04-16）
 - Zod v4 + JSON Schema / Runtime Validation（2026-04-16b）
 - JSONata Advanced Query Language（2026-04-17）
+- JSON Patch RFC 6902 / Partial API Updates（2026-04-18）
 
 ## 待选话题池（下次可用）
 - 英文：JSON Patch (RFC 6902) for Efficient API Updates, tRPC vs REST JSON trade-offs, JSON Web Tokens (JWT) Best Practices 2026, JSON Schema 2020-12 Advanced Features, JSON in Edge Computing / Cloudflare Workers, JSON Lines (JSONL) for Big Data Pipelines
