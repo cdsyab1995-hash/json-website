@@ -213,10 +213,13 @@ body {
 .nav-dropdown-menu.wide .nav-link { width: 100%; }
 
 /* Chevron down arrow for Tools dropdown */
+.nav-link.nav-dropdown-toggle .chevron-down,
 .nav-dropdown-toggle .chevron-down {
-    width: 14px;
-    height: 14px;
-    margin-left: 2px;
+    width: 14px !important;
+    height: 14px !important;
+    margin-left: 4px;
+    vertical-align: middle;
+    flex-shrink: 0;
     transition: transform 0.2s;
 }
 .nav-dropdown:hover .nav-dropdown-toggle .chevron-down,
