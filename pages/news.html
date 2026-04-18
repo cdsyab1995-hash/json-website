@@ -396,7 +396,7 @@ img { contain: layout; }
             <strong>Usage Tip</strong><br>
             Follow this page for the latest JSON and API tech updates. Combined with our <a href="format.html">JSON Formatter</a> and <a href="escape.html">JSON Escape tools</a>, you can boost your development efficiency by several times!
         </div>
-    </div> </main> <!-- Footer --> <footer class="footer"> <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p> <p style="margin-top: 0.5rem; font-size: 0.875rem;"> <a href="../privacy.html" style="color: var(--primary);">Privacy Policy</a> | <a href="../terms.html" style="color: var(--primary);">Terms of Service</a> | <a href="../cookie.html" style="color: var(--primary);">Cookie Policy</a> </p> <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-light);"> &copy; 2026 AI JSON. All rights reserved. </p> </footer> <script src="../js/app.js" defer></script> <script>
+    </div> </main> <!-- Footer --> <footer class="footer"> <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p> <p class="class="text-sm mt-sm""> <a href="../privacy.html" class="class="text-primary"">Privacy Policy</a> | <a href="../terms.html" class="class="text-primary"">Terms of Service</a> | <a href="../cookie.html" class="class="text-primary"">Cookie Policy</a> </p> <p class="class="text-small mt-sm""> &copy; 2026 AI JSON. All rights reserved. </p> </footer> <script src="../js/app.js" defer></script> <script>
 // Theme Toggle
 (function() {
     var toggle = document.getElementById('themeToggle');
@@ -437,7 +437,7 @@ img { contain: layout; }
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                console.log('[PWA] SW registered:', reg.scope);
+                // console statement removed
             }).catch(function(err) {
                 console.warn('[PWA] SW registration failed:', err);
             });

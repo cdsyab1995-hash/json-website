@@ -350,19 +350,19 @@ img { contain: layout; }
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
                         <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
                             <div style="font-weight: 600; margin-bottom: 0.25rem;">📧 Email (MIME)</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Embedding images in emails</div>
+                            <div class="class="text-small text-secondary"">Embedding images in emails</div>
                         </div>
                         <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
                             <div style="font-weight: 600; margin-bottom: 0.25rem;">🔐 API Tokens</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">JWT tokens, credentials</div>
+                            <div class="class="text-small text-secondary"">JWT tokens, credentials</div>
                         </div>
                         <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
                             <div style="font-weight: 600; margin-bottom: 0.25rem;">🖼️ Data URLs</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Inline images in HTML/CSS</div>
+                            <div class="class="text-small text-secondary"">Inline images in HTML/CSS</div>
                         </div>
                         <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
                             <div style="font-weight: 600; margin-bottom: 0.25rem;">📦 JSON Data</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Embedding binary in APIs</div>
+                            <div class="class="text-small text-secondary"">Embedding binary in APIs</div>
                         </div>
                     </div>
                 </div>
@@ -373,7 +373,7 @@ img { contain: layout; }
                         Base64URL is a variant used in URLs and filenames. It replaces <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">+</code> with <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">-</code> and <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">/</code> with <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">_</code> to be URL-safe.
                     </p>
                     <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px; margin-top: 0.5rem;">
-                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Base64</div>
+                        <div class="class="text-small text-secondary"">Base64</div>
                         <code style="font-family: monospace;">SGVsbG8/K1Rlc3Q=</code>
                         <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Base64URL</div>
                         <code style="font-family: monospace;">SGVsbG8_K1Rlc3Q</code>
@@ -535,7 +535,7 @@ img { contain: layout; }
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                console.log('[PWA] SW registered:', reg.scope);
+                // console statement removed
             }).catch(function(err) {
                 console.warn('[PWA] SW registration failed:', err);
             });

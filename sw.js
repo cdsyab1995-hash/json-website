@@ -47,17 +47,17 @@ const STATIC_ASSETS = [
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
-    console.log('[SW] Installing...');
+    // console statement removed
     event.waitUntil(
         caches.open(STATIC_CACHE).then((cache) => {
-            console.log('[SW] Caching static assets');
+            // console statement removed
             // Cache assets in batches, ignore failures
             const cachePromises = STATIC_ASSETS.map(url => 
                 cache.add(url).catch(err => console.warn(`[SW] Failed to cache ${url}:`, err))
             );
             return Promise.all(cachePromises);
         }).then(() => {
-            console.log('[SW] Installation complete');
+            // console statement removed
             return self.skipWaiting();
         })
     );
@@ -65,19 +65,19 @@ self.addEventListener('install', (event) => {
 
 // Activate event - clean old caches
 self.addEventListener('activate', (event) => {
-    console.log('[SW] Activating...');
+    // console statement removed
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames
                     .filter(name => name.startsWith('json-tools-') && name !== STATIC_CACHE && name !== DYNAMIC_CACHE)
                     .map(name => {
-                        console.log('[SW] Deleting old cache:', name);
+                        // console statement removed
                         return caches.delete(name);
                     })
             );
         }).then(() => {
-            console.log('[SW] Activation complete');
+            // console statement removed
             return self.clients.claim();
         })
     );
@@ -146,7 +146,7 @@ self.addEventListener('sync', (event) => {
 
 async function syncAnalytics() {
     // Placeholder for analytics sync
-    console.log('[SW] Syncing analytics...');
+    // console statement removed
 }
 
 // Push notifications (future use)

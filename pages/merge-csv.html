@@ -506,12 +506,12 @@ img { contain: layout; }
 
 <footer class="footer">
     <p>AI JSON - Instant client-side data processing. Your data stays private.</p>
-    <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+    <p class="class="text-sm mt-sm"">
         <a href="../privacy.html">Privacy Policy</a> |
         <a href="../terms.html">Terms of Service</a> |
         <a href="../cookie.html">Cookie Policy</a>
     </p>
-    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-light);">
+    <p class="class="text-small mt-sm"">
         &copy; 2026 AI JSON. All rights reserved.
     </p>
 </footer>
@@ -850,7 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                console.log('[PWA] SW registered:', reg.scope);
+                // console statement removed
             }).catch(function(err) {
                 console.warn('[PWA] SW registration failed:', err);
             });
