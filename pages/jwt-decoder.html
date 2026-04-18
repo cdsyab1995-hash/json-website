@@ -3,328 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online regex tester and debugger for JavaScript and PCRE. Test regular expressions with real-time matching, syntax highlighting, and pattern validation. Instant results for US developers.">
-    <meta name="keywords" content="regex tester, regular expression tester, regex debugger, regex validator, regex online, javascript regex, PCRE tester, regex pattern, regular expression validator, online regex tool, regex match, regex search">
+    <meta name="description" content="Decode and inspect JWT (JSON Web Token) tokens. View header, payload, and signature. Free browser-based JWT debugger for developers.">
+    <meta name="keywords" content="JWT decoder, JWT parser, JSON Web Token, decode JWT, JWT debugger, JWT viewer, JWT payload, JWT header">
+    <meta name="author" content="AI JSON - JSON Tools for US Developers">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.aijsons.com/pages/jwt-decoder.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.aijsons.com/pages/jwt-decoder.html">
-    <meta property="og:title" content="Free JWT Decoder & Debugger - Instant Pattern Validation">
-    <meta property="og:description" content="Test regex patterns instantly. Supports JavaScript and PCRE with real-time match highlighting.">
-    <title>Free JWT Decoder & Debugger - Instant Pattern Validation | AI JSON</title>
+    <meta property="og:title" content="JWT Decoder - Decode JSON Web Tokens Instantly">
+    <meta property="og:description" content="Decode and inspect JWT tokens. View header, payload, and signature in real-time.">
+    <title>JWT Decoder - Decode JSON Web Tokens Instantly | AI JSON</title>
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--error:#EF4444;--warning:#F59E0B;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px}
-        body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
-        .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
-        .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
-        .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap}
-        .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem}
-        .nav-link svg{width:16px;height:16px;flex-shrink:0}
-        .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
-        .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)}
-        .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:var(--space-xl);border:1px solid var(--bg-secondary);margin-bottom:var(--space-xl)}
-        .tool-section{margin-bottom:var(--space-lg)}
-        .section-label{display:block;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary)}
-        .input-area{width:100%;min-height:120px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
-        .input-area:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
-        .output-area{width:100%;min-height:150px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s}
-        .btn-primary{background:var(--primary);color:var(--bg-dark)}
-        .btn-primary:hover{background:#1ea54d}
+        :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--radius-md:8px;--radius-lg:12px}
+        body{font-family:'DM Sans','Segoe UI',sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+        .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
+        .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none}
+        .nav-link{color:var(--text-secondary);text-decoration:none;padding:0.5rem 1rem;border-radius:var(--radius-md);font-size:0.875rem}
+        .nav-link:hover,.nav-link.active{color:var(--primary)}
+        .main-container{flex:1;max-width:1200px;margin:0 auto;padding:2rem;width:100%}
+        .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:1.5rem;border:1px solid var(--bg-secondary)}
+        .input-area{width:100%;min-height:150px;padding:1rem;border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:monospace;background:var(--bg-dark);color:var(--text-primary);resize:vertical}
+        .result-area{background:var(--bg-dark);padding:1rem;border-radius:var(--radius-md);font-family:monospace;font-size:0.875rem;white-space:pre-wrap;word-break:break-all}
+        .btn{padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer}
+        .btn-primary{background:var(--primary);color:#0a0f1a}
         .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
-        .btn-secondary:hover{background:rgba(34,197,94,.1)}
-        .btn-group{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md)}
-        .toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-sm)}
-        .toolbar-title{font-weight:600;color:var(--text-secondary);font-size:0.875rem}
-        .match-highlight{background:rgba(34,197,94,.3);border-radius:2px;padding:0 2px}
-        .match-highlight-group{background:rgba(59,130,246,.3)}
-        .error-text{color:var(--error)}
-        .message{padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);margin-top:var(--space-sm);font-size:0.875rem}
-        .message.success{background:rgba(34,197,94,.1);color:var(--primary);border:1px solid var(--primary)}
-        .message.error{background:rgba(239,68,68,.1);color:var(--error);border:1px solid var(--error)}
-        .flags-group{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-top:var(--space-sm)}
-        .flag-label{display:flex;align-items:center;gap:0.25rem;padding:0.25rem 0.75rem;background:var(--bg-secondary);border-radius:var(--radius-md);font-size:0.875rem;cursor:pointer}
-        .flag-label input{margin:0}
-        .flag-label:hover{background:var(--bg-card)}
-        .matches-list{margin-top:var(--space-md)}
-        .match-item{padding:var(--space-sm) var(--space-md);background:var(--bg-secondary);border-radius:var(--radius-md);margin-bottom:var(--space-sm);font-family:monospace;font-size:0.875rem}
-        .match-item .match-text{color:var(--primary)}
-        .match-item .match-index{color:var(--text-secondary);font-size:0.75rem;margin-left:var(--space-sm)}
-        .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
+        .section-label{font-size:1rem;font-weight:600;margin-bottom:0.5rem;display:block}
+        .error{color:#EF4444;padding:1rem;background:rgba(239,68,68,0.1);border-radius:var(--radius-md);margin-top:1rem}
+        .token-part{margin-bottom:1.5rem}
+        .token-label{font-size:0.875rem;color:var(--text-secondary);margin-bottom:0.5rem}
+        .header-box{background:rgba(59,130,246,0.1);border-left:3px solid #3B82F6;padding:1rem;border-radius:var(--radius-md)}
+        .payload-box{background:rgba(34,197,94,0.1);border-left:3px solid var(--primary);padding:1rem;border-radius:var(--radius-md)}
+        .signature-box{background:rgba(168,85,247,0.1);border-left:3px solid #A855F7;padding:1rem;border-radius:var(--radius-md)}
+        .footer{background:var(--bg-dark);text-align:center;padding:2rem;margin-top:auto;border-top:1px solid var(--bg-secondary)}
         .footer a{color:var(--primary);text-decoration:none}
-        .nav-dropdown{position:relative}
-        .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--bg-dark);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);padding:var(--space-sm);min-width:200px;z-index:1000}
-        .nav-dropdown:hover .nav-dropdown-menu{display:block}
-        .nav-dropdown-menu a{white-space:nowrap}
-        .menu-toggle{display:none}
-        @media (max-width:768px){
-            .navbar-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg-dark);flex-direction:column;padding:var(--space-md);border-bottom:1px solid var(--bg-secondary)}
-            .navbar-links.active{display:flex}
-            .menu-toggle{display:flex}
-        }
     </style>
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free JWT Decoder & Debugger - Instant Pattern Validation">
-    <meta name="twitter:description" content="Test regex patterns instantly. Supports JavaScript and PCRE with real-time match highlighting.">
-    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="#22C55E">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="JSON Tools">
-    <link rel="apple-touch-icon" href="../images/icon-192.png">
 </head>
 <body>
-<a href="format.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>Format</a>
-                    <a href="escape.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Escape</a>
-                    <a href="extract.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>Extract</a>
-                    <a href="sort.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>Sort</a>
-                    <a href="clean.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>Clean</a>
-                    <a href="viewer.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>Viewer</a>
-                    <a href="compare.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>Compare</a>
-                    <a href="xml.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>XML</a>
-                    <a href="yaml.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>YAML</a>
-                    <div class="nav-dropdown-divider"></div>
-                    <a href="json2csv.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>CSV</a>
-                    <a href="csv-to-excel.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line></svg>Excel</a>
-                    <a href="excel-remove-duplicates.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>Remove Duplicates</a>
-                    <a href="merge-csv.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>Merge CSV</a>
-                    <a href="batch-file-renamer.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>Batch Rename</a>
-                    <div class="nav-dropdown-divider"></div>
-                    <a href="regex-tester.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Regex</a>
-                    <a href="base64.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Base64</a>
-                    <a href="url-encoder.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>URL Encoder</a>
-                    <a href="jwt-decoder.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>JWT</a>
-                    <a href="hash-generator.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Hash Generator</a>
-                    <a href="timestamp-converter.html" class="nav-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        Timestamp
-                    </a>
-                        <a href="css-minifier.html" class="nav-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                            CSS Minifier
-                        </a>
-                        <a href="html-encoder.html" class="nav-link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                            HTML Encoder
-                        </a>
-                    </div>
-                </div>
-                <a href="blog.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>Tutorial</a>
-            <a href="best-practices.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Practices</a>
-            <a href="news.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>News</a>
-            <a href="changelog.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Changelog</a>
-            <a href="about.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>About</a>
-            <!-- Theme Toggle -->
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-</button>
-<a href="format.html" class="nav-link navbar-cta">Try Formatter</a>
+    <nav class="navbar">
+        <a href="../index.html" class="navbar-brand">AI JSON</a>
+        <div style="display:flex;gap:0.5rem;">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="format.html" class="nav-link">Format</a>
+            <a href="jwt-decoder.html" class="nav-link active">JWT</a>
+            <a href="base64.html" class="nav-link">Base64</a>
         </div>
     </nav>
+    
     <main class="main-container">
-        <div class="page-header">
-            <h1 class="page-title" style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;">JWT Decoder & Debugger</h1>
-            <p class="page-description" style="color:var(--text-secondary);">Test regular expressions with real-time matching. Supports JavaScript regex with match highlighting and group extraction.</p>
+        <div style="margin-bottom:2rem;">
+            <h1 style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;">JWT Decoder & Debugger</h1>
+            <p style="color:var(--text-secondary);">Decode and inspect JSON Web Tokens. View header, payload, and signature instantly.</p>
         </div>
-        <section class="tool-area">
-            <div class="tool-section">
-                <label class="section-label">Pattern</label>
-                <input type="text" id="regexPattern" class="input-area" placeholder="Enter regex pattern, e.g., \d{3}-\d{3}-\d{4}" style="min-height:50px;">
-                <div class="flags-group">
-                    <label class="flag-label"><input type="checkbox" id="flagG" checked> Global (g)</label>
-                    <label class="flag-label"><input type="checkbox" id="flagI"> Case Insensitive (i)</label>
-                    <label class="flag-label"><input type="checkbox" id="flagM"> Multiline (m)</label>
+        
+        <div class="tool-area">
+            <label class="section-label">Paste JWT Token</label>
+            <textarea id="jwtInput" class="input-area" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
+            
+            <div style="margin-top:1rem;display:flex;gap:0.5rem;">
+                <button onclick="decodeJWT()" class="btn btn-primary">Decode JWT</button>
+                <button onclick="clearAll()" class="btn btn-secondary">Clear</button>
+            </div>
+            
+            <div id="errorMsg" class="error" style="display:none;"></div>
+            
+            <div id="resultContainer" style="margin-top:1.5rem;">
+                <div class="token-part">
+                    <div class="token-label">Header (Algorithm & Token Type)</div>
+                    <div id="headerResult" class="header-box result-area"></div>
+                </div>
+                <div class="token-part">
+                    <div class="token-label">Payload (Data)</div>
+                    <div id="payloadResult" class="payload-box result-area"></div>
+                </div>
+                <div class="token-part">
+                    <div class="token-label">Signature</div>
+                    <div id="signatureResult" class="signature-box result-area"></div>
                 </div>
             </div>
-            <div class="tool-section">
-                <label class="section-label">Test String</label>
-                <textarea id="testString" class="input-area" placeholder="Enter text to test against the regex pattern..."></textarea>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-primary" id="btnTest">Test Match</button>
-                <button class="btn btn-secondary" id="btnCopyMatches">Copy Matches</button>
-                <button class="btn btn-secondary" id="btnClear">Clear</button>
-            </div>
-            <div id="message" class="message" style="display:none;"></div>
-            <div class="tool-section matches-list">
-                <label class="section-label">Matches (<span id="matchCount">0</span>)</label>
-                <div id="matchesContainer"></div>
-            </div>
-        </section>
-        <section class="tool-area">
-            <h2 class="section-label" style="font-size:1.125rem;margin-bottom:1rem;">Common Regex Patterns</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;">
-                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}';document.getElementById('testString').value='Contact us at support@aijsons.com or sales@company.org';testRegex();">
-                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Email</h3>
-                    <p style="font-size:0.8rem;color:var(--text-secondary);">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</p>
+        </div>
+        
+        <!-- Tutorial Section -->
+        <div class="tutorial-section" style="margin-top:2rem;">
+            <h2 style="font-size:1.5rem;margin-bottom:1rem;color:var(--primary);">JWT Decoder: Complete Guide</h2>
+            <div style="display:grid;gap:1.5rem;">
+                <div>
+                    <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">What is JWT?</h3>
+                    <p style="color:var(--text-secondary);line-height:1.7;">JSON Web Token (JWT) is an open standard for securely transmitting information between parties. JWTs are commonly used for authentication and authorization in web applications.</p>
                 </div>
-                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='https?://[\\w.-]+(?:/[\\w./-]*)?';document.getElementById('testString').value='Visit https://aijsons.com or http://example.org/page';testRegex();">
-                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">URL</h3>
-                    <p style="font-size:0.8rem;color:var(--text-secondary);">https?://[\w.-]+(?:/[\w./-]*)?</p>
+                <div>
+                    <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">JWT Structure</h3>
+                    <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:0.5rem;">A JWT has three parts separated by dots:</p>
+                    <ul style="color:var(--text-secondary);line-height:1.8;padding-left:1.5rem;">
+                        <li><strong>Header</strong> - Contains algorithm and token type</li>
+                        <li><strong>Payload</strong> - Contains claims (user data)</li>
+                        <li><strong>Signature</strong> - Verifies token authenticity</li>
+                    </ul>
                 </div>
-                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='\\d{3}-\\d{3}-\\d{4}';document.getElementById('testString').value='Call 555-123-4567 or 800-555-1234';testRegex();">
-                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Phone (US)</h3>
-                    <p style="font-size:0.8rem;color:var(--text-secondary);">\d{3}-\d{3}-\d{4}</p>
+                <div>
+                    <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">Common Claims</h3>
+                    <div style="background:var(--bg-card);padding:1rem;border-radius:8px;overflow-x:auto;">
+                        <table style="width:100%;font-size:0.875rem;">
+                            <tr><td style="padding:0.25rem;color:var(--primary);">iss</td><td>Issuer</td></tr>
+                            <tr><td style="padding:0.25rem;color:var(--primary);">sub</td><td>Subject (usually user ID)</td></tr>
+                            <tr><td style="padding:0.25rem;color:var(--primary);">aud</td><td>Audience</td></tr>
+                            <tr><td style="padding:0.25rem;color:var(--primary);">exp</td><td>Expiration time</td></tr>
+                            <tr><td style="padding:0.25rem;color:var(--primary);">iat</td><td>Issued at time</td></tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='\\d{4}-\\d{2}-\\d{2}';document.getElementById('testString').value='Date: 2026-04-16 or 1999-12-31';testRegex();">
-                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Date (ISO)</h3>
-                    <p style="font-size:0.8rem;color:var(--text-secondary);">\d{4}-\d{2}-\d{2}</p>
+                <div>
+                    <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">Related Tools</h3>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <a href="base64.html" style="padding:0.5rem 1rem;background:var(--bg-card);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Base64 Encoder</a>
+                        <a href="hash-generator.html" style="padding:0.5rem 1rem;background:var(--bg-card);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Hash Generator</a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
+    
     <footer class="footer">
         <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
-        <p style="margin-top:0.5rem;font-size:0.875rem;"><a href="../privacy.html">Privacy Policy</a> | <a href="../terms.html">Terms of Service</a></p>
-        <p style="margin-top:0.5rem;font-size:0.75rem;">&copy; 2026 AI JSON. All rights reserved.</p>
+        <p><a href="../privacy.html">Privacy</a> | <a href="../terms.html">Terms</a></p>
     </footer>
+    
     <script>
-    function testRegex() {
-        const pattern = document.getElementById('regexPattern').value;
-        const testStr = document.getElementById('testString').value;
-        const msgEl = document.getElementById('message');
-        const countEl = document.getElementById('matchCount');
-        const container = document.getElementById('matchesContainer');
-        
-        if (!pattern) {
-            msgEl.textContent = 'Please enter a regex pattern';
-            msgEl.className = 'message error';
-            msgEl.style.display = 'block';
-            container.innerHTML = '';
-            countEl.textContent = '0';
-            return;
-        }
-        
-        try {
-            let flags = '';
-            if (document.getElementById('flagG').checked) flags += 'g';
-            if (document.getElementById('flagI').checked) flags += 'i';
-            if (document.getElementById('flagM').checked) flags += 'm';
+        function decodeJWT() {
+            var input = document.getElementById('jwtInput').value.trim();
+            var errorDiv = document.getElementById('errorMsg');
+            var headerEl = document.getElementById('headerResult');
+            var payloadEl = document.getElementById('payloadResult');
+            var signatureEl = document.getElementById('signatureResult');
             
-            const regex = new RegExp(pattern, flags);
-            const matches = [...testStr.matchAll(regex)];
+            errorDiv.style.display = 'none';
             
-            if (matches.length === 0) {
-                msgEl.textContent = 'No matches found';
-                msgEl.className = 'message';
-                msgEl.style.display = 'block';
-                container.innerHTML = '';
-            } else {
-                msgEl.textContent = `Found ${matches.length} match${matches.length > 1 ? 'es' : ''}`;
-                msgEl.className = 'message success';
-                msgEl.style.display = 'block';
-                
-                container.innerHTML = matches.map((m, i) => {
-                    const groups = m.slice(1).filter(g => g !== undefined);
-                    let html = '<div class="match-item"><span class="match-text">' + escapeHtml(m[0]) + '</span><span class="match-index">Index: ' + m.index + '</span>';
-                    if (groups.length > 0) {
-                        html += '<br><small style="color:var(--text-secondary);">Groups: ' + groups.map(g => escapeHtml(g)).join(', ') + '</small>';
-                    }
-                    html += '</div>';
-                    return html;
-                }).join('');
+            if (!input) {
+                errorDiv.textContent = 'Please enter a JWT token';
+                errorDiv.style.display = 'block';
+                return;
             }
-            countEl.textContent = matches.length;
-        } catch (e) {
-            msgEl.textContent = 'Invalid regex: ' + e.message;
-            msgEl.className = 'message error';
-            msgEl.style.display = 'block';
-            countEl.textContent = '0';
-            container.innerHTML = '';
+            
+            var parts = input.split('.');
+            if (parts.length !== 3) {
+                errorDiv.textContent = 'Invalid JWT format. JWT should have 3 parts separated by dots.';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            try {
+                headerEl.textContent = JSON.stringify(JSON.parse(atob(parts[0].replace(/-/g, '+').replace(/_/g, '/'))), null, 2);
+                payloadEl.textContent = JSON.stringify(JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/'))), null, 2);
+                signatureEl.textContent = parts[2];
+            } catch (e) {
+                errorDiv.textContent = 'Failed to decode JWT: ' + e.message;
+                errorDiv.style.display = 'block';
+            }
         }
-    }
-    
-    function escapeHtml(str) {
-        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-    
-    document.getElementById('btnTest').addEventListener('click', testRegex);
-    document.getElementById('btnClear').addEventListener('click', function() {
-        document.getElementById('regexPattern').value = '';
-        document.getElementById('testString').value = '';
-        document.getElementById('message').style.display = 'none';
-        document.getElementById('matchesContainer').innerHTML = '';
-        document.getElementById('matchCount').textContent = '0';
-    });
-    document.getElementById('btnCopyMatches').addEventListener('click', function() {
-        const container = document.getElementById('matchesContainer');
-        const matches = [...container.querySelectorAll('.match-text')].map(el => el.textContent);
-        if (matches.length > 0) {
-            navigator.clipboard.writeText(matches.join('\n'));
-            const btn = document.getElementById('btnCopyMatches');
-            btn.textContent = 'Copied!';
-            setTimeout(() => btn.textContent = 'Copy Matches', 1500);
+        
+        function clearAll() {
+            document.getElementById('jwtInput').value = '';
+            document.getElementById('headerResult').textContent = '';
+            document.getElementById('payloadResult').textContent = '';
+            document.getElementById('signatureResult').textContent = '';
+            document.getElementById('errorMsg').style.display = 'none';
         }
-    });
-    document.querySelectorAll('input[id^="flag"]').forEach(cb => cb.addEventListener('change', testRegex));
-    </script>
-<script>
-// Theme Toggle
-(function() {
-    var toggle = document.getElementById('themeToggle');
-    if (!toggle) return;
-
-    // Apply saved theme or system preference
-    function applyTheme(theme) {
-        if (theme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-        }
-    }
-
-    // Initialize theme
-    function initTheme() {
-        var saved = localStorage.getItem('theme');
-        if (saved) {
-            applyTheme(saved);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            applyTheme('light');
-        }
-    }
-
-    // Toggle theme
-    toggle.addEventListener('click', function() {
-        var current = document.documentElement.getAttribute('data-theme');
-        var next = current === 'light' ? 'dark' : 'light';
-        applyTheme(next);
-        localStorage.setItem('theme', next);
-    });
-
-    initTheme();
-})();
-<\/script>
-    <!-- PWA Service Worker -->
-    <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                console.log('[PWA] SW registered:', reg.scope);
-            }).catch(function(err) {
-                console.warn('[PWA] SW registration failed:', err);
-            });
-        });
-    }
     </script>
 </body>
 </html>

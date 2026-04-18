@@ -135,6 +135,82 @@
             <h1 class="page-title" style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;">Base64 Encoder & Decoder</h1>
             <p class="page-description" style="color:var(--text-secondary);">Encode text to Base64 or decode Base64 to text. 100% browser-based processing - your data never leaves your device.</p>
         </div>
+
+        <!-- Tutorial Section -->
+        <div class="tutorial-section" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--bg-secondary);">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary);">Base64 Encoding Explained: When and How to Use It</h2>
+            
+            <div style="display: grid; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">What is Base64?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Base64 is a binary-to-text encoding scheme that converts binary data into ASCII string format. It uses 64 characters (<code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">A-Z</code>, <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">a-z</code>, <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">0-9</code>, <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">+/</code>) to represent binary data.
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">
+                        Example: <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">Hello</code> → <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">SGVsbG8=</code>
+                    </p>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">When to Use Base64</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+                        <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">📧 Email (MIME)</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Embedding images in emails</div>
+                        </div>
+                        <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">🔐 API Tokens</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">JWT tokens, credentials</div>
+                        </div>
+                        <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">🖼️ Data URLs</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Inline images in HTML/CSS</div>
+                        </div>
+                        <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px;">
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">📦 JSON Data</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Embedding binary in APIs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">Base64 vs Base64URL</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Base64URL is a variant used in URLs and filenames. It replaces <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">+</code> with <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">-</code> and <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">/</code> with <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">_</code> to be URL-safe.
+                    </p>
+                    <div style="padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px; margin-top: 0.5rem;">
+                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Base64</div>
+                        <code style="font-family: monospace;">SGVsbG8/K1Rlc3Q=</code>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">Base64URL</div>
+                        <code style="font-family: monospace;">SGVsbG8_K1Rlc3Q</code>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--primary); margin-bottom: 0.5rem;">Code Examples</h3>
+                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; overflow-x: auto;">
+                        <div style="margin-bottom: 0.75rem;">
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">JavaScript</div>
+                            <code style="font-family: monospace; font-size: 0.8rem; color: #A5D6FF;">
+                                // Encode<br>
+                                btoa('Hello')  // 'SGVsbG8='<br><br>
+                                // Decode<br>
+                                atob('SGVsbG8=')  // 'Hello'
+                            </code>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Python</div>
+                            <code style="font-family: monospace; font-size: 0.8rem; color: #A5D6FF;">
+                                import base64<br><br>
+                                base64.b64encode(b'Hello')  # b'SGVsbG8='<br><br>
+                                base64.b64decode(b'SGVsbG8=')  # b'Hello'
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section class="tool-area">
             <div class="section-label">Input Text</div>
             <textarea id="inputText" class="input-area" placeholder="Enter text to encode or Base64 to decode..."></textarea>
