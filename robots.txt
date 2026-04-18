@@ -1,17 +1,9 @@
-# robots.txt for AI JSON - Free JSON Tools for US Developers
+# robots.txt for AI JSON - Free JSON Tools for Developers
 # https://aijsons.com/
 
 User-agent: *
 Allow: /
 
-# Target US market
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-# Sitemap with US targeting
 Sitemap: https://aijsons.com/sitemap.xml
 
-# Crawl stats
-User-agent: *
 Crawl-delay: 1
