@@ -1,5 +1,15 @@
 # 每日JSON技术文章更新 - 执行历史
 
+## 2026-04-19（第11次执行）
+- **英文文章**: JWT Security Best Practices 2026: Protect Your JSON Web Token Implementation
+  - 锚点：`jwt-security-best-practices-2026.html`（独立文章文件）
+  - 核心内容：JWT结构解剖、Algorithm Confusion攻击（alg:none + HS256/RS256切换）、弱密钥风险、Token过期陷阱、Refresh Token轮换、敏感数据不应放Payload、生产安全检查清单、Paseto/DPOp替代方案
+- **更新文件**：index.html, pages/blog.html, pages/blog/jwt-security-best-practices-2026.html（新增）
+- **首页卡片**：新增04-19卡片，删除04-15卡片（保持5篇）
+- **Featured Article**：blog.html 顶部Featured Article更新为JWT文章
+- **All Articles Grid**：blog.html 文章列表新增JWT文章
+- **Git推送**：✅ 成功
+
 ## 2026-04-18（第10次执行）
 - **英文文章**: JSON Patch (RFC 6902): Stop Sending Full Objects — Use Partial Updates for Your APIs
   - 锚点：`#ai-daily-20260418`
@@ -85,6 +95,7 @@
 - Zod v4 + JSON Schema / Runtime Validation（2026-04-16b）
 - JSONata Advanced Query Language（2026-04-17）
 - JSON Patch RFC 6902 / Partial API Updates（2026-04-18）
+- JWT Security Best Practices / Algorithm Confusion Attacks（2026-04-19）
 
 ## 待选话题池（下次可用）
-- 英文：JSON Patch (RFC 6902) for Efficient API Updates, tRPC vs REST JSON trade-offs, JSON Web Tokens (JWT) Best Practices 2026, JSON Schema 2020-12 Advanced Features, JSON in Edge Computing / Cloudflare Workers, JSON Lines (JSONL) for Big Data Pipelines
+- 英文：tRPC vs REST JSON trade-offs, JSON Schema 2020-12 Advanced Features, JSON in Edge Computing / Cloudflare Workers, JSON Lines (JSONL) for Big Data Pipelines, Zod vs Yup vs Valibot comparison, GraphQL vs JSON: When to Use Each
