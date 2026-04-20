@@ -341,117 +341,98 @@
         <section class="featured-section">
             <h2 class="section-title">Latest Article</h2>
             <article id="ai-daily-20260420">
-    <h3>JSON Security: Preventing Injection Attacks and Data Exfiltration</h3>
-    <p><strong>Published:</strong> 2026-04-20 | <strong>Reading time:</strong> 5-7 minutes | <strong>Target:</strong> US & Canada Developers</p>
+    <h3>JSON in Edge Computing: Building Sub-10ms API Responses with Cloudflare Workers</h3>
+    <p><strong>Published:</strong> 2026-04-20 | <strong>Reading time:</strong> 6-8 minutes</p>
     <div class="article-content">
-        <div class="article-diagram">
-            
-<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-    <rect x="20" y="20" width="360" height="80" rx="8" fill="#1f2940" stroke="#22C55E" stroke-width="2"/>
-    <text x="200" y="55" text-anchor="middle" fill="#F8FAFC" font-family="Arial" font-size="14" font-weight="bold">JSON Workflow</text>
-    <text x="200" y="80" text-anchor="middle" fill="#94A3B8" font-family="Arial" font-size="12">Format → Validate → Process → Export</text>
-</svg>
-        </div>
-        <p>Improper JSON handling can lead to security vulnerabilities. Learn about JSON injection, prototype pollution, and best practices for safe JSON processing in web applications.</p>
-        
-<p>In the rapidly evolving landscape of modern web development, security best practices has become an essential skill for developers building production-grade applications. This article explores key concepts, best practices, and practical implementation strategies.</p>
+        <p>Every millisecond of API latency costs revenue. For North American developers, Cloudflare Workers offer a compelling solution: run JSON processing logic at the edge — in over 300 data centers worldwide, including major US and Canadian cities — instead of routing requests back to a central server. The result is sub-10ms JSON API responses at global scale.</p>
 
-<h4>Understanding the Fundamentals</h4>
-<p>When working with JSON in production environments, developers face common challenges that require thoughtful solutions. Whether you're building REST APIs, processing webhook payloads, or handling real-time data streams, understanding security best practices is crucial for maintaining clean, maintainable code.</p>
+        <h4>Why JSON at the Edge?</h4>
+        <p>Traditional JSON APIs run on origin servers in specific regions (e.g., us-east-1). A user in Vancouver querying your NYC-hosted API adds ~70ms of network round-trip before your code even runs. Edge computing eliminates this by executing your logic at the closest point-of-presence to the user.</p>
+        <p>Cloudflare Workers are particularly well-suited for JSON workloads because they use the V8 JavaScript engine — the same engine that powers Node.js — giving you full access to <code>JSON.parse()</code>, <code>JSON.stringify()</code>, and the entire modern JS ecosystem with zero cold-start overhead.</p>
 
-<h4>Practical Implementation</h4>
-<p>Modern development workflows benefit from tools that handle JSON processing efficiently. AI JSON provides browser-based utilities that work entirely client-side, ensuring your data never leaves your machine while providing the formatting, validation, and conversion capabilities you need.</p>
+        <h4>Real-World Use Cases for US/Canadian APIs</h4>
+        <ul>
+            <li><strong>JSON Response Transformation:</strong> Transform upstream API responses to match your frontend's schema at the edge — removing sensitive fields, renaming keys, or restructuring nested objects — before they reach the browser.</li>
+            <li><strong>Request Validation:</strong> Validate incoming JSON payloads against a schema before they hit your origin server, blocking malformed requests immediately at the edge.</li>
+            <li><strong>A/B Testing via JSON Config:</strong> Fetch a JSON feature-flag config from Cloudflare KV (key-value store) and conditionally modify API responses for different user cohorts.</li>
+            <li><strong>JSON Caching with TTL:</strong> Cache JSON API responses at the edge with fine-grained TTL control — serving cached JSON in &lt;5ms for repeat requests.</li>
+        </ul>
 
-<pre><code>{
-  "example": "structured_data",
-  "tools": ["formatter", "validator", "converter"],
-  "benefits": {
-    "speed": "instant_processing",
-    "privacy": "client_side_only",
-    "compatibility": "all_browsers"
+        <h4>A Practical Worker Example</h4>
+        <pre><code>// Cloudflare Worker: JSON transformation at the edge
+export default {
+  async fetch(request, env) {
+    const upstream = await fetch("https://api.origin.com/users");
+    const data = await upstream.json();
+
+    // Transform: keep only safe fields
+    const sanitized = data.users.map(u =&gt; ({
+      id: u.id,
+      name: u.name,
+      role: u.role
+      // Strip: email, phone, internal flags
+    }));
+
+    return new Response(JSON.stringify({ users: sanitized }), {
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=60",
+        "X-Edge-Location": request.cf?.colo ?? "unknown"
+      }
+    });
   }
+};</code></pre>
+
+        <h4>JSON + KV Storage: Edge Config Patterns</h4>
+        <p>Cloudflare KV (key-value store) lets you store JSON configuration data that your Workers can read with sub-millisecond latency. This pattern powers feature flags, rate-limit configs, and A/B testing rules for high-traffic US applications:</p>
+        <pre><code>// Read JSON config from KV at the edge
+const config = JSON.parse(await env.FEATURE_FLAGS.get("rollout_v2"));
+if (config.enabled_regions.includes(userRegion)) {
+  // Serve new JSON response format
 }</code></pre>
 
-<h4>Industry Best Practices</h4>
-<p>Leading companies like Stripe, Twilio, and GitHub have established patterns for JSON API design that balance flexibility with predictability. Following these patterns helps teams build APIs that are both developer-friendly and robust against edge cases.</p>
+        <h4>Performance Numbers That Matter</h4>
+        <p>Based on real deployments by US-based engineering teams:</p>
+        <ul>
+            <li><strong>Origin-only API:</strong> ~80-120ms average response (US West Coast to US East Coast origin)</li>
+            <li><strong>Cloudflare Worker (cached):</strong> ~3-8ms average response</li>
+            <li><strong>Cloudflare Worker (computed):</strong> ~15-25ms average response</li>
+        </ul>
+        <p>For JSON-heavy APIs serving millions of daily requests — think e-commerce product catalogs, real-time dashboards, or AI inference result caches — this 10x latency reduction directly impacts conversion rates and user retention.</p>
 
-<h4>Performance Considerations</h4>
-<p>When processing large JSON payloads, performance becomes critical. Modern JavaScript engines have optimized JSON parsing significantly, but understanding when to use streaming approaches versus batch processing can make the difference between a responsive application and one that freezes during data processing.</p>
+        <h4>Getting Started: Edge JSON in 5 Minutes</h4>
+        <p>Install Wrangler CLI and deploy your first JSON Worker:</p>
+        <pre><code>npm install -g wrangler
+wrangler init my-json-api
+# Edit src/index.ts with your JSON logic
+wrangler deploy</code></pre>
 
         <h4>Key Takeaways</h4>
         <ul>
-            <li>Structured JSON data enables better API contracts and documentation</li>
-            <li>Client-side processing ensures data privacy and reduces server load</li>
-            <li>Modern development workflows benefit from JSON's ubiquity and tooling</li>
+            <li>Edge computing moves JSON processing physically closer to US/Canadian users, cutting latency by 10x</li>
+            <li>Cloudflare Workers use V8 JS engine — full <code>JSON.parse/stringify</code> support, zero cold start</li>
+            <li>KV storage enables low-latency JSON config reads for feature flags and A/B tests</li>
+            <li>JSON transformation at edge removes sensitive data before it reaches the browser</li>
+            <li>Free tier: 100,000 requests/day — sufficient for most side projects and small APIs</li>
         </ul>
     </div>
 </article>
-
-
-<article id="ai-daily-20260420">
-    <h3>JSON Security: Preventing Injection Attacks and Data Exfiltration</h3>
-    <p><strong>Published:</strong> 2026-04-20 | <strong>Reading time:</strong> 5-7 minutes | <strong>Target:</strong> US & Canada Developers</p>
-    <div class="article-content">
-        <div class="article-diagram">
-            
-<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-    <rect x="20" y="20" width="360" height="80" rx="8" fill="#1f2940" stroke="#22C55E" stroke-width="2"/>
-    <text x="200" y="55" text-anchor="middle" fill="#F8FAFC" font-family="Arial" font-size="14" font-weight="bold">JSON Workflow</text>
-    <text x="200" y="80" text-anchor="middle" fill="#94A3B8" font-family="Arial" font-size="12">Format → Validate → Process → Export</text>
-</svg>
-        </div>
-        <p>Improper JSON handling can lead to security vulnerabilities. Learn about JSON injection, prototype pollution, and best practices for safe JSON processing in web applications.</p>
-        
-<p>In the rapidly evolving landscape of modern web development, security best practices has become an essential skill for developers building production-grade applications. This article explores key concepts, best practices, and practical implementation strategies.</p>
-
-<h4>Understanding the Fundamentals</h4>
-<p>When working with JSON in production environments, developers face common challenges that require thoughtful solutions. Whether you're building REST APIs, processing webhook payloads, or handling real-time data streams, understanding security best practices is crucial for maintaining clean, maintainable code.</p>
-
-<h4>Practical Implementation</h4>
-<p>Modern development workflows benefit from tools that handle JSON processing efficiently. AI JSON provides browser-based utilities that work entirely client-side, ensuring your data never leaves your machine while providing the formatting, validation, and conversion capabilities you need.</p>
-
-<pre><code>{
-  "example": "structured_data",
-  "tools": ["formatter", "validator", "converter"],
-  "benefits": {
-    "speed": "instant_processing",
-    "privacy": "client_side_only",
-    "compatibility": "all_browsers"
-  }
-}</code></pre>
-
-<h4>Industry Best Practices</h4>
-<p>Leading companies like Stripe, Twilio, and GitHub have established patterns for JSON API design that balance flexibility with predictability. Following these patterns helps teams build APIs that are both developer-friendly and robust against edge cases.</p>
-
-<h4>Performance Considerations</h4>
-<p>When processing large JSON payloads, performance becomes critical. Modern JavaScript engines have optimized JSON parsing significantly, but understanding when to use streaming approaches versus batch processing can make the difference between a responsive application and one that freezes during data processing.</p>
-
-        <h4>Key Takeaways</h4>
-        <ul>
-            <li>Structured JSON data enables better API contracts and documentation</li>
-            <li>Client-side processing ensures data privacy and reduces server load</li>
-            <li>Modern development workflows benefit from JSON's ubiquity and tooling</li>
-        </ul>
-    </div>
-</article>
-
-
-<article class="article-card featured-article">
-                <div class="article-category cat-development">API Design</div>
-                <h2><a href="#">GraphQL vs REST: When to Use Each for JSON API Design</a></h2>
-                <p class="article-excerpt">REST and GraphQL handle JSON differently. REST returns fixed structures while GraphQL lets clients specify exact data needs. Understanding trade-offs helps architects choose the right approach.</p>
-                <div class="article-meta">
-                    <span>2026-04-19</span> |
-                    <span>5-7 min read</span>
-                </div>
-                <a href="#" class="read-more">Read full article →</a>
-            </article>
         </section>
 
         <!-- All Articles Grid -->
         <section>
             <h2 class="section-title">All Articles</h2>
             <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-category cat-performance">Edge Computing</div>
+                    <h3><a href="#ai-daily-20260420">JSON in Edge Computing: Building Sub-10ms API Responses with Cloudflare Workers</a></h3>
+                    <p class="article-excerpt">Move your JSON processing to Cloudflare Workers and cut API latency by 10x. Transform responses, validate payloads, and cache JSON at the edge — serving US and Canadian users from the nearest of 300+ global data centers.</p>
+                    <div class="article-meta">
+                        <span>2026-04-20</span> |
+                        <span>6-8 min read</span>
+                    </div>
+                    <a href="#ai-daily-20260420" class="read-more">Read article →</a>
+                </article>
                 <article class="article-card">
                     <div class="article-category cat-security">Security</div>
                     <h3><a href="blog/jwt-security-best-practices-2026.html">JWT Security Best Practices 2026: Protect Your JSON Web Token Implementation</a></h3>
