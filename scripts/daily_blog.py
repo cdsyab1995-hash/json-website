@@ -858,7 +858,7 @@ def create_article_page(topic, date_str):
                 <div class="article-meta"><span>Published: {date_str}</span> · <span>{read_time}</span></div>
             </div>
 
-            <div class="article-body">
+            <div class="article-content">
 {body}
             </div>
         </article>
