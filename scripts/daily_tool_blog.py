@@ -1430,6 +1430,23 @@ def article_exists(slug):
 
 
 # ============================================================================
+# VALIDATE ARTICLE STRUCTURE
+# ============================================================================
+def validate_article_structure(article_path):
+    """Validate that new article has correct HTML structure."""
+    with open(article_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    required = ['article-header', 'article-title', 'article-content', '../../css/styles.css']
+    missing = [r for r in required if r not in content]
+    
+    if missing:
+        print(f'[WARN] Article missing: {missing}')
+        return False
+    return True
+
+
+# ============================================================================
 # MAIN
 # ============================================================================
 def main():
@@ -1461,6 +1478,11 @@ def main():
     with open(article_path, 'w', encoding='utf-8') as f:
         f.write(article_html)
     print(f'[OK] Created article page: {article_path}')
+
+    # Validate structure
+    if not validate_article_structure(article_path):
+        print('[FAIL] Article structure validation failed')
+        return 1
 
     # 2. Update blog.html
     blog_ok = update_blog_html(topic, date_str)
