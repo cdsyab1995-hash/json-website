@@ -340,83 +340,16 @@
         <!-- Featured Article -->
         <section class="featured-section">
             <h2 class="section-title">Latest Article</h2>
-            <article id="ai-daily-20260420">
-    <h3>JSON in Edge Computing: Building Sub-10ms API Responses with Cloudflare Workers</h3>
-    <p><strong>Published:</strong> 2026-04-20 | <strong>Reading time:</strong> 6-8 minutes</p>
-    <div class="article-content">
-        <p>Every millisecond of API latency costs revenue. For North American developers, Cloudflare Workers offer a compelling solution: run JSON processing logic at the edge — in over 300 data centers worldwide, including major US and Canadian cities — instead of routing requests back to a central server. The result is sub-10ms JSON API responses at global scale.</p>
-
-        <h4>Why JSON at the Edge?</h4>
-        <p>Traditional JSON APIs run on origin servers in specific regions (e.g., us-east-1). A user in Vancouver querying your NYC-hosted API adds ~70ms of network round-trip before your code even runs. Edge computing eliminates this by executing your logic at the closest point-of-presence to the user.</p>
-        <p>Cloudflare Workers are particularly well-suited for JSON workloads because they use the V8 JavaScript engine — the same engine that powers Node.js — giving you full access to <code>JSON.parse()</code>, <code>JSON.stringify()</code>, and the entire modern JS ecosystem with zero cold-start overhead.</p>
-
-        <h4>Real-World Use Cases for US/Canadian APIs</h4>
-        <ul>
-            <li><strong>JSON Response Transformation:</strong> Transform upstream API responses to match your frontend's schema at the edge — removing sensitive fields, renaming keys, or restructuring nested objects — before they reach the browser.</li>
-            <li><strong>Request Validation:</strong> Validate incoming JSON payloads against a schema before they hit your origin server, blocking malformed requests immediately at the edge.</li>
-            <li><strong>A/B Testing via JSON Config:</strong> Fetch a JSON feature-flag config from Cloudflare KV (key-value store) and conditionally modify API responses for different user cohorts.</li>
-            <li><strong>JSON Caching with TTL:</strong> Cache JSON API responses at the edge with fine-grained TTL control — serving cached JSON in &lt;5ms for repeat requests.</li>
-        </ul>
-
-        <h4>A Practical Worker Example</h4>
-        <pre><code>// Cloudflare Worker: JSON transformation at the edge
-export default {
-  async fetch(request, env) {
-    const upstream = await fetch("https://api.origin.com/users");
-    const data = await upstream.json();
-
-    // Transform: keep only safe fields
-    const sanitized = data.users.map(u =&gt; ({
-      id: u.id,
-      name: u.name,
-      role: u.role
-      // Strip: email, phone, internal flags
-    }));
-
-    return new Response(JSON.stringify({ users: sanitized }), {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=60",
-        "X-Edge-Location": request.cf?.colo ?? "unknown"
-      }
-    });
-  }
-};</code></pre>
-
-        <h4>JSON + KV Storage: Edge Config Patterns</h4>
-        <p>Cloudflare KV (key-value store) lets you store JSON configuration data that your Workers can read with sub-millisecond latency. This pattern powers feature flags, rate-limit configs, and A/B testing rules for high-traffic US applications:</p>
-        <pre><code>// Read JSON config from KV at the edge
-const config = JSON.parse(await env.FEATURE_FLAGS.get("rollout_v2"));
-if (config.enabled_regions.includes(userRegion)) {
-  // Serve new JSON response format
-}</code></pre>
-
-        <h4>Performance Numbers That Matter</h4>
-        <p>Based on real deployments by US-based engineering teams:</p>
-        <ul>
-            <li><strong>Origin-only API:</strong> ~80-120ms average response (US West Coast to US East Coast origin)</li>
-            <li><strong>Cloudflare Worker (cached):</strong> ~3-8ms average response</li>
-            <li><strong>Cloudflare Worker (computed):</strong> ~15-25ms average response</li>
-        </ul>
-        <p>For JSON-heavy APIs serving millions of daily requests — think e-commerce product catalogs, real-time dashboards, or AI inference result caches — this 10x latency reduction directly impacts conversion rates and user retention.</p>
-
-        <h4>Getting Started: Edge JSON in 5 Minutes</h4>
-        <p>Install Wrangler CLI and deploy your first JSON Worker:</p>
-        <pre><code>npm install -g wrangler
-wrangler init my-json-api
-# Edit src/index.ts with your JSON logic
-wrangler deploy</code></pre>
-
-        <h4>Key Takeaways</h4>
-        <ul>
-            <li>Edge computing moves JSON processing physically closer to US/Canadian users, cutting latency by 10x</li>
-            <li>Cloudflare Workers use V8 JS engine — full <code>JSON.parse/stringify</code> support, zero cold start</li>
-            <li>KV storage enables low-latency JSON config reads for feature flags and A/B tests</li>
-            <li>JSON transformation at edge removes sensitive data before it reaches the browser</li>
-            <li>Free tier: 100,000 requests/day — sufficient for most side projects and small APIs</li>
-        </ul>
-    </div>
-</article>
+            <article class="article-card featured-article">
+                <div class="article-category cat-development">Database</div>
+                <h2><a href="blog/postgresql-jsonb-vs-mongodb-document-store.html">PostgreSQL JSONB vs MongoDB: Choosing the Right Document Store</a></h2>
+                <p class="article-excerpt">PostgreSQL's JSONB provides ACID compliance while MongoDB offers flexible schemas. Compare indexing, querying, and performance for JSON storage.</p>
+                <div class="article-meta">
+                    <span>2026-04-20</span> |
+                    <span>8-10 min read</span>
+                </div>
+                <a href="blog/postgresql-jsonb-vs-mongodb-document-store.html" class="read-more">Read full article →</a>
+            </article>
         </section>
 
         <!-- All Articles Grid -->
@@ -424,14 +357,24 @@ wrangler deploy</code></pre>
             <h2 class="section-title">All Articles</h2>
             <div class="articles-grid">
                 <article class="article-card">
+                    <div class="article-category cat-development">Database</div>
+                    <h3><a href="blog/postgresql-jsonb-vs-mongodb-document-store.html">PostgreSQL JSONB vs MongoDB: Choosing the Right Document Store</a></h3>
+                    <p class="article-excerpt">PostgreSQL's JSONB provides ACID compliance while MongoDB offers flexible schemas. Compare indexing, querying, and performance for JSON storage.</p>
+                    <div class="article-meta">
+                        <span>2026-04-20</span> |
+                        <span>8-10 min read</span>
+                    </div>
+                    <a href="blog/postgresql-jsonb-vs-mongodb-document-store.html" class="read-more">Read article →</a>
+                </article>
+                <article class="article-card">
                     <div class="article-category cat-performance">Edge Computing</div>
-                    <h3><a href="#ai-daily-20260420">JSON in Edge Computing: Building Sub-10ms API Responses with Cloudflare Workers</a></h3>
-                    <p class="article-excerpt">Move your JSON processing to Cloudflare Workers and cut API latency by 10x. Transform responses, validate payloads, and cache JSON at the edge — serving US and Canadian users from the nearest of 300+ global data centers.</p>
+                    <h3><a href="blog/json-edge-computing-cloudflare-workers.html">JSON in Edge Computing: Building Sub-10ms API Responses with Cloudflare Workers</a></h3>
+                    <p class="article-excerpt">Move your JSON processing to Cloudflare Workers and cut API latency by 10x. Transform responses, validate payloads, and cache JSON at the edge — serving users from the nearest of 300+ global data centers.</p>
                     <div class="article-meta">
                         <span>2026-04-20</span> |
                         <span>6-8 min read</span>
                     </div>
-                    <a href="#ai-daily-20260420" class="read-more">Read article →</a>
+                    <a href="blog/json-edge-computing-cloudflare-workers.html" class="read-more">Read article →</a>
                 </article>
                 <article class="article-card">
                     <div class="article-category cat-security">Security</div>
@@ -449,7 +392,7 @@ wrangler deploy</code></pre>
                     <p class="article-excerpt">TypeScript types only check at compile time — but LLMs respond at runtime. Zod v4 enables runtime validation. | AI JSON Blog...</p>
                     <div class="article-meta">
                         <span>2026-04-16</span> |
-                        <span>52-10 min read</span>
+                        <span>5-7 min read</span>
                     </div>
                     <a href="blog/zod-json-schema-validation-ai.html" class="read-more">Read article →</a>
                 </article>
@@ -459,7 +402,7 @@ wrangler deploy</code></pre>
                     <p class="article-excerpt">AI tool calling with JSON: How MCP is standardizing agent-software communication. JSON payloads for AI agents in 2026. Guide for developers....</p>
                     <div class="article-meta">
                         <span>2026-04-15</span> |
-                        <span>41-10 min read</span>
+                        <span>6-8 min read</span>
                     </div>
                     <a href="blog/ai-tool-calling-mcp-2026.html" class="read-more">Read article →</a>
                 </article>
@@ -469,7 +412,7 @@ wrangler deploy</code></pre>
                     <p class="article-excerpt">The Model Context Protocol (MCP) is becoming the universal standard for AI tool interfaces. | AI JSON Blog...</p>
                     <div class="article-meta">
                         <span>2026-04-15</span> |
-                        <span>50-10 min read</span>
+                        <span>5-7 min read</span>
                     </div>
                     <a href="blog/mcp-json-standardizing-ai-tools.html" class="read-more">Read article →</a>
                 </article>
@@ -479,7 +422,7 @@ wrangler deploy</code></pre>
                     <p class="article-excerpt">JSON API error handling guide: Build robust error responses for production systems. RFC 9457 patterns, Stripe/Twilio/AWS examples for developers....</p>
                     <div class="article-meta">
                         <span>2026-04-14</span> |
-                        <span>37-10 min read</span>
+                        <span>7-9 min read</span>
                     </div>
                     <a href="blog/json-api-error-handling-2026.html" class="read-more">Read article →</a>
                 </article>
@@ -489,7 +432,7 @@ wrangler deploy</code></pre>
                     <p class="article-excerpt">JSON Schema complete guide for developers. Learn JSON Schema validation, Draft 2020-12 features, and best practices for API documentation....</p>
                     <div class="article-meta">
                         <span>2026-04-13</span> |
-                        <span>35-10 min read</span>
+                        <span>8-10 min read</span>
                     </div>
                     <a href="blog/json-schema-complete-guide-2026.html" class="read-more">Read article →</a>
                 </article>

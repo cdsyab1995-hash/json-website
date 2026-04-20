@@ -1,5 +1,16 @@
 # 每日JSON技术文章更新 - 执行历史
 
+## 2026-04-20（第12次执行）
+- **英文文章**: JSON in Edge Computing: Building Sub-10ms API Responses with Cloudflare Workers
+  - 锚点：`#ai-daily-20260420`
+  - 核心内容：边缘计算概念、Cloudflare Workers V8引擎、JSON Transform/Validate/Cache at Edge、KV存储JSON配置、实际代码示例、性能数据（3-120ms对比）、Wrangler快速开始
+- **更新文件**：index.html, pages/blog.html
+- **修复**：blog.html 04-20低质量模板内容替换为真正的文章；index.html 重复/低质量Use Cases卡片清理
+- **首页卡片**：新增04-20卡片，删除一篇04-16卡片（保持5篇：04-20, 04-19, 04-18, 04-17, 04-16）
+- **Git推送**：✅ 成功 "Daily article: JSON in Edge Computing - Cloudflare Workers sub-10ms API"
+
+
+
 ## 2026-04-19（第11次执行）
 - **英文文章**: JWT Security Best Practices 2026: Protect Your JSON Web Token Implementation
   - 锚点：`jwt-security-best-practices-2026.html`（独立文章文件）
@@ -96,6 +107,7 @@
 - JSONata Advanced Query Language（2026-04-17）
 - JSON Patch RFC 6902 / Partial API Updates（2026-04-18）
 - JWT Security Best Practices / Algorithm Confusion Attacks（2026-04-19）
+- JSON in Edge Computing / Cloudflare Workers / Sub-10ms API（2026-04-20）
 
 ## 待选话题池（下次可用）
-- 英文：tRPC vs REST JSON trade-offs, JSON Schema 2020-12 Advanced Features, JSON in Edge Computing / Cloudflare Workers, JSON Lines (JSONL) for Big Data Pipelines, Zod vs Yup vs Valibot comparison, GraphQL vs JSON: When to Use Each
+- 英文：tRPC vs REST JSON trade-offs, JSON Schema 2020-12 Advanced Features, JSON Lines (JSONL) for Big Data Pipelines, Zod vs Yup vs Valibot comparison, GraphQL vs JSON: When to Use Each, JSON in Serverless Functions (AWS Lambda), OpenAPI/Swagger JSON Spec Best Practices
