@@ -4,6 +4,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aijsons.com/sitemap.xml
+Sitemap: https://www.aijsons.com/sitemap.xml
 
 Crawl-delay: 1
