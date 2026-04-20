@@ -10,7 +10,7 @@ FIXES = {
     'index.html': 'Format, validate, and debug JSON instantly. Extract data with dot paths, convert to CSV/Excel, compare versions. Client-side, 100% private.',
     'base64.html': 'Free Base64 encoder and decoder. Encode text to Base64 or decode Base64 to text. Instant, client-side processing. No uploads.',
     'best-practices.html': 'JSON best practices for developers. Learn naming conventions, structure design, validation patterns, and common pitfalls.',
-    'clean.html': 'Repair and clean JSON instantly. Remove nulls, fix trailing commas, deduplicate keys. Real-time preview. No signup required.',
+    'clean.html': 'Repair and clean JSON instantly. Remove nulls, fix trailing commas, empty keys. Real-time preview. No signup required.',
     'compare.html': 'Compare JSON documents side-by-side with color-coded diff. Instant visual comparison. Highlight additions, deletions, and changes.',
     'css-minifier.html': 'Free CSS and JavaScript minifier/compressor. Reduce file size by removing whitespace and comments. Instant download.',
     'escape.html': 'Escape and unescape JSON strings instantly. Handle special characters, newlines, and quotes. Real-time preview. No signup.',
