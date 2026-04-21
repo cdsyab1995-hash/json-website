@@ -61,6 +61,7 @@
  showMsg($('msgFormat'),'JSON formatted successfully!','success');
  setStatus($('statusBadge'),'Valid JSON',true);
  hideError();
+ if (window.showToast) showToast('JSON formatted successfully ✓','success');
 }catch (e){
  if (jsonOutput) jsonOutput.value='';
  if (jsonHighlight) jsonHighlight.innerHTML='';
@@ -96,6 +97,7 @@
  if (jsonHighlight) jsonHighlight.innerHTML=syntaxHighlight(compressed);
  showMsg($('msgFormat'),'JSON compressed successfully!','success');
  hideError();
+ if (window.showToast) showToast('JSON minified successfully ✓','success');
 }catch (e){
  showMsg($('msgFormat'),'Cannot compress: '+e.message,'error');
  showError('SyntaxError',e.message,null);
@@ -112,6 +114,7 @@
  await navigator.clipboard.writeText(output);
  const orig=this.innerHTML;
  this.innerHTML='✓ Copied';
+ if (window.showToast) showToast('Copied to clipboard ✓','success');
  setTimeout(()=>{this.innerHTML=orig;},2000);
 }catch (err){console.error('Copy failed:',err);}
 }
@@ -213,4 +216,31 @@
 },{rootMargin: '50px 0px'});
  document.querySelectorAll('img[data-src]').forEach(img=>observer.observe(img));
 }
+// === Global Toast Notification ===
+window.showToast=function(message,type){
+ type=type||'success';
+ let toast=document.getElementById('__globalToast');
+ if (!toast){
+  toast=document.createElement('div');
+  toast.id='__globalToast';
+  toast.className='toast';
+  document.body.appendChild(toast);
+ }
+ toast.textContent=message;
+ toast.className='toast '+type;
+ // force reflow to restart transition
+ toast.offsetHeight;
+ toast.classList.add('show');
+ clearTimeout(toast._timer);
+ toast._timer=setTimeout(()=>{toast.classList.remove('show');},2800);
+};
+// Auto-attach Toast to copy buttons (class="btn" containing "Copy" text or data-copy)
+document.addEventListener('click',function(e){
+ const btn=e.target.closest('button');
+ if (!btn) return;
+ const txt=btn.textContent.trim();
+ if (btn.dataset.copy==='true'||(txt.includes('Copy')||txt.includes('copy'))){
+  // Toast is triggered after copy succeeds - handled per-page
+ }
+});
 })();

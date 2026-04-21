@@ -976,10 +976,10 @@ def update_index_html(topic, date_str):
         content = f.read()
 
     new_card = f'''<article class="feature-card" style="text-align: left;">
-    <span style="font-size: 0.8rem; color: var(--text-secondary);">{date_str}</span>
-    <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--primary);">{title}</h3>
-    <p style="color: var(--text-secondary); font-size: 0.95rem;">{excerpt[:150]}...</p>
-    <a href="{rel_path}" style="display: inline-block; margin-top: 0.75rem; color: var(--primary); font-weight: 500;">Read more →</a>
+    <span class="article-date-label">{date_str}</span>
+    <h3 class="article-card-title">{title}</h3>
+    <p class="article-card-excerpt">{excerpt[:150]}...</p>
+    <a href="{rel_path}" class="article-read-link">Read the full article →</a>
 </article>'''
 
     grid_start = content.find('<div class="feature-grid">', content.find('Latest Articles'))
