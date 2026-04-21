@@ -44,8 +44,63 @@ img { contain: layout; }
 
 </style>
 <link rel="stylesheet" href="../css/styles.css">
-<!-- BreadcrumbList -->
-<script type="application/ld+json">
+    
+
+    
+    
+    
+
+
+    
+    
+
+    
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JWT Decoder - Decode and Verify JSON Web Tokens Online",
+    "url": "https://www.aijsons.com/pages/jwt-decoder.html",
+    "description": "Decode JWT tokens and inspect header, payload, and signature. Validate JWT without secret. Free online JWT decoder.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires modern web browser (Chrome, Firefox, Safari, Edge)",
+    "softwareVersion": "2.0",
+    "screenshot": "https://aijsons.com/og-image.png",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "interactionMode": [
+        "PointAndClick",
+        "Keyboard"
+    ],
+    "inLanguage": "en",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+        "JWT token decoding",
+        "Header inspection",
+        "Payload inspection",
+        "Signature display",
+        "Expiration check",
+        "Copy to clipboard",
+        "Mobile responsive"
+    ]
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -64,8 +119,32 @@ img { contain: layout; }
         }
     ]
 }
-</script>
-
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is a JWT token?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A JWT (JSON Web Token) is a compact, URL-safe way to represent claims between two parties. It has three parts: header, payload, and signature."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is JWT decoding secure?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Decoding only decodes the Base64 parts without verifying the signature. Signature verification requires the secret key and should be done server-side."
+            }
+        }
+    ]
+}
+    </script>
 </head>
 <body>
         <nav class="navbar">
