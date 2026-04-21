@@ -61,7 +61,7 @@
  showMsg($('msgFormat'),'JSON formatted successfully!','success');
  setStatus($('statusBadge'),'Valid JSON',true);
  hideError();
- if (window.showToast) showToast('JSON formatted successfully ✓','success');
+ window.showToast('JSON formatted successfully ✓','success');
 }catch (e){
  if (jsonOutput) jsonOutput.value='';
  if (jsonHighlight) jsonHighlight.innerHTML='';
@@ -97,7 +97,7 @@
  if (jsonHighlight) jsonHighlight.innerHTML=syntaxHighlight(compressed);
  showMsg($('msgFormat'),'JSON compressed successfully!','success');
  hideError();
- if (window.showToast) showToast('JSON minified successfully ✓','success');
+ window.showToast('JSON minified successfully ✓','success');
 }catch (e){
  showMsg($('msgFormat'),'Cannot compress: '+e.message,'error');
  showError('SyntaxError',e.message,null);
@@ -114,7 +114,7 @@
  await navigator.clipboard.writeText(output);
  const orig=this.innerHTML;
  this.innerHTML='✓ Copied';
- if (window.showToast) showToast('Copied to clipboard ✓','success');
+ window.showToast('Copied to clipboard ✓','success');
  setTimeout(()=>{this.innerHTML=orig;},2000);
 }catch (err){console.error('Copy failed:',err);}
 }
@@ -218,7 +218,7 @@
 }
 // === Global Toast Notification ===
 window.showToast=function(message,type){
- type=type||'success';
+ type=(type==='error')?'error':'success';
  let toast=document.getElementById('__globalToast');
  if (!toast){
   toast=document.createElement('div');
@@ -228,11 +228,10 @@ window.showToast=function(message,type){
  }
  toast.textContent=message;
  toast.className='toast '+type;
- // force reflow to restart transition
- toast.offsetHeight;
+ void toast.offsetHeight;
  toast.classList.add('show');
  clearTimeout(toast._timer);
- toast._timer=setTimeout(()=>{toast.classList.remove('show');},2800);
+ toast._timer=setTimeout(function(){toast.classList.remove('show');},2800);
 };
 // Auto-attach Toast to copy buttons (class="btn" containing "Copy" text or data-copy)
 document.addEventListener('click',function(e){
