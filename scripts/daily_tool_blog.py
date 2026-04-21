@@ -294,8 +294,8 @@ console.log(data.name);</code></pre>
                         <td style="padding: 0.5rem;"><code>\"</code></td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 0.5rem;"><code>\</code> (backslash)</td>
-                        <td style="padding: 0.5rem;"><code>\\</code></td>
+                        <td style="padding: 0.5rem;"><code>\\</code> (backslash)</td>
+                        <td style="padding: 0.5rem;"><code>\\\\</code></td>
                     </tr>
                     <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 0.5rem;">Newline</td>
