@@ -169,9 +169,10 @@ def update_news_html():
 
 def push_to_github():
     """Push changes to GitHub."""
+    git_path = r'C:\Users\Administrator\.workbuddy\binaries\git\cmd\git.exe'
     try:
         result = subprocess.run(
-            ['git', 'add', '.'],
+            [git_path, 'add', '.'],
             cwd=r'd:\网站开发-json',
             capture_output=True,
             text=True,
@@ -179,7 +180,7 @@ def push_to_github():
         )
         
         result = subprocess.run(
-            ['git', 'commit', '-m', 'Daily news update: Trending JSON & API tech updates'],
+            [git_path, 'commit', '-m', 'Daily news update: Trending JSON & API tech updates'],
             cwd=r'd:\网站开发-json',
             capture_output=True,
             text=True,
@@ -191,7 +192,7 @@ def push_to_github():
         
         # Push
         result = subprocess.run(
-            ['git', 'push', 'origin', 'main'],
+            [git_path, 'push', 'origin', 'main'],
             cwd=r'd:\网站开发-json',
             capture_output=True,
             text=True,
