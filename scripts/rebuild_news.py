@@ -1,75 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
-    <meta name="description" content="Developer trending news. Daily API trends, JSON tools updates, and web development insights. Updated regularly.">
-    <meta name="keywords" content="developer news, API trends, web development updates, tech trending USA, developer tools news, JSON industry news, API updates, developer productivity, tech industry trends, programming news 2026">
-    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.aijsons.com/pages/news.html">
+"""
+Rebuild news.html from scratch using blog.html structure.
+Clean head, navbar, and blog-style article card layout.
+"""
+from pathlib import Path
 
-    <title>Developer Trending News - API Updates & Industry Trends | AI JSON</title>
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.aijsons.com/pages/news.html">
-    <meta property="og:title" content="Developer Trending News - API Updates & Tech Trends | AI JSON">
-    <meta property="og:description" content="Developer trending news and API updates for developers. Daily tech industry updates.">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Developer Trending News - API Updates & Tech Trends | AI JSON">
-    <meta name="twitter:description" content="Developer trending news and API updates for developers. Daily tech industry updates.">
-    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../css/styles.css">
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "headline": "AI JSON Trending News for Developers",
-        "description": "JSON and Web development trending news for developers worldwide. Stay ahead of the curve",
-        "author": {"@type": "Organization", "name": "AI JSON"},
-        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
-        "audience": {"@type": "Audience", "name": "Software Developers"},
-        "datePublished": "2026-04-10"
-    }
-    </script>
-
-    <!-- BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.aijsons.com/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "News",
-                "item": "https://www.aijsons.com/pages/news.html"
-            }
-        ]
-    }
-    </script>
-</head>
-<body>
-<nav class="navbar">
+# --- Navbar HTML (copied from blog.html, updated active link) ---
+navbar = '''<nav class="navbar">
         <a href="../index.html" class="navbar-brand">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -246,8 +182,126 @@
             <a href="format.html" class="nav-link cta">Try Formatter</a>
         </div>
     </nav>
+'''
 
-    <main class="main-container">
+# --- News items ---
+news_items = [
+    {
+        "category": "AI",
+        "cat_class": "cat-development",
+        "title": "MCP Protocol Reaches 10,000+ Public Servers: The AI Tool Standard Takes Off",
+        "excerpt": "The Model Context Protocol (MCP) has surpassed 10,000 public server implementations. From database connectors to filesystem tools, MCP is rapidly becoming the universal bridge for AI agents.",
+        "date": "2026-04-21",
+        "read_time": "4-5 min",
+        "featured": True
+    },
+    {
+        "category": "Web Platform",
+        "cat_class": "cat-development",
+        "title": "Browser DevTools Now Built-in JSON Schema Validation and Live Error Highlighting",
+        "excerpt": "Chrome 122 and Firefox 120 now include native JSON Schema validation directly in DevTools. Developers can paste a schema and instantly see validation errors highlighted.",
+        "date": "2026-04-21",
+        "read_time": "3-4 min",
+    },
+    {
+        "category": "Performance",
+        "cat_class": "cat-debugging",
+        "title": "Bun 2.0 Ships 5x Faster JSON Serialization: A New Benchmark Record",
+        "excerpt": "Bun's latest release sets a new world record for JSON serialization speed, processing 1GB of JSON data in under 200ms.",
+        "date": "2026-04-21",
+        "read_time": "3-4 min",
+    },
+    {
+        "category": "API",
+        "cat_class": "cat-development",
+        "title": "JSON Streaming API Now Supported in All Major Browsers",
+        "excerpt": "The W3C JSON Streaming specification has reached full browser support across Chrome, Firefox, Safari, and Edge. Streaming JSON parsing for real-time AI responses is now a first-class web platform feature.",
+        "date": "2026-04-20",
+        "read_time": "4-5 min",
+    },
+    {
+        "category": "Tool Updates",
+        "cat_class": "cat-debugging",
+        "title": "Cursor and VS Code Add Real-Time JSON Lint with AI Error Explanations",
+        "excerpt": "AI-powered code editors now offer inline JSON linting that not only flags errors but explains them in plain English with suggested fixes.",
+        "date": "2026-04-20",
+        "read_time": "3-4 min",
+    },
+    {
+        "category": "Dev Trends",
+        "cat_class": "cat-development",
+        "title": "Zod v4 Hits 5M Weekly Downloads: Runtime Type Validation for AI Pipelines",
+        "excerpt": "Zod continues its explosive growth driven by the AI agent era. Developers are using Zod schemas to validate LLM outputs, MCP tool responses, and RAG pipeline data.",
+        "date": "2026-04-20",
+        "read_time": "5-6 min",
+    },
+    {
+        "category": "Framework",
+        "cat_class": "cat-tutorial",
+        "title": "Next.js 16 Introduces Native JSON Streaming and Partial Prerendering",
+        "excerpt": "Next.js 16's App Router now natively supports JSON streaming for LLM-powered pages with automatic partial prerendering.",
+        "date": "2026-04-19",
+        "read_time": "5-6 min",
+    },
+    {
+        "category": "Runtime",
+        "cat_class": "cat-comparison",
+        "title": "Node.js 24 Ships Built-in Native JSON Schema Validation",
+        "excerpt": "Node.js 24 includes built-in JSON Schema validation using Ajv integration. No more third-party dependencies for basic schema validation in server-side code.",
+        "date": "2026-04-19",
+        "read_time": "4-5 min",
+    },
+    {
+        "category": "Open Source",
+        "cat_class": "cat-tutorial",
+        "title": "json-schema-to-typescript v6 Released: Generate TypeScript Types from Any JSON Schema",
+        "excerpt": "Version 6 adds support for JSON Schema Draft 2020-12, improved recursive schema handling, and a new CLI with watch mode.",
+        "date": "2026-04-18",
+        "read_time": "4-5 min",
+    },
+    {
+        "category": "Learning",
+        "cat_class": "cat-tutorial",
+        "title": "JSONata 2.0 Launches with Native AI Query Support",
+        "excerpt": "JSONata 2.0 introduces AI-assisted query generation — describe what you want in plain English and get a working JSONata expression.",
+        "date": "2026-04-18",
+        "read_time": "5-6 min",
+    },
+]
+
+featured = next(n for n in news_items if n.get("featured"))
+
+# Build featured card
+featured_html = f'''            <article class="article-card featured-article">
+                <div class="article-category {featured['cat_class']}">{featured['category']}</div>
+                <h2><a href="#">{featured['title']}</a></h2>
+                <p class="article-excerpt">{featured['excerpt']}</p>
+                <div class="article-meta">
+                    <span>{featured['date']}</span> |
+                    <span>{featured['read_time']} read</span>
+                </div>
+                <a href="#" class="read-more">Read the latest trending news \u2192</a>
+            </article>'''
+
+# Build article grid
+grid_cards = []
+for n in news_items:
+    grid_cards.append(
+        f'''                <article class="article-card">
+                    <div class="article-category {n['cat_class']}">{n['category']}</div>
+                    <h3><a href="#">{n['title']}</a></h3>
+                    <p class="article-excerpt">{n['excerpt']}</p>
+                    <div class="article-meta">
+                        <span>{n['date']}</span> |
+                        <span>{n['read_time']} read</span>
+                    </div>
+                    <a href="#" class="read-more">Read more \u2192</a>
+                </article>'''
+    )
+articles_grid_html = '\n'.join(grid_cards)
+
+# --- Main content ---
+main_content = f'''    <main class="main-container">
         <!-- Page Header / Hero -->
         <header class="page-hero">
             <div class="page-header text-center">
@@ -262,122 +316,14 @@
         <!-- Featured News -->
         <section class="featured-section">
             <h2 class="section-title">Latest News</h2>
-            <article class="article-card featured-article">
-                <div class="article-category cat-development">AI</div>
-                <h2><a href="#">MCP Protocol Reaches 10,000+ Public Servers: The AI Tool Standard Takes Off</a></h2>
-                <p class="article-excerpt">The Model Context Protocol (MCP) has surpassed 10,000 public server implementations. From database connectors to filesystem tools, MCP is rapidly becoming the universal bridge for AI agents.</p>
-                <div class="article-meta">
-                    <span>2026-04-21</span> |
-                    <span>4-5 min read</span>
-                </div>
-                <a href="#" class="read-more">Read the latest trending news →</a>
-            </article>
+{featured_html}
         </section>
 
         <!-- All News Grid -->
         <section>
             <h2 class="section-title">All News</h2>
             <div class="articles-grid">
-                <article class="article-card">
-                    <div class="article-category cat-development">AI</div>
-                    <h3><a href="#">MCP Protocol Reaches 10,000+ Public Servers: The AI Tool Standard Takes Off</a></h3>
-                    <p class="article-excerpt">The Model Context Protocol (MCP) has surpassed 10,000 public server implementations. From database connectors to filesystem tools, MCP is rapidly becoming the universal bridge for AI agents.</p>
-                    <div class="article-meta">
-                        <span>2026-04-21</span> |
-                        <span>4-5 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-development">Web Platform</div>
-                    <h3><a href="#">Browser DevTools Now Built-in JSON Schema Validation and Live Error Highlighting</a></h3>
-                    <p class="article-excerpt">Chrome 122 and Firefox 120 now include native JSON Schema validation directly in DevTools. Developers can paste a schema and instantly see validation errors highlighted.</p>
-                    <div class="article-meta">
-                        <span>2026-04-21</span> |
-                        <span>3-4 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-debugging">Performance</div>
-                    <h3><a href="#">Bun 2.0 Ships 5x Faster JSON Serialization: A New Benchmark Record</a></h3>
-                    <p class="article-excerpt">Bun's latest release sets a new world record for JSON serialization speed, processing 1GB of JSON data in under 200ms.</p>
-                    <div class="article-meta">
-                        <span>2026-04-21</span> |
-                        <span>3-4 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-development">API</div>
-                    <h3><a href="#">JSON Streaming API Now Supported in All Major Browsers</a></h3>
-                    <p class="article-excerpt">The W3C JSON Streaming specification has reached full browser support across Chrome, Firefox, Safari, and Edge. Streaming JSON parsing for real-time AI responses is now a first-class web platform feature.</p>
-                    <div class="article-meta">
-                        <span>2026-04-20</span> |
-                        <span>4-5 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-debugging">Tool Updates</div>
-                    <h3><a href="#">Cursor and VS Code Add Real-Time JSON Lint with AI Error Explanations</a></h3>
-                    <p class="article-excerpt">AI-powered code editors now offer inline JSON linting that not only flags errors but explains them in plain English with suggested fixes.</p>
-                    <div class="article-meta">
-                        <span>2026-04-20</span> |
-                        <span>3-4 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-development">Dev Trends</div>
-                    <h3><a href="#">Zod v4 Hits 5M Weekly Downloads: Runtime Type Validation for AI Pipelines</a></h3>
-                    <p class="article-excerpt">Zod continues its explosive growth driven by the AI agent era. Developers are using Zod schemas to validate LLM outputs, MCP tool responses, and RAG pipeline data.</p>
-                    <div class="article-meta">
-                        <span>2026-04-20</span> |
-                        <span>5-6 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-tutorial">Framework</div>
-                    <h3><a href="#">Next.js 16 Introduces Native JSON Streaming and Partial Prerendering</a></h3>
-                    <p class="article-excerpt">Next.js 16's App Router now natively supports JSON streaming for LLM-powered pages with automatic partial prerendering.</p>
-                    <div class="article-meta">
-                        <span>2026-04-19</span> |
-                        <span>5-6 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-comparison">Runtime</div>
-                    <h3><a href="#">Node.js 24 Ships Built-in Native JSON Schema Validation</a></h3>
-                    <p class="article-excerpt">Node.js 24 includes built-in JSON Schema validation using Ajv integration. No more third-party dependencies for basic schema validation in server-side code.</p>
-                    <div class="article-meta">
-                        <span>2026-04-19</span> |
-                        <span>4-5 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-tutorial">Open Source</div>
-                    <h3><a href="#">json-schema-to-typescript v6 Released: Generate TypeScript Types from Any JSON Schema</a></h3>
-                    <p class="article-excerpt">Version 6 adds support for JSON Schema Draft 2020-12, improved recursive schema handling, and a new CLI with watch mode.</p>
-                    <div class="article-meta">
-                        <span>2026-04-18</span> |
-                        <span>4-5 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
-                <article class="article-card">
-                    <div class="article-category cat-tutorial">Learning</div>
-                    <h3><a href="#">JSONata 2.0 Launches with Native AI Query Support</a></h3>
-                    <p class="article-excerpt">JSONata 2.0 introduces AI-assisted query generation — describe what you want in plain English and get a working JSONata expression.</p>
-                    <div class="article-meta">
-                        <span>2026-04-18</span> |
-                        <span>5-6 min read</span>
-                    </div>
-                    <a href="#" class="read-more">Read more →</a>
-                </article>
+{articles_grid_html}
             </div>
         </section>
 
@@ -387,8 +333,10 @@
             Follow this page for the latest JSON and API tech updates. Combined with our <a href="format.html">JSON Formatter</a> and <a href="escape.html">JSON Escape tools</a>, you can boost your development efficiency by several times!
         </div>
     </main>
+'''
 
-    <!-- Footer -->
+# --- Footer ---
+footer = '''    <!-- Footer -->
     <footer class="footer">
         <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
         <p class="text-sm mt-sm">
@@ -414,3 +362,86 @@
     </script>
 </body>
 </html>
+'''
+
+# --- Complete HTML ---
+html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Developer trending news. Daily API trends, JSON tools updates, and web development insights. Updated regularly.">
+    <meta name="keywords" content="developer news, API trends, web development updates, tech trending USA, developer tools news, JSON industry news, API updates, developer productivity, tech industry trends, programming news 2026">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/pages/news.html">
+
+    <title>Developer Trending News - API Updates & Industry Trends | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aijsons.com/pages/news.html">
+    <meta property="og:title" content="Developer Trending News - API Updates & Tech Trends | AI JSON">
+    <meta property="og:description" content="Developer trending news and API updates for developers. Daily tech industry updates.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Developer Trending News - API Updates & Tech Trends | AI JSON">
+    <meta name="twitter:description" content="Developer trending news and API updates for developers. Daily tech industry updates.">
+    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "headline": "AI JSON Trending News for Developers",
+        "description": "JSON and Web development trending news for developers worldwide. Stay ahead of the curve",
+        "author": {{"@type": "Organization", "name": "AI JSON"}},
+        "publisher": {{"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"}},
+        "audience": {{"@type": "Audience", "name": "Software Developers"}},
+        "datePublished": "2026-04-10"
+    }}
+    </script>
+
+    <!-- BreadcrumbList -->
+    <script type="application/ld+json">
+    {{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.aijsons.com/"
+            }},
+            {{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "News",
+                "item": "https://www.aijsons.com/pages/news.html"
+            }}
+        ]
+    }}
+    </script>
+</head>
+<body>
+{navbar}
+{main_content}
+{footer}'''
+
+out_path = Path(r'd:\网站开发-json\pages\news.html')
+out_path.write_text(html, encoding='utf-8')
+print(f'Done! news.html rebuilt successfully ({len(html)} chars)')
+print(f'Featured: {featured["title"][:60]}...')
+print(f'Total news cards: {len(news_items)}')
