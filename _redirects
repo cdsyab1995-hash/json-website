@@ -53,6 +53,16 @@
 # News articles
 /pages/news/json-schema-w3c-recommendation.html /news/json-schema-w3c-recommendation
 /pages/news/api-transformations-2026.html        /news/api-transformations-2026
+/pages/news/mcp-10000-servers.html              /news/mcp-10000-servers
+/pages/news/browser-devtools-json-schema.html    /news/browser-devtools-json-schema
+/pages/news/bun-2-json-serialization.html       /news/bun-2-json-serialization
+/pages/news/json-streaming-api-browser.html     /news/json-streaming-api-browser
+/pages/news/cursor-vscode-json-lint-ai.html    /news/cursor-vscode-json-lint-ai
+/pages/news/zod-v4-5m-downloads.html           /news/zod-v4-5m-downloads
+/pages/news/nextjs-16-json-streaming.html      /news/nextjs-16-json-streaming
+/pages/news/nodejs-24-json-schema.html         /news/nodejs-24-json-schema
+/pages/news/json-schema-to-typescript-v6.html   /news/json-schema-to-typescript-v6
+/pages/news/jsonata-2-ai-query.html             /news/jsonata-2-ai-query
 
 # Static pages
 /pages/about.html                /about
