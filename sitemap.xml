@@ -164,19 +164,67 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/pages/news.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/mcp-10000-servers.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/browser-devtools-json-schema.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/bun-2-json-serialization.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/json-streaming-api-browser.html</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/pages/news/api-transformations-2026.html</loc>
+    <loc>https://www.aijsons.com/pages/news/cursor-vscode-json-lint-ai.html</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/pages/news/json-schema-w3c-recommendation.html</loc>
+    <loc>https://www.aijsons.com/pages/news/zod-v4-5m-downloads.html</loc>
     <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/nextjs-16-json-streaming.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/nodejs-24-json-schema.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/json-schema-to-typescript-v6.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aijsons.com/pages/news/jsonata-2-ai-query.html</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
