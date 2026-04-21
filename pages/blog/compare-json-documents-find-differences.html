@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Compare two JSON documents and find differences. Learn diff algorithms, visual comparison tools, and how to track changes between JSON versions.">
+    <meta name="keywords" content="compare JSON, JSON diff, find JSON differences, JSON compare tool">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>How to Compare Two JSON Documents: Find Differences Instantly | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/pages/blog/compare-json-documents-find-differences.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/pages/blog/compare-json-documents-find-differences.html">
+    <meta property="og:title" content="How to Compare Two JSON Documents: Find Differences Instantly">
+    <meta property="og:description" content="Compare two JSON documents and find differences. Learn diff algorithms, visual comparison tools, and how to track changes between JSON versions.">
+    <meta property="article:published_time" content="2026-04-21">
+    <meta property="article:section" content="Debugging">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="../../css/styles.css?v=202604202126">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Compare Two JSON Documents: Find Differences Instantly",
+        "description": "Compare two JSON documents and find differences. Learn diff algorithms, visual comparison tools, and how to track changes between JSON versions.",
+        "datePublished": "2026-04-21",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/pages/blog/compare-json-documents-find-differences.html",
+        "articleSection": "Debugging"
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-brand"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>AI JSON</a>
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+        <div class="navbar-links">
+            <a href="../../index.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home</a>
+            <div class="nav-dropdown"><a href="#" class="nav-link nav-dropdown-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>Tools</a><div class="nav-dropdown-menu wide"><div class="nav-dropdown-menu-box"><a href="../format.html" class="nav-link">Format</a><a href="../escape.html" class="nav-link">Escape</a><a href="../extract.html" class="nav-link">Extract</a><a href="../sort.html" class="nav-link">Sort</a><a href="../clean.html" class="nav-link">Clean</a><a href="../xml.html" class="nav-link">XML</a><a href="../yaml.html" class="nav-link">YAML</a><a href="../viewer.html" class="nav-link">Viewer</a><a href="../json2csv.html" class="nav-link">CSV</a><a href="../compare.html" class="nav-link">Compare</a></div></div></div>
+            <a href="index.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>Blog</a>
+            <a href="../best-practices.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Practices</a>
+            <a href="../news.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>News</a>
+            <a href="../about.html" class="nav-link">About</a>
+            <a href="../changelog.html" class="nav-link">Changelog</a>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb"><a href="index.html">Blog</a> / <span>Article</span></div>
+                <div class="article-category cat-debugging">Debugging</div>
+                <h1 class="article-title">How to Compare Two JSON Documents: Find Differences Instantly</h1>
+                <div class="article-meta"><span>Published: 2026-04-21</span> · <span>5-6 min read</span></div>
+                <div style="margin-top: 1rem;">
+                    <a href="../compare.html" class="btn btn-primary">Try the Related Tool →</a>
+                </div>
+            </div>
+
+            <div class="article-content">
+
+                <p class="lead">When JSON data changes, spotting the differences manually is nearly impossible. Here's how to compare JSON documents programmatically.</p>
+
+                <h2>The Challenge: JSON Is Nested</h2>
+                <p>Unlike plain text, JSON has structure. A simple value change might be buried in a deeply nested object.</p>
+
+                <h2>Compare Two JSON Objects</h2>
+                <pre class="code-block"><code>function deepEqual(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+// But this doesn't tell you WHAT changed...</code></pre>
+
+                <h2>Find What Changed</h2>
+                <pre class="code-block"><code>function getDiff(oldObj, newObj, path = '') {
+  const differences = [];
+
+  for (const key in newObj) {
+    const newPath = path ? `${path}.${key}` : key;
+
+    if (!(key in oldObj)) {
+      differences.push({ path: newPath, type: 'added', value: newObj[key] });
+    } else if (typeof newObj[key] !== typeof oldObj[key]) {
+      differences.push({
+        path: newPath,
+        type: 'type_changed',
+        old: oldObj[key],
+        new: newObj[key]
+      });
+    } else if (typeof newObj[key] === 'object') {
+      differences.push(...getDiff(oldObj[key], newObj[key], newPath));
+    } else if (newObj[key] !== oldObj[key]) {
+      differences.push({
+        path: newPath,
+        type: 'changed',
+        old: oldObj[key],
+        new: newObj[key]
+      });
+    }
+  }
+
+  return differences;
+}</code></pre>
+
+                <h2>Example Output</h2>
+                <pre class="code-block"><code>getDiff(
+  { user: { name: 'Alice', age: 30 } },
+  { user: { name: 'Alice', age: 31 } }
+);
+
+// Result:
+[
+  { path: 'user.age', type: 'changed', old: 30, new: 31 }
+]</code></pre>
+
+                <h2>Use Cases</h2>
+                <ul>
+                    <li><strong>API testing</strong> - Compare expected vs actual responses</li>
+                    <li><strong>Config tracking</strong> - Monitor config file changes</li>
+                    <li><strong>Debugging</strong> - Find why your data looks different</li>
+                    <li><strong>Version comparison</strong> - Track JSON data evolution</li>
+                </ul>
+
+                <h2>Try It Out</h2>
+                <p>Use our <a href="../compare.html">JSON Compare</a> tool to visually compare two JSON documents and highlight all differences.</p>
+
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm">
+            <a href="../about.html" class="text-primary">About</a> |
+            <a href="../changelog.html" class="text-primary">Changelog</a> |
+            <a href="../../privacy.html" class="text-primary">Privacy Policy</a> |
+            <a href="../../terms.html" class="text-primary">Terms of Service</a>
+        </p>
+        <p class="text-small mt-sm">&copy; 2026 AI JSON. All rights reserved.</p>
+    </footer>
+
+    <script src="../../js/app.js" defer></script>
+</body>
+</html>
