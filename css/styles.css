@@ -47,3 +47,6 @@
 .toast.success::before{content:'\2713';color:var(--primary);font-weight:700;font-size:1rem}
 .toast.error{border-color:rgba(239,68,68,0.5);background:rgba(239,68,68,0.1)}
 .toast.error::before{content:'\2715';color:var(--danger);font-weight:700}
+/* === Center Toast (page center) === */
+.toast.center{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);bottom:auto;right:auto;pointer-events:auto}
+.toast.center.show{transform:translate(-50%,-50%) scale(1)}

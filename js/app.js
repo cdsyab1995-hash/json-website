@@ -223,11 +223,11 @@ window.showToast=function(message,type){
  if (!toast){
   toast=document.createElement('div');
   toast.id='__globalToast';
-  toast.className='toast';
+  toast.className='toast center';
   document.body.appendChild(toast);
  }
  toast.textContent=message;
- toast.className='toast '+type;
+ toast.className='toast center '+type;
  void toast.offsetHeight;
  toast.classList.add('show');
  clearTimeout(toast._timer);
