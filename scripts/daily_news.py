@@ -9,6 +9,10 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+# Use the correct Python and Git paths for this system
+PYTHON_PATH = r'C:\Users\Administrator\.workbuddy\binaries\python\versions\3.13.12\python.exe'
+GIT_PATH = r'C:\Users\Administrator\.workbuddy\binaries\git\cmd\git.exe'
+
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
@@ -169,38 +173,37 @@ def update_news_html():
 
 def push_to_github():
     """Push changes to GitHub."""
-    git_path = r'C:\Users\Administrator\.workbuddy\binaries\git\cmd\git.exe'
+    repo_path = r'd:\网站开发-json'
     try:
-        result = subprocess.run(
-            [git_path, 'add', '.'],
-            cwd=r'd:\网站开发-json',
-            capture_output=True,
-            text=True,
-            encoding='utf-8'
-        )
+        # Configure git user
+        subprocess.run([GIT_PATH, '-C', repo_path, 'config', '--local', 'user.name', 'cdsyab1995'], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+        subprocess.run([GIT_PATH, '-C', repo_path, 'config', '--local', 'user.email', 'cdsyab1995@users.noreply.github.com'], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
         
-        result = subprocess.run(
-            [git_path, 'commit', '-m', 'Daily news update: Trending JSON & API tech updates'],
-            cwd=r'd:\网站开发-json',
-            capture_output=True,
-            text=True,
-            encoding='utf-8'
-        )
+        # Configure proxy and SSL
+        subprocess.run([GIT_PATH, '-C', repo_path, 'config', '--local', 'http.proxy', '127.0.0.1:7890'], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+        subprocess.run([GIT_PATH, '-C', repo_path, 'config', '--local', 'https.proxy', '127.0.0.1:7890'], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
+        subprocess.run([GIT_PATH, '-C', repo_path, 'config', '--local', 'http.sslVerify', 'false'], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL)
         
-        if result.returncode != 0:
-            print(f"Commit warning (may be empty): {result.stderr}")
+        # Add all files
+        result = subprocess.run([GIT_PATH, '-C', repo_path, 'add', '-A'], capture_output=True, text=True, encoding='utf-8', errors='ignore')
+        print("[OK] Files added")
+        
+        # Commit
+        result = subprocess.run([GIT_PATH, '-C', repo_path, 'commit', '-m', 'Daily news update: Fresh JSON & API tech trends'], capture_output=True, text=True, encoding='utf-8', errors='ignore')
+        if result.returncode == 0:
+            print(f"[OK] Committed: Daily news update")
+        else:
+            print("Nothing to commit" if "nothing to commit" in result.stderr.lower() else result.stderr)
+        
+        # Pull --rebase first
+        result = subprocess.run([GIT_PATH, '-C', repo_path, 'pull', '--rebase', 'origin', 'main'], capture_output=True, text=True, encoding='utf-8', errors='ignore', timeout=60)
+        if result.returncode != 0 and "already up to date" not in result.stderr.lower():
+            print(f"Pull warning: {result.stderr}")
         
         # Push
-        result = subprocess.run(
-            [git_path, 'push', 'origin', 'main'],
-            cwd=r'd:\网站开发-json',
-            capture_output=True,
-            text=True,
-            encoding='utf-8'
-        )
-        
+        result = subprocess.run([GIT_PATH, '-C', repo_path, 'push', 'origin', 'main'], capture_output=True, text=True, encoding='utf-8', errors='ignore', timeout=60)
         if result.returncode == 0:
-            print("GitHub push successful")
+            print("[OK] Pushed to GitHub!")
             return True
         else:
             print(f"Push failed: {result.stderr}")
