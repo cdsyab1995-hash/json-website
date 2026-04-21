@@ -438,6 +438,7 @@ def build_article_jsonld(headline, description, url, date_published, date_modifi
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
+        "url": url,
         "headline": headline,
         "description": description,
         "image": "https://aijsons.com/og-image.png",
@@ -587,11 +588,15 @@ def process_blog_article(filepath):
     date_mod_match = re.search(r'"dateModified":\s*"([^"]+)"', content)
     date_modified = date_mod_match.group(1) if date_mod_match else date_published
 
-    # Calculate wordCount
-    content_match = re.search(r'<div class="article-content">(.*?)</div>', content, re.DOTALL)
+    # Calculate wordCount - use <article> tag to avoid nested div issues
+    article_match = re.search(r'<article[^>]*>(.*?)</article>', content, re.DOTALL)
     word_count = 500
-    if content_match:
-        text = re.sub(r'<[^>]+>', ' ', content_match.group(1))
+    if article_match:
+        # Strip nav, aside, and other non-content elements
+        inner = article_match.group(1)
+        inner = re.sub(r'<nav[^>]*>.*?</nav>', '', inner, flags=re.DOTALL)
+        inner = re.sub(r'<aside[^>]*>.*?</aside>', '', inner, flags=re.DOTALL)
+        text = re.sub(r'<[^>]+>', ' ', inner)
         text = re.sub(r'\s+', ' ', text).strip()
         word_count = max(len(text.split()), 500)
 
