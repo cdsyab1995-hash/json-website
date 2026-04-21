@@ -602,6 +602,7 @@ def process_blog_article(filepath):
     new_ld = '    <!-- JSON-LD: Article -->\n    <script type="application/ld+json">\n' + article_json + '\n    </script>\n\n    <!-- JSON-LD: BreadcrumbList -->\n    <script type="application/ld+json">\n' + breadcrumb_json + '\n    </script>'
 
     # Find and replace Article block
+    inserted = False
     start, end = _find_script_block(content, '"@type": "Article"')
     if start is not None:
         comment_start = content.rfind('<!--', 0, start)
@@ -610,6 +611,7 @@ def process_blog_article(filepath):
             content = content[:comment_start] + new_ld + content[end:]
         else:
             content = content[:start] + new_ld + content[end:]
+        inserted = True
 
     # Find and replace BreadcrumbList block
     start, end = _find_script_block(content, '"@type": "BreadcrumbList"')
@@ -620,6 +622,11 @@ def process_blog_article(filepath):
             content = content[:comment_start] + new_ld + content[end:]
         else:
             content = content[:start] + new_ld + content[end:]
+        inserted = True
+
+    # If neither exists, insert before </head>
+    if not inserted:
+        content = content.replace('</head>', new_ld + '\n</head>')
 
     print(f'  [OK] {slug} (wordCount: {word_count})')
     write_file(filepath, content)
