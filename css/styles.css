@@ -50,3 +50,11 @@
 /* === Center Toast (page center) === */
 .toast.center{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.9);bottom:auto;right:auto;pointer-events:auto}
 .toast.center.show{transform:translate(-50%,-50%) scale(1)}
+/* === Related Tools Section === */
+.related-tools-section{margin-top:var(--space-2xl);padding-top:var(--space-xl);border-top:1px solid var(--bg-secondary)}
+.related-tools-section h2{font-size:1.25rem;font-weight:700;color:var(--text-primary);margin-bottom:var(--space-lg)}
+.related-tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-md)}
+.related-tool-card{display:flex;flex-direction:column;gap:0.3rem;padding:var(--space-md);background:var(--bg-card);border:1px solid var(--bg-secondary);border-radius:var(--radius-lg);text-decoration:none;transition:border-color 0.2s,transform 0.15s}
+.related-tool-card:hover{border-color:var(--primary);transform:translateY(-2px)}
+.related-tool-card strong{color:var(--text-primary);font-size:0.95rem;font-weight:600}
+.related-tool-card span{color:var(--text-secondary);font-size:0.8rem;line-height:1.4}

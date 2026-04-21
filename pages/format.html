@@ -461,7 +461,23 @@ img { contain: layout; }
 <div class="faq-container"> <details class="faq-item"> <summary class="faq-question">How many spaces does the formatter use for indentation?</summary> <div class="faq-answer"> <p>This tool uses <strong>2 spaces</strong> for indentation by default, which is the most common standard for JSON formatting. Formatted JSON is clear and easy to read.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">What should I do if validation shows errors?</summary> <div class="faq-answer"> <p>Common JSON errors include:</p> <ul style="margin: 0.5rem 0 0.5rem 1.5rem;"> <li>Missing double quotes for keys or string values</li> <li>Trailing commas (like a comma after the last element)</li> <li>Mismatched brackets</li> <li>Single quotes used (JSON only supports double quotes)</li> </ul> <p>Please check your JSON syntax carefully, or use the formatter to locate the error position.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">Does compression lose data?</summary> <div class="faq-answer"> <p><strong>No</strong>. JSON compression only removes formatting characters like spaces and line breaks that don't affect the data content. The compressed JSON is functionally equivalent to the original.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">Why use real-time preview?</summary> <div class="faq-answer"> <p>Real-time preview shows formatted results and syntax highlighting as you type, without needing to click a button each time. This is especially useful for debugging large JSON or frequent modifications.</p> </div> </details> <details class="faq-item"> <summary class="faq-question">Does it support deeply nested JSON?</summary> <div class="faq-answer"> <p>Yes. This tool supports <strong>arbitrary nesting depth</strong>. No matter how many levels of objects and arrays you have, it can correctly format, validate, and compress.</p> </div> </details> </div> </section> <div class="tutorial-section" style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:0;">
     <h2 style="font-size:1.5rem;margin-bottom:1rem;color:var(--primary);">JSON Formatter: Complete Guide for Developers</h2>
     <p style="color:var(--text-secondary);line-height:1.7;">Learn how to format, validate, and compress JSON data with our free online tool.</p>
-</div></main> <!-- Footer --> <footer class="footer"> <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p> <p class="text-sm mt-sm""> <a href="../privacy.html" class="text-primary"">Privacy Policy</a> | <a href="../terms.html" class="text-primary"">Terms of Service</a> | <a href="../cookie.html" class="text-primary"">Cookie Policy</a> </p> <p class="text-small mt-sm""> &copy; 2026 AI JSON. All rights reserved. </p> </footer> <script src="../js/app.js" defer></script> <script>
+</div>
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="../pages/clean.html" class="related-tool-card">
+            <strong>JSON Minifier</strong>
+            <span>Compress JSON by removing whitespace</span>
+        </a>        <a href="../pages/escape.html" class="related-tool-card">
+            <strong>JSON Escape</strong>
+            <span>Escape special characters in JSON</span>
+        </a>        <a href="../pages/viewer.html" class="related-tool-card">
+            <strong>JSON Viewer</strong>
+            <span>Visualize JSON in tree view</span>
+        </a>
+        </div>
+    </section>
+</main> <!-- Footer --> <footer class="footer"> <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p> <p class="text-sm mt-sm""> <a href="../privacy.html" class="text-primary"">Privacy Policy</a> | <a href="../terms.html" class="text-primary"">Terms of Service</a> | <a href="../cookie.html" class="text-primary"">Cookie Policy</a> </p> <p class="text-small mt-sm""> &copy; 2026 AI JSON. All rights reserved. </p> </footer> <script src="../js/app.js" defer></script> <script>
 // Theme Toggle
 (function() {
     var toggle = document.getElementById('themeToggle');
