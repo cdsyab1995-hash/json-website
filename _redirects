@@ -1,11 +1,4 @@
-# URL Redirects for aijsons.com
-# Cloudflare Pages / Netlify _redirects format
-# All old URLs -> new clean URLs (301 permanent redirects)
-
-# Homepage
 /                   /index.html
-
-# Tool pages - /tools/ subdirectory with clean slug names
 /pages/format.html               /tools/json-formatter
 /pages/escape.html              /tools/json-escape
 /pages/extract.html              /tools/json-extract
@@ -30,11 +23,7 @@
 /pages/hash-generator.html        /tools/hash-generator
 /pages/pdf-split.html            /tools/pdf-split
 /pages/batch-file-renamer.html   /tools/batch-renamer
-
-# Blog index
 /pages/blog.html                 /blog
-
-# Blog articles
 /pages/blog/ai-tool-calling-mcp-2026.html     /blog/ai-tool-calling-mcp-2026
 /pages/blog/compare-json-documents-find-differences.html     /blog/compare-json-documents-find-differences
 /pages/blog/curl-json-api-guide.html     /blog/curl-json-api-guide
@@ -51,8 +40,6 @@
 /pages/blog/rfc9457-problem-details-json-api-errors.html     /blog/rfc9457-problem-details-json-api-errors
 /pages/blog/sort-json-arrays-objects-guide.html     /blog/sort-json-arrays-objects-guide
 /pages/blog/zod-json-schema-validation-ai.html     /blog/zod-json-schema-validation-ai
-
-# News articles
 /pages/news/api-transformations-2026.html      /news/api-transformations-2026
 /pages/news/browser-devtools-json-schema.html      /news/browser-devtools-json-schema
 /pages/news/bun-2-json-serialization.html      /news/bun-2-json-serialization
@@ -65,7 +52,6 @@
 /pages/news/nextjs-16-json-streaming.html      /news/nextjs-16-json-streaming
 /pages/news/nodejs-24-json-schema.html      /news/nodejs-24-json-schema
 /pages/news/zod-v4-5m-downloads.html      /news/zod-v4-5m-downloads
-# Static pages
 /pages/about.html                /about
 /pages/changelog.html            /changelog
 /pages/best-practices.html       /best-practices
@@ -73,11 +59,6 @@
 /pages/privacy.html              /privacy
 /pages/terms.html                /terms
 /pages/cookie.html               /cookie
-
-# Blog index
-/pages/blog.html                 /blog
-
-# URL structure migration (2026-04-22)
 /tools/base64.html	/tools/base64
 /tools/batch-renamer.html	/tools/batch-renamer
 /tools/css-minifier.html	/tools/css-minifier
@@ -102,8 +83,6 @@
 /tools/timestamp-converter.html	/tools/timestamp-converter
 /tools/url-encoder.html	/tools/url-encoder
 /tools/uuid-generator.html	/tools/uuid-generator
-
-# Root-level .html files (2026-04-22)
 /about.html	/about
 /blog.html	/blog
 /news.html	/news
@@ -112,4 +91,3 @@
 /cookie.html	/cookie
 /changelog.html	/changelog
 /best-practices.html	/best-practices
-
