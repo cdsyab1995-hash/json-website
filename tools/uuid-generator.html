@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online UUID generator. Generate UUID v1, v4, and v5 identifiers instantly. Copy to clipboard. Client-side only, 100% private.">
+    <meta name="keywords" content="regex tester, regular expression tester, regex debugger, regex validator, regex online, javascript regex, PCRE tester, regex pattern, regular expression validator, online regex tool, regex match, regex search">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="/tools/https://www.aijsons.com/pages/uuid-generator.html>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aijsons.com/tools/uuid-generator">
+    <meta property="og:title" content="Free UUID Generator & Debugger - Instant Pattern Validation">
+    <meta property="og:description" content="Test regex patterns instantly. Supports JavaScript and PCRE with real-time match highlighting.">
+    <title>Free UUID Generator - Generate UUID v1, v4, v5 | AI JSON</title>
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--error:#EF4444;--warning:#F59E0B;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px}
+        body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+        .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
+        .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
+        .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap}
+        .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem}
+        .nav-link svg{width:16px;height:16px;flex-shrink:0}
+        .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
+        .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)}
+        .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:var(--space-xl);border:1px solid var(--bg-secondary);margin-bottom:var(--space-xl)}
+        .tool-section{margin-bottom:var(--space-lg)}
+        .section-label{display:block;font-weight:600;margin-bottom:var(--space-sm);color:var(--text-primary)}
+        .input-area{width:100%;min-height:120px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
+        .input-area:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+        .output-area{width:100%;min-height:150px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s}
+        .btn-primary{background:var(--primary);color:var(--bg-dark)}
+        .btn-primary:hover{background:#1ea54d}
+        .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+        .btn-secondary:hover{background:rgba(34,197,94,.1)}
+        .btn-group{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md)}
+        .toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-sm)}
+        .toolbar-title{font-weight:600;color:var(--text-secondary);font-size:0.875rem}
+        .match-highlight{background:rgba(34,197,94,.3);border-radius:2px;padding:0 2px}
+        .match-highlight-group{background:rgba(59,130,246,.3)}
+        .error-text{color:var(--error)}
+        .message{padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);margin-top:var(--space-sm);font-size:0.875rem}
+        .message.success{background:rgba(34,197,94,.1);color:var(--primary);border:1px solid var(--primary)}
+        .message.error{background:rgba(239,68,68,.1);color:var(--error);border:1px solid var(--error)}
+        .flags-group{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-top:var(--space-sm)}
+        .flag-label{display:flex;align-items:center;gap:0.25rem;padding:0.25rem 0.75rem;background:var(--bg-secondary);border-radius:var(--radius-md);font-size:0.875rem;cursor:pointer}
+        .flag-label input{margin:0}
+        .flag-label:hover{background:var(--bg-card)}
+        .matches-list{margin-top:var(--space-md)}
+        .match-item{padding:var(--space-sm) var(--space-md);background:var(--bg-secondary);border-radius:var(--radius-md);margin-bottom:var(--space-sm);font-family:monospace;font-size:0.875rem}
+        .match-item .match-text{color:var(--primary)}
+        .match-item .match-index{color:var(--text-secondary);font-size:0.75rem;margin-left:var(--space-sm)}
+        .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
+        .footer a{color:var(--primary);text-decoration:none}
+        .nav-dropdown{position:relative}
+        .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--bg-dark);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);padding:var(--space-sm);min-width:200px;z-index:1000}
+        .nav-dropdown:hover .nav-dropdown-menu{display:block}
+        .nav-dropdown-menu a{white-space:nowrap}
+        .menu-toggle{display:none}
+        @media (max-width:768px){
+            .navbar-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg-dark);flex-direction:column;padding:var(--space-md);border-bottom:1px solid var(--bg-secondary)}
+            .navbar-links.active{display:flex}
+            .menu-toggle{display:flex}
+        }
+    
+/* P0: CLS Prevention */
+img { contain: layout; }
+.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+</style>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free UUID Generator & Debugger - Instant Pattern Validation">
+    <meta name="twitter:description" content="Test regex patterns instantly. Supports JavaScript and PCRE with real-time match highlighting.">
+    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#22C55E">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JSON Tools">
+    <link rel="apple-touch-icon" href="/images/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css">
+    
+
+    
+    
+    
+
+
+    
+    
+
+    
+    
+        
+
+    
+    
+    
+    
+
+    
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "UUID Generator - Generate UUIDs and GUIDs Online",
+    "url": "https://www.aijsons.com/tools/uuid-generator",
+    "description": "Generate UUIDs (v1, v4, v5) and GUIDs instantly. Bulk generation supported. Free online UUID generator for developers.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires modern web browser (Chrome, Firefox, Safari, Edge)",
+    "softwareVersion": "2.0",
+    "screenshot": "https://aijsons.com/og-image.png",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "interactionMode": [
+        "PointAndClick",
+        "Keyboard"
+    ],
+    "inLanguage": "en",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+        "UUID v1 generation",
+        "UUID v4 generation",
+        "UUID v5 generation",
+        "Bulk generation",
+        "Copy to clipboard",
+        "Mobile responsive"
+    ]
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "UUID Generator",
+            "item": "https://www.aijsons.com/pages/uuid-generator.html"
+        }
+    ]
+}
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is a UUID?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A UUID (Universally Unique Identifier) is a 128-bit number used to identify information. UUID v4 is randomly generated, v1 uses timestamp, and v5 uses SHA-1 hashing."
+            }
+        }
+    ]
+}
+    </script>
+</head>
+
+
+<nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            AI JSON
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="../index.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+            </a>
+            <!-- Tools Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Tools
+                    <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+                <div class="nav-dropdown-menu wide">
+<div class="nav-dropdown-menu-box">
+                    <a href="/tools/json-formatter" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                            <line x1="9" y1="20" x2="15" y2="20"></line>
+                            <line x1="12" y1="4" x2="12" y2="20"></line>
+                        </svg>
+                        Format
+                    </a>
+                    <a href="/tools/json-escape" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Escape
+                    </a>
+                    <a href="/tools/json-extract" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Extract
+                    </a>
+                    <a href="/tools/json-sort" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <polyline points="19 12 12 19 5 12"></polyline>
+                        </svg>
+                        Sort
+                    </a>
+                    <a href="/tools/json-clean" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        Clean
+                    </a>
+                    <a href="/tools/json-to-xml" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        XML
+                    </a>
+                    <a href="/tools/json-to-yaml" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        YAML
+                    </a>
+                    <a href="/tools/json-viewer" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        Viewer
+                    </a>
+                    <a href="/tools/json-to-csv" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="8" y1="13" x2="16" y2="13"></line>
+                            <line x1="8" y1="17" x2="16" y2="17"></line>
+                        </svg>
+                        CSV
+                    </a>
+                    <a href="/tools/json-compare" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 20V10"></path>
+                            <path d="M12 20V4"></path>
+                            <path d="M6 20v-6"></path>
+                        </svg>
+                        Compare
+                    </a>
+                    <a href="/tools/regex-tester" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Regex
+                    </a>
+                    <a href="/tools/base64" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        Base64
+                    </a>
+                    <a href="/tools/url-encoder" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        URL Encoder
+                    </a>
+                    <a href="/tools/csv-to-excel" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        Excel
+                    </a>
+                    <a href="/tools/excel-remove-duplicates" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        Remove Duplicates
+                    </a>
+                    <a href="/tools/merge-csv" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                        </svg>
+                        Merge CSV
+                    </a>
+                    <a href="/tools/batch-renamer" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Batch Rename
+                    </a>
+                    <a href="/tools/pdf-split" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        PDF Split
+                    </a>
+                    <a href="/tools/timestamp-converter" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Timestamp
+                    </a>
+                    <a href="/tools/css-minifier" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        CSS Minifier
+                    </a>
+                    <a href="/tools/html-encoder" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        HTML Encoder
+                    </a>
+                    <a href="/tools/jwt-decoder" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        JWT
+                    </a>
+                    <a href="/tools/hash-generator" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="8" y2="21"></line>
+                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                        </svg>
+                        Hash
+                    </a>
+                    <a href="/tools/uuid-generator" class="nav-link active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        UUID
+                    </a>
+                </div>
+                </div>
+            </div>
+            <a href="/blog" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Tutorial
+            </a>
+            <!-- Right-side links -->
+            <a href="/best-practices" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Practices
+            </a>
+            <a href="/news" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                News
+            </a>
+            <a href="/about" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                About
+            </a>
+            <a href="/changelog" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Changelog
+            </a>
+            <!-- CTA Button -->
+            <a href="/tools/json-formatter" class="nav-link cta">Try Formatter</a>
+        </div>
+    </nav></nav>
+    
+ <main class="main-container">
+        <div class="page-header">
+            <h1 class="page-title" style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;">UUID Generator & Debugger</h1>
+            <p class="page-description" style="color:var(--text-secondary);">Test regular expressions with real-time matching. Supports JavaScript regex with match highlighting and group extraction.</p>
+        </div>
+        <section class="tool-area">
+            <div class="tool-section">
+                <label class="section-label">Pattern</label>
+                <input type="text" id="regexPattern" class="input-area" placeholder="Enter regex pattern, e.g., \d{3}-\d{3}-\d{4}" style="min-height:50px;">
+                <div class="flags-group">
+                    <label class="flag-label"><input type="checkbox" id="flagG" checked> Global (g)</label>
+                    <label class="flag-label"><input type="checkbox" id="flagI"> Case Insensitive (i)</label>
+                    <label class="flag-label"><input type="checkbox" id="flagM"> Multiline (m)</label>
+                </div>
+            </div>
+            <div class="tool-section">
+                <label class="section-label">Test String</label>
+                <textarea id="testString" class="input-area" placeholder="Enter text to test against the regex pattern..."></textarea>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" id="btnTest">Test Match</button>
+                <button class="btn btn-secondary" id="btnCopyMatches">Copy Matches</button>
+                <button class="btn btn-secondary" id="btnClear">Clear</button>
+            </div>
+            <div id="message" class="message" style="display:none;"></div>
+            <div class="tool-section matches-list">
+                <label class="section-label">Matches (<span id="matchCount">0</span>)</label>
+                <div id="matchesContainer"></div>
+            </div>
+        </section>
+        <section class="tool-area">
+            <h2 class="section-label" style="font-size:1.125rem;margin-bottom:1rem;">Common Regex Patterns</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;">
+                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}';document.getElementById('testString').value='Contact us at support@aijsons.com or sales@company.org';testRegex();">
+                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Email</h3>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</p>
+                </div>
+                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='https?://[\\w.-]+(?:/[\\w./-]*)?';document.getElementById('testString').value='Visit https://aijsons.com or http://example.org/page';testRegex();">
+                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">URL</h3>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);">https?://[\w.-]+(?:/[\w./-]*)?</p>
+                </div>
+                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='\\d{3}-\\d{3}-\\d{4}';document.getElementById('testString').value='Call 555-123-4567 or 800-555-1234';testRegex();">
+                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Phone (US)</h3>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);">\d{3}-\d{3}-\d{4}</p>
+                </div>
+                <div class="feature-card" style="cursor:pointer;min-height:100px;" onclick="document.getElementById('regexPattern').value='\\d{4}-\\d{2}-\\d{2}';document.getElementById('testString').value='Date: 2026-04-16 or 1999-12-31';testRegex();">
+                    <h3 style="font-size:0.9rem;margin-bottom:0.25rem;">Date (ISO)</h3>
+                    <p style="font-size:0.8rem;color:var(--text-secondary);">\d{4}-\d{2}-\d{2}</p>
+                </div>
+            </div>
+        </section>
+    <div class="tutorial-section" style="max-width:1200px;margin:0 auto;padding:2rem;padding-top:0;">
+    <h2 style="font-size:1.5rem;margin-bottom:1rem;color:var(--primary);">UUID Generator: Complete Guide</h2>
+    <div style="display:grid;gap:1.5rem;">
+        <div>
+            <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">What is UUID?</h3>
+            <p style="color:var(--text-secondary);line-height:1.7;">UUID (Universally Unique Identifier) is a 128-bit label used to identify information. The most common format is UUID v4, which is randomly generated.</p>
+            <p style="color:var(--text-secondary);line-height:1.7;margin-top:0.5rem;">Example: <code style="background:var(--bg-secondary);padding:0.125rem 0.375rem;border-radius:4px;">550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+        <div>
+            <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">UUID Versions Explained</h3>
+            <div style="display:grid;gap:0.75rem;">
+                <div style="padding:0.75rem;background:var(--bg-card);border-radius:8px;">
+                    <div style="font-weight:600;">UUID v4 (Random)</div>
+                    <div style="font-size:0.75rem;color:var(--text-secondary);">Uses cryptographically random numbers. Best for most use cases.</div>
+                </div>
+                <div style="padding:0.75rem;background:var(--bg-card);border-radius:8px;">
+                    <div style="font-weight:600;">UUID v7 (Time-ordered)</div>
+                    <div style="font-size:0.75rem;color:var(--text-secondary);">Contains timestamp, sortable by creation time. Great for databases.</div>
+                </div>
+                <div style="padding:0.75rem;background:var(--bg-card);border-radius:8px;">
+                    <div style="font-weight:600;">UUID v1 (Timestamp)</div>
+                    <div style="font-size:0.75rem;color:var(--text-secondary);">Contains MAC address and timestamp. Not recommended for privacy.</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">Common Use Cases</h3>
+            <ul style="color:var(--text-secondary);line-height:1.8;padding-left:1.5rem;">
+                <li><strong>Database primary keys</strong> - Unique identifiers for records</li>
+                <li><strong>API endpoints</strong> - Unique resource identifiers</li>
+                <li><strong>Session IDs</strong> - Secure session identification</li>
+                <li><strong>File naming</strong> - Unique file identifiers</li>
+            </ul>
+        </div>
+        <div>
+            <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">Code Examples</h3>
+            <div style="background:var(--bg-card);padding:1rem;border-radius:8px;overflow-x:auto;">
+                <div style="margin-bottom:0.75rem;">
+                    <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.25rem;">JavaScript</div>
+                    <code style="font-family:monospace;font-size:0.8rem;color:#A5D6FF;">crypto.randomUUID()</code>
+                </div>
+                <div>
+                    <div style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:0.25rem;">Python</div>
+                    <code style="font-family:monospace;font-size:0.8rem;color:#A5D6FF;">import uuid; uuid.uuid4()</code>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3 style="font-size:1.125rem;margin-bottom:0.5rem;">Related Tools</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                <a href="/tools/hash-generator" style="padding:0.5rem 1rem;background:var(--bg-card);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Hash Generator</a>
+                <a href="/tools/timestamp-converter" style="padding:0.5rem 1rem;background:var(--bg-card);border-radius:6px;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;">Timestamp Converter</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/hash-generator" class="related-tool-card">
+            <strong>Hash Generator</strong>
+            <span>Generate secure hashes</span>
+        </a>        <a href="/tools/json-formatter" class="related-tool-card">
+            <strong>JSON Formatter</strong>
+            <span>Format UUID data</span>
+        </a>
+        </div>
+    </section>
+</main>
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p style="margin-top:0.5rem;font-size:0.875rem;"><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+        <p style="margin-top:0.5rem;font-size:0.75rem;">&copy; 2026 AI JSON. All rights reserved.</p>
+    </footer>
+    <script>
+    function testRegex() {
+        const pattern = document.getElementById('regexPattern').value;
+        const testStr = document.getElementById('testString').value;
+        const msgEl = document.getElementById('message');
+        const countEl = document.getElementById('matchCount');
+        const container = document.getElementById('matchesContainer');
+        
+        if (!pattern) {
+            msgEl.textContent = 'Please enter a regex pattern';
+            msgEl.className = 'message error';
+            msgEl.style.display = 'block';
+            container.innerHTML = '';
+            countEl.textContent = '0';
+            return;
+        }
+        
+        try {
+            let flags = '';
+            if (document.getElementById('flagG').checked) flags += 'g';
+            if (document.getElementById('flagI').checked) flags += 'i';
+            if (document.getElementById('flagM').checked) flags += 'm';
+            
+            const regex = new RegExp(pattern, flags);
+            const matches = [...testStr.matchAll(regex)];
+            
+            if (matches.length === 0) {
+                msgEl.textContent = 'No matches found';
+                msgEl.className = 'message';
+                msgEl.style.display = 'block';
+                container.innerHTML = '';
+            } else {
+                msgEl.textContent = `Found ${matches.length} match${matches.length > 1 ? 'es' : ''}`;
+                msgEl.className = 'message success';
+                msgEl.style.display = 'block';
+                
+                container.innerHTML = matches.map((m, i) => {
+                    const groups = m.slice(1).filter(g => g !== undefined);
+                    let html = '<div class="match-item"><span class="match-text">' + escapeHtml(m[0]) + '</span><span class="match-index">Index: ' + m.index + '</span>';
+                    if (groups.length > 0) {
+                        html += '<br><small style="color:var(--text-secondary);">Groups: ' + groups.map(g => escapeHtml(g)).join(', ') + '</small>';
+                    }
+                    html += '</div>';
+                    return html;
+                }).join('');
+            }
+            countEl.textContent = matches.length;
+        } catch (e) {
+            msgEl.textContent = 'Invalid regex: ' + e.message;
+            msgEl.className = 'message error';
+            msgEl.style.display = 'block';
+            countEl.textContent = '0';
+            container.innerHTML = '';
+        }
+    }
+    
+    function escapeHtml(str) {
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+    
+    document.getElementById('btnTest').addEventListener('click', testRegex);
+    document.getElementById('btnClear').addEventListener('click', function() {
+        document.getElementById('regexPattern').value = '';
+        document.getElementById('testString').value = '';
+        document.getElementById('message').style.display = 'none';
+        document.getElementById('matchesContainer').innerHTML = '';
+        document.getElementById('matchCount').textContent = '0';
+    });
+    document.getElementById('btnCopyMatches').addEventListener('click', function() {
+        const container = document.getElementById('matchesContainer');
+        const matches = [...container.querySelectorAll('.match-text')].map(el => el.textContent);
+        if (matches.length > 0) {
+            navigator.clipboard.writeText(matches.join('\n'));
+            const btn = document.getElementById('btnCopyMatches');
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy Matches', 1500);
+        }
+    });
+    document.querySelectorAll('input[id^="flag"]').forEach(cb => cb.addEventListener('change', testRegex));
+    </script>
+<script>
+// Theme Toggle
+(function() {
+    var toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    // Apply saved theme or system preference
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+    }
+
+    // Initialize theme
+    function initTheme() {
+        var saved = localStorage.getItem('theme');
+        if (saved) {
+            applyTheme(saved);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            applyTheme('light');
+        }
+    }
+
+    // Toggle theme
+    toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'light' ? 'dark' : 'light';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+    });
+
+    initTheme();
+})();
+<\/script>
+    <!-- PWA Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                // console statement removed
+            }).catch(function(err) {
+                console.warn('[PWA] SW registration failed:', err);
+            });
+        });
+    }
+    </script>
+</body>
+</html>

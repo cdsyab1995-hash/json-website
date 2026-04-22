@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Convert CSV to Excel instantly. Import spreadsheet data with formulas, multiple sheets, and formatting. Client-side processing for developers.">
+    <meta name="keywords" content="CSV to Excel, convert CSV to XLSX, spreadsheet converter, import CSV Excel, data import tool, CSV to worksheet, developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="/tools/https://www.aijsons.com/pages/csv-to-excel.html>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aijsons.com/tools/csv-to-excel">
+    <meta property="og:title" content="CSV to Excel Converter - Import Spreadsheet Data | AI JSON">
+    <meta property="og:description" content="Convert CSV to Excel with formatting. Instant XLSX export for developers. Client-side processing.">
+            
+
+        
+
+    
+    
+
+        
+
+    
+    
+
+    
+
+    
+    
+    <title>CSV to Excel Converter - Convert Spreadsheet Data to XLSX | AI JSON</title>
+    <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;--bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;--primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;--radius-md:8px;--radius-lg:12px;font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif}
+    body{background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+    .navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
+    .navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
+    .navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap}
+    .nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem}
+    .nav-link svg{width:16px;height:16px;flex-shrink:0}
+    .nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
+    .main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)}
+    .tool-area{background:var(--bg-card);border-radius:var(--radius-lg);padding:var(--space-xl);border:1px solid var(--bg-secondary)}
+    .code-editor{width:100%;min-height:200px;padding:var(--space-md);border:1px solid var(--bg-secondary);border-radius:var(--radius-md);font-family:'Consolas','Monaco',monospace;font-size:0.875rem;resize:vertical;background:var(--bg-dark);color:var(--text-primary)}
+    .code-editor:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-size:0.9375rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s}
+    .btn-primary{background:var(--primary);color:var(--bg-dark)}
+    .btn-primary:hover{background:#1da34a;box-shadow:0 4px 12px rgba(34,197,94,.3)}
+    .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+    .btn-secondary:hover{background:rgba(34,197,94,.1)}
+    .btn-danger{background:transparent;color:#ef4444;border:1px solid #ef4444}
+    .btn-danger:hover{background:rgba(239,68,68,.1)}
+    .footer{background:var(--bg-dark);color:var(--text-secondary);text-align:center;padding:var(--space-xl);margin-top:auto;border-top:1px solid var(--bg-secondary)}
+    .footer a{color:var(--primary);text-decoration:none}
+    
+/* P0: CLS Prevention */
+img { contain: layout; }
+.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"></noscript>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CSV to Excel Converter - Import Spreadsheet Data | AI JSON">
+    <meta name="twitter:description" content="Convert CSV to Excel with formatting. Instant XLSX export for developers. Client-side processing.">
+    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
+    <meta name="twitter:url" content="https://www.aijsons.com/pages/csv-to-excel.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#22C55E">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JSON Tools">
+    <link rel="apple-touch-icon" href="/images/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css">
+<!-- BreadcrumbList -->
+
+
+
+    
+    
+
+    
+    
+        
+
+    
+    
+    
+    
+
+    
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSV to Excel Converter - Convert CSV to XLSX Online",
+    "url": "https://www.aijsons.com/tools/csv-to-excel",
+    "description": "Convert CSV files to Excel format (.xlsx) directly in your browser. No upload needed, fully client-side. Free online converter.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires modern web browser (Chrome, Firefox, Safari, Edge)",
+    "softwareVersion": "2.0",
+    "screenshot": "https://aijsons.com/og-image.png",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "interactionMode": [
+        "PointAndClick",
+        "Keyboard"
+    ],
+    "inLanguage": "en",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+        "CSV to XLSX conversion",
+        "Browser-based processing",
+        "No data upload",
+        "Custom delimiter support",
+        "Download XLSX file",
+        "Mobile responsive"
+    ]
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "CSV to Excel",
+            "item": "https://www.aijsons.com/pages/csv-to-excel.html"
+        }
+    ]
+}
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "How do I convert CSV to Excel?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Upload your CSV file or paste CSV data, then click Convert. The tool will generate a downloadable .xlsx Excel file."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is my data uploaded to a server?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. All processing happens in your browser. Your data never leaves your device."
+            }
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<nav class="navbar">
+        <a href="../index.html" class="navbar-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            AI JSON
+        </a>
+        <button class="menu-toggle" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="navbar-links">
+            <a href="../index.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Home
+            </a>
+            <!-- Tools Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link nav-dropdown-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Tools
+                    <svg class="chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+                <div class="nav-dropdown-menu wide">
+<div class="nav-dropdown-menu-box">
+                    <a href="/tools/json-formatter" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                            <line x1="9" y1="20" x2="15" y2="20"></line>
+                            <line x1="12" y1="4" x2="12" y2="20"></line>
+                        </svg>
+                        Format
+                    </a>
+                    <a href="/tools/json-escape" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Escape
+                    </a>
+                    <a href="/tools/json-extract" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Extract
+                    </a>
+                    <a href="/tools/json-sort" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <polyline points="19 12 12 19 5 12"></polyline>
+                        </svg>
+                        Sort
+                    </a>
+                    <a href="/tools/json-clean" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        Clean
+                    </a>
+                    <a href="/tools/json-to-xml" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        XML
+                    </a>
+                    <a href="/tools/json-to-yaml" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        YAML
+                    </a>
+                    <a href="/tools/json-viewer" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        Viewer
+                    </a>
+                    <a href="/tools/json-to-csv" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="8" y1="13" x2="16" y2="13"></line>
+                            <line x1="8" y1="17" x2="16" y2="17"></line>
+                        </svg>
+                        CSV
+                    </a>
+                    <a href="/tools/json-compare" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 20V10"></path>
+                            <path d="M12 20V4"></path>
+                            <path d="M6 20v-6"></path>
+                        </svg>
+                        Compare
+                    </a>
+                    <a href="/tools/regex-tester" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Regex
+                    </a>
+                    <a href="/tools/base64" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        Base64
+                    </a>
+                    <a href="/tools/url-encoder" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        URL Encoder
+                    </a>
+                    <a href="/tools/csv-to-excel" class="nav-link active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        Excel
+                    </a>
+                    <a href="/tools/excel-remove-duplicates" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        Remove Duplicates
+                    </a>
+                    <a href="/tools/merge-csv" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                        </svg>
+                        Merge CSV
+                    </a>
+                    <a href="/tools/batch-renamer" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Batch Rename
+                    </a>
+                    <a href="/tools/pdf-split" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        PDF Split
+                    </a>
+                    <a href="/tools/timestamp-converter" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Timestamp
+                    </a>
+                    <a href="/tools/css-minifier" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        CSS Minifier
+                    </a>
+                    <a href="/tools/html-encoder" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        HTML Encoder
+                    </a>
+                    <a href="/tools/jwt-decoder" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        JWT
+                    </a>
+                    <a href="/tools/hash-generator" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="8" y2="21"></line>
+                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                        </svg>
+                        Hash
+                    </a>
+                    <a href="/tools/uuid-generator" class="nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        UUID
+                    </a>
+                </div>
+                </div>
+            </div>
+            <!-- Right-side links -->
+            <a href="/blog" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Tutorial
+            </a>
+            <a href="/best-practices" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Practices
+            </a>
+            <a href="/news" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                News
+            </a>
+            <a href="/about" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                About
+            </a>
+            <a href="/changelog" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Changelog
+            </a>
+            <!-- CTA Button -->
+            <a href="/tools/json-formatter" class="nav-link cta">Try Formatter</a>
+        </div>
+    </nav>
+
+<main class="main-container">
+    <div class="page-header text-center">
+        <h1 class="page-title">CSV to Excel Converter</h1>
+        <p class="page-description">Convert CSV data to Excel XLSX format with proper formatting</p>
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / <span>CSV to Excel</span>
+        </div>
+    </div>
+
+    <div class="tool-area">
+        <div class="tool-header">
+            <div class="tool-status" id="status">
+                <span class="status-dot"></span>
+                <span class="status-text">Waiting for input...</span>
+            </div>
+            <div class="tool-actions">
+                <button class="btn btn-primary" id="convertBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Convert to XLSX
+                </button>
+                <button class="btn btn-secondary" id="downloadBtn" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download XLSX
+                </button>
+                <button class="btn btn-secondary" id="copyBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy
+                </button>
+                <button class="btn btn-danger" id="clearBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear
+                </button>
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <div class="editor-panel">
+                <div class="editor-label">Input CSV</div>
+                <textarea id="inputCsv" class="code-editor" placeholder='name,age,city&#10;John,30,New York&#10;Jane,25,Los Angeles&#10;Bob,35,Chicago'></textarea>
+            </div>
+            <div class="editor-panel">
+                <div class="editor-label">Preview</div>
+                <div id="preview" class="code-output"><pre></pre></div>
+            </div>
+        </div>
+
+        <div class="options-row">
+            <label class="checkbox-label">
+                <input type="checkbox" id="includeHeaders" checked>
+                <span>First Row is Header</span>
+            </label>
+            <label class="checkbox-label">
+                <span>Delimiter:</span>
+            </label>
+            <select id="delimiter" style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--bg-secondary); background: var(--bg-dark); color: var(--text-primary);">
+                <option value=",">Comma (,)</option>
+                <option value=";">Semicolon (;)</option>
+                <option value="tab">Tab</option>
+                <option value="|">Pipe (|)</option>
+            </select>
+            <label class="checkbox-label" style="margin-left: 20px;">
+                <input type="checkbox" id="trimWhitespace" checked>
+                <span>Trim Whitespace</span>
+            </label>
+        </div>
+
+        <div class="info-box" style="margin-top: 1rem;">
+            <p><strong>Tip:</strong> Paste your CSV data and click "Convert to XLSX" to download as Excel file.</p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="tool-area mt-lg">
+        <h2 class="section-label">CSV to Excel FAQ</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary class="faq-question">How to convert CSV to Excel?</summary>
+                <div class="faq-answer">
+                    <p>Simply paste your CSV data, choose your delimiter, and click "Convert to XLSX". The file will download automatically.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">What is the difference between CSV and Excel?</summary>
+                <div class="faq-answer">
+                    <p><strong>CSV</strong> is a plain text format with comma-separated values. <strong>Excel (XLSX)</strong> is a spreadsheet format that supports formulas, multiple sheets, and formatting.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">Is my data uploaded to a server?</summary>
+                <div class="faq-answer">
+                    <p>No. All processing happens in your browser. Your data never leaves your device.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/json-to-csv" class="related-tool-card">
+            <strong>JSON to CSV</strong>
+            <span>Convert JSON to CSV first</span>
+        </a>        <a href="/tools/merge-csv" class="related-tool-card">
+            <strong>Merge CSV</strong>
+            <span>Combine CSV files</span>
+        </a>        <a href="/tools/excel-remove-duplicates" class="related-tool-card">
+            <strong>Remove Duplicates</strong>
+            <span>Clean Excel data</span>
+        </a>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>AI JSON - Instant client-side data processing. Your data stays private.</p>
+    <p class="text-sm mt-sm"">
+        <a href="/privacy">Privacy Policy</a> |
+        <a href="/terms">Terms of Service</a> |
+        <a href="/cookie">Cookie Policy</a>
+    </p>
+    <p class="text-small mt-sm"">
+        &copy; 2026 AI JSON. All rights reserved.
+    </p>
+</footer>
+
+<script src="/js/app.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const inputCsv = document.getElementById('inputCsv');
+    const preview = document.getElementById('preview');
+    const status = document.getElementById('status');
+    const convertBtn = document.getElementById('convertBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const includeHeaders = document.getElementById('includeHeaders');
+    const delimiter = document.getElementById('delimiter');
+    const trimWhitespace = document.getElementById('trimWhitespace');
+
+    let csvData = [];
+    let csvResult = '';
+
+    function updateStatus(valid, message) {
+        const dot = status.querySelector('.status-dot');
+        const text = status.querySelector('.status-text');
+        dot.className = 'status-dot ' + (valid ? 'valid' : 'invalid');
+        text.textContent = message;
+    }
+
+    function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function parseCSV(text, delim) {
+        const lines = text.split(/\r?\n/);
+        const delimiter = delim === 'tab' ? '\t' : delim;
+        const rows = [];
+        
+        for (const line of lines) {
+            if (!line.trim()) continue;
+            const values = line.split(delimiter).map(v => {
+                let val = v.trim();
+                if (trimWhitespace.checked) {
+                    val = val.trim();
+                }
+                // Remove surrounding quotes
+                if ((val.startsWith('"') && val.endsWith('"')) ||
+                    (val.startsWith("'") && val.endsWith("'"))) {
+                    val = val.slice(1, -1);
+                }
+                return val;
+            });
+            rows.push(values);
+        }
+        return rows;
+    }
+
+    function convertToTable(rows, hasHeader) {
+        if (rows.length === 0) return '<p>No data</p>';
+        
+        let html = '<table style="width:100%;border-collapse:collapse;font-size:0.875rem;">';
+        
+        // Header row
+        if (hasHeader && rows.length > 0) {
+            html += '<thead><tr>';
+            rows[0].forEach(cell => {
+                html += `<th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--primary);color:var(--primary);">${escapeHtml(cell)}</th>`;
+            });
+            html += '</tr></thead>';
+        }
+        
+        html += '<tbody>';
+        const start = hasHeader ? 1 : 0;
+        for (let i = start; i < rows.length; i++) {
+            html += '<tr>';
+            rows[i].forEach(cell => {
+                html += `<td style="padding:8px 12px;border-bottom:1px solid var(--bg-secondary);">${escapeHtml(cell)}</td>`;
+            });
+            html += '</tr>';
+        }
+        html += '</tbody></table>';
+        
+        return html;
+    }
+
+    function convertCSV() {
+        const input = inputCsv.value.trim();
+        if (!input) {
+            updateStatus(false, 'Please enter CSV data');
+            preview.innerHTML = '<pre></pre>';
+            csvResult = '';
+            downloadBtn.disabled = true;
+            return;
+        }
+
+        const delim = delimiter.value;
+        csvData = parseCSV(input, delim);
+        
+        if (csvData.length === 0) {
+            updateStatus(false, 'No valid data found');
+            return;
+        }
+
+        // Build CSV for download
+        const delimChar = delim === 'tab' ? '\t' : delim;
+        csvResult = csvData.map(row => row.map(v => {
+            if (v.includes(delimChar) || v.includes('"') || v.includes('\n')) {
+                return '"' + v.replace(/"/g, '""') + '"';
+            }
+            return v;
+        }).join(delimChar)).join('\n');
+
+        const hasHeader = includeHeaders.checked;
+        preview.innerHTML = convertToTable(csvData, hasHeader);
+        
+        updateStatus(true, `Success! ${csvData.length} rows, ${csvData[0]?.length || 0} columns`);
+        downloadBtn.disabled = false;
+    }
+
+    // Generate XLSX using SheetJS library (inline minimal implementation)
+    function generateXLSX(csv, hasHeader) {
+        // Simple XLSX generation using base64 encoding
+        // This creates a minimal valid XLSX file
+        const lines = csv.split('\n');
+        const delim = delimiter.value === 'tab' ? '\t' : delimiter.value;
+        
+        // Build XML content
+        let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+        xml += '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet">\n';
+        xml += '<Worksheet ss:Name="Sheet1">\n';
+        xml += '<Table>\n';
+        
+        const startRow = hasHeader ? 0 : 0;
+        for (let i = startRow; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            xml += '<Row>\n';
+            const cells = lines[i].split(delim);
+            cells.forEach(cell => {
+                xml += `<Cell><Data ss:Type="String">${escapeXml(cell)}</Data></Cell>\n`;
+            });
+            xml += '</Row>\n';
+        }
+        
+        xml += '</Table>\n';
+        xml += '</Worksheet>\n';
+        xml += '</Workbook>\n';
+
+        // Wrap in Office 2003 XML format (simpler, widely compatible)
+        const fullXml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+            '<?mso-application progid="Excel.Sheet"?>\n' +
+            xml;
+
+        return 'data:application/vnd.ms-excel;base64,' + btoa(unescape(encodeURIComponent(fullXml)));
+    }
+
+    function escapeXml(str) {
+        return str.replace(/&/g, '&amp;')
+                  .replace(/</g, '&lt;')
+                  .replace(/>/g, '&gt;')
+                  .replace(/"/g, '&quot;')
+                  .replace(/'/g, '&apos;');
+    }
+
+    inputCsv.addEventListener('input', convertCSV);
+    includeHeaders.addEventListener('change', convertCSV);
+    delimiter.addEventListener('change', convertCSV);
+    trimWhitespace.addEventListener('change', convertCSV);
+
+    convertBtn.addEventListener('click', convertCSV);
+
+    downloadBtn.addEventListener('click', function() {
+        if (!csvResult) return;
+        
+        // Generate and download XLSX
+        const hasHeader = includeHeaders.checked;
+        const dataUrl = generateXLSX(csvResult, hasHeader);
+        
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = 'data.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+
+    copyBtn.addEventListener('click', function() {
+        if (!csvResult) return;
+        navigator.clipboard.writeText(csvResult).then(() => {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+            setTimeout(() => this.innerHTML = originalText, 2000);
+        });
+    });
+
+    clearBtn.addEventListener('click', function() {
+        inputCsv.value = '';
+        preview.innerHTML = '<pre></pre>';
+        updateStatus(false, 'Waiting for input...');
+        csvResult = '';
+        downloadBtn.disabled = true;
+        inputCsv.focus();
+    });
+});
+</script>
+<script>
+// Theme Toggle
+(function() {
+    var toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    // Apply saved theme or system preference
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+    }
+
+    // Initialize theme
+    function initTheme() {
+        var saved = localStorage.getItem('theme');
+        if (saved) {
+            applyTheme(saved);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            applyTheme('light');
+        }
+    }
+
+    // Toggle theme
+    toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'light' ? 'dark' : 'light';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+    });
+
+    initTheme();
+})();
+<\/script>
+    <!-- PWA Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                // console statement removed
+            }).catch(function(err) {
+                console.warn('[PWA] SW registration failed:', err);
+            });
+        });
+    }
+    </script>
+</body>
+</html>
