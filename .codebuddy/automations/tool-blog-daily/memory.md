@@ -7,10 +7,11 @@
 
 | 日期 | 目标工具 | 主题 | 状态 |
 |------|----------|------|------|
+| 2026-04-22 09:00 | viewer | json-viewer-tree-view-why-you-need-one | SKIP (文章已存在) |
 | 2026-04-21 08:57 | compare | compare-json-documents-find-differences | SKIP (文章已存在) |
 | 2026-04-21 08:59 | compare | compare-json-documents-find-differences | SKIP (文章已存在) |
 
-## 最新执行 (2026-04-21 08:59)
-- 状态：SKIP - 文章 compare-json-documents-find-differences 已存在
+## 最新执行 (2026-04-22 09:00)
+- 状态：SKIP - 文章 json-viewer-tree-view-why-you-need-one 已存在
 - 脚本路径：d:\网站开发-json\scripts\daily_tool_blog.py
-- 说明：同一工具当天重复执行，脚本检测到文章已存在后跳过生成
+- 说明：viewer 工具文章已由之前执行生成，脚本跳过
