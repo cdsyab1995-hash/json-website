@@ -48,7 +48,7 @@
 }
 };
  const hideError=()=>{$('errorPanel')?.classList.remove('show');};
- const setLoading=(btn,loading)=>{if (!btn) return;loading ? btn.classList.add('btn-loading')&&(btn.disabled=true) : btn.classList.remove('btn-loading')&&(btn.disabled=false);};
+ const setLoading=(btn,loading)=>{if (!btn) return;if(loading){btn.classList.add('btn-loading');btn.disabled=true;}else{btn.classList.remove('btn-loading');btn.disabled=false;}};
  const getLine=(str,pos)=>{let line=1;for (let i=0;i<pos&&i<str.length;i++) if (str[i]==='\n') line++;return line;};
  const jsonInput=$('jsonInput'),jsonOutput=$('jsonOutput'),jsonHighlight=$('jsonHighlight');
  const formatJSON=()=>{
@@ -189,20 +189,20 @@
  showMsg($('msgExtract'),'Extraction successful!','success');
 }catch (e){showMsg($('msgExtract'),'Extraction failed: '+e.message,'error');}
 });
- const templates={
- api: '{"success":true,"data":{"id":1001,"name":"Example","email":"test@example.com"}}',
- user: '{"user":{"id":"u123","role":"admin","verified":true,"preferences":{"theme":"dark"}}}',
- product: '{"products":[{"id":"P001","name":"iPhone","price":999},{"id":"P002","name":"MacBook","price":1299}]}',
- pkg: '{"name":"my-app","version":"1.0.0","dependencies":{"express":"^4.18"}}',
- i18n: '{"en":{"welcome":"Hello"},"zh":{"welcome":"你好"}}}'
+const templates={
+api: '{"success":true,"data":{"id":1001,"name":"Example","email":"test@example.com"}}',
+user: '{"user":{"id":"u123","role":"admin","verified":true,"preferences":{"theme":"dark"}}}',
+product: '{"products":[{"id":"P001","name":"iPhone","price":999},{"id":"P002","name":"MacBook","price":1299}]}',
+package: '{"name":"my-app","version":"1.0.0","dependencies":{"express":"^4.18"}}',
+i18n: '{"en":{"welcome":"Hello"},"zh":{"welcome":"你好"}}'
 };
- $('templateSelect')?.addEventListener('change',function(){
- if (this.value&&templates[this.value]){
- $('inputJson').value=templates[this.value];
- $('formatBtn')?.click();
- showMsg($('msgFormat'),'Template loaded','success');
+$('templateSelect')?.addEventListener('change',function(){
+if (this.value&&templates[this.value]){
+$('jsonInput').value=templates[this.value];
+$('btnFormat')?.click();
+showMsg($('msgFormat'),'Template loaded','success');
 }
- this.value='';
+this.value='';
 });
  if ('IntersectionObserver' in window){
  const observer=new IntersectionObserver((entries,obs)=>{
