@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timestamp Converter - Convert Unix Time & Human-Readable Dates | AI JSON</title>
+    <meta name="description" content="Free Unix timestamp converter. Convert between Unix timestamp, ISO 8601, and human-readable dates. Instant results.">
+    <link rel="canonical" href="https://www.aijsons.com/tools/timestamp-converter"><meta property="og:url" content="https://www.aijsons.com/tools/timestamp-converter">
+    <meta property="og:title" content="Timestamp Converter - Convert Unix Time & Dates">
+    <meta property="og:description" content="Free online Unix timestamp converter. Convert between Unix timestamp, ISO 8601, human-readable dates, and timezone.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Timestamp Converter - Convert Unix Time & Dates">
+    <meta name="twitter:description" content="Free online Unix timestamp converter. Convert between Unix timestamp, ISO 8601, human-readable dates, and timezone.">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        .timestamp-input {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        @media (max-width: 768px) {
+            .timestamp-input { grid-template-columns: 1fr; }
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .input-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+        }
+        .input-group input, .input-group select {
+            padding: var(--space-md);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .result-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--bg-secondary);
+        }
+        .result-row:last-child { border-bottom: none; }
+        .result-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .result-value {
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--text-primary);
+            font-weight: 500;
+            cursor: pointer;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            transition: background 0.2s;
+        }
+        .result-value:hover {
+            background: var(--bg-secondary);
+        }
+        .result-value.copied {
+            background: var(--success-light);
+            color: var(--success);
+        }
+        .quick-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-lg);
+        }
+        .quick-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+        .quick-btn:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+        }
+        .timezone-info {
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+    
+/* P0: CLS Prevention */
+img { contain: layout; }
+.font-loading { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+</style>
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#22C55E">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="JSON Tools">
+    <link rel="apple-touch-icon" href="/images/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css">
+    
+
+    
+    
+    
+
+
+    
+    
+
+    
+    
+        
+
+    
+    
+    
+    
+
+    
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Timestamp Converter - Convert Unix Timestamps Online",
+    "url": "https://www.aijsons.com/tools/timestamp-converter",
+    "description": "Convert between Unix timestamps and human-readable dates. Supports milliseconds and seconds. Free online timestamp converter.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires modern web browser (Chrome, Firefox, Safari, Edge)",
+    "softwareVersion": "2.0",
+    "screenshot": "https://aijsons.com/og-image.png",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "interactionMode": [
+        "PointAndClick",
+        "Keyboard"
+    ],
+    "inLanguage": "en",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+        "Unix timestamp to date",
+        "Date to Unix timestamp",
+        "Milliseconds support",
+        "Current timestamp",
+        "Timezone conversion",
+        "Copy to clipboard",
+        "Mobile responsive"
+    ]
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Timestamp",
+            "item": "https://www.aijsons.com/pages/timestamp-converter.html"
+        }
+    ]
+}
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What is a Unix timestamp?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Unix timestamp is the number of seconds elapsed since January 1, 1970 (UTC). It is commonly used in APIs and databases."
+            }
+        }
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">Timestamp Converter</h1>
+            <p class="page-description">Convert between Unix timestamps, ISO 8601 dates, and human-readable formats. Supports all timezones.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="tool-area">
+            <div class="timestamp-input">
+                <div class="input-group">
+                    <label for="timestampInput">Unix Timestamp (seconds)</label>
+                    <input type="text" id="timestampInput" placeholder="Enter Unix timestamp (e.g., 1713368400)">
+                </div>
+                <div class="input-group">
+                    <label for="dateInput">Date & Time</label>
+                    <input type="datetime-local" id="dateInput">
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="quick-btn" onclick="setCurrentTimestamp()">Now</button>
+                <button class="quick-btn" onclick="setTodayMidnight()">Today Midnight</button>
+                <button class="quick-btn" onclick="setTomorrowMidnight()">Tomorrow Midnight</button>
+                <button class="quick-btn" onclick="setWeekLater()">+1 Week</button>
+                <button class="quick-btn" onclick="setMonthLater()">+1 Month</button>
+                <button class="quick-btn" onclick="setYearLater()">+1 Year</button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="result-panel" style="margin-top: var(--space-xl);">
+            <h3 class="section-label">Converted Values</h3>
+            <div class="result-row">
+                <span class="result-label">Unix Timestamp (s)</span>
+                <span class="result-value" id="unixSeconds" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Unix Timestamp (ms)</span>
+                <span class="result-value" id="unixMs" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">UTC</span>
+                <span class="result-value" id="utcDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">ISO 8601</span>
+                <span class="result-value" id="isoDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Local Time</span>
+                <span class="result-value" id="localDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Relative Time</span>
+                <span class="result-value" id="relativeDate" onclick="copyToClipboard(this)">-</span>
+            </div>
+
+            <!-- Timezone Info -->
+            <div class="timezone-info">
+                <strong>Current Timezone:</strong> <span id="timezone">-</span><br>
+                <strong>UTC Offset:</strong> <span id="utcOffset">-</span>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="tool-area" style="margin-top: var(--space-xl);">
+            <h3 class="section-label">About Unix Timestamp</h3>
+            <p style="color: var(--text-secondary); line-height: 1.8;">
+                A Unix timestamp is the number of seconds that have elapsed since January 1, 1970 (UTC), 
+                not counting leap seconds. It's widely used in programming, databases, and APIs for 
+                representing dates and times in a consistent format.
+            </p>
+        </div>
+
+        <!-- Tutorial Section -->
+        <div class="tutorial-section" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--bg-secondary);">
+            <h2 class="text-xl mb-md"">Unix Timestamp Explained: A Complete Developer Guide</h2>
+            
+            <div style="display: grid; gap: 1.5rem;">
+                <div>
+                    <h3 style="font-size: 1.125rem; color: var(--primary); margin-bottom: 0.5rem;">What is a Unix Timestamp?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        A Unix timestamp (also called epoch time) is the number of seconds that have elapsed since <strong>January 1, 1970, 00:00:00 UTC</strong>. For example, the timestamp <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">1744934400</code> represents <strong>April 18, 2026, 00:00:00 UTC</strong>.
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.75rem;">
+                        Unix timestamps are preferred in programming because they are <strong>simple integers</strong> that can be easily compared, sorted, and stored in databases without timezone complications.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.125rem; color: var(--primary); margin-bottom: 0.5rem;">Why Use Timestamps in APIs?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Most modern APIs use Unix timestamps for date/time fields because:
+                    </p>
+                    <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Timezone independent</strong> - No ambiguity across different regions</li>
+                        <li><strong>Easy to sort</strong> - Integer comparison is faster than string comparison</li>
+                        <li><strong>Compact storage</strong> - 4-8 bytes vs 20+ characters for ISO strings</li>
+                        <li><strong>Simple math</strong> - Easy to calculate differences, add durations</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.125rem; color: var(--primary); margin-bottom: 0.5rem;">Seconds vs Milliseconds</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        <strong>JavaScript uses milliseconds</strong>: <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">Date.now()</code> returns <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">1744934400000</code><br>
+                        <strong>Python and most APIs use seconds</strong>: <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">int(time.time())</code> returns <code style="background: var(--bg-secondary); padding: 0.125rem 0.375rem; border-radius: 4px;">1744934400</code>
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; padding: 0.75rem; background: var(--bg-card); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        ⚠️ <strong>Common Error:</strong> If your timestamp is 13 digits (like <code>1744934400000</code>), it's in milliseconds. Divide by 1000 to get seconds.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.125rem; color: var(--primary); margin-bottom: 0.5rem;">Quick Reference: Common Timestamps</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+                        <div style="background: var(--bg-card); padding: 0.75rem; border-radius: 8px;">
+                            <div class="text-small text-secondary"">Current Unix Time</div>
+                            <div style="font-family: monospace; color: var(--primary);" id="currentTimestamp">Loading...</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 0.75rem; border-radius: 8px;">
+                            <div class="text-small text-secondary"">Today Midnight UTC</div>
+                            <div style="font-family: monospace;">1744915200</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 0.75rem; border-radius: 8px;">
+                            <div class="text-small text-secondary"">Unix Epoch</div>
+                            <div style="font-family: monospace;">0</div>
+                        </div>
+                        <div style="background: var(--bg-card); padding: 0.75rem; border-radius: 8px;">
+                            <div class="text-small text-secondary"">Year 2038 Problem</div>
+                            <div style="font-family: monospace;">2147483647</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.125rem; color: var(--primary); margin-bottom: 0.5rem;">Code Examples</h3>
+                    <div style="background: var(--bg-card); padding: 1rem; border-radius: 8px; overflow-x: auto;">
+                        <div style="margin-bottom: 1rem;">
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">JavaScript</div>
+                            <code style="font-family: monospace; font-size: 0.875rem; color: #A5D6FF;">
+                                // Current timestamp (milliseconds)<br>
+                                const now = Date.now();<br><br>
+                                // Convert to date<br>
+                                new Date(now);<br><br>
+                                // Convert timestamp to string<br>
+                                new Date(1744934400 * 1000).toISOString();
+                            </code>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Python</div>
+                            <code style="font-family: monospace; font-size: 0.875rem; color: #A5D6FF;">
+                                import time<br><br>
+                                # Current timestamp (seconds)<br>
+                                now = int(time.time())<br><br>
+                                # Convert to datetime<br>
+                                datetime.fromtimestamp(now)
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 1.125rem; color: var(--primary); margin-bottom: 0.5rem;">Related Tools</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <a href="/tools/json-formatter" style="padding: 0.5rem 1rem; background: var(--bg-card); border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; border: 1px solid var(--bg-secondary);">JSON Formatter</a>
+                        <a href="/tools/jwt-decoder" style="padding: 0.5rem 1rem; background: var(--bg-card); border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; border: 1px solid var(--bg-secondary);">JWT Decoder</a>
+                        <a href="/tools/hash-generator" style="padding: 0.5rem 1rem; background: var(--bg-card); border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; border: 1px solid var(--bg-secondary);">Hash Generator</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/json-formatter" class="related-tool-card">
+            <strong>JSON Formatter</strong>
+            <span>Format timestamp data</span>
+        </a>        <a href="/tools/uuid-generator" class="related-tool-card">
+            <strong>UUID Generator</strong>
+            <span>Generate unique IDs</span>
+        </a>
+        </div>
+    </section>
+</main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm"">
+            <a href="/about">About</a> |
+            <a href="/changelog">Changelog</a> |
+            <a href="/privacy">Privacy Policy</a> |
+            <a href="/terms">Terms of Service</a>
+        </p>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        (function() {
+            var toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
+
+            function initTheme() {
+                var saved = localStorage.getItem('theme');
+                if (saved) {
+                    applyTheme(saved);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    applyTheme('light');
+                }
+            }
+
+            toggle.addEventListener('click', function() {
+                var current = document.documentElement.getAttribute('data-theme');
+                var next = current === 'light' ? 'dark' : 'light';
+                applyTheme(next);
+                localStorage.setItem('theme', next);
+            });
+
+            initTheme();
+        })();
+
+        // Timestamp Converter Logic
+        var timestampInput = document.getElementById('timestampInput');
+        var dateInput = document.getElementById('dateInput');
+        var unixSeconds = document.getElementById('unixSeconds');
+        var unixMs = document.getElementById('unixMs');
+        var utcDate = document.getElementById('utcDate');
+        var isoDate = document.getElementById('isoDate');
+        var localDate = document.getElementById('localDate');
+        var relativeDate = document.getElementById('relativeDate');
+        var timezone = document.getElementById('timezone');
+        var utcOffset = document.getElementById('utcOffset');
+
+        // Update timezone info
+        timezone.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        utcOffset.textContent = new Date().getTimezoneOffset() + ' minutes';
+
+        // Update current timestamp in tutorial
+        var currentTsEl = document.getElementById('currentTimestamp');
+        if (currentTsEl) {
+            function updateCurrentTs() {
+                currentTsEl.textContent = Math.floor(Date.now() / 1000);
+            }
+            updateCurrentTs();
+            setInterval(updateCurrentTs, 1000);
+        }
+
+        // Format date
+        function formatDate(ts) {
+            if (!ts || isNaN(ts)) return '-';
+            var d = new Date(ts);
+
+            unixSeconds.textContent = Math.floor(ts / 1000);
+            unixMs.textContent = ts;
+            utcDate.textContent = d.toUTCString();
+            isoDate.textContent = d.toISOString();
+            localDate.textContent = d.toLocaleString();
+            relativeDate.textContent = getRelativeTime(d);
+        }
+
+        // Get relative time
+        function getRelativeTime(date) {
+            var now = new Date();
+            var diff = date - now;
+            var absDiff = Math.abs(diff);
+            var past = diff > 0;
+
+            var units = [
+                { name: 'year', ms: 365.25 * 24 * 60 * 60 * 1000 },
+                { name: 'month', ms: 30.44 * 24 * 60 * 60 * 1000 },
+                { name: 'day', ms: 24 * 60 * 60 * 1000 },
+                { name: 'hour', ms: 60 * 60 * 1000 },
+                { name: 'minute', ms: 60 * 1000 },
+                { name: 'second', ms: 1000 }
+            ];
+
+            for (var i = 0; i < units.length; i++) {
+                var unit = units[i];
+                var value = absDiff / unit.ms;
+                if (value >= 1) {
+                    var rounded = Math.floor(value);
+                    return (past ? 'in ' : '') + rounded + ' ' + unit.name + (rounded > 1 ? 's' : '') + (past ? '' : ' ago');
+                }
+            }
+            return 'just now';
+        }
+
+        // Parse timestamp input
+        timestampInput.addEventListener('input', function() {
+            var val = this.value.trim();
+            if (!val) {
+                unixSeconds.textContent = '-';
+                unixMs.textContent = '-';
+                utcDate.textContent = '-';
+                isoDate.textContent = '-';
+                localDate.textContent = '-';
+                relativeDate.textContent = '-';
+                return;
+            }
+
+            // Handle both seconds and milliseconds
+            var ts = parseInt(val, 10);
+            if (isNaN(ts)) return;
+
+            // If the number is less than 10000000000, assume seconds
+            if (ts < 10000000000) {
+                ts = ts * 1000;
+            }
+
+            dateInput.value = formatDateTimeLocal(new Date(ts));
+            formatDate(ts);
+        });
+
+        // Parse date input
+        dateInput.addEventListener('input', function() {
+            if (!this.value) return;
+            var d = new Date(this.value);
+            if (isNaN(d.getTime())) return;
+
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            formatDate(d.getTime());
+        });
+
+        // Format datetime-local input value
+        function formatDateTimeLocal(d) {
+            var pad = function(n) { return n < 10 ? '0' + n : n; };
+            return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+        }
+
+        // Quick actions
+        function setCurrentTimestamp() {
+            var now = new Date();
+            timestampInput.value = Math.floor(now.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(now);
+            formatDate(now.getTime());
+        }
+
+        function setTodayMidnight() {
+            var d = new Date();
+            d.setHours(0, 0, 0, 0);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setTomorrowMidnight() {
+            var d = new Date();
+            d.setHours(0, 0, 0, 0);
+            d.setDate(d.getDate() + 1);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setWeekLater() {
+            var d = new Date();
+            d.setDate(d.getDate() + 7);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setMonthLater() {
+            var d = new Date();
+            d.setMonth(d.getMonth() + 1);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        function setYearLater() {
+            var d = new Date();
+            d.setFullYear(d.getFullYear() + 1);
+            timestampInput.value = Math.floor(d.getTime() / 1000);
+            dateInput.value = formatDateTimeLocal(d);
+            formatDate(d.getTime());
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(el) {
+            var text = el.textContent;
+            if (text === '-') return;
+            navigator.clipboard.writeText(text).then(function() {
+                el.classList.add('copied');
+                setTimeout(function() { el.classList.remove('copied'); }, 1000);
+            });
+        }
+
+        // Initialize with current time
+        setCurrentTimestamp();
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+            document.querySelector('.navbar-links')?.classList.toggle('show');
+        });
+    </script>
+
+    <!-- PWA Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                // console statement removed
+            }).catch(function(err) {
+                console.warn('[PWA] SW registration failed:', err);
+            });
+        });
+    }
+    </script>
+</body>
+</html>

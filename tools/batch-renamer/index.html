@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Batch rename files online with ease. Support find & replace, prefix, suffix, and sequential numbering. Free tool for developers."> <meta name="author" content="AI JSON"> <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/tools/batch-renamer"><title>Batch File Renamer - Rename Multiple Files Online | AI JSON</title>
+    
+    <!-- Open Graph --> <meta property="og:type" content="website"> <meta property="og:url" content="https://www.aijsons.com/tools/batch-file-renamer"> <meta property="og:title" content="Batch File Renamer - Rename Multiple Files Online"> <meta property="og:description" content="Batch rename files online with ease. Support find & replace, prefix, suffix, and sequential numbering.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS --> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Batch File Renamer - Rename Multiple Files Online"> <meta name="twitter:description" content="Batch rename files online with ease. Support find & replace, prefix, suffix, and sequential numbering."> <meta name="twitter:image" content="https://aijsons.com/og-image.png"> <meta name="twitter:url" content="https://www.aijsons.com/pages/batch-file-renamer.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json"> <meta name="theme-color" content="#22C55E"> <meta name="mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="apple-mobile-web-app-title" content="JSON Tools">
+    <link rel="apple-touch-icon" href="/images/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css">
+    
+
+    
+    
+    
+
+
+    
+    
+
+    
+    
+        
+
+    
+    
+    
+    
+
+    
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Batch File Renamer - Rename Multiple Files Online",
+    "url": "https://www.aijsons.com/tools/batch-file-renamer",
+    "description": "Rename multiple files with find and replace, numbering, date insertion, and custom patterns. Free online batch file renamer.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires modern web browser (Chrome, Firefox, Safari, Edge)",
+    "softwareVersion": "2.0",
+    "screenshot": "https://aijsons.com/og-image.png",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "interactionMode": [
+        "PointAndClick",
+        "Keyboard"
+    ],
+    "inLanguage": "en",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+        "Find and replace renaming",
+        "Sequential numbering",
+        "Date insertion",
+        "Custom patterns",
+        "Preview changes",
+        "Download rename script",
+        "Mobile responsive"
+    ]
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Batch Renamer",
+            "item": "https://www.aijsons.com/pages/batch-file-renamer.html"
+        }
+    ]
+}
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "How do I batch rename files?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Enter your filenames (one per line), choose a renaming pattern (find/replace, numbering, date), preview changes, and download a rename script."
+            }
+        }
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main-container" id="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Batch File Renamer - Rename Multiple Files Online</h1>
+            <p class="page-description">Rename multiple files at once with find & replace, prefix, suffix, or sequential numbering. Download rename commands instantly.</p>
+        </div>
+
+        <!-- Tool Area -->
+        <section class="tool-area">
+            <!-- File Names Input -->
+            <div class="tool-section">
+                <label class="section-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    File Names (one per line)
+                </label>
+                <textarea id="fileNamesInput" class="input-area" placeholder="document-v1.pdf&#10;report-final.pdf&#10;notes-draft.pdf&#10;data-export.csv&#10;backup-2024.zip"></textarea>
+            </div>
+
+            <!-- Rename Options -->
+            <div class="tool-section mt-lg">
+                <label class="section-label">Rename Mode</label>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="renameMode" value="find-replace" checked style="accent-color: var(--primary);">
+                        <span>Find & Replace</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="renameMode" value="prefix" style="accent-color: var(--primary);">
+                        <span>Add Prefix</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="renameMode" value="suffix" style="accent-color: var(--primary);">
+                        <span>Add Suffix</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="renameMode" value="sequential" style="accent-color: var(--primary);">
+                        <span>Sequential Numbering</span>
+                    </label>
+                </div>
+
+                <!-- Find & Replace Options -->
+                <div id="findReplaceOptions" class="options-panel">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Find</label>
+                            <input type="text" id="findText" placeholder="old-text" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Replace with</label>
+                            <input type="text" id="replaceText" placeholder="new-text" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                        </div>
+                    </div>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.75rem; cursor: pointer;">
+                        <input type="checkbox" id="caseSensitive" style="accent-color: var(--primary);">
+                        <span class="text-sm text-secondary"">Case sensitive</span>
+                    </label>
+                </div>
+
+                <!-- Prefix Options -->
+                <div id="prefixOptions" class="options-panel" style="display: none;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Prefix</label>
+                    <input type="text" id="prefixText" placeholder="project-" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                </div>
+
+                <!-- Suffix Options -->
+                <div id="suffixOptions" class="options-panel" style="display: none;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Suffix (before extension)</label>
+                    <input type="text" id="suffixText" placeholder="-backup" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                </div>
+
+                <!-- Sequential Options -->
+                <div id="sequentialOptions" class="options-panel" style="display: none;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Start Number</label>
+                            <input type="number" id="startNumber" value="1" min="0" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Padding (digits)</label>
+                            <input type="number" id="paddingDigits" value="3" min="1" max="10" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.875rem;">Base Name</label>
+                            <input type="text" id="baseName" placeholder="file" style="width: 100%; padding: 0.75rem; border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); background: var(--bg-dark); color: var(--text-primary); font-size: 0.9375rem;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="btn-group mt-lg">
+                <button class="btn btn-primary" id="btnRename">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    Generate Rename Commands
+                </button>
+                <button class="btn btn-secondary" id="btnDownload">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Commands
+                </button>
+                <button class="btn btn-danger" id="btnClear">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear
+                </button>
+            </div>
+
+            <!-- Results -->
+            <div class="tool-section mt-lg">
+                <label class="section-label">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 0.5rem;">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    Rename Commands
+                </label>
+                <div id="resultsContainer" class="output-area" style="min-height: 200px; background: var(--bg-dark); border: 1px solid var(--bg-secondary); border-radius: var(--radius-md); padding: 1rem; font-family: 'Consolas', 'Monaco', monospace; white-space: pre-wrap; line-height: 1.8;">
+                    <span style="color: var(--text-light);">Rename commands will appear here...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="tool-area mt-lg">
+            <h2 class="section-label text-lg mb-md"">Batch File Renamer Features - Rename Multiple Files at Once</h2>
+            <div class="feature-grid" style="margin-top: 0;">
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Find & Replace</h3>
+                    <p>Quickly rename files by finding and replacing text patterns. Supports case-sensitive matching.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Prefix & Suffix</h3>
+                    <p>Add consistent prefixes or suffixes to multiple files. Perfect for organizing projects.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <h3 style="font-size: 1rem;">Sequential Numbering</h3>
+                    <p>Number files sequentially with custom padding. Great for photo albums and document sets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="tool-area mt-lg">
+            <h2 class="section-label text-lg mb-md"">Batch File Renamer FAQ - Common Questions Answered</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">How do I use these rename commands?</summary>
+                    <div class="faq-answer">
+                        <p>Copy the generated commands and run them in your terminal (PowerShell, Bash, etc.). The commands use standard OS rename utilities like <code>ren</code> (Windows) or <code>mv</code> (Linux/Mac).</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Is my data processed on the server?</summary>
+                    <div class="faq-answer">
+                        <p><strong>No.</strong> All processing happens in your browser. Your file names are never sent to any server. This is 100% client-side processing.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">What format are the generated commands?</summary>
+                    <div class="faq-answer">
+                        <p>Commands are generated for your operating system:</p>
+                        <ul style="margin: 0.5rem 0 0.5rem 1.5rem;">
+                            <li><strong>Windows:</strong> Uses <code>ren</code> command</li>
+                            <li><strong>Linux/Mac:</strong> Uses <code>mv</code> command</li>
+                        </ul>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Can I undo the renames?</summary>
+                    <div class="faq-answer">
+                        <p>Save the original file list and generated commands before running them. You can manually reverse the operations if needed. Always test on a few files first!</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/csv-to-excel" class="related-tool-card">
+            <strong>CSV to Excel</strong>
+            <span>Convert data files</span>
+        </a>        <a href="/tools/merge-csv" class="related-tool-card">
+            <strong>Merge CSV</strong>
+            <span>Combine data files</span>
+        </a>
+        </div>
+    </section>
+</main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm"">
+            <a href="/privacy" class="text-primary"">Privacy Policy</a> |
+            <a href="/terms" class="text-primary"">Terms of Service</a> |
+            <a href="/cookie" class="text-primary"">Cookie Policy</a>
+        </p>
+        <p class="text-small mt-sm"">
+            &copy; 2026 AI JSON. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Rename mode switching
+        const modeRadios = document.querySelectorAll('input[name="renameMode"]');
+        const optionsPanels = {
+            'find-replace': document.getElementById('findReplaceOptions'),
+            'prefix': document.getElementById('prefixOptions'),
+            'suffix': document.getElementById('suffixOptions'),
+            'sequential': document.getElementById('sequentialOptions')
+        };
+
+        modeRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                Object.keys(optionsPanels).forEach(key => {
+                    optionsPanels[key].style.display = key === e.target.value ? 'block' : 'none';
+                });
+            });
+        });
+
+        // Generate rename commands
+        document.getElementById('btnRename').addEventListener('click', () => {
+            const fileNamesInput = document.getElementById('fileNamesInput').value.trim();
+            if (!fileNamesInput) {
+                alert('Please enter file names first.');
+                return;
+            }
+
+            const files = fileNamesInput.split('\n').map(f => f.trim()).filter(f => f);
+            const mode = document.querySelector('input[name="renameMode"]:checked').value;
+            let commands = [];
+
+            const isWindows = navigator.platform.toLowerCase().includes('win');
+            const cmdPrefix = isWindows ? 'ren "' : 'mv "';
+            const cmdSuffix = isWindows ? '"' : '"';
+
+            switch (mode) {
+                case 'find-replace': {
+                    const findText = document.getElementById('findText').value;
+                    const replaceText = document.getElementById('replaceText').value;
+                    const caseSensitive = document.getElementById('caseSensitive').checked;
+
+                    if (!findText) {
+                        alert('Please enter text to find.');
+                        return;
+                    }
+
+                    files.forEach(fileName => {
+                        let newName;
+                        if (caseSensitive) {
+                            newName = fileName.replace(findText, replaceText);
+                        } else {
+                            const regex = new RegExp(findText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+                            newName = fileName.replace(regex, replaceText);
+                        }
+                        if (newName !== fileName) {
+                            commands.push(`${cmdPrefix}${fileName}${cmdSuffix} ${newName}`);
+                        }
+                    });
+                    break;
+                }
+                case 'prefix': {
+                    const prefix = document.getElementById('prefixText').value;
+                    files.forEach(fileName => {
+                        commands.push(`${cmdPrefix}${fileName}${cmdSuffix} ${prefix}${fileName}`);
+                    });
+                    break;
+                }
+                case 'suffix': {
+                    const suffix = document.getElementById('suffixText').value;
+                    files.forEach(fileName => {
+                        const lastDot = fileName.lastIndexOf('.');
+                        if (lastDot > 0) {
+                            const base = fileName.substring(0, lastDot);
+                            const ext = fileName.substring(lastDot);
+                            commands.push(`${cmdPrefix}${fileName}${cmdSuffix} ${base}${suffix}${ext}`);
+                        } else {
+                            commands.push(`${cmdPrefix}${fileName}${cmdSuffix} ${fileName}${suffix}`);
+                        }
+                    });
+                    break;
+                }
+                case 'sequential': {
+                    const startNum = parseInt(document.getElementById('startNumber').value) || 1;
+                    const padding = parseInt(document.getElementById('paddingDigits').value) || 1;
+                    const baseName = document.getElementById('baseName').value || 'file';
+
+                    files.forEach((fileName, index) => {
+                        const num = (startNum + index).toString().padStart(padding, '0');
+                        const lastDot = fileName.lastIndexOf('.');
+                        const ext = lastDot > 0 ? fileName.substring(lastDot) : '';
+                        commands.push(`${cmdPrefix}${fileName}${cmdSuffix} ${baseName}-${num}${ext}`);
+                    });
+                    break;
+                }
+            }
+
+            const resultsContainer = document.getElementById('resultsContainer');
+            if (commands.length === 0) {
+                resultsContainer.innerHTML = '<span style="color: var(--warning);">No files would be renamed with the current settings.</span>';
+            } else {
+                resultsContainer.innerHTML = `<span style="color: var(--text-light);"># Generated rename commands (${isWindows ? 'Windows' : 'Linux/Mac'}):\n\n</span><span style="color: var(--success);">${commands.join('\n')}</span>`;
+                resultsContainer.dataset.commands = JSON.stringify(commands);
+            }
+        });
+
+        // Download commands
+        document.getElementById('btnDownload').addEventListener('click', () => {
+            const resultsContainer = document.getElementById('resultsContainer');
+            const commands = resultsContainer.dataset.commands;
+            
+            if (!commands) {
+                alert('Please generate rename commands first.');
+                return;
+            }
+
+            const isWindows = navigator.platform.toLowerCase().includes('win');
+            const ext = isWindows ? 'bat' : 'sh';
+            const commandsArray = JSON.parse(commands);
+            let content = commandsArray.join('\n');
+
+            if (!isWindows) {
+                content = '#!/bin/bash\n\n' + content;
+            }
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `rename-files.${ext}`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Clear
+        document.getElementById('btnClear').addEventListener('click', () => {
+            document.getElementById('fileNamesInput').value = '';
+            document.getElementById('findText').value = '';
+            document.getElementById('replaceText').value = '';
+            document.getElementById('prefixText').value = '';
+            document.getElementById('suffixText').value = '';
+            document.getElementById('startNumber').value = '1';
+            document.getElementById('paddingDigits').value = '3';
+            document.getElementById('baseName').value = '';
+            document.getElementById('caseSensitive').checked = false;
+            document.getElementById('resultsContainer').innerHTML = '<span style="color: var(--text-light);">Rename commands will appear here...</span>';
+            delete document.getElementById('resultsContainer').dataset.commands;
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.navbar-links').classList.toggle('show');
+        });
+    </script>
+<script>
+// Theme Toggle
+(function() {
+    var toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    // Apply saved theme or system preference
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+    }
+
+    // Initialize theme
+    function initTheme() {
+        var saved = localStorage.getItem('theme');
+        if (saved) {
+            applyTheme(saved);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            applyTheme('light');
+        }
+    }
+
+    // Toggle theme
+    toggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'light' ? 'dark' : 'light';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+    });
+
+    initTheme();
+})();
+<\/script>
+    <!-- PWA Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                // console statement removed
+            }).catch(function(err) {
+                console.warn('[PWA] SW registration failed:', err);
+            });
+        });
+    }
+    </script>
+</body>
+</html>

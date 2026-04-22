@@ -76,3 +76,40 @@
 
 # Blog index
 /pages/blog.html                 /blog
+
+# URL structure migration (2026-04-22)
+/tools/base64.html	/tools/base64
+/tools/batch-renamer.html	/tools/batch-renamer
+/tools/css-minifier.html	/tools/css-minifier
+/tools/csv-to-excel.html	/tools/csv-to-excel
+/tools/excel-remove-duplicates.html	/tools/excel-remove-duplicates
+/tools/hash-generator.html	/tools/hash-generator
+/tools/html-encoder.html	/tools/html-encoder
+/tools/json-clean.html	/tools/json-clean
+/tools/json-compare.html	/tools/json-compare
+/tools/json-escape.html	/tools/json-escape
+/tools/json-extract.html	/tools/json-extract
+/tools/json-formatter.html	/tools/json-formatter
+/tools/json-sort.html	/tools/json-sort
+/tools/json-to-csv.html	/tools/json-to-csv
+/tools/json-to-xml.html	/tools/json-to-xml
+/tools/json-to-yaml.html	/tools/json-to-yaml
+/tools/json-viewer.html	/tools/json-viewer
+/tools/jwt-decoder.html	/tools/jwt-decoder
+/tools/merge-csv.html	/tools/merge-csv
+/tools/pdf-split.html	/tools/pdf-split
+/tools/regex-tester.html	/tools/regex-tester
+/tools/timestamp-converter.html	/tools/timestamp-converter
+/tools/url-encoder.html	/tools/url-encoder
+/tools/uuid-generator.html	/tools/uuid-generator
+
+# Root-level .html files (2026-04-22)
+/about.html	/about
+/blog.html	/blog
+/news.html	/news
+/privacy.html	/privacy
+/terms.html	/terms
+/cookie.html	/cookie
+/changelog.html	/changelog
+/best-practices.html	/best-practices
+

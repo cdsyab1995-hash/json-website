@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Encoder/Decoder - Free Online HTML Entity Converter | JSON Tools</title> <meta name="description" content="Free HTML encoder and decoder. Convert special characters to HTML entities and back. Instant, client-side processing.">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="canonical" href="https://www.aijsons.com/tools/html-encoder"><link rel="icon" type="image/svg+xml" href="/images/favicon.svg"> <meta property="og:title" content="HTML Encoder/Decoder - Free Online Tool"> <meta property="og:description" content="Convert special characters to HTML entities and decode them back. Free and instant."> <meta property="og:url" content="https://www.aijsons.com/tools/html-encoder"> <meta property="og:type" content="website">
+    
+        
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json"> <meta name="theme-color" content="#22C55E"> <meta name="mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="apple-mobile-web-app-title" content="JSON Tools">
+    <link rel="apple-touch-icon" href="/images/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css">
+    
+
+    
+    
+
+
+    
+    
+
+    
+    
+        
+
+    
+    
+    
+    
+
+    
+    
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HTML Encoder/Decoder - Encode HTML Entities Online",
+    "url": "https://www.aijsons.com/tools/html-encoder",
+    "description": "Encode and decode HTML entities. Convert special characters to HTML entity codes and vice versa. Free online HTML encoder.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "browserRequirements": "Requires modern web browser (Chrome, Firefox, Safari, Edge)",
+    "softwareVersion": "2.0",
+    "screenshot": "https://aijsons.com/og-image.png",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "128",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "interactionMode": [
+        "PointAndClick",
+        "Keyboard"
+    ],
+    "inLanguage": "en",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+        "HTML entity encoding",
+        "HTML entity decoding",
+        "Special character handling",
+        "Copy to clipboard",
+        "Mobile responsive"
+    ]
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "HTML Encoder",
+            "item": "https://www.aijsons.com/pages/html-encoder.html"
+        }
+    ]
+}
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "When should I encode HTML entities?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Encode HTML entities when displaying user content on a webpage to prevent XSS attacks, or when embedding HTML code in documentation."
+            }
+        }
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+        <!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <section class="hero">
+            <h1>HTML Encoder/Decoder</h1>
+            <p class="hero-subtitle">Free online tool to encode HTML special characters to entities and decode them back. Essential for safely displaying user-generated content on web pages.</p>
+        </section>
+
+        <section class="tool-section">
+            <div class="tool-tabs">
+                <button class="tool-tab active" onclick="switchMode('encode')">Encode</button>
+                <button class="tool-tab" onclick="switchMode('decode')">Decode</button>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-panel">
+                    <div class="panel-header">
+                        <h3>Input</h3>
+                        <div class="panel-actions">
+                            <button class="btn-icon" onclick="loadSample()" title="Load sample">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            </button>
+                            <button class="btn-icon" onclick="clearInput()" title="Clear">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="inputText" class="code-input" placeholder="Enter text to encode/decode..." spellcheck="false"></textarea>
+                    <div class="stats-bar">
+                        <span id="inputSize">0 characters</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" id="actionBtn" onclick="processText()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <span id="actionText">Encode</span>
+                    </button>
+                    <button class="btn-secondary" onclick="swapInputOutput()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                        Swap
+                    </button>
+                </div>
+
+                <div class="output-panel">
+                    <div class="panel-header">
+                        <h3>Output</h3>
+                        <div class="panel-actions">
+                            <button class="btn-icon" onclick="copyOutput()" title="Copy to clipboard">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="outputText" class="code-output" placeholder="Result will appear here..." spellcheck="false" readonly></textarea>
+                    <div class="stats-bar">
+                        <span id="outputSize">0 characters</span>
+                        <span id="charCount"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="options-panel">
+                <h3>Encoding Options</h3>
+                <div class="options-grid">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="encodeAll" checked>
+                        <span>Encode all special characters</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="encodeQuotes" checked>
+                        <span>Encode quotes (" ')</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="preserveNewlines">
+                        <span>Preserve newlines</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Common Entities</h3>
+                    <table class="entity-table">
+                        <tr><td>&lt;</td><td>&amp;lt;</td></tr>
+                        <tr><td>&gt;</td><td>&amp;gt;</td></tr>
+                        <tr><td>&amp;</td><td>&amp;amp;</td></tr>
+                        <tr><td>"</td><td>&amp;quot;</td></tr>
+                        <tr><td>'</td><td>&amp;apos;</td></tr>
+                        <tr><td>&nbsp;</td><td>&amp;nbsp;</td></tr>
+                    </table>
+                </div>
+                <div class="info-card">
+                    <h3>Why Encode HTML?</h3>
+                    <ul>
+                        <li>Prevent XSS attacks</li>
+                        <li>Display user input safely</li>
+                        <li>Show code snippets on websites</li>
+                        <li>Escape special characters in forms</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Use Cases</h3>
+                    <ul>
+                        <li>Blog comment systems</li>
+                        <li>Wiki and CMS platforms</li>
+                        <li>Code documentation</li>
+                        <li>Email HTML templates</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/url-encoder" class="related-tool-card">
+            <strong>URL Encoder</strong>
+            <span>Encode URL strings</span>
+        </a>        <a href="/tools/base64" class="related-tool-card">
+            <strong>Base64 Encoder</strong>
+            <span>Encode binary data</span>
+        </a>
+        </div>
+    </section>
+</main>
+
+    <footer class="footer">
+        <p>&copy; 2026 JSON Tools. All rights reserved. | <a href="/privacy">Privacy</a> | <a href="/terms">Terms</a></p>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+    <script>
+        let currentMode = 'encode';
+        const sampleText = `<div class="container">
+    <h1>Welcome to JSON Tools!</h1>
+    <p>This is a "sample" text with <strong>HTML</strong> content.</p>
+    <button onclick="alert('Hello & Welcome!')">Click Me</button>
+</div>`;
+
+        function switchMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('actionText').textContent = mode === 'encode' ? 'Encode' : 'Decode';
+            updateStats();
+        }
+
+        function loadSample() {
+            document.getElementById('inputText').value = sampleText;
+            updateStats();
+        }
+
+        function clearInput() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            updateStats();
+        }
+
+        function updateStats() {
+            const input = document.getElementById('inputText').value;
+            const output = document.getElementById('outputText').value;
+            document.getElementById('inputSize').textContent = input.length + ' characters';
+            document.getElementById('outputSize').textContent = output.length + ' characters';
+            
+            if (output.length > 0 && input.length > 0) {
+                const count = (output.match(/&[#\w]+;/g) || []).length;
+                document.getElementById('charCount').textContent = `${count} entities`;
+            } else {
+                document.getElementById('charCount').textContent = '';
+            }
+        }
+
+        function processText() {
+            const input = document.getElementById('inputText').value;
+            if (!input.trim()) return;
+
+            const options = {
+                encodeAll: document.getElementById('encodeAll').checked,
+                encodeQuotes: document.getElementById('encodeQuotes').checked,
+                preserveNewlines: document.getElementById('preserveNewlines').checked
+            };
+
+            let output;
+            if (currentMode === 'encode') {
+                output = encodeHTML(input, options);
+            } else {
+                output = decodeHTML(input, options);
+            }
+
+            document.getElementById('outputText').value = output;
+            updateStats();
+        }
+
+        function encodeHTML(text, options) {
+            const entities = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&apos;'
+            };
+
+            let result = text;
+
+            if (options.encodeAll) {
+                result = result.replace(/&/g, entities['&']);
+            }
+
+            if (!options.encodeQuotes) {
+                delete entities['"'];
+                delete entities["'"];
+            }
+
+            for (const [char, entity] of Object.entries(entities)) {
+                if (char !== '&' || options.encodeAll) {
+                    if (char !== '&') {
+                        result = result.split(char).join(entity);
+                    }
+                }
+            }
+
+            if (!options.preserveNewlines) {
+                result = result.replace(/\n/g, '&#10;');
+                result = result.replace(/\r/g, '&#13;');
+            }
+
+            return result;
+        }
+
+        function decodeHTML(text, options) {
+            const entities = {
+                '&amp;': '&',
+                '&lt;': '<',
+                '&gt;': '>',
+                '&quot;': '"',
+                '&apos;': "'",
+                '&#10;': '\n',
+                '&#13;': '\r',
+                '&nbsp;': ' '
+            };
+
+            let result = text;
+
+            for (const [entity, char] of Object.entries(entities)) {
+                result = result.split(entity).join(char);
+            }
+
+            result = result.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec));
+            result = result.replace(/&#x([0-9a-fA-F]+);/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)));
+
+            return result;
+        }
+
+        function swapInputOutput() {
+            const input = document.getElementById('inputText').value;
+            const output = document.getElementById('outputText').value;
+            
+            document.getElementById('inputText').value = output;
+            document.getElementById('outputText').value = '';
+            
+            if (output) {
+                switchMode(currentMode === 'encode' ? 'decode' : 'encode');
+            }
+            
+            updateStats();
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputText').value;
+            if (!output) return;
+            
+            navigator.clipboard.writeText(output).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        document.getElementById('inputText').addEventListener('input', updateStats);
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .tool-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+            .tool-tab { padding: 0.75rem 1.5rem; background: var(--bg-secondary); border: 1px solid var(--bg-tertiary); border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer; font-weight: 500; transition: all 0.2s; }
+            .tool-tab:hover { background: var(--bg-tertiary); color: var(--text-primary); }
+            .tool-tab.active { background: var(--primary); border-color: var(--primary); color: white; }
+            .action-buttons { display: flex; gap: 0.5rem; justify-content: center; margin: 1rem 0; }
+            .btn-primary, .btn-secondary { padding: 0.75rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+            .btn-primary { background: var(--primary); color: white; border: none; }
+            .btn-primary:hover { background: var(--primary-hover); }
+            .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--bg-tertiary); }
+            .btn-secondary:hover { background: var(--bg-secondary); border-color: var(--primary); }
+            .options-panel { margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--bg-secondary); }
+            .options-panel h3 { margin-bottom: 1rem; font-size: 1rem; color: var(--text-primary); }
+            .options-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
+            .checkbox-label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary); }
+            .checkbox-label input { accent-color: var(--primary); width: 18px; height: 18px; }
+            .char-count { color: var(--success); font-weight: 600; }
+            .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); animation: fadeIn 0.2s; z-index: 1000; }
+            @keyframes fadeIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+            .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+            .info-card { background: var(--bg-card); border: 1px solid var(--bg-secondary); border-radius: var(--radius-lg); padding: 1.5rem; }
+            .info-card h3 { color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem; }
+            .info-card ul { list-style: none; padding: 0; margin: 0; }
+            .info-card li { color: var(--text-secondary); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+            .info-card li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); }
+            .entity-table { width: 100%; border-collapse: collapse; }
+            .entity-table td { padding: 0.5rem; text-align: left; color: var(--text-secondary); border-bottom: 1px solid var(--bg-secondary); }
+            .entity-table td:first-child { font-family: monospace; color: var(--json-string); }
+            .entity-table td:last-child { font-family: monospace; color: var(--json-number); }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- PWA Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js').then(function(reg) {
+                // console statement removed
+            }).catch(function(err) {
+                console.warn('[PWA] SW registration failed:', err);
+            });
+        });
+    }
+    </script>
+</body>
+</html>
