@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="json-schema-to-typescript v6 adds support for JSON Schema Draft 2020-12, improved recursive schemas, and a new CLI with watch mode.">
+    <meta name="keywords" content="json-schema-to-typescript, TypeScript, JSON Schema, code generation, CLI, type safety">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>json-schema-to-typescript v6: Generate TypeScript from JSON Schema | AI JSON News</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/json-schema-to-typescript-v6">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/json-schema-to-typescript-v6">
+    <meta property="og:title" content="json-schema-to-typescript v6 Released: Generate TypeScript Types from Any JSON Schema">
+    <meta property="og:description" content="Version 6 adds support for JSON Schema Draft 2020-12, improved recursive schema handling, and a new CLI with watch mode.">
+    <meta property="article:published_time" content="2026-04-18">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "url": "https://aijsons.com/pages/news/json-schema-to-typescript-v6.html",
+    "headline": "json-schema-to-typescript v6 Released: Generate TypeScript Types from Any JSON Schema",
+    "description": "Version 6 adds support for JSON Schema Draft 2020-12, improved recursive schema handling, and a new CLI with watch mode.",
+    "image": "https://aijsons.com/og-image.png",
+    "wordCount": 440,
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://aijsons.com/pages/news/json-schema-to-typescript-v6.html"},
+    "author": {"@type": "Organization", "name": "AI JSON", "url": "https://aijsons.com"},
+    "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://aijsons.com"},
+    "datePublished": "2026-04-18",
+    "dateModified": "2026-04-18",
+    "audience": {"@type": "Audience", "name": "Software Developers"},
+    "inLanguage": "en-US"
+}
+    </script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.aijsons.com/"},
+        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.aijsons.com/pages/news.html"},
+        {"@type": "ListItem", "position": 3, "name": "json-schema-to-typescript v6", "item": "https://www.aijsons.com/pages/news/json-schema-to-typescript-v6.html"}
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+<main class="main-container">
+    <header class="page-hero"><div class="page-header text-center"><div class="breadcrumb"><a href="/index">Home</a> / <a href="/news">News</a> / <span>Article</span></div></div></header>
+
+    <article class="article-page">
+        <div class="article-category cat-tutorial">Open Source</div>
+        <h1 class="article-title">json-schema-to-typescript v6 Released: Generate TypeScript Types from Any JSON Schema</h1>
+        <div class="article-meta"><span>April 18, 2026</span> | <span>4-5 min read</span></div>
+
+        <div class="article-content">
+<p>The <strong>json-schema-to-typescript</strong> npm package — one of the most widely used tools in the TypeScript ecosystem — has reached version 6.0, bringing support for the latest JSON Schema specification, a rebuilt CLI, and major improvements to recursive schema handling.</p>
+
+<h2>Major New Features</h2>
+<ul>
+    <li><strong>JSON Schema Draft 2020-12</strong> — full support for the latest spec including <code>$dynamicRef</code>, <code>$jsonSchema</code>, and prefix items</li>
+    <li><strong>Recursive schema support</strong> — proper TypeScript type generation for self-referencing schemas (like tree structures)</li>
+    <li><strong>CLI with watch mode</strong> — regenerate types automatically when schema files change</li>
+    <li><strong>Banner comments</strong> — customizable headers for generated type files</li>
+    <li><strong>TypeScript 5.x compatibility</strong> — uses new template literal types and infer improvements</li>
+</ul>
+
+<pre><code># New CLI with watch mode
+npx json-schema-to-typescript schema.json \
+  --watch \
+  --banner "// Generated on $(date)" \
+  --out types/generated.ts</code></pre>
+
+<h2>The TypeScript-JSON Schema Bridge</h2>
+<p>json-schema-to-typescript bridges two worlds: the formal contract definition (JSON Schema) and TypeScript's type system. This is particularly valuable for teams using OpenAPI specs or JSON Schema for API contracts — you can generate your TypeScript types directly from the schema, ensuring type safety end-to-end.</p>
+<p>Whether you're using json-schema-to-typescript or building schemas by hand, <a href="/tools/json-formatter">AI JSON Formatter</a> helps you quickly validate that your JSON Schema documents are well-formed.</p>
+        </div>
+    </article>
+
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+            <a href="/tools/json-formatter" class="related-tool-card"><strong>JSON Formatter</strong><span>Validate schemas</span></a>
+            <a href="/tools/json-clean" class="related-tool-card"><strong>JSON Clean</strong><span>Fix schema formatting</span></a>
+            <a href="/tools/json-viewer" class="related-tool-card"><strong>JSON Viewer</strong><span>Explore schema structure</span></a>
+        </div>
+    </section>
+    <div style="margin-top:2rem;"><a href="/news" class="read-more">← Back to News</a></div>
+</main>
+
+<footer class="footer"><p>AI JSON - Instant client-side JSON processing.</p><p class="text-small mt-sm">&copy; 2026 AI JSON. All rights reserved.</p></footer>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

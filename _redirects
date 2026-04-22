@@ -36,34 +36,35 @@
 
 # Blog articles
 /pages/blog/ai-tool-calling-mcp-2026.html     /blog/ai-tool-calling-mcp-2026
-/pages/blog/compare-json-documents-find-differences.html /blog/compare-json-documents-find-differences
-/pages/blog/curl-json-api-guide.html           /blog/curl-json-api-guide
-/pages/blog/json-api-error-handling-2026.html   /blog/json-api-error-handling-2026
-/pages/blog/json-edge-computing-cloudflare-workers.html /blog/json-edge-computing-cloudflare-workers
-/pages/blog/json-parsing-performance-comparison.html /blog/json-parsing-performance-comparison
+/pages/blog/compare-json-documents-find-differences.html     /blog/compare-json-documents-find-differences
+/pages/blog/curl-json-api-guide.html     /blog/curl-json-api-guide
+/pages/blog/json-api-error-handling-2026.html     /blog/json-api-error-handling-2026
+/pages/blog/json-edge-computing-cloudflare-workers.html     /blog/json-edge-computing-cloudflare-workers
+/pages/blog/json-parsing-performance-comparison.html     /blog/json-parsing-performance-comparison
 /pages/blog/json-patch-vs-merge-patch.html     /blog/json-patch-vs-merge-patch
-/pages/blog/json-schema-complete-guide-2026.html /blog/json-schema-complete-guide-2026
-/pages/blog/jwt-security-best-practices-2026.html /blog/jwt-security-best-practices-2026
-/pages/blog/mcp-json-standardizing-ai-tools.html /blog/mcp-json-standardizing-ai-tools
-/pages/blog/model-context-protocol-json-rpc-ai-tools.html /blog/model-context-protocol-json-rpc-ai-tools
-/pages/blog/postgresql-jsonb-vs-mongodb-document-store.html /blog/postgresql-jsonb-vs-mongodb-document-store
-/pages/blog/sort-json-arrays-objects-guide.html /blog/sort-json-arrays-objects-guide
-/pages/blog/zod-json-schema-validation-ai.html  /blog/zod-json-schema-validation-ai
+/pages/blog/json-schema-complete-guide-2026.html     /blog/json-schema-complete-guide-2026
+/pages/blog/json-viewer-tree-view-why-you-need-one.html     /blog/json-viewer-tree-view-why-you-need-one
+/pages/blog/jwt-security-best-practices-2026.html     /blog/jwt-security-best-practices-2026
+/pages/blog/mcp-json-standardizing-ai-tools.html     /blog/mcp-json-standardizing-ai-tools
+/pages/blog/model-context-protocol-json-rpc-ai-tools.html     /blog/model-context-protocol-json-rpc-ai-tools
+/pages/blog/postgresql-jsonb-vs-mongodb-document-store.html     /blog/postgresql-jsonb-vs-mongodb-document-store
+/pages/blog/rfc9457-problem-details-json-api-errors.html     /blog/rfc9457-problem-details-json-api-errors
+/pages/blog/sort-json-arrays-objects-guide.html     /blog/sort-json-arrays-objects-guide
+/pages/blog/zod-json-schema-validation-ai.html     /blog/zod-json-schema-validation-ai
 
 # News articles
-/pages/news/json-schema-w3c-recommendation.html /news/json-schema-w3c-recommendation
-/pages/news/api-transformations-2026.html        /news/api-transformations-2026
-/pages/news/mcp-10000-servers.html              /news/mcp-10000-servers
-/pages/news/browser-devtools-json-schema.html    /news/browser-devtools-json-schema
-/pages/news/bun-2-json-serialization.html       /news/bun-2-json-serialization
-/pages/news/json-streaming-api-browser.html     /news/json-streaming-api-browser
-/pages/news/cursor-vscode-json-lint-ai.html    /news/cursor-vscode-json-lint-ai
-/pages/news/zod-v4-5m-downloads.html           /news/zod-v4-5m-downloads
+/pages/news/api-transformations-2026.html      /news/api-transformations-2026
+/pages/news/browser-devtools-json-schema.html      /news/browser-devtools-json-schema
+/pages/news/bun-2-json-serialization.html      /news/bun-2-json-serialization
+/pages/news/cursor-vscode-json-lint-ai.html      /news/cursor-vscode-json-lint-ai
+/pages/news/json-schema-to-typescript-v6.html      /news/json-schema-to-typescript-v6
+/pages/news/json-schema-w3c-recommendation.html      /news/json-schema-w3c-recommendation
+/pages/news/json-streaming-api-browser.html      /news/json-streaming-api-browser
+/pages/news/jsonata-2-ai-query.html      /news/jsonata-2-ai-query
+/pages/news/mcp-10000-servers.html      /news/mcp-10000-servers
 /pages/news/nextjs-16-json-streaming.html      /news/nextjs-16-json-streaming
-/pages/news/nodejs-24-json-schema.html         /news/nodejs-24-json-schema
-/pages/news/json-schema-to-typescript-v6.html   /news/json-schema-to-typescript-v6
-/pages/news/jsonata-2-ai-query.html             /news/jsonata-2-ai-query
-
+/pages/news/nodejs-24-json-schema.html      /news/nodejs-24-json-schema
+/pages/news/zod-v4-5m-downloads.html      /news/zod-v4-5m-downloads
 # Static pages
 /pages/about.html                /about
 /pages/changelog.html            /changelog
