@@ -35,28 +35,28 @@
       "name": "JSON Formatter",
       "short_name": "Formatter",
       "description": "Format and validate JSON",
-      "url": "/pages/format.html",
+      "url": "/tools/json-formatter",
       "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "JSON Compare",
       "short_name": "Compare",
       "description": "Compare two JSON documents",
-      "url": "/pages/compare.html",
+      "url": "/tools/json-compare",
       "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Timestamp Converter",
       "short_name": "Timestamp",
       "description": "Convert Unix timestamps",
-      "url": "/pages/timestamp-converter.html",
+      "url": "/tools/timestamp-converter",
       "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Base64 Encoder",
       "short_name": "Base64",
       "description": "Encode/decode Base64",
-      "url": "/pages/base64.html",
+      "url": "/tools/base64",
       "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192" }]
     }
   ],
