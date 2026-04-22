@@ -72,3 +72,6 @@
 /pages/privacy.html              /privacy
 /pages/terms.html                /terms
 /pages/cookie.html               /cookie
+
+# Blog index
+/pages/blog.html                 /blog
