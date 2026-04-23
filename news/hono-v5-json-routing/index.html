@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hono v5 arrives with a new JSON routing engine delivering sub-millisecond API responses, built-in Zod validation, and edge-optimized JSON streaming.">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/hono-v5-json-routing">
+
+    <title>Hono v5 Launches: Sub-Millisecond JSON Routing with Built-in Validation | AI JSON News</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/hono-v5-json-routing">
+    <meta property="og:title" content="Hono v5 Launches: Sub-Millisecond JSON Routing with Built-in Validation">
+    <meta property="og:description" content="Hono v5 arrives with a new JSON routing engine delivering sub-millisecond API responses, built-in Zod validation, and edge-optimized JSON streaming.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hono v5 Launches: Sub-Millisecond JSON Routing with Built-in Validation">
+    <meta name="twitter:description" content="Hono v5 arrives with a new JSON routing engine delivering sub-millisecond API responses, built-in Zod validation, and edge-optimized JSON streaming.">
+    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Hono v5 Launches: Sub-Millisecond JSON Routing with Built-in Validation",
+    "url": "https://www.aijsons.com/news/hono-v5-json-routing",
+    "datePublished": "2026-04-23",
+    "dateModified": "2026-04-23",
+    "description": "Hono v5 arrives with a new JSON routing engine delivering sub-millisecond API responses, built-in Zod validation, and edge-optimized JSON streaming.",
+    "author": {
+        "@type": "Organization",
+        "name": "AI JSON"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "AI JSON",
+        "url": "https://www.aijsons.com"
+    }
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.aijsons.com/"},
+        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.aijsons.com/news"},
+        {"@type": "ListItem", "position": 3, "name": "Hono v5 JSON Routing", "item": "https://www.aijsons.com/news/hono-v5-json-routing"}
+    ]
+}
+    </script>
+    <script src="/js/navbar.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+<main class="main-container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" style="margin-bottom:1.5rem;">
+        <a href="/">Home</a> / <a href="/news">News</a> / <span>Hono v5 JSON Routing</span>
+    </nav>
+
+    <!-- Article Header -->
+    <article class="article-full">
+        <header class="article-header">
+            <div class="article-category cat-comparison">Framework</div>
+            <h1>Hono v5 Launches: Sub-Millisecond JSON Routing with Built-in Validation</h1>
+            <div class="article-meta">
+                <span><strong>Published:</strong> April 23, 2026</span> |
+                <span><strong>Reading time:</strong> 4 minutes</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <p>Hono — the ultrafast web framework for the edge — released version 5 today with a completely rewritten JSON routing engine. The new release positions Hono as the go-to framework for JSON-first APIs, with benchmarks showing <strong>sub-millisecond response times</strong> for typical REST endpoints running on Cloudflare Workers and Bun.</p>
+
+            <h2>The New JSON Routing Engine</h2>
+            <p>Hono v5's core rewrite focuses on eliminating overhead at the request/response boundary. The framework's new <strong>RadixJSON router</strong> can match routes and begin JSON serialization in a single pass, reducing CPU cycles for simple endpoints by 40% compared to v4:</p>
+
+            <pre><code>import { Hono } from 'hono'
+import { zValidator } from '@hono/zod-validator'
+import { z } from 'zod'
+
+const app = new Hono()
+
+const userSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  role: z.enum(['admin', 'user', 'viewer'])
+})
+
+// v5: validation, parsing, and response in one fluent chain
+app.post('/users', zValidator('json', userSchema), async (c) => {
+  const user = c.req.valid('json') // fully typed, zero-copy
+  return c.json({ id: crypto.randomUUID(), ...user }, 201)
+})</code></pre>
+
+            <p>The <code>zValidator</code> middleware is now bundled as a first-class feature of the Hono ecosystem (previously a separate package). It provides automatic request body validation, type inference, and structured error responses — all with near-zero overhead.</p>
+
+            <h2>Edge-Optimized JSON Streaming</h2>
+            <p>One of the most anticipated features is <strong>native JSON streaming</strong> for large responses. Hono v5 introduces a <code>streamJSON</code> helper that works with the Streams API on all supported runtimes:</p>
+
+            <pre><code>app.get('/items', async (c) => {
+  return streamJSON(c, async (stream) => {
+    // Write items one-by-one without buffering the full array
+    for await (const item of db.iterateItems()) {
+      await stream.write(item)
+    }
+  })
+})</code></pre>
+
+            <p>This is particularly valuable for AI agent APIs that need to return large lists of tool results, embeddings, or document chunks without overwhelming memory limits on edge runtimes.</p>
+
+            <h2>Benchmark Numbers</h2>
+            <p>The Hono team published independent benchmarks on Cloudflare Workers (free tier, 10ms CPU limit):</p>
+
+            <table style="width:100%; border-collapse:collapse; margin: 1rem 0;">
+                <thead>
+                    <tr style="background: var(--bg-secondary, #f8f9fa);">
+                        <th style="padding:8px 12px; text-align:left; border:1px solid var(--border-color, #e5e7eb);">Framework</th>
+                        <th style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">Req/sec</th>
+                        <th style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">P99 Latency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:8px 12px; border:1px solid var(--border-color, #e5e7eb);"><strong>Hono v5</strong></td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">248,000</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">0.8ms</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 12px; border:1px solid var(--border-color, #e5e7eb);">Hono v4</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">174,000</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">1.4ms</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 12px; border:1px solid var(--border-color, #e5e7eb);">Elysia</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">198,000</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">1.1ms</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 12px; border:1px solid var(--border-color, #e5e7eb);">Express (Node.js)</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">52,000</td>
+                        <td style="padding:8px 12px; text-align:right; border:1px solid var(--border-color, #e5e7eb);">6.2ms</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Migration from v4</h2>
+            <p>The Hono team has kept breaking changes minimal. The main change is that the <code>json()</code> context method now returns a <code>TypedResponse</code> by default, which may require type updates in strictly typed codebases. The official migration guide covers the five edge cases in under 10 minutes.</p>
+
+            <p>Hono v5 is available now on npm: <code>npm install hono@5</code></p>
+
+            <div class="tip-box" style="margin-top:2rem;">
+                <strong>Debug Your API Responses</strong><br>
+                Use our <a href="/tools/json-formatter">JSON Formatter</a> to inspect Hono API responses, or the <a href="/tools/json-compare">JSON Compare</a> tool to diff expected vs. actual API outputs during development.
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="related-tools-section" style="margin-top:2.5rem;">
+        <h2>Related News</h2>
+        <div class="related-tools-grid">
+            <a href="/news/zod-v4-5m-downloads" class="related-tool-card">
+                <strong>Zod v4 Hits 5M Weekly Downloads</strong>
+                <span>Runtime type validation surges</span>
+            </a>
+            <a href="/news/bun-2-json-serialization" class="related-tool-card">
+                <strong>Bun 2.0: 5x Faster JSON Serialization</strong>
+                <span>New benchmark record set</span>
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+    <p class="text-sm mt-sm">
+        <a href="/privacy" class="text-primary">Privacy Policy</a> |
+        <a href="/terms" class="text-primary">Terms of Service</a> |
+        <a href="/cookie" class="text-primary">Cookie Policy</a>
+    </p>
+    <p class="text-small mt-sm">
+        &copy; 2026 AI JSON. All rights reserved.
+    </p>
+</footer>
+
+<script src="/js/app.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+        }).catch(function(err) {
+            console.warn('[PWA] SW registration failed:', err);
+        });
+    });
+}
+</script>
+</body>
+</html>
