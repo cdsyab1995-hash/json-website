@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="OpenAI Agents SDK introduces strict JSON mode for structured outputs. LLM responses are now guaranteed to conform to your JSON Schema — zero hallucinated fields.">
+    <meta name="keywords" content="OpenAI Agents SDK, strict JSON mode, structured output, JSON Schema, LLM JSON, AI output validation">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>OpenAI Agents SDK Ships Strict JSON Mode: Guaranteed Schema Conformance | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/openai-agents-sdk-json-strict-mode">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/openai-agents-sdk-json-strict-mode">
+    <meta property="og:title" content="OpenAI Agents SDK Ships Strict JSON Mode: Guaranteed Schema Conformance">
+    <meta property="og:description" content="OpenAI Agents SDK introduces strict JSON mode for structured outputs. LLM responses are now guaranteed to conform to your JSON Schema.">
+    <meta property="article:published_time" content="2026-04-23">
+    <meta property="article:section" content="AI">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "OpenAI Agents SDK Ships Strict JSON Mode: Guaranteed Schema Conformance",
+        "description": "OpenAI Agents SDK introduces strict JSON mode for structured outputs. LLM responses are now guaranteed to conform to your JSON Schema — zero hallucinated fields.",
+        "datePublished": "2026-04-23",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/openai-agents-sdk-json-strict-mode",
+        "articleSection": "AI"
+    }
+    </script>
+    <script src="/js/navbar.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">AI</div>
+                <h1 class="article-title">OpenAI Agents SDK Ships Strict JSON Mode: Guaranteed Schema Conformance</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-23</span> · <span>5-6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p class="lead">OpenAI has released strict JSON mode in the Agents SDK, solving one of the most persistent pain points for developers building production AI pipelines: unpredictable structured outputs. With strict mode enabled, LLM responses are guaranteed to conform to your JSON Schema — no extra fields, no missing keys, no type mismatches.</p>
+
+                <h2>What Is Strict JSON Mode?</h2>
+                <p>When you define a JSON Schema for a tool call or function output, the Agents SDK now enforces schema conformance at the API level. The model's tokenizer is constrained to only produce valid JSON that matches your schema — a technique known as constrained decoding.</p>
+
+                <pre class="code-block"><code>from openai_agents import Agent, tool
+
+@tool(
+    name="get_weather",
+    strict=True,  # Enable strict JSON mode
+    output_schema={
+        "type": "object",
+        "properties": {
+            "temperature": {"type": "number"},
+            "condition": {"type": "string", "enum": ["sunny", "cloudy", "rainy"]},
+            "humidity": {"type": "integer", "minimum": 0, "maximum": 100}
+        },
+        "required": ["temperature", "condition", "humidity"],
+        "additionalProperties": false
+    }
+)
+def get_weather(location: str):
+    # LLM output is guaranteed to match the schema above
+    ...</code></pre>
+
+                <h2>Why This Matters</h2>
+                <p>Before strict mode, developers had to handle JSON parsing errors, retry logic, and validation in application code. The failure modes were unpredictable:</p>
+                <ul>
+                    <li>Models would occasionally add fields not in the schema</li>
+                    <li>String fields might return numbers, breaking downstream parsers</li>
+                    <li>Required fields could be omitted under edge-case prompts</li>
+                    <li>Nested objects were particularly prone to structural drift</li>
+                </ul>
+
+                <p>With strict mode, these failure modes are eliminated at the SDK level. The API guarantees schema conformance or returns an error, never a malformed partial response.</p>
+
+                <h2>How Constrained Decoding Works</h2>
+                <p>Under the hood, strict JSON mode uses a grammar-constrained sampling approach:</p>
+                <ol>
+                    <li>Your JSON Schema is compiled into a context-free grammar</li>
+                    <li>At each decoding step, only tokens that produce valid grammar continuations are allowed</li>
+                    <li>The model selects the highest-probability valid token at every step</li>
+                    <li>Output is 100% guaranteed to be parseable and schema-valid</li>
+                </ol>
+
+                <pre class="code-block"><code># Before strict mode - defensive coding required
+try:
+    data = json.loads(response.content)
+    # Manual validation
+    assert "temperature" in data
+    assert isinstance(data["temperature"], (int, float))
+    assert data["condition"] in ["sunny", "cloudy", "rainy"]
+except (json.JSONDecodeError, AssertionError, KeyError) as e:
+    # Retry logic, fallback handling...
+    handle_parse_error(e)
+
+# With strict mode - just use the data
+data = response.structured_output  # Already validated
+print(f"Temp: {data['temperature']}°C, {data['condition']}")</code></pre>
+
+                <h2>Supported Schema Features</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>JSON Schema Feature</th><th>Strict Mode Support</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Basic types (string, number, boolean, null)</td><td>✅ Full</td></tr>
+                        <tr><td>Object with required properties</td><td>✅ Full</td></tr>
+                        <tr><td>Array with item schema</td><td>✅ Full</td></tr>
+                        <tr><td>Enum values</td><td>✅ Full</td></tr>
+                        <tr><td>additionalProperties: false</td><td>✅ Full</td></tr>
+                        <tr><td>Nested objects</td><td>✅ Full</td></tr>
+                        <tr><td>oneOf / anyOf / allOf</td><td>⚠️ Limited</td></tr>
+                        <tr><td>Regular expressions (pattern)</td><td>⚠️ Limited</td></tr>
+                        <tr><td>Dynamic schema ($ref)</td><td>❌ Not supported</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Performance Trade-offs</h2>
+                <p>Constrained decoding has a small performance cost. In OpenAI's benchmarks:</p>
+                <ul>
+                    <li><strong>Latency</strong>: +8-15ms per request (schema compilation is cached)</li>
+                    <li><strong>Throughput</strong>: ~5% reduction vs. unconstrained generation</li>
+                    <li><strong>Accuracy</strong>: 100% schema conformance vs. 94.7% in standard mode</li>
+                    <li><strong>Cost</strong>: No additional token cost — schema validation is compute-side</li>
+                </ul>
+
+                <h2>Integration with Zod and TypeScript</h2>
+                <p>For TypeScript developers, the SDK includes a Zod bridge that auto-generates JSON Schemas from your Zod types:</p>
+
+                <pre class="code-block"><code>import { z } from 'zod';
+import { zodToJsonSchema } from 'zod-to-json-schema';
+import { Agent, tool } from '@openai/agents';
+
+const WeatherSchema = z.object({
+    temperature: z.number(),
+    condition: z.enum(['sunny', 'cloudy', 'rainy']),
+    humidity: z.number().int().min(0).max(100)
+});
+
+const weatherTool = tool({
+    name: 'get_weather',
+    strict: true,
+    outputSchema: zodToJsonSchema(WeatherSchema),
+    execute: async ({ location }) => {
+        // TypeScript types are inferred from Zod schema
+        const result: z.infer&lt;typeof WeatherSchema&gt; = await fetchWeather(location);
+        return result;
+    }
+});</code></pre>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Strict JSON mode eliminates schema validation code from your application layer</li>
+                    <li>Constrained decoding guarantees conformance — not just high probability</li>
+                    <li>Small performance cost (8-15ms) is worth the reliability gain for production systems</li>
+                    <li>Works seamlessly with Zod for TypeScript developers</li>
+                    <li>Validate JSON outputs with <a href="/tools/json-formatter">AI JSON's free JSON tools</a> during development</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-schema-validator" class="related-tool-card">
+                    <strong>JSON Validator</strong>
+                    <span>Validate JSON structure</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm">
+            <a href="/privacy" class="text-primary">Privacy Policy</a> |
+            <a href="/terms" class="text-primary">Terms of Service</a> |
+            <a href="/about" class="text-primary">About</a>
+        </p>
+        <p class="text-small mt-sm">
+            &copy; 2026 AI JSON. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>
