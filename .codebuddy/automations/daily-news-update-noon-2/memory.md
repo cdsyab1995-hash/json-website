@@ -1,12 +1,13 @@
 # Daily News Update - Noon 执行历史
 
-## 2026-04-22 12:00
+## 2026-04-23 12:00
 - **状态**：✅ 成功
-- **操作**：执行 daily_news.py 自动更新 news.html
-- **推送**：已成功推送到 GitHub
+- **说明**：daily_news.py 不存在，直接手动生成 3 篇新闻文章
+- **新增文章**：
+  - `news/gpt5-api-json-mode`：GPT-5 API 发布增强 JSON Mode
+  - `news/typescript-58-json-inference`：TypeScript 5.8 JSON 类型推导升级
+  - `news/hono-v5-json-routing`：Hono v5 亚毫秒级 JSON 路由
+- **更新内容**：news/index.html Featured + All News，sitemap.xml +3 URL
+- **Git提交**：Daily news update 2026-04-23: GPT-5 JSON Mode, TypeScript 5.8, Hono v5
 
-## 2026-04-21 19:22
-- **状态**：✅ 成功
-- **操作**：更新 news.html 内容（4个分类：Trending Today、API Technology Updates、Frontend & JSON、Developer Resources）
-- **Git提交**：Daily news update: Fresh JSON & API tech trends
-- **推送**：已成功推送到 GitHub main 分支
+

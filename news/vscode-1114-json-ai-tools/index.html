@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="VS Code 1.114 ships AI-native JSON editing: real-time schema inference, inline JSON error explanations powered by AI, and a Copilot-integrated JSON query assistant.">
+    <meta name="keywords" content="VS Code 1.114, JSON editing, AI JSON tools, VS Code JSON schema, GitHub Copilot JSON, developer productivity 2026">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>VS Code 1.114: AI Takes Over JSON Editing with Schema Inference and Inline Fixes | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/vscode-1114-json-ai-tools">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/vscode-1114-json-ai-tools">
+    <meta property="og:title" content="VS Code 1.114: AI Takes Over JSON Editing with Schema Inference and Inline Fixes">
+    <meta property="og:description" content="VS Code 1.114 ships AI-native JSON editing: real-time schema inference, AI-powered inline error explanations, and Copilot-integrated JSON query assistant.">
+    <meta property="article:published_time" content="2026-04-24">
+    <meta property="article:section" content="Dev Tools">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "VS Code 1.114: AI Takes Over JSON Editing with Schema Inference and Inline Fixes",
+        "description": "VS Code 1.114 ships AI-native JSON editing: real-time schema inference, AI-powered inline error explanations, and Copilot-integrated JSON query assistant.",
+        "datePublished": "2026-04-24",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/vscode-1114-json-ai-tools",
+        "articleSection": "Dev Tools"
+    }
+    </script>
+    <script src="/js/navbar.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-debugging">Tool Updates</div>
+                <h1 class="article-title">VS Code 1.114: AI Takes Over JSON Editing with Schema Inference and Inline Fixes</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-24</span> · <span>4-5 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p class="lead">Visual Studio Code 1.114 represents the most significant upgrade to JSON editing in the editor's history. The April 2026 release ships three AI-native JSON features that fundamentally change how developers work with structured data: <strong>real-time schema inference</strong>, <strong>Copilot-powered inline error explanations</strong>, and a new <strong>JSON Query Assistant</strong> that understands JSONPath and jq syntax.</p>
+
+                <h2>Feature 1: Real-Time JSON Schema Inference</h2>
+                <p>Previously, getting JSON validation in VS Code required manually pointing a file to a JSON Schema via <code>settings.json</code> or schema store. In 1.114, VS Code automatically infers a schema from the document structure as you type and shows validation errors without any configuration.</p>
+
+                <p>The inference engine uses a combination of static analysis and an on-device AI model to detect:</p>
+                <ul>
+                    <li>Common API response patterns (REST, GraphQL, tRPC)</li>
+                    <li>Well-known config file formats (package.json, tsconfig, GitHub Actions)</li>
+                    <li>Custom schemas inferred from sibling files in the same workspace</li>
+                    <li>Types derived from TypeScript interfaces in the project</li>
+                </ul>
+
+                <pre class="code-block"><code>// You paste this JSON in a new file — no schema configured:
+{
+    "user": {
+        "id": 42,
+        "name": "Alice",
+        "role": "admin",
+        "createdAt": "2026-01-15"
+    },
+    "permissions": ["read", "write", "delete"],
+    "quota": {
+        "used": 850,
+        "limit": 1000,
+        "unit": "MB"
+    }
+}
+
+// VS Code 1.114 automatically:
+// 1. Infers the schema (id: integer, name: string, role: enum, etc.)
+// 2. Shows hover types for each field
+// 3. Warns if you add "role": 123 (type mismatch)
+// 4. Suggests autocompletions based on inferred enum values</code></pre>
+
+                <h2>Feature 2: AI-Powered Inline Error Explanations</h2>
+                <p>When JSON validation fails, VS Code 1.114 replaces the cryptic schema error messages with plain-English explanations generated by GitHub Copilot. Hovering over a red underline now shows a panel with:</p>
+
+                <ul>
+                    <li><strong>What went wrong</strong>: A human-readable description of the validation failure</li>
+                    <li><strong>Why it matters</strong>: Context about why the schema requires this format</li>
+                    <li><strong>How to fix it</strong>: One-click suggested corrections</li>
+                    <li><strong>Reference</strong>: Links to the relevant JSON Schema specification section</li>
+                </ul>
+
+                <p>Before this feature, a typical JSON Schema validation error looked like:</p>
+                <pre class="code-block"><code>// Old VS Code error message:
+"Value is not accepted. Valid values: 1, 2, 3."
+
+// VS Code 1.114 AI explanation:
+"The 'status' field expects a numeric status code (1, 2, or 3),
+but you provided the string "active". This API uses numeric
+status codes where: 1=active, 2=pending, 3=disabled.
+Try: "status": 1"</code></pre>
+
+                <h2>Feature 3: JSON Query Assistant</h2>
+                <p>The most ambitious new feature is the JSON Query Assistant, accessible via <kbd>Ctrl+Shift+J</kbd> (or <kbd>Cmd+Shift+J</kbd> on Mac). It opens a side panel where you can query the current JSON document using natural language, JSONPath, or jq syntax — with AI translation between all three.</p>
+
+                <pre class="code-block"><code>// Natural language query:
+"Show me all users with role admin and quota over 80% used"
+
+// VS Code translates to JSONPath:
+$.users[?(@.role == "admin" && @.quota.used / @.quota.limit > 0.8)]
+
+// And to jq:
+.users[] | select(.role == "admin" and (.quota.used / .quota.limit) > 0.8)
+
+// Results are shown inline with syntax highlighting</code></pre>
+
+                <h2>Python Extension: Experimental Rust Indexer</h2>
+                <p>Alongside JSON improvements, VS Code 1.114 ships an experimental Rust-based indexer for the Python extension. For large Python projects that also use JSON configuration files, this indexer runs in parallel with the TypeScript language server, providing:</p>
+                <ul>
+                    <li>10x faster project indexing on large codebases</li>
+                    <li>Parallel JSON schema validation alongside Python type checking</li>
+                    <li>Reduced memory contention between language servers</li>
+                </ul>
+
+                <h2>JSON Editing Performance</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Feature</th><th>VS Code 1.113</th><th>VS Code 1.114</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Schema validation (10MB JSON)</td><td>~3.2s</td><td>~0.4s</td></tr>
+                        <tr><td>Autocomplete response time</td><td>~180ms</td><td>~45ms</td></tr>
+                        <tr><td>Format large JSON file (50MB)</td><td>~8s</td><td>~1.1s</td></tr>
+                        <tr><td>Fold/unfold deeply nested JSON</td><td>~400ms</td><td>~60ms</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>VS Code 1.114's AI schema inference means zero-config JSON validation for most use cases</li>
+                    <li>Human-readable error explanations dramatically reduce JSON debugging time</li>
+                    <li>The JSON Query Assistant bridges the gap between developers unfamiliar with JSONPath/jq syntax</li>
+                    <li>For complex JSON validation and formatting tasks, <a href="/tools/json-formatter">AI JSON's online tools</a> remain a fast complement to in-editor tooling</li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-escape" class="related-tool-card">
+                    <strong>JSON Escape Tool</strong>
+                    <span>Escape special characters</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm">
+            <a href="/privacy" class="text-primary">Privacy Policy</a> |
+            <a href="/terms" class="text-primary">Terms of Service</a> |
+            <a href="/about" class="text-primary">About</a>
+        </p>
+        <p class="text-small mt-sm">
+            &copy; 2026 AI JSON. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>

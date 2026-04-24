@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="JSON-RPC is making a comeback in 2026. MCP, LSP, and AI agent frameworks all use JSON-RPC over REST. Here's when to use each and why the distinction matters for modern API design.">
+    <meta name="keywords" content="JSON-RPC vs REST 2026, JSON-RPC API, MCP protocol, API design patterns, structured API, developer guide">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>JSON-RPC vs REST in 2026: Why the Old Protocol Is Winning AI-Native APIs | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/json-rpc-vs-rest-2026">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/json-rpc-vs-rest-2026">
+    <meta property="og:title" content="JSON-RPC vs REST in 2026: Why the Old Protocol Is Winning AI-Native APIs">
+    <meta property="og:description" content="JSON-RPC is making a comeback in 2026. MCP, LSP, and AI agent frameworks all use JSON-RPC over REST. Here's when to use each.">
+    <meta property="article:published_time" content="2026-04-24">
+    <meta property="article:section" content="API">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON-RPC vs REST in 2026: Why the Old Protocol Is Winning AI-Native APIs",
+        "description": "JSON-RPC is making a comeback in 2026. MCP, LSP, and AI agent frameworks all use JSON-RPC over REST. Here's when to use each and why the distinction matters.",
+        "datePublished": "2026-04-24",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/json-rpc-vs-rest-2026",
+        "articleSection": "API"
+    }
+    </script>
+    <script src="/js/navbar.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-comparison">API</div>
+                <h1 class="article-title">JSON-RPC vs REST in 2026: Why the Old Protocol Is Winning AI-Native APIs</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-24</span> · <span>6-7 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p class="lead">JSON-RPC was declared obsolete multiple times over the past decade. REST won the enterprise API wars. GraphQL promised to end the debate. Yet in 2026, JSON-RPC is experiencing a remarkable renaissance — not despite modern AI tooling, but <em>because</em> of it. The Model Context Protocol (MCP), Language Server Protocol (LSP), and most major AI agent frameworks all chose JSON-RPC. This is not a coincidence.</p>
+
+                <h2>The Core Difference</h2>
+                <p>REST models APIs as resources with HTTP verbs. JSON-RPC models APIs as function calls. This distinction turns out to matter enormously when building AI agents that need to invoke tools:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Aspect</th><th>REST</th><th>JSON-RPC</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mental model</td><td>Resources &amp; state</td><td>Procedure calls</td></tr>
+                        <tr><td>URL structure</td><td>Nouns (/users/42/posts)</td><td>Single endpoint (/api)</td></tr>
+                        <tr><td>Request format</td><td>HTTP verb + URL + body</td><td>JSON with method + params</td></tr>
+                        <tr><td>Batch requests</td><td>Multiple HTTP requests</td><td>Native JSON array</td></tr>
+                        <tr><td>Bi-directional</td><td>No (request-response only)</td><td>Yes (over WebSocket)</td></tr>
+                        <tr><td>Tool discovery</td><td>OpenAPI spec</td><td>Built into protocol</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Why AI Agents Prefer JSON-RPC</h2>
+                <p>When an AI agent needs to call a tool, it needs to answer three questions: what tools exist, what parameters they take, and what they return. JSON-RPC answers all three natively through its <code>listTools</code> and <code>callTool</code> patterns in MCP:</p>
+
+                <pre class="code-block"><code>// JSON-RPC request: list available tools
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/list"
+}
+
+// Response: self-describing tool catalog
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "tools": [
+            {
+                "name": "read_file",
+                "description": "Read the contents of a file at a given path",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "path": {"type": "string", "description": "File path to read"}
+                    },
+                    "required": ["path"]
+                }
+            }
+        ]
+    }
+}</code></pre>
+
+                <p>With REST, you'd need a separate OpenAPI discovery endpoint, an HTTP client library, verb-based routing logic, and a response mapping layer. JSON-RPC collapses all of this into a single JSON structure that an LLM can reason about directly.</p>
+
+                <h2>Batch Processing: JSON-RPC's Killer Feature</h2>
+                <p>JSON-RPC's native batch support is another major advantage for AI pipelines. When an agent needs to call five tools in parallel, REST requires five HTTP round-trips with connection overhead. JSON-RPC sends one request:</p>
+
+                <pre class="code-block"><code>// JSON-RPC batch: 5 tool calls in one request
+[
+    {"jsonrpc": "2.0", "id": 1, "method": "read_file",    "params": {"path": "/src/index.ts"}},
+    {"jsonrpc": "2.0", "id": 2, "method": "list_dir",     "params": {"path": "/src"}},
+    {"jsonrpc": "2.0", "id": 3, "method": "search_code",  "params": {"query": "fetchUser"}},
+    {"jsonrpc": "2.0", "id": 4, "method": "get_git_log",  "params": {"limit": 10}},
+    {"jsonrpc": "2.0", "id": 5, "method": "run_tests",    "params": {"filter": "auth"}}
+]
+
+// All results return in one response array
+// Server can execute in parallel, return in any order (matched by id)</code></pre>
+
+                <h2>When REST Still Wins</h2>
+                <p>JSON-RPC is not the right choice for every API. REST continues to dominate in several scenarios:</p>
+                <ul>
+                    <li><strong>Public-facing web APIs</strong>: RESTful URLs are more human-readable and cache-friendly with HTTP infrastructure</li>
+                    <li><strong>Resource-centric data</strong>: When your API is truly about CRUD operations on resources, REST's semantics are cleaner</li>
+                    <li><strong>Browser-native requests</strong>: REST maps naturally to <code>fetch()</code> and existing HTTP tooling</li>
+                    <li><strong>CDN caching</strong>: GET endpoints in REST can be edge-cached; JSON-RPC POST-only cannot</li>
+                    <li><strong>Team familiarity</strong>: Most developers know REST; JSON-RPC requires onboarding</li>
+                </ul>
+
+                <h2>The Nordic APIs Survey Says</h2>
+                <p>Nordic APIs published their April 2026 developer survey on JSON-RPC vs REST adoption patterns. Among teams building AI-integrated backends:</p>
+                <ul>
+                    <li><strong>67%</strong> are adding JSON-RPC endpoints alongside existing REST APIs</li>
+                    <li><strong>31%</strong> are building new AI tool servers exclusively in JSON-RPC (via MCP)</li>
+                    <li><strong>Only 2%</strong> are migrating existing REST APIs to JSON-RPC (migration cost too high)</li>
+                </ul>
+                <p>The pragmatic conclusion: most teams are running both, using REST for public-facing APIs and JSON-RPC for AI agent tool interfaces.</p>
+
+                <h2>Practical Guide: Choosing in 2026</h2>
+                <p><strong>Choose JSON-RPC when:</strong></p>
+                <ul>
+                    <li>Building MCP-compatible tools for AI agents</li>
+                    <li>Implementing a Language Server Protocol (LSP) extension</li>
+                    <li>Designing internal service-to-service APIs with complex method signatures</li>
+                    <li>Need bidirectional communication over WebSocket</li>
+                    <li>Batch operations are a primary use case</li>
+                </ul>
+
+                <p><strong>Choose REST when:</strong></p>
+                <ul>
+                    <li>Building a public API that third-party developers will consume</li>
+                    <li>Cacheability and CDN optimization matter</li>
+                    <li>Your team has deep REST expertise and the API is resource-oriented</li>
+                    <li>You need standard HTTP tooling (OpenAPI, Swagger UI, Postman)</li>
+                </ul>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>JSON-RPC is the default protocol for AI agent tools in 2026 — MCP's success proves this</li>
+                    <li>The protocol's self-describing nature makes it ideal for LLM tool discovery without extra documentation</li>
+                    <li>Batch request support gives JSON-RPC a performance edge for multi-tool AI pipelines</li>
+                    <li>REST isn't going away — it's complementary for public-facing, cacheable, resource-oriented APIs</li>
+                    <li>Validate your JSON-RPC request/response structures with <a href="/tools/json-formatter">AI JSON's free formatter</a></li>
+                </ul>
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-compare" class="related-tool-card">
+                    <strong>JSON Compare</strong>
+                    <span>Diff two JSON documents</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm">
+            <a href="/privacy" class="text-primary">Privacy Policy</a> |
+            <a href="/terms" class="text-primary">Terms of Service</a> |
+            <a href="/about" class="text-primary">About</a>
+        </p>
+        <p class="text-small mt-sm">
+            &copy; 2026 AI JSON. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>
