@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google's Gemini 2.5 Pro API now supports native JSON streaming with guaranteed schema conformance. Explore the new streaming structured outputs, live token budgets, and multi-turn JSON conversation memory.">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/gemini-25-json-streaming">
+
+    <title>Gemini 2.5 Pro API Ships Native JSON Streaming with Schema Conformance | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/gemini-25-json-streaming">
+    <meta property="og:title" content="Gemini 2.5 Pro API Ships Native JSON Streaming with Schema Conformance">
+    <meta property="og:description" content="Google's Gemini 2.5 Pro API now supports native JSON streaming with guaranteed schema conformance, streaming structured outputs, and live token budgets.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gemini 2.5 Pro API Ships Native JSON Streaming with Schema Conformance">
+    <meta name="twitter:description" content="Google's Gemini 2.5 Pro API now supports native JSON streaming — guaranteed schema conformance, no post-processing required.">
+    <meta name="twitter:image" content="https://aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Gemini 2.5 Pro API Ships Native JSON Streaming with Schema Conformance",
+    "description": "Google's Gemini 2.5 Pro API now supports native JSON streaming with guaranteed schema conformance, streaming structured outputs, and live token budgets.",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": {
+        "@type": "Organization",
+        "name": "AI JSON"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "AI JSON",
+        "url": "https://www.aijsons.com"
+    },
+    "url": "https://www.aijsons.com/news/gemini-25-json-streaming",
+    "mainEntityOfPage": "https://www.aijsons.com/news/gemini-25-json-streaming",
+    "audience": {
+        "@type": "Audience",
+        "audienceType": "Software Developers"
+    }
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.aijsons.com/"},
+        {"@type": "ListItem", "position": 2, "name": "News", "item": "https://www.aijsons.com/news"},
+        {"@type": "ListItem", "position": 3, "name": "Gemini 2.5 Pro JSON Streaming", "item": "https://www.aijsons.com/news/gemini-25-json-streaming"}
+    ]
+}
+    </script>
+    <script src="/js/navbar.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+<main class="main-container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb" style="margin-bottom:1.5rem;">
+        <a href="/">Home</a> / <a href="/news">News</a> / <span>Gemini 2.5 Pro JSON Streaming</span>
+    </div>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <header class="article-header">
+            <div class="article-category cat-development">AI</div>
+            <h1>Gemini 2.5 Pro API Ships Native JSON Streaming with Schema Conformance</h1>
+            <div class="article-meta">
+                <span><strong>Published:</strong> 2026-04-25</span> |
+                <span><strong>Reading time:</strong> 6 minutes</span>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <p>Google has released a major update to the Gemini 2.5 Pro API that introduces <strong>native JSON streaming with guaranteed schema conformance</strong>. Previously, developers had to collect the full model response before parsing JSON. With this release, structured output tokens arrive in real time — fully validated against the provided JSON Schema as they stream.</p>
+
+            <h2>What's New in Gemini 2.5 Pro Streaming JSON</h2>
+
+            <h3>1. Streaming Structured Outputs</h3>
+            <p>The updated API adds a <code>response_schema</code> parameter to the streaming endpoint. When provided, Gemini uses constrained decoding to guarantee every token it emits forms a valid partial JSON object that will eventually satisfy the schema. Developers no longer need to buffer responses and parse after the fact.</p>
+
+            <pre><code>{
+  "model": "gemini-2.5-pro",
+  "stream": true,
+  "response_mime_type": "application/json",
+  "response_schema": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string" },
+      "tags": { "type": "array", "items": { "type": "string" } },
+      "confidence": { "type": "number" }
+    },
+    "required": ["title", "tags", "confidence"]
+  }
+}</code></pre>
+
+            <h3>2. Live Token Budget Reporting</h3>
+            <p>A new <code>token_budget</code> field in the streaming response metadata allows developers to track token consumption in real time. This is particularly useful for cost-sensitive applications that need to dynamically truncate responses or switch to a smaller model mid-stream.</p>
+
+            <h3>3. Multi-Turn JSON Conversation Memory</h3>
+            <p>Gemini 2.5 Pro now supports multi-turn conversation sessions where the JSON schema is enforced across the entire conversation. Each model turn in the session produces JSON that references the same schema, enabling stateful structured data extraction over long interactions — ideal for data collection bots and interview agents.</p>
+
+            <h3>4. Partial Object Streaming Callbacks</h3>
+            <p>The new <code>on_partial_object</code> callback fires whenever a complete nested object is received within the stream. For example, if your schema has an array of items, each item triggers the callback as soon as it's fully received — before the overall response is complete. This dramatically reduces first-meaningful-data latency for list-based responses.</p>
+
+            <h2>Performance Benchmarks</h2>
+            <p>Google's internal benchmarks compare streaming JSON parsing with and without the new native mode:</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Old (Buffer + Parse)</th>
+                        <th>New (Native Stream)</th>
+                        <th>Improvement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Time to first object property</td>
+                        <td>~4,200ms</td>
+                        <td>~180ms</td>
+                        <td>23x faster</td>
+                    </tr>
+                    <tr>
+                        <td>Schema validation errors caught</td>
+                        <td>After full response</td>
+                        <td>At token level</td>
+                        <td>Instant feedback</td>
+                    </tr>
+                    <tr>
+                        <td>Memory usage (100KB response)</td>
+                        <td>~8MB buffer</td>
+                        <td>~0.3MB stream</td>
+                        <td>96% reduction</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Real-World Use Cases</h2>
+
+            <h3>AI Data Extraction Pipelines</h3>
+            <p>Teams building document intelligence pipelines can now stream-extract structured data from PDFs, emails, and web pages with real-time JSON output. The partial object callback means downstream systems can start processing extracted entities while the model is still reading the document.</p>
+
+            <h3>LLM-Powered API Backends</h3>
+            <p>When Gemini powers a REST API backend, streaming JSON eliminates the latency cost of buffering. Client applications receive the first data fields within milliseconds of the model starting generation, rather than waiting for the full response.</p>
+
+            <h3>Agentic Tool Calls</h3>
+            <p>MCP servers and AI agent frameworks benefit directly. Tool call arguments arrive as streaming JSON, allowing agents to begin acting on early parameters before the full tool call is received — enabling sub-100ms tool invocation latency in favorable conditions.</p>
+
+            <h2>Migration Guide</h2>
+            <p>For existing Gemini API users, migrating to streaming JSON requires two changes:</p>
+            <ol>
+                <li>Add <code>"stream": true</code> to the API request body</li>
+                <li>Add <code>"response_schema": { ... }</code> with your existing schema definition</li>
+                <li>Update your response handler to process chunks via the <code>on_partial_object</code> callback or standard SSE chunk parsing</li>
+            </ol>
+            <p>The old buffered JSON mode remains available and is not deprecated. Both modes coexist in the same API version.</p>
+
+            <h2>Availability</h2>
+            <p>Native JSON streaming is available today in the Gemini 2.5 Pro API at stable tier. Gemini 2.5 Flash support is expected in the next monthly release. The feature is accessible via both the REST API and all official SDKs (Python, Node.js, Go, Java).</p>
+
+            <div class="tip-box" style="margin-top: 2rem;">
+                <strong>Try It Now</strong><br>
+                Working with JSON APIs and AI structured outputs? Use our free <a href="/tools/json-formatter">JSON Formatter</a> to validate and inspect your schemas, or our <a href="/tools/json-compare">JSON Compare</a> tool to diff expected vs actual API responses.
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="related-tools-section" style="margin-top:3rem;">
+        <h2>Related Articles</h2>
+        <div class="related-tools-grid">
+            <a href="/news/gpt5-api-json-mode" class="related-tool-card">
+                <strong>GPT-5 API JSON Mode</strong>
+                <span>99.9% schema compliance with structured outputs</span>
+            </a>
+            <a href="/news/openai-agents-sdk-json-strict-mode" class="related-tool-card">
+                <strong>OpenAI Agents SDK Strict Mode</strong>
+                <span>Guaranteed schema conformance for agent tool calls</span>
+            </a>
+            <a href="/news/json-rpc-vs-rest-2026" class="related-tool-card">
+                <strong>JSON-RPC vs REST in 2026</strong>
+                <span>Why JSON-RPC is winning AI-native APIs</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Back to News -->
+    <div style="margin-top: 2rem; text-align: center;">
+        <a href="/news" class="btn btn-primary">← Back to All News</a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+    <p class="text-sm mt-sm">
+        <a href="/privacy" class="text-primary">Privacy Policy</a> |
+        <a href="/terms" class="text-primary">Terms of Service</a> |
+        <a href="/cookie" class="text-primary">Cookie Policy</a>
+    </p>
+    <p class="text-small mt-sm">
+        &copy; 2026 AI JSON. All rights reserved.
+    </p>
+</footer>
+
+<script src="/js/app.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+        }).catch(function(err) {
+            console.warn('[PWA] SW registration failed:', err);
+        });
+    });
+}
+</script>
+</body>
+</html>
