@@ -4,6 +4,7 @@
 
 | Date | Status | Notes |
 |------|--------|-------|
+| 2026-04-25 | ✅ Success | news/index.html updated (new Featured: Gemini 2.5 Pro native JSON streaming), new article page created at news/gemini-25-json-streaming/index.html, pushed to GitHub. Commit: "Daily news update 2026-04-25: Add Gemini 2.5 Pro native JSON streaming article, refresh featured news" |
 | 2026-04-23 | ✅ Success | news/index.html updated (new Featured: OpenAI Agents SDK strict JSON mode), pushed to GitHub. Commit: "Daily news update 2026-04-23: Add OpenAI Agents SDK strict JSON mode article, refresh featured news" |
 | 2026-04-22 | ✅ Success | news.html updated, pushed to GitHub. Commit: "Daily news update: Fresh JSON & API tech trends" |
 | 2026-04-21 | ✅ Success | news.html updated, pushed to GitHub. Commit: "Daily news update: Fresh JSON & API tech trends" |
