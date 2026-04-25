@@ -23,3 +23,10 @@
   - json-patch-vs-merge-patch.html
   - curl-json-api-guide.html
 - 修复：调整 BLOG_DIR 路径从 pages\blog → blog
+
+## 执行记录 (2026-04-25 15:45)
+- 状态：SUCCESS
+- 脚本：daily_blog.py（daily_tool_blog.py 不存在，使用此替代）
+- 生成文章：json-performance-optimization-2026
+- 主题：JSON Performance Optimization: 12 Techniques for Faster Parsing in 2026
+- 推送：已推送到 GitHub
