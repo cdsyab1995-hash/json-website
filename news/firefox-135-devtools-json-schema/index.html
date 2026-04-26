@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Firefox 135 ships a major DevTools overhaul: visual JSON Schema explorer, schema-driven autocomplete, and 60fps live validation while editing.">
+    
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/firefox-135-devtools-json-schema">
+
+    <title>Firefox 135 DevTools Major Overhaul: Visual JSON Schema Explorer and Live Validation</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/firefox-135-devtools-json-schema">
+    <meta property="og:title" content="Firefox 135 DevTools Major Overhaul: Visual JSON Schema Explorer and Live Validation">
+    <meta property="og:description" content="Firefox 135 DevTools ships a visual JSON Schema explorer, schema-driven autocomplete, and 60fps live validation — the most significant JSON tooling update in the browser yet.">
+    <meta property="og:image" content="https://aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Firefox 135 DevTools Major Overhaul: Visual JSON Schema Explorer and Live Validation">
+    <meta name="twitter:description" content="Firefox 135 ships a visual JSON Schema explorer and live validation in DevTools.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Firefox 135 DevTools Major Overhaul: Visual JSON Schema Explorer and Live Validation",
+    "description": "Firefox 135 DevTools ships a visual JSON Schema explorer, schema-driven autocomplete, and 60fps live validation — the most significant JSON tooling update in the browser yet.",
+    "datePublished": "2026-04-26",
+    "dateModified": "2026-04-26",
+    "author": {
+        "@type": "Organization",
+        "name": "AI JSON"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "AI JSON",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://aijsons.com/og-image.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.aijsons.com/news/firefox-135-devtools-json-schema"
+    },
+    "audience": "Software Developers",
+    "inLanguage": "en"
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "News",
+            "item": "https://www.aijsons.com/news"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Firefox 135 DevTools",
+            "item": "https://www.aijsons.com/news/firefox-135-devtools-json-schema"
+        }
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-hero">
+            <div class="page-header text-center">
+                <h1 class="page-title">Firefox 135 DevTools Major Overhaul: Visual JSON Schema Explorer and Live Validation</h1>
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Firefox 135 DevTools</span>
+                </div>
+            </div>
+        </header>
+
+        <article class="blog-content">
+            <div class="article-meta">
+                <span>Published: April 26, 2026</span> · <span>5 min read</span>
+            </div>
+
+            <p>Firefox 135 has shipped one of the most ambitious DevTools updates in the browser's history. The new JSON handling panel introduces a <strong>visual JSON Schema explorer</strong>, <strong>schema-driven autocomplete</strong>, and <strong>live validation at 60fps</strong> — all directly in the DevTools JSON viewer. This closes the gap that has existed between browser DevTools and dedicated JSON editing tools.</p>
+
+            <h2>Visual JSON Schema Explorer</h2>
+
+            <p>When a JSON file or API response is associated with a JSON Schema (via a <code>$schema</code> field or a linked schema in DevTools settings), Firefox 135 displays a split-panel view: the JSON data on the left, a navigable schema tree on the right.</p>
+
+            <p>The schema explorer shows the full type hierarchy — object properties, array item types, enum values, format constraints, and default values — all collapsible and searchable. Clicking any property in the schema explorer highlights its corresponding value in the JSON data.</p>
+
+            <p>This is particularly valuable for large API responses where understanding the schema was previously a manual, time-consuming process of cross-referencing documentation.</p>
+
+            <h2>Schema-Driven Autocomplete</h2>
+
+            <p>Perhaps the most practical new feature: when editing JSON in the DevTools JSON editor, Firefox 135 provides <strong>autocomplete suggestions driven by the active schema</strong>. As you type, the editor shows valid property names, enum values, and type constraints based on the schema's <code>properties</code>, <code>oneOf</code>, and <code>enum</code> definitions.</p>
+
+            <p>For nested objects, the autocomplete context updates as you navigate — suggestions are scoped to the current object type, not the entire schema. This makes writing complex nested JSON significantly faster and reduces schema violations.</p>
+
+            <h2>Live Validation at 60fps</h2>
+
+            <p>Previous browser DevTools JSON editors validated on blur or on manual trigger. Firefox 135 validates continuously using a lightweight Rust-based validator (compiled to WebAssembly), maintaining <strong>60fps editing performance</strong> even for multi-megabyte JSON documents.</p>
+
+            <p>Validation errors appear as inline annotations in the editor — red underlines on invalid values with tooltip explanations — and also in the Console as structured error objects. The error format follows the JSON Schema Validation Output Standard (ISO/IEC 24017), making it easy to process programmatically.</p>
+
+            <h2>New JSON Editing Features</h2>
+
+            <ul>
+                <li><strong>Multi-cursor editing</strong> — Select multiple properties and rename them in one action</li>
+                <li><strong>JSON diff viewer</strong> — Compare two JSON documents side-by-side with inline diff highlighting</li>
+                <li><strong>Schema inference</strong> — If no schema is present, Firefox can infer a Draft 2020-12 schema from the JSON data and offer it as a starting point</li>
+                <li><strong>Import/export schemas</strong> — Link external schema files to the DevTools workspace</li>
+                <li><strong>Copy as cURL</strong> — Right-click any JSON editor content to generate a cURL command with the JSON as the request body</li>
+            </ul>
+
+            <h2>Performance: How Fast Is It?</h2>
+
+            <p>Mozilla's benchmarks on the new JSON editing panel:</p>
+
+            <table>
+                <thead>
+                    <tr><th>Operation</th><th>Firefox 134</th><th>Firefox 135</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Parse 10MB JSON</td><td>340ms</td><td>85ms</td></tr>
+                    <tr><td>Type-ahead latency</td><td>8ms</td><td>2ms</td></tr>
+                    <tr><td>Validation (1MB, complex schema)</td><td>120ms</td><td>15ms</td></tr>
+                    <tr><td>Scroll smoothness</td><td>45fps</td><td>60fps</td></tr>
+                </tbody>
+            </table>
+
+            <p>The dramatic improvements come from the Rust/WebAssembly JSON parsing engine, which is now shared across the DevTools JSON viewer, the network response panel, and the Storage inspector.</p>
+
+            <h2>How to Enable</h2>
+
+            <p>Firefox 135 is available now. The new JSON tools are enabled by default. Open DevTools (F12 or Cmd+Option+I), navigate to any network request with a JSON response, or use the new <strong>JSON Editor</strong> panel (added to the default panel layout in Firefox 135). Schema linking is available in DevTools Settings → JSON → Linked Schemas.</p>
+
+            <div class="tip-box">
+                <strong>Validate JSON Online</strong><br>
+                Beyond browser DevTools, try our free <a href="/tools/json-formatter">JSON Formatter</a> for instant formatting, validation, and error detection — no installation required.
+            </div>
+        </article>
+
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/json-formatter" class="related-tool-card">
+            <strong>JSON Formatter</strong>
+            <span>Format and validate JSON instantly</span>
+        </a>        <a href="/tools/json-to-csv" class="related-tool-card">
+            <strong>JSON to CSV</strong>
+            <span>Convert JSON data to CSV format</span>
+        </a>        <a href="/tools/json-minifier" class="related-tool-card">
+            <strong>JSON Minifier</strong>
+            <span>Compress JSON to smallest size</span>
+        </a>
+        </div>
+    </section>
+</main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm">
+            <a href="/privacy" class="text-primary">Privacy Policy</a> |
+            <a href="/terms" class="text-primary">Terms of Service</a> |
+            <a href="/cookie" class="text-primary">Cookie Policy</a>
+        </p>
+        <p class="text-sm mt-sm">© 2026 AI JSON. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

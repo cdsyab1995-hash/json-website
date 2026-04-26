@@ -1,5 +1,17 @@
 # Daily Blog Update - Execution History
 
+## 2026-04-26 (15:15) - 定时任务运行
+- **Status**: SUCCESS
+- **Topic**: JSON vs XML in 2026
+- **Slug**: json-vs-xml-2026-when-to-use-each
+- **Article**: JSON vs XML in 2026: Which Format Should You Use?
+- **Files**: 
+  - blog/json-vs-xml-2026-when-to-use-each/index.html (new)
+  - blog/index.html (updated - Featured Section + articles grid)
+- **GitHub**: Pushed successfully ✅
+- **Script improvement**: 新增3个主题（共6个），选题逻辑改为基于日期+跳过已存在文章
+- **Note**: 首次运行因旧逻辑重复生成了 json-performance-optimization-2026，修复后正确生成新文章
+
 ## 2026-04-25 (15:43) - 定时任务运行
 - **Status**: SUCCESS
 - **Topic**: JSON Performance Optimization

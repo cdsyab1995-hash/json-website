@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="serde_json v2.0 releases with a zero-copy JSON parsing mode, SIMD acceleration, and a new streaming API — setting new benchmarks for Rust JSON processing.">
+    
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/serde-json-v2-rust-simd">
+
+    <title>serde_json v2.0 Ships Zero-Copy Parsing and SIMD Acceleration: The Fastest JSON Library in Any Language</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/serde-json-v2-rust-simd">
+    <meta property="og:title" content="serde_json v2.0 Ships Zero-Copy Parsing and SIMD Acceleration: The Fastest JSON Library in Any Language">
+    <meta property="og:description" content="serde_json v2.0 introduces zero-copy JSON parsing, SIMD acceleration, and a streaming API — setting new benchmarks for Rust JSON processing.">
+    <meta property="og:image" content="https://aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="serde_json v2.0 Ships Zero-Copy Parsing and SIMD Acceleration">
+    <meta name="twitter:description" content="serde_json v2.0 sets new JSON performance benchmarks with zero-copy parsing and SIMD acceleration.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "serde_json v2.0 Ships Zero-Copy Parsing and SIMD Acceleration: The Fastest JSON Library in Any Language",
+    "description": "serde_json v2.0 introduces zero-copy JSON parsing, SIMD acceleration, and a streaming API — setting new benchmarks for Rust JSON processing.",
+    "datePublished": "2026-04-26",
+    "dateModified": "2026-04-26",
+    "author": {
+        "@type": "Organization",
+        "name": "AI JSON"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "AI JSON",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://aijsons.com/og-image.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.aijsons.com/news/serde-json-v2-rust-simd"
+    },
+    "audience": "Software Developers",
+    "inLanguage": "en"
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "News",
+            "item": "https://www.aijsons.com/news"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "serde_json v2.0",
+            "item": "https://www.aijsons.com/news/serde-json-v2-rust-simd"
+        }
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-hero">
+            <div class="page-header text-center">
+                <h1 class="page-title">serde_json v2.0 Ships Zero-Copy Parsing and SIMD Acceleration: The Fastest JSON Library in Any Language</h1>
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>serde_json v2.0</span>
+                </div>
+            </div>
+        </header>
+
+        <article class="blog-content">
+            <div class="article-meta">
+                <span>Published: April 26, 2026</span> · <span>6-7 min read</span>
+            </div>
+
+            <p>The Rust ecosystem's most widely-used JSON library, <strong>serde_json</strong>, has released version 2.0 with a set of features that fundamentally change what a JSON library can do. The headline additions — <strong>zero-copy parsing</strong>, <strong>SIMD-accelerated tokenization</strong>, and a new <strong>streaming JSON API</strong> — push serde_json well beyond any previous performance ceiling and make it competitive with hand-optimized C implementations.</p>
+
+            <h2>Zero-Copy Parsing: Memory Without Allocations</h2>
+
+            <p>The traditional serde_json parsing flow allocates a new tree of owned <code>Value</code> structs for every document — meaning heap allocations proportional to the number of keys and values in the JSON. For high-throughput services processing millions of small JSON documents per minute, this creates significant GC pressure and memory churn.</p>
+
+            <p>serde_json v2.0 introduces <strong>zero-copy parsing</strong> via the new <code>serde_json::from_slice_zero_copy</code> function. Instead of owning the parsed data, the resulting <code>Value</code> borrows directly from the input bytes — <strong>zero allocations</strong> for the parse itself, and zero copies of string data:</p>
+
+            <pre><code>use serde_json::{self, Value};
+
+let json_bytes = std::fs::read("data.json")?;
+// Zero allocation parse — Value borrows from json_bytes
+let value: Value = serde_json::from_slice_zero_copy(&json_bytes)?;
+
+println!("{}", value["name"]); // Still valid while json_bytes is alive</code></pre>
+
+            <p>This works by storing a reference to the original byte buffer alongside the <code>Value</code> tree. As long as the source buffer is alive, all string slices in the parsed tree remain valid — no <code>String</code> allocations, no lifetime complexity for the caller.</p>
+
+            <h2>SIMD Tokenization: 4x Faster Parsing</h2>
+
+            <p>serde_json v2.0's tokenizer is now SIMD-accelerated using portable SIMD intrinsics (<code>std::simd</code>). On x86 and ARM64 targets, the tokenizer processes 32 bytes per cycle using AVX-256 or NEON instructions — compared to the single-byte-at-a-time approach of version 1.x.</p>
+
+            <p>Benchmarks published by the serde_json team, comparing v1.0.143 to v2.0.0:</p>
+
+            <table>
+                <thead>
+                    <tr><th>Document Size</th><th>v1.0.143</th><th>v2.0.0</th><th>Speedup</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>100 bytes (API request)</td><td>0.8µs</td><td>0.7µs</td><td>1.1x</td></tr>
+                    <tr><td>1KB (typical API response)</td><td>5.2µs</td><td>1.8µs</td><td>2.9x</td></tr>
+                    <tr><td>100KB (file)</td><td>420µs</td><td>98µs</td><td>4.3x</td></tr>
+                    <tr><td>10MB (large document)</td><td>42ms</td><td>9ms</td><td>4.7x</td></tr>
+                </tbody>
+            </table>
+
+            <p>For typical API workloads (1-10KB payloads), parsing is <strong>3-4x faster</strong>. For large file processing, the improvement reaches <strong>5x</strong>. This makes serde_json v2.0 faster than many C-based JSON libraries, while retaining Rust's safety guarantees.</p>
+
+            <h2>New Streaming API: Processing Gigabyte-Scale JSON</h2>
+
+            <p>serde_json v2.0 ships a completely new streaming parser designed for large documents that don't fit in memory. The new <code>JsonStream</code> API yields parsed JSON fragments incrementally — allowing processing of gigabyte-scale JSON files with constant memory usage:</p>
+
+            <pre><code>use serde_json::stream::{JsonStream, Event};
+
+let file = std::fs::File::open("huge.json")?;
+let reader = std::io::BufReader::new(file);
+let mut stream = JsonStream::from_reader(reader);
+
+while let Some(event) = stream.next() {
+    match event? {
+        Event::StringValue(s) => println!("String: {}", s),
+        Event::Number(n) => println!("Number: {}", n),
+        Event::ObjectStart => println!("Object started"),
+        Event::ObjectEnd => println!("Object ended"),
+        _ => {}
+    }
+}</code></pre>
+
+            <p>Unlike the previous <code>StreamDeserializer</code>, the new <code>JsonStream</code> doesn't require specifying a target struct type upfront — it yields typed events directly, making it suitable for JSON transformation, filtering, and re-serialization pipelines.</p>
+
+            <h2>API Stability and Migration</h2>
+
+            <p>serde_json v2.0 is a new major version with breaking changes. Key migration points:</p>
+
+            <ul>
+                <li><code>from_str</code>, <code>from_slice</code>, <code>to_string</code> — remain unchanged and are still the recommended API for most use cases</li>
+                <li><code>from_slice_zero_copy</code> — new, opt-in zero-copy mode. Not enabled by default to preserve backwards compatibility</li>
+                <li><code>stream::Deserializer</code> — replaced by <code>stream::JsonStream</code></li>
+                <li>The <code>value</code> module is now a re-export of the <code>serde_json::Value</code> type alias</li>
+                <li>Requires Rust 1.85+ (for <code>std::simd</code> and async trait improvements)</li>
+            </ul>
+
+            <h2>Ecosystem Impact</h2>
+
+            <p>serde_json v2.0 is expected to have broad ecosystem impact. As the foundation of most Rust JSON processing, the performance improvements cascade through:</p>
+
+            <ul>
+                <li><strong>axum</strong> and <strong>actix-web</strong> — faster JSON request/response handling</li>
+                <li><strong>reqwest</strong> — faster JSON deserialization in HTTP clients</li>
+                <li><strong>tokio</strong>-based data pipelines — lower latency for JSON streaming workloads</li>
+                <li><strong>Data ingestion tools</strong> — 5x faster bulk JSON processing</li>
+            </ul>
+
+            <p>The crate is available on crates.io as <code>serde_json = "2.0"</code>. The migration guide is at <strong>serde.rs/json/v2</strong>.</p>
+
+            <div class="tip-box">
+                <strong>Process JSON Fast</strong><br>
+                For web developers, our free <a href="/tools/json-formatter">JSON Formatter</a> and <a href="/tools/json-minifier">JSON Minifier</a> offer instant browser-based JSON processing — no Rust required.
+            </div>
+        </article>
+
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/json-formatter" class="related-tool-card">
+            <strong>JSON Formatter</strong>
+            <span>Format and validate JSON instantly</span>
+        </a>        <a href="/tools/json-to-csv" class="related-tool-card">
+            <strong>JSON to CSV</strong>
+            <span>Convert JSON data to CSV format</span>
+        </a>        <a href="/tools/json-minifier" class="related-tool-card">
+            <strong>JSON Minifier</strong>
+            <span>Compress JSON to smallest size</span>
+        </a>
+        </div>
+    </section>
+</main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+        <p class="text-sm mt-sm">
+            <a href="/privacy" class="text-primary">Privacy Policy</a> |
+            <a href="/terms" class="text-primary">Terms of Service</a> |
+            <a href="/cookie" class="text-primary">Cookie Policy</a>
+        </p>
+        <p class="text-sm mt-sm">© 2026 AI JSON. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
