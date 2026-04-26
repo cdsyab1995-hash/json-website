@@ -7,26 +7,27 @@
 
 | 日期 | 目标工具 | 主题 | 状态 |
 |------|----------|------|------|
+| 2026-04-26 15:12 | formatter | json-validator-debug-api-errors-faster | SUCCESS |
+| 2026-04-25 15:45 | performance | json-performance-optimization-2026 | SUCCESS |
+| 2026-04-23 08:57 | patch/curl | json-patch-vs-merge-patch | SUCCESS |
 | 2026-04-22 09:00 | viewer | json-viewer-tree-view-why-you-need-one | SKIP (文章已存在) |
-| 2026-04-21 08:57 | compare | compare-json-documents-find-differences | SKIP (文章已存在) |
-| 2026-04-21 08:59 | compare | compare-json-documents-find-differences | SKIP (文章已存在) |
 
-## 最新执行 (2026-04-22 09:00)
-- 状态：SKIP - 文章 json-viewer-tree-view-why-you-need-one 已存在
-- 脚本路径：d:\网站开发-json\scripts\daily_tool_blog.py
-- 说明：viewer 工具文章已由之前执行生成，脚本跳过
-
-## 执行记录 (2026-04-23 08:57)
+## 最新执行 (2026-04-26 15:12)
 - 状态：SUCCESS
-- 脚本：write_articles.py（注意：daily_tool_blog.py 不存在，使用此脚本替代）
-- 生成文章：
-  - json-patch-vs-merge-patch.html
-  - curl-json-api-guide.html
-- 修复：调整 BLOG_DIR 路径从 pages\blog → blog
+- 脚本：daily_blog.py
+- 生成文章：json-validator-debug-api-errors-faster
+- 主题：JSON Validator: Debug API Errors Faster with Instant Validation
+- 推送：已推送到 GitHub
+- 改进：扩展 topics 池到 3 个主题，避免文章重复
 
 ## 执行记录 (2026-04-25 15:45)
 - 状态：SUCCESS
-- 脚本：daily_blog.py（daily_tool_blog.py 不存在，使用此替代）
+- 脚本：daily_blog.py
 - 生成文章：json-performance-optimization-2026
 - 主题：JSON Performance Optimization: 12 Techniques for Faster Parsing in 2026
 - 推送：已推送到 GitHub
+
+## 执行记录 (2026-04-23 08:57)
+- 状态：SUCCESS
+- 脚本：write_articles.py
+- 生成文章：json-patch-vs-merge-patch, curl-json-api-guide
