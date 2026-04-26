@@ -21,6 +21,98 @@ def get_article_template():
     # 选择主题：基于当前日期和时间戳生成多样化主题
     topics = [
         {
+            'slug': 'json-validator-debug-api-errors-faster',
+            'title': 'JSON Validator: Debug API Errors Faster with Instant Validation',
+            'category': 'Development',
+            'category_class': 'cat-development',
+            'description': 'Learn how a JSON validator helps you catch syntax errors, schema violations, and API integration issues before they become production bugs.',
+            'keywords': 'JSON validator, validate JSON online, JSON syntax checker, JSON error detection, API debugging',
+            'excerpt': 'A JSON validator is your first line of defense against data integration errors. Learn how to use validation to catch issues early, debug API responses, and ensure data quality.',
+            'read_time': '6-8 min read',
+            'content': '''
+                <p class="lead">JSON validation is often an afterthought, but catching errors early saves hours of debugging. A good JSON validator can spot syntax errors, schema violations, and data quality issues before they reach production.</p>
+
+                <h2>Why JSON Validation Matters</h2>
+                <p>Every time your application receives JSON data from an API, database, or user input, there's a chance the data is malformed. Without validation, these errors propagate through your system:</p>
+                <ul>
+                    <li><strong>API Integration Failures</strong>: Third-party APIs may return unexpected data formats</li>
+                    <li><strong>Database Corruption</strong>: Bad data saved to your database causes downstream issues</li>
+                    <li><strong>Security Vulnerabilities</strong>: Invalid data can bypass input sanitization</li>
+                    <li><strong>Silent Failures</strong>: Many JSON parsers fail silently, making bugs hard to trace</li>
+                </ul>
+
+                <h2>Common JSON Validation Errors</h2>
+                <p>Understanding common errors helps you debug faster:</p>
+                <pre class="code-block"><code>// Trailing commas - invalid in JSON
+{ "name": "John", "age": 30, }
+
+// Single quotes - must use double quotes
+{ 'name': 'John', "age": 30 }
+
+// Unquoted keys - must be strings
+{ name: "John", "age": 30 }
+
+// Comments - not allowed in JSON
+{ "name": "John" /* comment */ }</code></pre>
+
+                <h2>JSON Schema Validation</h2>
+                <p>Beyond syntax, JSON Schema validates the structure and content of your data:</p>
+                <pre class="code-block"><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "age": { "type": "integer", "minimum": 0 },
+    "email": { "type": "string", "format": "email" }
+  },
+  "required": ["name", "email"]
+}</code></pre>
+
+                <h2>Real-World Validation Workflows</h2>
+                <h3>1. API Response Validation</h3>
+                <pre class="code-block"><code>// Validate API response against expected schema
+const response = await fetch('/api/user/123');
+const data = await response.json();
+
+const valid = validate(data, userSchema);
+if (!valid) {
+    console.error('API response invalid:', validate.errors);
+    // Alert monitoring system
+}</code></pre>
+
+                <h3>2. Request Body Validation</h3>
+                <pre class="code-block"><code>// Validate before processing
+app.post('/api/users', async (req, res) => {
+    const { error } = userSchema.validate(req.body);
+    if (error) {
+        return res.status(400).json({
+            error: 'Validation failed',
+            details: error.details
+        });
+    }
+    // Proceed with creating user
+});</code></pre>
+
+                <h2>Best Practices for JSON Validation</h2>
+                <ul>
+                    <li><strong>Validate at Boundaries</strong>: Check all external data (APIs, files, user input)</li>
+                    <li><strong>Fail Fast</strong>: Reject invalid data immediately, don't let it propagate</li>
+                    <li><strong>Provide Clear Errors</strong>: Show users exactly what's wrong and where</li>
+                    <li><strong>Use Schema Validation</strong>: Define expected structure with JSON Schema</li>
+                    <li><strong>Log Validation Failures</strong>: Track patterns to improve data quality</li>
+                </ul>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>JSON validation catches errors before they cause downstream issues</li>
+                    <li>Syntax validation checks JSON grammar; schema validation checks structure</li>
+                    <li>Validate all external data sources: APIs, databases, user input</li>
+                    <li>Use JSON Schema for reusable, documented validation rules</li>
+                    <li>Provide actionable error messages to speed up debugging</li>
+                </ul>
+            '''
+        },
+        {
             'slug': 'json-path-vs-jsonata-choose-right-query-language',
             'title': 'JSONPath vs JSONata: Choosing the Right Query Language for Your Data',
             'category': 'Development',
@@ -309,9 +401,17 @@ const parser = new Function('return ' + parserCode)();</code></pre>
         }
     ]
     
-    # 基于日期选择主题
-    index = int(datetime.datetime.now().strftime('%H')) % len(topics)
-    return topics[index]
+    # 基于日期选择主题（顺序选取，自动跳过已存在文章）
+    day_of_year = datetime.date.today().timetuple().tm_yday
+    start_index = day_of_year % len(topics)
+    # 遍历寻找第一个未生成的主题
+    for offset in range(len(topics)):
+        candidate = topics[(start_index + offset) % len(topics)]
+        article_dir = os.path.join(BLOG_DIR, candidate['slug'])
+        if not os.path.exists(article_dir):
+            return candidate
+    # 全部已生成，返回最近一个（会覆盖）
+    return topics[start_index]
 
 # ==================== 生成文章 ====================
 def generate_article():
