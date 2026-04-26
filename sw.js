@@ -1,48 +1,23 @@
 // Service Worker for JSON Tools PWA
 // Version: 1.0.0
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `json-tools-${CACHE_VERSION}`;
 const STATIC_CACHE = `json-tools-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `json-tools-dynamic-${CACHE_VERSION}`;
 
-// Core static assets to cache immediately
+// Core static assets to cache immediately (no HTML pages - always served from network)
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/css/styles.css',
     '/js/app.js',
+    '/js/navbar.js',
     '/images/favicon.svg',
     '/images/icon-192.png',
     '/images/icon-512.png',
-    // Tool pages
-    '/pages/format.html',
-    '/pages/escape.html',
-    '/pages/extract.html',
-    '/pages/sort.html',
-    '/pages/clean.html',
-    '/pages/xml.html',
-    '/pages/yaml.html',
-    '/pages/viewer.html',
-    '/pages/json2csv.html',
-    '/pages/compare.html',
-    '/pages/regex-tester.html',
-    '/pages/base64.html',
-    '/pages/url-encoder.html',
-    '/pages/jwt-decoder.html',
-    '/pages/hash-generator.html',
-    '/pages/uuid-generator.html',
-    '/pages/timestamp-converter.html',
-    '/pages/merge-csv.html',
-    '/pages/batch-file-renamer.html',
-    '/pages/pdf-split.html',
-    '/pages/css-minifier.html',
-    '/pages/html-encoder.html',
-    '/pages/blog.html',
-    '/pages/best-practices.html',
-    '/pages/news.html',
-    '/pages/about.html',
-    '/pages/changelog.html',
+    '/images/apple-touch-icon.png',
+    '/manifest.json',
 ];
 
 // Install event - cache static assets
@@ -83,55 +58,57 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - HTML pages always go to network; static assets use cache-first
 self.addEventListener('fetch', (event) => {
     // Only handle GET requests
     if (event.request.method !== 'GET') return;
     
     const url = new URL(event.request.url);
     
-    // Don't cache external requests (fonts, etc.)
-    if (url.hostname !== self.location.hostname && 
-        !url.hostname.includes('fonts.gstatic.com') &&
-        !url.hostname.includes('fonts.googleapis.com')) {
+    // Don't handle external requests (fonts, analytics, etc.)
+    if (url.hostname !== self.location.hostname) return;
+    
+    const pathname = url.pathname;
+    
+    // CRITICAL: Always fetch HTML pages from network (no SW caching for HTML)
+    // This prevents serving stale cached pages and ensures proper MIME types
+    if (pathname.endsWith('.html') || pathname.endsWith('/')) {
+        event.respondWith(
+            fetch(event.request).catch(() => {
+                // Fallback for offline HTML requests
+                if (event.request.headers.get('accept').includes('text/html')) {
+                    return caches.match('/index.html');
+                }
+            })
+        );
         return;
     }
     
+    // Static assets (CSS, JS, images) use cache-first strategy
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
-            // Return cached version if available
             if (cachedResponse) {
                 // Update cache in background (stale-while-revalidate)
-                const fetchPromise = fetch(event.request).then((networkResponse) => {
+                fetch(event.request).then((networkResponse) => {
                     if (networkResponse && networkResponse.status === 200) {
-                        const cacheName = STATIC_ASSETS.includes(url.pathname) ? STATIC_CACHE : DYNAMIC_CACHE;
-                        caches.open(cacheName).then((cache) => {
+                        caches.open(STATIC_CACHE).then((cache) => {
                             cache.put(event.request, networkResponse.clone());
                         });
                     }
-                    return networkResponse;
-                }).catch(() => null);
-                
+                }).catch(() => {});
                 return cachedResponse;
             }
             
-            // Fetch from network and cache
+            // Fetch from network and cache static assets
             return fetch(event.request).then((networkResponse) => {
                 if (!networkResponse || networkResponse.status !== 200) {
                     return networkResponse;
                 }
-                
                 const responseToCache = networkResponse.clone();
-                caches.open(DYNAMIC_CACHE).then((cache) => {
+                caches.open(STATIC_CACHE).then((cache) => {
                     cache.put(event.request, responseToCache);
                 });
-                
                 return networkResponse;
-            }).catch(() => {
-                // Fallback for offline HTML requests
-                if (event.request.headers.get('accept').includes('text/html')) {
-                    return caches.match('/offline.html') || caches.match('/index.html');
-                }
             });
         })
     );
