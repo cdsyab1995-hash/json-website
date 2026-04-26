@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | AI JSON Tools</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container { max-width: 560px; }
+    .code { font-size: 8rem; font-weight: 800; color: #22c55e; line-height: 1; margin-bottom: 1rem; }
+    h1 { font-size: 1.75rem; margin-bottom: 1rem; color: #fff; }
+    p { color: #94a3b8; margin-bottom: 2rem; line-height: 1.6; }
+    .links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    a {
+      display: inline-block;
+      background: #22c55e;
+      color: #0f172a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    a:hover { background: #16a34a; }
+    a.secondary {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+    }
+    a.secondary:hover { background: #334155; color: #e2e8f0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="code">404</div>
+    <h1>Page Not Found</h1>
+    <p id="msg">Redirecting you to the right place...</p>
+    <div class="links">
+      <a href="/">Go to Homepage</a>
+      <a href="/tools/json-formatter" class="secondary">JSON Formatter</a>
+    </div>
+  </div>
+<script>
+(function() {
+  var path = window.location.pathname;
+
+  // /pages/ tool redirects
+  var toolRedirects = {
+    '/pages/format.html':         '/tools/json-formatter',
+    '/pages/escape.html':          '/tools/json-escape',
+    '/pages/extract.html':         '/tools/json-extract',
+    '/pages/sort.html':            '/tools/json-sort',
+    '/pages/clean.html':           '/tools/json-clean',
+    '/pages/xml.html':             '/tools/json-to-xml',
+    '/pages/yaml.html':            '/tools/json-to-yaml',
+    '/pages/viewer.html':          '/tools/json-viewer',
+    '/pages/json2csv.html':        '/tools/json-to-csv',
+    '/pages/compare.html':         '/tools/json-compare',
+    '/pages/csv-to-excel.html':   '/tools/csv-to-excel',
+    '/pages/merge-csv.html':       '/tools/merge-csv',
+    '/pages/excel-remove-duplicates.html': '/tools/excel-remove-duplicates',
+    '/pages/css-minifier.html':    '/tools/css-minifier',
+    '/pages/html-encoder.html':    '/tools/html-encoder',
+    '/pages/url-encoder.html':     '/tools/url-encoder',
+    '/pages/base64.html':          '/tools/base64',
+    '/pages/jwt-decoder.html':     '/tools/jwt-decoder',
+    '/pages/regex-tester.html':    '/tools/regex-tester',
+    '/pages/uuid-generator.html':   '/tools/uuid-generator',
+    '/pages/timestamp-converter.html': '/tools/timestamp-converter',
+    '/pages/hash-generator.html':   '/tools/hash-generator',
+    '/pages/pdf-split.html':       '/tools/pdf-split',
+    '/pages/batch-renamer.html':   '/tools/batch-renamer',
+    '/pages/batch-file-renamer.html': '/tools/batch-renamer'
+  };
+
+  // /pages/ section redirects
+  var sectionRedirects = {
+    '/pages/blog.html':    '/blog',
+    '/pages/about.html':   '/about',
+    '/pages/changelog.html': '/changelog',
+    '/pages/best-practices.html': '/best-practices',
+    '/pages/news.html':    '/news',
+    '/pages/privacy.html': '/privacy',
+    '/pages/terms.html':   '/terms',
+    '/pages/cookie.html':  '/cookie'
+  };
+
+  // /pages/blog/ redirects
+  var blogRedirects = {
+    '/pages/blog/ai-tool-calling-mcp-2026.html':                  '/blog/ai-tool-calling-mcp-2026',
+    '/pages/blog/compare-json-documents-find-differences.html':    '/blog/compare-json-documents-find-differences',
+    '/pages/blog/curl-json-api-guide.html':                        '/blog/curl-json-api-guide',
+    '/pages/blog/json-api-error-handling-2026.html':              '/blog/json-api-error-handling-2026',
+    '/pages/blog/json-edge-computing-cloudflare-workers.html':     '/blog/json-edge-computing-cloudflare-workers',
+    '/pages/blog/json-parsing-performance-comparison.html':        '/blog/json-parsing-performance-comparison',
+    '/pages/blog/json-patch-vs-merge-patch.html':                  '/blog/json-patch-vs-merge-patch',
+    '/pages/blog/json-schema-complete-guide-2026.html':            '/blog/json-schema-complete-guide-2026',
+    '/pages/blog/json-viewer-tree-view-why-you-need-one.html':     '/blog/json-viewer-tree-view-why-you-need-one',
+    '/pages/blog/jwt-security-best-practices-2026.html':           '/blog/jwt-security-best-practices-2026',
+    '/pages/blog/mcp-json-standardizing-ai-tools.html':           '/blog/mcp-json-standardizing-ai-tools',
+    '/pages/blog/model-context-protocol-json-rpc-ai-tools.html':    '/blog/model-context-protocol-json-rpc-ai-tools',
+    '/pages/blog/postgresql-jsonb-vs-mongodb-document-store.html':  '/blog/postgresql-jsonb-vs-mongodb-document-store',
+    '/pages/blog/rfc9457-problem-details-json-api-errors.html':    '/blog/rfc9457-problem-details-json-api-errors',
+    '/pages/blog/sort-json-arrays-objects-guide.html':            '/blog/sort-json-arrays-objects-guide',
+    '/pages/blog/zod-json-schema-validation-ai.html':             '/blog/zod-json-schema-validation-ai'
+  };
+
+  // /pages/news/ redirects
+  var newsRedirects = {
+    '/pages/news/api-transformations-2026.html':         '/news/api-transformations-2026',
+    '/pages/news/browser-devtools-json-schema.html':      '/news/browser-devtools-json-schema',
+    '/pages/news/bun-2-json-serialization.html':          '/news/bun-2-json-serialization',
+    '/pages/news/cursor-vscode-json-lint-ai.html':        '/news/cursor-vscode-json-lint-ai',
+    '/pages/news/json-schema-to-typescript-v6.html':      '/news/json-schema-to-typescript-v6',
+    '/pages/news/json-schema-w3c-recommendation.html':    '/news/json-schema-w3c-recommendation',
+    '/pages/news/json-streaming-api-browser.html':        '/news/json-streaming-api-browser',
+    '/pages/news/jsonata-2-ai-query.html':                '/news/jsonata-2-ai-query',
+    '/pages/news/mcp-10000-servers.html':                 '/news/mcp-10000-servers',
+    '/pages/news/nextjs-16-json-streaming.html':          '/news/nextjs-16-json-streaming',
+    '/pages/news/nodejs-24-json-schema.html':             '/news/nodejs-24-json-schema',
+    '/pages/news/zod-v4-5m-downloads.html':                '/news/zod-v4-5m-downloads'
+  };
+
+  // /tools/ .html redirects
+  var toolsRedirects = {
+    '/tools/base64.html':                '/tools/base64',
+    '/tools/batch-renamer.html':          '/tools/batch-renamer',
+    '/tools/css-minifier.html':           '/tools/css-minifier',
+    '/tools/csv-to-excel.html':           '/tools/csv-to-excel',
+    '/tools/excel-remove-duplicates.html': '/tools/excel-remove-duplicates',
+    '/tools/hash-generator.html':         '/tools/hash-generator',
+    '/tools/html-encoder.html':           '/tools/html-encoder',
+    '/tools/json-clean.html':             '/tools/json-clean',
+    '/tools/json-compare.html':           '/tools/json-compare',
+    '/tools/json-escape.html':            '/tools/json-escape',
+    '/tools/json-extract.html':           '/tools/json-extract',
+    '/tools/json-formatter.html':         '/tools/json-formatter',
+    '/tools/json-sort.html':              '/tools/json-sort',
+    '/tools/json-to-csv.html':            '/tools/json-to-csv',
+    '/tools/json-to-xml.html':            '/tools/json-to-xml',
+    '/tools/json-to-yaml.html':           '/tools/json-to-yaml',
+    '/tools/json-viewer.html':            '/tools/json-viewer',
+    '/tools/jwt-decoder.html':            '/tools/jwt-decoder',
+    '/tools/merge-csv.html':              '/tools/merge-csv',
+    '/tools/pdf-split.html':              '/tools/pdf-split',
+    '/tools/regex-tester.html':           '/tools/regex-tester',
+    '/tools/timestamp-converter.html':    '/tools/timestamp-converter',
+    '/tools/url-encoder.html':            '/tools/url-encoder',
+    '/tools/uuid-generator.html':         '/tools/uuid-generator'
+  };
+
+  // Root .html redirects
+  var rootRedirects = {
+    '/about.html':    '/about',
+    '/blog.html':     '/blog',
+    '/news.html':     '/news',
+    '/privacy.html':  '/privacy',
+    '/terms.html':    '/terms',
+    '/cookie.html':   '/cookie',
+    '/changelog.html': '/changelog',
+    '/best-practices.html': '/best-practices'
+  };
+
+  var allRedirects = Object.assign({}, toolRedirects, sectionRedirects, blogRedirects, newsRedirects, toolsRedirects, rootRedirects);
+
+  if (allRedirects[path]) {
+    window.location.replace(allRedirects[path]);
+    return;
+  }
+
+  // /pages/ prefix — redirect /pages/<anything> to /tools/<slug> if it looks like a tool
+  if (path.startsWith('/pages/')) {
+    var msg = document.getElementById('msg');
+    if (msg) msg.textContent = 'This page has moved. Redirecting...';
+    window.location.replace('/');
+  }
+})();
+</script>
+</body>
+</html>
