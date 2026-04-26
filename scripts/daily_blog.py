@@ -398,6 +398,508 @@ const parser = new Function('return ' + parserCode)();</code></pre>
                     <li>Profile before optimizing — use benchmarks to guide your choices</li>
                 </ul>
             '''
+        },
+        {
+            'slug': 'json-schema-validation-complete-guide-2026',
+            'title': 'JSON Schema Validation: The Complete Guide for API Developers in 2026',
+            'category': 'API Design',
+            'category_class': 'cat-api',
+            'description': 'Master JSON Schema validation for REST APIs. Learn keywords, draft-2020-12 features, custom validators, and best practices for production APIs.',
+            'keywords': 'JSON Schema, JSON validation, API validation, JSON Schema draft 2020-12, schema best practices',
+            'excerpt': 'JSON Schema is the standard for validating JSON data structures. This guide covers everything from basic type checks to advanced composition patterns for production APIs.',
+            'read_time': '9-11 min read',
+            'content': '''
+                <p class="lead">JSON Schema provides a powerful, declarative way to validate JSON data. Whether you are building REST APIs, processing configuration files, or validating form submissions, understanding JSON Schema is essential for any developer working with structured data.</p>
+
+                <h2>Why JSON Schema Matters</h2>
+                <p>Without validation, your API accepts anything — malformed payloads, missing fields, wrong data types. JSON Schema catches these problems at the boundary:</p>
+                <ul>
+                    <li><strong>Early error detection</strong>: Reject invalid data before it reaches business logic</li>
+                    <li><strong>Self-documenting APIs</strong>: The schema itself describes expected data shapes</li>
+                    <li><strong>Auto-generated forms</strong>: Frontend tools can build UI from schemas</li>
+                    <li><strong>Contract testing</strong>: Verify that producers and consumers agree on data formats</li>
+                </ul>
+
+                <h2>Core Keywords You Need to Know</h2>
+                <h3>Type Validation</h3>
+                <pre class="code-block"><code>{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "age": { "type": "integer", "minimum": 0, "maximum": 150 },
+    "email": { "type": "string", "format": "email" },
+    "isActive": { "type": "boolean", "default": true },
+    "score": { "type": "number", "exclusiveMinimum": 0 }
+  },
+  "required": ["name", "email"]
+}</code></pre>
+
+                <h3>Array Validation</h3>
+                <pre class="code-block"><code>{
+  "type": "array",
+  "items": { "$ref": "#/$defs/product" },
+  "minItems": 1,
+  "maxItems": 100,
+  "uniqueItems": true
+}</code></pre>
+
+                <h2>Advanced Composition Patterns</h2>
+                <p>Draft-2020-12 introduced powerful composition keywords:</p>
+                <pre class="code-block"><code>{
+  "oneOf": [
+    { "required": ["creditCard"] },
+    { "required": ["paypalEmail"] },
+    { "required": ["bankAccount"] }
+  ],
+  "properties": {
+    "creditCard": { "$ref": "#/$defs/creditCard" },
+    "paypalEmail": { "type": "string", "format": "email" },
+    "bankAccount": { "$ref": "#/$defs/bankAccount" }
+  }
+}</code></pre>
+
+                <h3>Composition Keywords Compared</h3>
+                <table class="comparison-table">
+                    <thead><tr><th>Keyword</th><th>Behavior</th><th>Use Case</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>allOf</code></td><td>Must match ALL schemas</td><td>Combining required fields from multiple schemas</td></tr>
+                        <tr><td><code>anyOf</code></td><td>Must match at least ONE</td><td>Flexible input formats (e.g., string or number ID)</td></tr>
+                        <tr><td><code>oneOf</code></td><td>Must match EXACTLY one</td><td>Mutually exclusive payment methods</td></tr>
+                        <tr><td><code>not</code></td><td>Must NOT match</td><td>Excluding specific values or patterns</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Using $defs for Reusable Subschemas</h2>
+                <pre class="code-block"><code>{
+  "$defs": {
+    "address": {
+      "type": "object",
+      "properties": {
+        "street": { "type": "string" },
+        "city": { "type": "string" },
+        "zipCode": { "type": "string", "pattern": "^[0-9]{5}$" }
+      },
+      "required": ["street", "city"]
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "shipping": { "$ref": "#/$defs/address" },
+        "billing": { "$ref": "#/$defs/address" }
+      }
+    }
+  }
+}</code></pre>
+
+                <h2>Custom Validators and Formats</h2>
+                <p>Built-in formats cover common cases, but you often need custom validation:</p>
+                <pre class="code-block"><code>// Ajv custom format
+ajv.addFormat('hex-color', '^#[0-9a-fA-F]{6}$');
+ajv.addFormat('username', '^[a-zA-Z0-9_]{3,20}$');
+
+// Custom keyword for cross-field validation
+ajv.addKeyword({
+  keyword: 'passwordMatch',
+  type: 'object',
+  validate: (schema, data) => data.password === data.confirmPassword
+});</code></pre>
+
+                <h2>Performance Tips</h2>
+                <ul>
+                    <li><strong>Compile once, validate many</strong>: Schema compilation is the expensive step</li>
+                    <li><strong>Use <code>$ref</code> instead of deep nesting</strong>: References are resolved once at compile time</li>
+                    <li><strong>Avoid heavy regex</strong>: Complex patterns slow down validation significantly</li>
+                    <li><strong>Set <code>allErrors: false</code></strong>: Stop at the first error for faster validation</li>
+                </ul>
+
+                <h2>Best Practices for Production APIs</h2>
+                <ul>
+                    <li>Version your schemas alongside your API</li>
+                    <li>Use <code>$id</code> for schema identification and cross-referencing</li>
+                    <li>Provide clear <code>$comment</code> annotations for documentation</li>
+                    <li>Write schemas for both request bodies and response bodies</li>
+                    <li>Use strict mode (<code>additionalProperties: false</code>) to prevent unexpected fields</li>
+                </ul>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>JSON Schema is the standard for validating JSON — use it instead of writing custom validators</li>
+                    <li>Master composition keywords (allOf, anyOf, oneOf) for complex validation rules</li>
+                    <li>Use $defs for reusable subschemas and keep your validation DRY</li>
+                    <li>Compile schemas once and reuse the validator for best performance</li>
+                    <li>Draft-2020-12 is the current standard — upgrade from draft-07 if you haven't</li>
+                </ul>
+            '''
+        },
+        {
+            'slug': 'json-vs-xml-2026-when-to-use-each',
+            'title': 'JSON vs XML in 2026: Which Format Should You Use?',
+            'category': 'Comparison',
+            'category_class': 'cat-development',
+            'description': 'A practical comparison of JSON and XML in modern development. Learn when each format excels, migration strategies, and why JSON dominates APIs while XML still matters.',
+            'keywords': 'JSON vs XML, JSON XML comparison, when to use JSON, when to use XML, data format comparison',
+            'excerpt': 'The JSON vs XML debate is far from settled. While JSON dominates web APIs, XML remains essential in enterprise systems, configuration, and document formats. Here is when to use each.',
+            'read_time': '7-9 min read',
+            'content': '''
+                <p class="lead">In 2026, JSON has become the default data format for web development, but XML is far from dead. Understanding when to use each format is a key skill for any developer building modern applications.</p>
+
+                <h2>Where JSON Dominates</h2>
+                <ul>
+                    <li><strong>REST APIs</strong>: Over 95% of public REST APIs use JSON</li>
+                    <li><strong>Configuration files</strong>: package.json, tsconfig.json, .eslintrc.json</li>
+                    <li><strong>NoSQL databases</strong>: MongoDB, CouchDB store native JSON</li>
+                    <li><strong>Real-time communication</strong>: WebSocket messages, Server-Sent Events</li>
+                    <li><strong>AI/ML data</strong>: Training configurations, model metadata, prompt templates</li>
+                </ul>
+
+                <h2>Where XML Still Matters</h2>
+                <ul>
+                    <li><strong>SOAP web services</strong>: Enterprise systems, banking, healthcare</li>
+                    <li><strong>Document formats</strong>: XHTML, SVG, MathML, RSS/Atom feeds</li>
+                    <li><strong>Configuration</strong>: Spring Framework, Maven, Android layouts</li>
+                    <li><strong>Legal and publishing</strong>: DOCX, EPUB, and XBRL are XML-based</li>
+                    <li><strong>Telecom and aviation</strong>: Industry standards still rely on XML schemas</li>
+                </ul>
+
+                <h2>Technical Comparison</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Aspect</th><th>JSON</th><th>XML</th></tr></thead>
+                    <tbody>
+                        <tr><td>Syntax</td><td>Lightweight, minimal</td><td>Verbose, tag-based</td></tr>
+                        <tr><td>Data types</td><td>Native (string, number, boolean, null)</td><td>Everything is a string</td></tr>
+                        <tr><td>Comments</td><td>No native support</td><td>Yes (&lt;!-- comment --&gt;)</td></tr>
+                        <tr><td>Namespaces</td><td>No</td><td>Yes (critical for enterprise)</td></tr>
+                        <tr><td>Schema validation</td><td>JSON Schema</td><td>XSD (more mature)</td></tr>
+                        <tr><td>Streaming</td><td>NDJSON, JSON streaming</td><td>SAX, StAX (very mature)</td></tr>
+                        <tr><td>XPath-like queries</td><td>JSONPath, JSONata</td><td>XPath, XSLT</td></tr>
+                        <tr><td>File size</td><td>~30% smaller</td><td>Larger due to tags</td></tr>
+                        <tr><td>Parser speed</td><td>Faster</td><td>Slower (more complex)</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Performance Benchmarks</h2>
+                <p>For equivalent data structures:</p>
+                <ul>
+                    <li>JSON parsing is typically <strong>2-5x faster</strong> than XML</li>
+                    <li>JSON payloads are <strong>20-40% smaller</strong> on the wire</li>
+                    <li>Memory usage for JSON objects is <strong>30-50% lower</strong></li>
+                    <li>Gzipped, the size difference narrows to <strong>10-15%</strong></li>
+                </ul>
+
+                <h2>When to Choose JSON</h2>
+                <ul>
+                    <li>Building REST APIs or GraphQL endpoints</li>
+                    <li>Frontend-backend communication in web/mobile apps</li>
+                    <li>Storing configuration for developer tools</li>
+                    <li>IoT and embedded systems (lightweight parsing)</li>
+                    <li>Any new project without legacy XML requirements</li>
+                </ul>
+
+                <h2>When to Choose XML</h2>
+                <ul>
+                    <li>Integrating with enterprise SOAP services</li>
+                    <li>Working with document-centric data (publishing, legal)</li>
+                    <li>Projects requiring mixed-content models (text + markup)</li>
+                    <li>Industries with existing XML standards (healthcare HL7, finance FIXML)</li>
+                    <li>When you need XSLT transformations</li>
+                </ul>
+
+                <h2>Migration Strategies</h2>
+                <p>If you are migrating from XML to JSON:</p>
+                <pre class="code-block"><code>// XML attributes become JSON properties
+// &lt;user id="123" active="true"&gt;  →  { "id": "123", "active": true }
+
+// XML namespaces need prefix conventions
+// &lt;ns:price xmlns:ns="..."&gt;  →  { "ns:price": 19.99 }
+
+// Mixed content requires careful handling
+// &lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;!&lt;/p&gt;  →  { "html": "&lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;!&lt;/p&gt;" }</code></pre>
+
+                <h2>The Bottom Line</h2>
+                <p>JSON is the right default for most new projects. But XML is not going away — it powers critical infrastructure worldwide. The best developers know both and choose the right tool for each job.</p>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>JSON: Choose as the default for APIs, web apps, and configuration</li>
+                    <li>XML: Still essential for enterprise integration, documents, and regulated industries</li>
+                    <li>Performance gap favors JSON, but XML has richer validation and transformation tools</li>
+                    <li>Many real-world systems use both — focus on clean conversion between formats</li>
+                </ul>
+            '''
+        },
+        {
+            'slug': 'json-web-tokens-jwt-security-best-practices',
+            'title': 'JWT Security Best Practices: Avoiding Common JSON Web Token Vulnerabilities',
+            'category': 'Security',
+            'category_class': 'cat-api',
+            'description': 'Learn critical JWT security best practices. Understand common vulnerabilities like algorithm confusion, token theft, and how to implement secure authentication with JSON Web Tokens.',
+            'keywords': 'JWT security, JSON Web Token, JWT best practices, token authentication, JWT vulnerabilities',
+            'excerpt': 'JSON Web Tokens are everywhere, but misconfigured JWTs can expose your application to serious security vulnerabilities. These practices will help you implement JWT authentication securely.',
+            'read_time': '8-10 min read',
+            'content': '''
+                <p class="lead">JSON Web Tokens (JWTs) are the backbone of modern stateless authentication. But their flexibility comes with risk — misconfigured JWTs are a top source of authentication bypasses and data leaks.</p>
+
+                <h2>How JWTs Work</h2>
+                <p>A JWT consists of three Base64URL-encoded parts separated by dots:</p>
+                <pre class="code-block"><code>// Header: algorithm and token type
+{ "alg": "RS256", "typ": "JWT" }
+
+// Payload: claims (the actual data)
+{ "sub": "user123", "exp": 1745635200, "role": "admin" }
+
+// Signature: cryptographic proof of integrity
+HMACSHA256(base64Url(header) + "." + base64Url(payload), secret)</code></pre>
+
+                <h2>Common Vulnerabilities</h2>
+
+                <h3>1. Algorithm Confusion Attack</h3>
+                <p>Attackers change the header to <code>"alg": "none"</code> or switch from RS256 to HS256:</p>
+                <pre class="code-block"><code>// Attack: Change algorithm to "none"
+{ "alg": "none", "typ": "JWT" }.
+{ "sub": "admin", "role": "superuser" }.
+// Empty signature — server accepts it!</code></pre>
+                <p><strong>Fix</strong>: Always explicitly whitelist allowed algorithms on the server.</p>
+
+                <h3>2. Weak Signing Secrets</h3>
+                <p>Using short or predictable secrets enables brute-force attacks:</p>
+                <pre class="code-block"><code>// BAD: Weak secrets
+const secret = "mySecret";          // Too short
+const secret = "password123";       // Dictionary word
+
+// GOOD: Strong secrets
+const secret = crypto.randomBytes(64).toString('hex');
+// Or use asymmetric keys (RS256) for better security</code></pre>
+
+                <h3>3. Token Expiration Issues</h3>
+                <ul>
+                    <li>Missing <code>exp</code> claim → tokens valid forever</li>
+                    <li>Setting <code>exp</code> in the past → broken auth</li>
+                    <li>Very long expiration → larger attack window</li>
+                </ul>
+
+                <h2>Security Best Practices</h2>
+
+                <h3>Token Storage</h3>
+                <table class="comparison-table">
+                    <thead><tr><th>Method</th><th>XSS Risk</th><th>CSRF Risk</th><th>Recommendation</th></tr></thead>
+                    <tbody>
+                        <tr><td>localStorage</td><td>High</td><td>Low</td><td>Not recommended</td></tr>
+                        <tr><td>Cookie (no HttpOnly)</td><td>High</td><td>High</td><td>Never use</td></tr>
+                        <tr><td>Cookie (HttpOnly + Secure)</td><td>Low</td><td>Medium</td><td>Recommended</td></tr>
+                        <tr><td>In-memory + refresh token</td><td>Low</td><td>Low</td><td>Best for SPAs</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Implementation Checklist</h3>
+                <ul>
+                    <li>✅ Use RS256 (asymmetric) for distributed systems, HS256 for monoliths</li>
+                    <li>✅ Set short access token expiration (15-30 minutes)</li>
+                    <li>✅ Use refresh tokens with rotation for long-lived sessions</li>
+                    <li>✅ Validate all claims: <code>iss</code>, <code>aud</code>, <code>exp</code>, <code>nbf</code></li>
+                    <li>✅ Include a unique <code>jti</code> (JWT ID) for token revocation</li>
+                    <li>✅ Store tokens in HttpOnly, Secure, SameSite cookies</li>
+                    <li>✅ Implement token blocklist for logout and revocation</li>
+                </ul>
+
+                <h3>Secure Implementation Example</h3>
+                <pre class="code-block"><code>import jwt from 'jsonwebtoken';
+
+// Verify token with strict validation
+function verifyToken(token) {
+    return jwt.verify(token, publicKey, {
+        algorithms: ['RS256'],           // Whitelist algorithms
+        issuer: 'https://api.myapp.com',
+        audience: 'myapp-frontend',
+        clockTolerance: 5,               // 5 second leeway
+        maxAge: '30m'                    // Max age even if exp allows
+    });
+}
+
+// Generate secure access token
+function generateAccessToken(user) {
+    return jwt.sign(
+        {
+            sub: user.id,
+            role: user.role,
+            jti: crypto.randomUUID()     // Unique token ID
+        },
+        privateKey,
+        {
+            algorithm: 'RS256',
+            expiresIn: '15m',
+            issuer: 'https://api.myapp.com',
+            audience: 'myapp-frontend'
+        }
+    );
+}</code></pre>
+
+                <h2>Refresh Token Pattern</h2>
+                <pre class="code-block"><code>// Access token: short-lived (15 min), stored in memory
+// Refresh token: long-lived (7 days), stored in HttpOnly cookie
+
+app.post('/auth/refresh', (req, res) => {
+    const refreshToken = req.cookies.refresh_token;
+    
+    // Verify refresh token
+    const payload = verifyRefreshToken(refreshToken);
+    
+    // Rotate: invalidate old, issue new
+    revokeToken(refreshToken);
+    const newAccess = generateAccessToken(payload.user);
+    const newRefresh = generateRefreshToken(payload.user);
+    
+    res.cookie('refresh_token', newRefresh, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+        maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+    
+    res.json({ access_token: newAccess });
+});</code></pre>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Always whitelist allowed algorithms — never trust the header</li>
+                    <li>Use strong signing secrets (256-bit minimum for HS256)</li>
+                    <li>Keep access tokens short-lived and use refresh token rotation</li>
+                    <li>Store tokens in HttpOnly + Secure cookies, not localStorage</li>
+                    <li>Validate all standard claims on every request</li>
+                </ul>
+            '''
+        },
+        {
+            'slug': 'handling-large-json-files-streaming-parsing',
+            'title': 'Handling Large JSON Files: Streaming, Chunking, and Memory-Efficient Processing',
+            'category': 'Performance',
+            'category_class': 'cat-performance',
+            'description': 'Learn how to process large JSON files (GBs) without running out of memory. Covers streaming parsers, NDJSON, ijson, SAX-style processing, and practical examples in Python, JavaScript, and Go.',
+            'keywords': 'large JSON files, JSON streaming, JSON parsing memory, NDJSON, ijson, process big JSON',
+            'excerpt': 'When JSON files grow to hundreds of megabytes or gigabytes, standard parsers crash with out-of-memory errors. These streaming and chunking strategies let you process massive JSON files efficiently.',
+            'read_time': '8-10 min read',
+            'content': '''
+                <p class="lead">A 2 GB JSON file will consume 4-6 GB of RAM when loaded into memory as a parsed object. For data pipelines, ETL jobs, and server applications, this is simply unacceptable. Streaming and incremental processing are the answer.</p>
+
+                <h2>The Problem with Standard Parsers</h2>
+                <pre class="code-block"><code>// BAD: Loads entire file into memory
+const data = JSON.parse(fs.readFileSync('large-data.json'));
+// 2 GB file → 4-6 GB RAM usage → process crashes
+
+// BETTER: Read file as stream
+const stream = fs.createReadStream('large-data.json');</code></pre>
+
+                <h2>Strategy 1: NDJSON (Newline-Delimited JSON)</h2>
+                <p>The simplest approach: store each record as a separate JSON line:</p>
+                <pre class="code-block"><code>// Each line is a complete JSON object
+{"id":1,"name":"Alice","score":95}
+{"id":2,"name":"Bob","score":87}
+{"id":3,"name":"Carol","score":92}
+
+// Process line by line — constant memory
+const rl = readline.createInterface({ input: fs.createReadStream('data.ndjson') });
+for await (const line of rl) {
+    const record = JSON.parse(line);
+    processRecord(record);  // Only one record in memory
+}</code></pre>
+
+                <h2>Strategy 2: Streaming JSON Parsers</h2>
+
+                <h3>JavaScript: <code>JSONStream</code></h3>
+                <pre class="code-block"><code>const JSONStream = require('JSONStream');
+
+// Stream-parse specific paths from large JSON
+fs.createReadStream('huge-array.json')
+    .pipe(JSONStream.parse('items.*'))
+    .on('data', (item) => {
+        // Process each item as it arrives
+        processItem(item);
+    });</code></pre>
+
+                <h3>Python: <code>ijson</code></h3>
+                <pre class="code-block"><code>import ijson
+
+# Parse specific keys from large files
+with open('large-data.json', 'rb') as f:
+    for item in ijson.items(f, 'users.item'):
+        process_user(item)  # One user at a time
+
+# Parse lazily with ijson
+for prefix, event, value in ijson.parse(open('data.json', 'rb')):
+    if prefix == 'results.item.name':
+        print(value)</code></pre>
+
+                <h3>Go: <code>json.Decoder</code></h3>
+                <pre class="code-block"><code>file, _ := os.Open("large-data.json")
+defer file.Close()
+decoder := json.NewDecoder(file)
+
+// Read opening bracket
+t, _ := decoder.Token() // "["
+
+// Decode items one at a time
+for decoder.More() {
+    var item Item
+    decoder.Decode(&item)
+    processItem(item)
+}</code></pre>
+
+                <h2>Strategy 3: SAX-Style Event Parsing</h2>
+                <pre class="code-block"><code>import { JSONParser } from '@streamparser/json';
+
+const parser = new JSONParser();
+parser.onValue = ({ value, key, parent, stack }) => {
+    // Called for every value in the JSON
+    if (stack.length > 0 && stack[stack.length - 1].key === 'email') {
+        console.log('Found email:', value);
+    }
+};
+
+fs.createReadStream('users.json').pipe(parser);</code></pre>
+
+                <h2>Strategy 4: File Chunking</h2>
+                <p>Split large files into smaller chunks for parallel processing:</p>
+                <pre class="code-block"><code># Python: Split NDJSON into chunks
+import os
+
+def split_ndjson(input_path, chunk_size=10000):
+    chunk = []
+    part = 0
+    with open(input_path) as f:
+        for line in f:
+            chunk.append(line)
+            if len(chunk) >= chunk_size:
+                with open(f'part_{part}.ndjson', 'w') as out:
+                    out.writelines(chunk)
+                chunk = []
+                part += 1
+
+# Process chunks in parallel using multiprocessing
+from multiprocessing import Pool
+with Pool(4) as p:
+    results = p.map(process_chunk, glob('part_*.ndjson'))</code></pre>
+
+                <h2>Memory Comparison</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Method</th><th>Memory Usage</th><th>Speed</th><th>Best For</th></tr></thead>
+                    <tbody>
+                        <tr><td>JSON.parse()</td><td>Full file size × 2-3x</td><td>Fastest</td><td>Small files (&lt;100 MB)</td></tr>
+                        <tr><td>NDJSON line-by-line</td><td>Single record</td><td>Fast</td><td>Record-oriented data</td></tr>
+                        <tr><td>Streaming parser</td><td>Single node</td><td>Medium</td><td>Large nested objects</td></tr>
+                        <tr><td>Event-based (SAX)</td><td>Minimal</td><td>Slower</td><td>Extracting specific fields</td></tr>
+                        <tr><td>File chunking + parallel</td><td>Chunk size per worker</td><td>Fastest for big data</td><td>Batch processing pipelines</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Never load multi-hundred-MB JSON files with standard parsers</li>
+                    <li>NDJSON is the simplest streaming format — use it for new data pipelines</li>
+                    <li>Use ijson (Python), JSONStream (Node.js), or json.Decoder (Go) for existing files</li>
+                    <li>Chunk files and process in parallel for maximum throughput</li>
+                    <li>Profile memory usage — tools like <code>memory_profiler</code> help identify bottlenecks</li>
+                </ul>
+            '''
         }
     ]
     
