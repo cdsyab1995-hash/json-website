@@ -5,5 +5,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.aijsons.com/sitemap.xml
-
-Crawl-delay: 1
