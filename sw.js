@@ -72,7 +72,18 @@ self.addEventListener('fetch', (event) => {
     
     // CRITICAL: Always fetch HTML pages from network (no SW caching for HTML)
     // This prevents serving stale cached pages and ensures proper MIME types
-    if (pathname.endsWith('.html') || pathname.endsWith('/')) {
+    // Match: *.html OR paths ending with / (directory-style URLs) OR known HTML directories
+    const isHtmlRequest = 
+        pathname.endsWith('.html') ||
+        pathname.endsWith('/') ||
+        pathname === '/blog' || pathname === '/news' ||
+        pathname === '/about' || pathname === '/changelog' ||
+        pathname === '/privacy' || pathname === '/terms' ||
+        pathname === '/cookie' || pathname === '/best-practices' ||
+        pathname.startsWith('/blog/') || pathname.startsWith('/news/') ||
+        pathname.startsWith('/tools/');
+    
+    if (isHtmlRequest) {
         event.respondWith(
             fetch(event.request).catch(() => {
                 // Fallback for offline HTML requests
