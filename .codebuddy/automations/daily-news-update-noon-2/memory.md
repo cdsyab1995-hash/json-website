@@ -1,5 +1,15 @@
 # Daily News Update - Noon 执行历史
 
+## 2026-04-27 12:00
+- **状态**：✅ 成功
+- **说明**：早些时候有另一自动化任务已生成 cursor-3-json-ai-intellisense 文章并更新 Featured。本次新增3篇文章，Featured 改为 Bun 1.2，All News 顶部插入3篇+保留 cursor-3。
+- **新增文章**：
+  - `news/bun-1-2-json-http-server`：Bun 1.2 原生 JSON HTTP 服务端（Response.json()、2x 吞吐、流式 JSON、Bun.validateJSON）
+  - `news/python-3-14-fast-json-orjson`：Python 3.14 标准库集成 orjson（3-5x 解析、10x 序列化、json.Options API）
+  - `news/openapi-4-json-schema-2020-12`：OpenAPI 4.0 完整采用 JSON Schema 2020-12（$dynamicRef、$defs、消除双 schema 问题）
+- **更新内容**：news/index.html Featured→Bun 1.2，All News 顶部+4篇（含 cursor-3）；sitemap.xml +5 URL（含 gemini-25、openai-agents-sdk 补录），news lastmod→2026-04-27
+- **Git提交**：Daily news update 2026-04-27: Bun 1.2 JSON HTTP server, Python 3.14 fast JSON, OpenAPI 4.0 JSON Schema 2020-12 ✅ 已推送
+
 ## 2026-04-26 12:00
 - **状态**：✅ 成功
 - **说明**：daily_news.py 不存在，手动生成 4 篇新闻文章（+1 nodejs-24-lts，来自其他任务，本次新增3篇）

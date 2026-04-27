@@ -200,49 +200,49 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/ai-tool-calling-mcp-2026</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/compare-json-documents-find-differences</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/curl-json-api-guide</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/json-api-error-handling-2026</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/json-edge-computing-cloudflare-workers</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/json-parsing-performance-comparison</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/json-patch-vs-merge-patch</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/json-schema-complete-guide-2026</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -254,25 +254,25 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/jwt-security-best-practices-2026</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/mcp-json-standardizing-ai-tools</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/model-context-protocol-json-rpc-ai-tools</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/postgresql-jsonb-vs-mongodb-document-store</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -284,19 +284,19 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/sort-json-arrays-objects-guide</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/zod-json-schema-validation-ai</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/blog/json-performance-optimization-2026</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -320,25 +320,25 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/news/browser-devtools-json-schema</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/bun-2-json-serialization</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/cursor-vscode-json-lint-ai</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/json-schema-to-typescript-v6</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
@@ -350,37 +350,37 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/news/json-streaming-api-browser</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/jsonata-2-ai-query</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/mcp-10000-servers</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/nextjs-16-json-streaming</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/nodejs-24-json-schema</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.aijsons.com/news/zod-v4-5m-downloads</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
@@ -494,8 +494,23 @@
   </url>
   <url>
     <loc>https://www.aijsons.com/news/openai-agents-sdk-json-strict-mode</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
+  </url>
+
+
+  <url>
+    <loc>https://www.aijsons.com/blog/handling-large-json-files-streaming-parsing</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-web-tokens-jwt-security-best-practices</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

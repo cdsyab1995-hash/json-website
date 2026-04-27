@@ -11,6 +11,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 # ==================== 配置 ====================
 BLOG_DIR = r'd:\网站开发-json\blog'
 INDEX_FILE = r'd:\网站开发-json\blog\index.html'
+SITEMAP_FILE = r'd:\网站开发-json\sitemap.xml'
 TODAY = datetime.date.today().strftime('%Y-%m-%d')
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', '')
 
@@ -943,6 +944,14 @@ def generate_article():
     <meta property="og:url" content="https://www.aijsons.com/blog/{article['slug']}">
     <meta property="og:title" content="{article['title']}">
     <meta property="og:description" content="{article['description']}">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{article['title']}">
+    <meta name="twitter:description" content="{article['description']}">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
     <meta property="article:published_time" content="{TODAY}">
     <meta property="article:section" content="{article['category']}">
 
@@ -1079,6 +1088,29 @@ def update_blog_index(new_article):
     
     print(f'✓ Updated blog index: {INDEX_FILE}')
 
+# ==================== 更新 sitemap.xml ====================
+def update_sitemap(slug):
+    """将新文章添加到 sitemap.xml"""
+    with open(SITEMAP_FILE, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    loc_url = f'https://www.aijsons.com/blog/{slug}'
+    if loc_url in content:
+        print(f'  ~ Already in sitemap: {slug}')
+        return
+
+    new_entry = f'''
+  <url>
+    <loc>{loc_url}</loc>
+    <lastmod>{TODAY}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>'''
+    content = content.replace('</urlset>', new_entry + '\n</urlset>')
+    with open(SITEMAP_FILE, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f'✓ Added to sitemap: {slug}')
+
 # ==================== GitHub 推送 ====================
 def push_to_github(commit_msg):
     """推送到 GitHub"""
@@ -1110,15 +1142,19 @@ def main():
     print('=' * 50)
     
     # 1. 生成新文章
-    print('\n[1/3] Generating new article...')
+    print('\n[1/4] Generating new article...')
     new_article = generate_article()
     
     # 2. 更新博客索引
-    print('\n[2/3] Updating blog index...')
+    print('\n[2/4] Updating blog index...')
     update_blog_index(new_article)
     
-    # 3. 推送到 GitHub
-    print('\n[3/3] Pushing to GitHub...')
+    # 3. 更新 sitemap
+    print('\n[3/4] Updating sitemap...')
+    update_sitemap(new_article['slug'])
+    
+    # 4. 推送到 GitHub
+    print('\n[4/4] Pushing to GitHub...')
     commit_msg = f'Blog: Add new article - {new_article["title"]}'
     push_to_github(commit_msg)
     
