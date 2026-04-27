@@ -977,9 +977,9 @@ def generate_article():
         "articleSection": "{article['category']}"
     }}
     </script>
+<script src="/js/navbar.js"></script>
 </head>
 <body>
-    <!-- NAVBAR -->
     <div id="navbar-placeholder"></div>
 
     <main class="main-container">
@@ -1022,8 +1022,8 @@ def generate_article():
             <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
         </p>
     </footer>
-    
-    <script src="/js/navbar.js"></script>
+
+    <script src="/js/app.js" defer></script>
 </body>
 </html>'''
 
