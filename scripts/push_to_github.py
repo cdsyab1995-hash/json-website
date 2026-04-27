@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Git push script"""
 import subprocess
 import os
 
@@ -16,7 +17,7 @@ def main():
     
     # Commit
     print('Committing...')
-    result = subprocess.run([git, 'commit', '-m', 'Clean up: remove dead code'], cwd=work_dir)
+    subprocess.run([git, 'commit', '-m', 'Update aijsons.com'], cwd=work_dir)
     
     # Push
     print('Pushing...')
