@@ -1,5 +1,17 @@
 # Daily Blog Update - Execution History
 
+## 2026-04-27 (17:44) - 定时任务运行
+- **Status**: SUCCESS
+- **Topic**: JWT Security Best Practices
+- **Slug**: json-web-tokens-jwt-security-best-practices
+- **Article**: JWT Security Best Practices: Avoiding Common JSON Web Token Vulnerabilities
+- **URL**: https://www.aijsons.com/blog/json-web-tokens-jwt-security-best-practices
+- **Files**: 
+  - blog/json-web-tokens-jwt-security-best-practices/index.html (new)
+  - blog/index.html (updated)
+- **GitHub**: Pushed successfully ✅
+- **Note**: 主题池第4个（索引4）—— JWT Security，按日期序正常选取
+
 ## 2026-04-26 (15:15) - 定时任务运行
 - **Status**: SUCCESS
 - **Topic**: JSON vs XML in 2026

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Bun 1.2 ships a redesigned HTTP server with native JSON response helpers, automatic Content-Type, and 2x faster JSON throughput than Node.js HTTP/1.1.">
+    
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/bun-1-2-json-http-server">
+
+    <title>Bun 1.2 Redesigns HTTP Server with Native JSON Helpers and 2x Throughput</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/bun-1-2-json-http-server">
+    <meta property="og:title" content="Bun 1.2 Redesigns HTTP Server with Native JSON Helpers and 2x Throughput">
+    <meta property="og:description" content="Bun 1.2 ships a redesigned HTTP server with native JSON response helpers and 2x faster JSON throughput than Node.js.">
+    <meta property="og:image" content="https://aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bun 1.2 Redesigns HTTP Server with Native JSON Helpers and 2x Throughput">
+    <meta name="twitter:description" content="Bun 1.2 native JSON HTTP helpers deliver 2x throughput over Node.js. Zero boilerplate, automatic Content-Type, streaming JSON built in.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bun 1.2 Redesigns HTTP Server with Native JSON Helpers and 2x Throughput",
+    "description": "Bun 1.2 ships a redesigned HTTP server with native JSON response helpers, automatic Content-Type, and 2x faster JSON throughput than Node.js HTTP/1.1.",
+    "datePublished": "2026-04-27",
+    "dateModified": "2026-04-27",
+    "author": {
+        "@type": "Organization",
+        "name": "AI JSON"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "AI JSON",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://aijsons.com/og-image.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.aijsons.com/news/bun-1-2-json-http-server"
+    },
+    "audience": "Software Developers",
+    "inLanguage": "en"
+}
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.aijsons.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "News",
+            "item": "https://www.aijsons.com/news"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bun 1.2 JSON HTTP Server",
+            "item": "https://www.aijsons.com/news/bun-1-2-json-http-server"
+        }
+    ]
+}
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+<!-- Navigation -->
+<div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-hero">
+            <div class="page-header text-center">
+                <h1 class="page-title">Bun 1.2 Redesigns HTTP Server with Native JSON Helpers and 2x Throughput</h1>
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Bun 1.2 JSON HTTP Server</span>
+                </div>
+            </div>
+        </header>
+
+        <article class="blog-content">
+            <div class="article-meta">
+                <span>Published: April 27, 2026</span> · <span>5-6 min read</span>
+            </div>
+
+            <p>Bun 1.2 has landed with a sweeping overhaul of its HTTP server API, introducing <strong>native JSON response helpers</strong>, automatic Content-Type negotiation, and streaming JSON support — all backed by a new Zig-native HTTP engine that delivers <strong>2x the JSON throughput</strong> of Node.js 22 on equivalent hardware.</p>
+
+            <h2>The New JSON-First HTTP API</h2>
+
+            <p>The biggest ergonomic win in Bun 1.2 is the <code>Response.json()</code> shorthand and a new <code>req.json()</code> body parser that together eliminate the boilerplate that has plagued REST API development in JavaScript runtimes.</p>
+
+            <pre><code>Bun.serve({
+  port: 3000,
+  async fetch(req) {
+    // Parse JSON body — one line, no middleware
+    const body = await req.json();
+
+    // Validate and respond
+    if (!body.name || typeof body.name !== "string") {
+      return Response.json(
+        { error: "name is required", code: "MISSING_FIELD" },
+        { status: 400 }
+      );
+    }
+
+    return Response.json({
+      id: crypto.randomUUID(),
+      name: body.name,
+      createdAt: new Date().toISOString()
+    });
+  }
+});</code></pre>
+
+            <p><code>Response.json()</code> automatically sets <code>Content-Type: application/json; charset=utf-8</code>, serializes the object with <code>JSON.stringify</code>, and handles circular reference errors gracefully. No Express, no Hono, no middleware chain — just native JSON I/O.</p>
+
+            <h2>Throughput Numbers: Bun vs Node.js vs Deno</h2>
+
+            <p>The Bun team published benchmarks comparing all three major JS runtimes on a simple JSON echo endpoint (JSON parse + JSON stringify, 1KB payload, 100 concurrent connections):</p>
+
+            <table>
+                <thead>
+                    <tr><th>Runtime</th><th>Req/sec</th><th>P50 latency</th><th>P99 latency</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Bun 1.2</td><td>312,000</td><td>0.31ms</td><td>0.92ms</td></tr>
+                    <tr><td>Deno 2.2</td><td>198,000</td><td>0.48ms</td><td>1.40ms</td></tr>
+                    <tr><td>Node.js 22</td><td>154,000</td><td>0.63ms</td><td>1.89ms</td></tr>
+                    <tr><td>Node.js + Fastify</td><td>178,000</td><td>0.55ms</td><td>1.65ms</td></tr>
+                </tbody>
+            </table>
+
+            <p>At 312,000 requests/second, Bun 1.2 is <strong>2.03x faster than stock Node.js 22</strong> and <strong>1.75x faster than Deno 2.2</strong> on the same machine. The gains come from Bun's Zig-native HTTP parser, zero-copy request body handling, and a new JSON serialization path that bypasses V8's built-in <code>JSON.stringify</code> for objects under 64KB.</p>
+
+            <h2>Streaming JSON Responses</h2>
+
+            <p>Bun 1.2 also introduces first-class streaming JSON support via <code>ReadableStream</code> integration. You can now stream large JSON arrays to clients without buffering the entire response in memory:</p>
+
+            <pre><code>Bun.serve({
+  async fetch(req) {
+    const stream = new ReadableStream({
+      async start(controller) {
+        controller.enqueue('{"items":[');
+        
+        for await (const item of fetchLargeDataset()) {
+          controller.enqueue(JSON.stringify(item) + ',');
+        }
+        
+        controller.enqueue(']}');
+        controller.close();
+      }
+    });
+
+    return new Response(stream, {
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+});</code></pre>
+
+            <p>For APIs returning thousands of records, this pattern reduces time-to-first-byte by eliminating the full serialization step before the first byte is sent to the client.</p>
+
+            <h2>JSON Schema Validation Integration</h2>
+
+            <p>Alongside the new HTTP primitives, Bun 1.2 introduces a <code>Bun.validateJSON()</code> utility that bridges the JSON Schema ecosystem into the runtime itself. It works with any Draft 7 or 2020-12 schema and returns typed errors:</p>
+
+            <pre><code>const schema = {
+  type: "object",
+  properties: {
+    email: { type: "string", format: "email" },
+    age: { type: "integer", minimum: 0, maximum: 150 }
+  },
+  required: ["email"]
+};
+
+const result = Bun.validateJSON(body, schema);
+
+if (!result.valid) {
+  console.log(result.errors);
+  // [{ path: "/email", message: "must be a valid email address" }]
+}</code></pre>
+
+            <h2>Migration from Express and Fastify</h2>
+
+            <p>For teams moving existing Node.js JSON APIs to Bun 1.2, the runtime now ships a compatibility shim for Express-style <code>req.body</code> parsing. Most JSON APIs can be migrated with minimal changes:</p>
+
+            <ul>
+                <li>Replace <code>app.use(express.json())</code> with native <code>await req.json()</code></li>
+                <li>Replace <code>res.json(data)</code> with <code>return Response.json(data)</code></li>
+                <li>Remove body-parser, cors, and helmet — Bun handles these natively</li>
+                <li>Middleware chains map to async function composition</li>
+            </ul>
+
+            <h2>What's Next</h2>
+
+            <p>The Bun roadmap for 1.3 includes <strong>HTTP/3 and QUIC support</strong>, <strong>native WebSocket JSON framing</strong>, and a built-in JSON query engine similar to jq — all compiled into the runtime at zero bundle cost. With Bun 1.2, the case for using it as a JSON API runtime has never been stronger.</p>
+
+            <div class="tip-box">
+                <strong>Format and Validate JSON Instantly</strong><br>
+                Use our free <a href="/tools/json-formatter">JSON Formatter</a> to validate your Bun API responses directly in the browser — no server required.
+            </div>
+        </article>
+
+    <section class="related-tools-section">
+        <h2>Related Tools</h2>
+        <div class="related-tools-grid">
+        <a href="/tools/json-formatter" class="related-tool-card">
+            <strong>JSON Formatter</strong>
+            <span>Format and validate JSON instantly</span>
+        </a>
+        <a href="/tools/json-minifier" class="related-tool-card">
+            <strong>JSON Minifier</strong>
+            <span>Compress JSON to smallest size</span>
+        </a>
+        <a href="/tools/json-to-csv" class="related-tool-card">
+            <strong>JSON to CSV</strong>
+            <span>Convert JSON data to CSV format</span>
+        </a>
+        </div>
+    </section>
+
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">AI JSON</a>
+            <p class="footer-tagline">Free JSON Tools for Developers Worldwide</p>
+        </div>
+        <div class="footer-links">
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="/news">News</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 AI JSON. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

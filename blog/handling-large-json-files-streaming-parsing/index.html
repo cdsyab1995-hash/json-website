@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Learn how to process large JSON files (GBs) without running out of memory. Covers streaming parsers, NDJSON, ijson, SAX-style processing, and practical examples in Python, JavaScript, and Go.">
+    <meta name="keywords" content="large JSON files, JSON streaming, JSON parsing memory, NDJSON, ijson, process big JSON">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>Handling Large JSON Files: Streaming, Chunking, and Memory-Efficient Processing | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/handling-large-json-files-streaming-parsing">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/blog/handling-large-json-files-streaming-parsing">
+    <meta property="og:title" content="Handling Large JSON Files: Streaming, Chunking, and Memory-Efficient Processing">
+    <meta property="og:description" content="Learn how to process large JSON files (GBs) without running out of memory. Covers streaming parsers, NDJSON, ijson, SAX-style processing, and practical examples in Python, JavaScript, and Go.">
+    <meta property="article:published_time" content="2026-04-27">
+    <meta property="article:section" content="Performance">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Handling Large JSON Files: Streaming, Chunking, and Memory-Efficient Processing",
+        "description": "Learn how to process large JSON files (GBs) without running out of memory. Covers streaming parsers, NDJSON, ijson, SAX-style processing, and practical examples in Python, JavaScript, and Go.",
+        "datePublished": "2026-04-27",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/blog/handling-large-json-files-streaming-parsing",
+        "articleSection": "Performance"
+    }
+    </script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/blog">Blog</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-performance">Performance</div>
+                <h1 class="article-title">Handling Large JSON Files: Streaming, Chunking, and Memory-Efficient Processing</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-27</span> · <span>8-10 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                
+                <p class="lead">A 2 GB JSON file will consume 4-6 GB of RAM when loaded into memory as a parsed object. For data pipelines, ETL jobs, and server applications, this is simply unacceptable. Streaming and incremental processing are the answer.</p>
+
+                <h2>The Problem with Standard Parsers</h2>
+                <pre class="code-block"><code>// BAD: Loads entire file into memory
+const data = JSON.parse(fs.readFileSync('large-data.json'));
+// 2 GB file → 4-6 GB RAM usage → process crashes
+
+// BETTER: Read file as stream
+const stream = fs.createReadStream('large-data.json');</code></pre>
+
+                <h2>Strategy 1: NDJSON (Newline-Delimited JSON)</h2>
+                <p>The simplest approach: store each record as a separate JSON line:</p>
+                <pre class="code-block"><code>// Each line is a complete JSON object
+{"id":1,"name":"Alice","score":95}
+{"id":2,"name":"Bob","score":87}
+{"id":3,"name":"Carol","score":92}
+
+// Process line by line — constant memory
+const rl = readline.createInterface({ input: fs.createReadStream('data.ndjson') });
+for await (const line of rl) {
+    const record = JSON.parse(line);
+    processRecord(record);  // Only one record in memory
+}</code></pre>
+
+                <h2>Strategy 2: Streaming JSON Parsers</h2>
+
+                <h3>JavaScript: <code>JSONStream</code></h3>
+                <pre class="code-block"><code>const JSONStream = require('JSONStream');
+
+// Stream-parse specific paths from large JSON
+fs.createReadStream('huge-array.json')
+    .pipe(JSONStream.parse('items.*'))
+    .on('data', (item) => {
+        // Process each item as it arrives
+        processItem(item);
+    });</code></pre>
+
+                <h3>Python: <code>ijson</code></h3>
+                <pre class="code-block"><code>import ijson
+
+# Parse specific keys from large files
+with open('large-data.json', 'rb') as f:
+    for item in ijson.items(f, 'users.item'):
+        process_user(item)  # One user at a time
+
+# Parse lazily with ijson
+for prefix, event, value in ijson.parse(open('data.json', 'rb')):
+    if prefix == 'results.item.name':
+        print(value)</code></pre>
+
+                <h3>Go: <code>json.Decoder</code></h3>
+                <pre class="code-block"><code>file, _ := os.Open("large-data.json")
+defer file.Close()
+decoder := json.NewDecoder(file)
+
+// Read opening bracket
+t, _ := decoder.Token() // "["
+
+// Decode items one at a time
+for decoder.More() {
+    var item Item
+    decoder.Decode(&item)
+    processItem(item)
+}</code></pre>
+
+                <h2>Strategy 3: SAX-Style Event Parsing</h2>
+                <pre class="code-block"><code>import { JSONParser } from '@streamparser/json';
+
+const parser = new JSONParser();
+parser.onValue = ({ value, key, parent, stack }) => {
+    // Called for every value in the JSON
+    if (stack.length > 0 && stack[stack.length - 1].key === 'email') {
+        console.log('Found email:', value);
+    }
+};
+
+fs.createReadStream('users.json').pipe(parser);</code></pre>
+
+                <h2>Strategy 4: File Chunking</h2>
+                <p>Split large files into smaller chunks for parallel processing:</p>
+                <pre class="code-block"><code># Python: Split NDJSON into chunks
+import os
+
+def split_ndjson(input_path, chunk_size=10000):
+    chunk = []
+    part = 0
+    with open(input_path) as f:
+        for line in f:
+            chunk.append(line)
+            if len(chunk) >= chunk_size:
+                with open(f'part_{part}.ndjson', 'w') as out:
+                    out.writelines(chunk)
+                chunk = []
+                part += 1
+
+# Process chunks in parallel using multiprocessing
+from multiprocessing import Pool
+with Pool(4) as p:
+    results = p.map(process_chunk, glob('part_*.ndjson'))</code></pre>
+
+                <h2>Memory Comparison</h2>
+                <table class="comparison-table">
+                    <thead><tr><th>Method</th><th>Memory Usage</th><th>Speed</th><th>Best For</th></tr></thead>
+                    <tbody>
+                        <tr><td>JSON.parse()</td><td>Full file size × 2-3x</td><td>Fastest</td><td>Small files (&lt;100 MB)</td></tr>
+                        <tr><td>NDJSON line-by-line</td><td>Single record</td><td>Fast</td><td>Record-oriented data</td></tr>
+                        <tr><td>Streaming parser</td><td>Single node</td><td>Medium</td><td>Large nested objects</td></tr>
+                        <tr><td>Event-based (SAX)</td><td>Minimal</td><td>Slower</td><td>Extracting specific fields</td></tr>
+                        <tr><td>File chunking + parallel</td><td>Chunk size per worker</td><td>Fastest for big data</td><td>Batch processing pipelines</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Never load multi-hundred-MB JSON files with standard parsers</li>
+                    <li>NDJSON is the simplest streaming format — use it for new data pipelines</li>
+                    <li>Use ijson (Python), JSONStream (Node.js), or json.Decoder (Go) for existing files</li>
+                    <li>Chunk files and process in parallel for maximum throughput</li>
+                    <li>Profile memory usage — tools like <code>memory_profiler</code> help identify bottlenecks</li>
+                </ul>
+            
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-viewer" class="related-tool-card">
+                    <strong>JSON Viewer</strong>
+                    <span>Visualize JSON as tree</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+    
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
