@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Pydantic v3 rewrites its JSON serialization core in Rust, delivering 3-8x faster validation and serialization with zero breaking changes to the Python API.">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/pydantic-v3-rust-json-performance">
+
+    <title>Pydantic v3 Rewrites JSON Core in Rust: 3-8x Faster Validation and Serialization | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/pydantic-v3-rust-json-performance">
+    <meta property="og:title" content="Pydantic v3 Rewrites JSON Core in Rust: 3-8x Faster Validation and Serialization">
+    <meta property="og:description" content="Pydantic v3 rewrites its JSON serialization core in Rust, delivering 3-8x faster validation and serialization with zero breaking changes to the Python API.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pydantic v3 Rewrites JSON Core in Rust: 3-8x Faster Validation and Serialization">
+    <meta name="twitter:description" content="Pydantic v3 rewrites its JSON serialization core in Rust, delivering 3-8x faster validation and serialization with zero breaking changes to the Python API.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Pydantic v3 Rewrites JSON Core in Rust: 3-8x Faster Validation and Serialization",
+        "description": "Pydantic v3 rewrites its JSON serialization core in Rust, delivering 3-8x faster validation and serialization with zero breaking changes to the Python API.",
+        "datePublished": "April 28, 2026",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/pydantic-v3-rust-json-performance",
+        "articleSection": "News"
+    }
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Performance</div>
+                <h1 class="article-title">Pydantic v3 Rewrites JSON Core in Rust: 3-8x Faster Validation and Serialization</h1>
+                <div class="article-meta">
+                    <span>Published: April 28, 2026</span> · <span>6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>Pydantic v3 is out, and it marks the most significant performance leap in the library's history. Building on the Rust foundation introduced in Pydantic v2 (via <code>pydantic-core</code>), v3 completes the migration by rewriting the <strong>JSON serialization and deserialization pipeline entirely in Rust</strong> — delivering <strong>3-8x faster validation</strong> and <strong>up to 12x faster JSON serialization</strong> compared to v2, with zero breaking changes to the Python API.</p>
+
+                <h2>The Architecture Shift</h2>
+
+                <p>Pydantic v2 introduced <code>pydantic-core</code>, a Rust extension module handling validation logic, but JSON serialization still went through Python's standard <code>json</code> module for the final encoding step. Pydantic v3 eliminates this Python bottleneck entirely:</p>
+
+                <pre><code>from pydantic import BaseModel
+from datetime import datetime
+from typing import Optional
+
+class Order(BaseModel):
+    order_id: str
+    user_id: int
+    items: list[dict]
+    total: float
+    created_at: datetime
+    notes: Optional[str] = None
+
+order = Order(
+    order_id="ord_abc123",
+    user_id=42,
+    items=[{"sku": "A1", "qty": 2}, {"sku": "B3", "qty": 1}],
+    total=149.99,
+    created_at=datetime.now(),
+)
+
+# Pydantic v3: entire pipeline is Rust — Python never touches the JSON bytes
+json_str = order.model_dump_json()
+# ~8x faster than Pydantic v2 for this model</code></pre>
+
+                <p>The new <code>pydantic-core</code> v3 serializer bypasses Python's object graph entirely for <code>model_dump_json()</code> — it reads the model's field values directly from the Rust-side representation and writes JSON bytes without any Python string intermediaries.</p>
+
+                <h2>Benchmark Results</h2>
+
+                <p>The Pydantic team ran benchmarks across a range of real-world model sizes, comparing v3 against v2 and v1 on Python 3.13:</p>
+
+                <table>
+                    <thead>
+                        <tr><th>Scenario</th><th>Pydantic v1</th><th>Pydantic v2</th><th>Pydantic v3</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Parse small model (5 fields)</td><td>45µs</td><td>8µs</td><td>2.1µs</td></tr>
+                        <tr><td>Parse large model (50 fields)</td><td>320µs</td><td>62µs</td><td>14µs</td></tr>
+                        <tr><td>Serialize small → JSON</td><td>38µs</td><td>14µs</td><td>1.8µs</td></tr>
+                        <tr><td>Serialize 1,000-item list → JSON</td><td>28ms</td><td>9ms</td><td>0.7ms</td></tr>
+                        <tr><td>Validate nested model (3 levels)</td><td>210µs</td><td>44µs</td><td>9µs</td></tr>
+                        <tr><td>Parse from JSON string</td><td>52µs</td><td>11µs</td><td>2.4µs</td></tr>
+                    </tbody>
+                </table>
+
+                <p>The gains are most dramatic for serialization (converting Python models back to JSON), where the v3 Rust path is consistently <strong>7-13x faster than v2</strong>. For high-throughput FastAPI endpoints returning large model lists, this translates directly into increased request throughput and reduced CPU cost.</p>
+
+                <h2>New: Streaming JSON Serialization</h2>
+
+                <p>Pydantic v3 introduces a new <code>model_dump_json_stream()</code> method for large models and lists, enabling chunk-by-chunk JSON output without materializing the full string in memory:</p>
+
+                <pre><code>from pydantic import BaseModel
+from typing import Iterator
+
+class Product(BaseModel):
+    id: str
+    name: str
+    description: str
+    price: float
+    attributes: dict
+
+def stream_products(products: list[Product]) -> Iterator[bytes]:
+    # Yields JSON chunks — no full string in memory
+    yield b'{"products":['
+    for i, product in enumerate(products):
+        if i > 0:
+            yield b','
+        yield from product.model_dump_json_stream()
+    yield b']}'
+
+# FastAPI / Starlette streaming response
+from fastapi.responses import StreamingResponse
+return StreamingResponse(
+    stream_products(large_product_list),
+    media_type="application/json"
+)</code></pre>
+
+                <p>For APIs returning thousands of records, streaming reduces time-to-first-byte by eliminating the full serialization step before the response starts. Memory usage for a 10,000-item list drops from ~180MB to under 5MB with streaming enabled.</p>
+
+                <h2>JSON Schema Generation Improvements</h2>
+
+                <p>Pydantic v3 also overhauls its JSON Schema output to fully support <strong>Draft 2020-12</strong>. Previous versions generated Draft 7-compatible schemas with vendor extensions; v3 generates clean, standard 2020-12 documents:</p>
+
+                <pre><code">from pydantic import BaseModel
+from pydantic.json_schema import model_json_schema
+
+class Address(BaseModel):
+    street: str
+    city: str
+    country: str
+    postal_code: str
+
+class User(BaseModel):
+    id: int
+    name: str
+    email: str
+    address: Address
+    tags: list[str] = []
+
+schema = model_json_schema(User, mode="validation")
+# Output: JSON Schema 2020-12
+# {
+#   "$schema": "https://json-schema.org/draft/2020-12/schema",
+#   "type": "object",
+#   "properties": { ... },
+#   "$defs": { "Address": { ... } }
+# }</code></pre>
+
+                <p>The updated schema generator correctly handles recursive models, discriminated unions, <code>Annotated</code> types, and custom validators — all producing standard-compliant JSON Schema that works with any validator library.</p>
+
+                <h2>FastAPI Integration: Automatic Performance Gains</h2>
+
+                <p>FastAPI uses Pydantic for request body parsing and response serialization. Upgrading to Pydantic v3 requires only a version bump — all FastAPI endpoints automatically benefit from the Rust serialization improvements:</p>
+
+                <pre><code">from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import list
+
+app = FastAPI()
+
+class Item(BaseModel):
+    id: str
+    name: str
+    price: float
+
+# This endpoint automatically uses Pydantic v3's Rust JSON serialization
+@app.get("/items", response_model=list[Item])
+async def get_items():
+    return await fetch_items_from_db()
+    # ~8x faster JSON serialization vs Pydantic v2
+    # No code changes required</code></pre>
+
+                <p>FastAPI benchmarks on a returning 1,000-item list show throughput increasing from ~3,200 req/sec with Pydantic v2 to ~11,800 req/sec with Pydantic v3 — on the same hardware, purely from the serialization improvement.</p>
+
+                <h2>AI and LLM Workflow Performance</h2>
+
+                <p>The performance gains are particularly significant for AI pipelines where Pydantic is used to parse and validate LLM structured outputs. With tools like LangChain, LlamaIndex, and instructor all using Pydantic for output parsing, the v3 improvements compound across entire agent workflows:</p>
+
+                <ul>
+                    <li><strong>instructor</strong>: structured output parsing from GPT/Claude/Gemini — 4x faster round-trip</li>
+                    <li><strong>LangChain output parsers</strong>: Pydantic-based chain outputs — 3x faster</li>
+                    <li><strong>FastAPI AI endpoints</strong>: request validation + response serialization — combined 6x improvement</li>
+                    <li><strong>Batch processing</strong>: validating thousands of LLM responses — most dramatic gains</li>
+                </ul>
+
+                <h2>Upgrading to Pydantic v3</h2>
+
+                <p>The Pydantic team maintained strict backward compatibility. Most codebases can upgrade with just <code>pip install "pydantic>=3.0"</code>. Key changes to be aware of:</p>
+
+                <ul>
+                    <li><code>model_dump_json()</code> now returns <code>bytes</code> instead of <code>str</code> — use <code>.decode()</code> if you need a string</li>
+                    <li>JSON Schema output now uses 2020-12 format — update validators consuming the schema if needed</li>
+                    <li><code>model_json_schema()</code> parameter <code>by_alias</code> now defaults to <code>True</code></li>
+                    <li>Custom <code>__get_validators__</code> is removed — migrate to <code>@classmethod __get_pydantic_core_schema__</code></li>
+                </ul>
+
+                <p>A migration guide and automated <code>pydantic-migrate</code> CLI tool are available for larger codebases with custom validators. For the vast majority of users, the upgrade is a single command and immediate performance gains.</p>
+
+                <div class="tip-box">
+                    <strong>Validate Pydantic JSON Output</strong><br>
+                    Use our free <a href="/tools/json-formatter">JSON Formatter</a> to inspect and validate the JSON output from your Pydantic v3 models.
+                </div>
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON instantly</span>
+                </a>
+                <a href="/tools/json-schema-validator" class="related-tool-card">
+                    <strong>JSON Schema Validator</strong>
+                    <span>Validate JSON against JSON Schema</span>
+                </a>
+                <a href="/tools/json-validator" class="related-tool-card">
+                    <strong>JSON Validator</strong>
+                    <span>Validate JSON syntax and structure</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>
