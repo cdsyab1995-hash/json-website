@@ -1,5 +1,16 @@
 # Daily News Update - Noon 执行历史
 
+## 2026-04-28 12:00
+- **状态**：✅ 成功
+- **说明**：本次共更新5篇新闻文章（其中2篇 wasm/json-schema-draft 来自更早运行的其他自动化任务，3篇 astro-5/effect-ts-3/pydantic-v3 由本次生成）。news/index.html All News 顶部插入5篇，sitemap.xml +5 URL，news lastmod → 2026-04-28。
+- **新增文章**：
+  - `news/astro-5-json-content-collections`：Astro 5.0 JSON Content Collections（TypeScript 自动推导、Zod 验证、Rust 16x 提速）
+  - `news/effect-ts-3-json-schema`：Effect-TS 3.0 JSON Schema 生成（branded types、OpenAPI 3.1 自动输出、Draft 2020-12）
+  - `news/pydantic-v3-rust-json-performance`：Pydantic v3 Rust 重写（序列化 12x 提速、流式 JSON）
+  - `news/wasm-json-parsing-performance-2026`：WASM JSON 解析器 8-12x 提速（来自其他任务）
+  - `news/json-schema-draft-2020-12-ecosystem`：Draft 2020-12 生态 80% 采用率（来自其他任务）
+- **Git提交**：Daily news update 2026-04-28: ... ✅ 已推送 (95976f1)
+
 ## 2026-04-27 12:00
 - **状态**：✅ 成功
 - **说明**：早些时候有另一自动化任务已生成 cursor-3-json-ai-intellisense 文章并更新 Featured。本次新增3篇文章，Featured 改为 Bun 1.2，All News 顶部插入3篇+保留 cursor-3。
