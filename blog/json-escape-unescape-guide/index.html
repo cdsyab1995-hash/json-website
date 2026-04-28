@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Learn how to escape and unescape JSON strings correctly. Covers special characters, newlines, Unicode, and common pitfalls in JavaScript, Python, and API payloads.">
+    <meta name="keywords" content="JSON escape, JSON unescape, escape JSON string, JSON special characters, JSON backslash, JSON newline escape">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>JSON Escape & Unescape: Complete Developer Guide | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/json-escape-unescape-guide">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/blog/json-escape-unescape-guide">
+    <meta property="og:title" content="JSON Escape & Unescape: Complete Developer Guide">
+    <meta property="og:description" content="Learn how to escape and unescape JSON strings correctly. Covers special characters, newlines, Unicode, and common pitfalls in JavaScript, Python, and API payloads.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON Escape & Unescape: Complete Developer Guide">
+    <meta name="twitter:description" content="Learn how to escape and unescape JSON strings correctly. Covers special characters, newlines, Unicode, and common pitfalls in JavaScript, Python, and API payloads.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+    <meta property="article:published_time" content="2026-04-28">
+    <meta property="article:section" content="Development">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON Escape & Unescape: Complete Developer Guide",
+        "description": "Learn how to escape and unescape JSON strings correctly. Covers special characters, newlines, Unicode, and common pitfalls in JavaScript, Python, and API payloads.",
+        "datePublished": "2026-04-28",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/blog/json-escape-unescape-guide",
+        "articleSection": "Development"
+    }
+    </script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/blog">Blog</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Development</div>
+                <h1 class="article-title">JSON Escape &amp; Unescape: Complete Developer Guide</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-28</span> · <span>7-9 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+
+                <p class="lead">Escaping is one of the most misunderstood parts of working with JSON. Get it wrong and your API payloads break, your strings get mangled, and debugging becomes a nightmare. This guide covers everything you need to know about JSON escape sequences — from basic characters to Unicode and nested JSON strings.</p>
+
+                <h2>Why JSON Escaping Matters</h2>
+                <p>JSON strings are delimited by double quotes. Any character inside a string that has special meaning in JSON — or that could break the string — must be escaped with a backslash (<code>\</code>). Failing to escape these characters leads to:</p>
+                <ul>
+                    <li><strong>Parse errors</strong> — JSON.parse() throws a SyntaxError</li>
+                    <li><strong>Data truncation</strong> — String ends prematurely at an unescaped quote</li>
+                    <li><strong>Security issues</strong> — Unescaped content in HTML contexts enables XSS attacks</li>
+                    <li><strong>API rejections</strong> — Remote servers refuse malformed payloads</li>
+                </ul>
+
+                <h2>The Complete JSON Escape Sequence Table</h2>
+                <p>The JSON specification (RFC 8259) defines exactly eight escape sequences:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Character</th>
+                            <th>Escape Sequence</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>"</code></td><td><code>\"</code></td><td>Double quote</td></tr>
+                        <tr><td><code>\</code></td><td><code>\\</code></td><td>Backslash (reverse solidus)</td></tr>
+                        <tr><td><code>/</code></td><td><code>\/</code></td><td>Forward slash (optional)</td></tr>
+                        <tr><td>Backspace</td><td><code>\b</code></td><td>Control character U+0008</td></tr>
+                        <tr><td>Form feed</td><td><code>\f</code></td><td>Control character U+000C</td></tr>
+                        <tr><td>Newline</td><td><code>\n</code></td><td>Line feed U+000A</td></tr>
+                        <tr><td>Carriage return</td><td><code>\r</code></td><td>Carriage return U+000D</td></tr>
+                        <tr><td>Tab</td><td><code>\t</code></td><td>Horizontal tab U+0009</td></tr>
+                        <tr><td>Unicode</td><td><code>\uXXXX</code></td><td>Any Unicode code point (4 hex digits)</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Most Common Escaping Mistakes</h2>
+
+                <h3>1. Unescaped Double Quotes</h3>
+                <p>This is the #1 cause of JSON parse errors:</p>
+                <pre class="code-block"><code>// WRONG — the string ends at the second "
+{ "message": "He said "hello" to me" }
+
+// CORRECT — double quotes inside strings must be escaped
+{ "message": "He said \"hello\" to me" }</code></pre>
+
+                <h3>2. Literal Newlines in Strings</h3>
+                <p>JSON strings cannot contain actual newline characters — they must be escaped:</p>
+                <pre class="code-block"><code>// WRONG — literal newline breaks JSON
+{
+  "description": "Line one
+Line two"
+}
+
+// CORRECT — use \n escape sequence
+{ "description": "Line one\nLine two" }</code></pre>
+
+                <h3>3. Unescaped Backslashes</h3>
+                <p>Windows file paths are a common trap:</p>
+                <pre class="code-block"><code>// WRONG — single backslash is an escape character
+{ "path": "C:\Users\john\documents" }
+
+// CORRECT — each backslash must be doubled
+{ "path": "C:\\Users\\john\\documents" }</code></pre>
+
+                <h3>4. Control Characters</h3>
+                <p>Control characters (U+0000 to U+001F) are forbidden in JSON strings unless escaped:</p>
+                <pre class="code-block"><code>// WRONG — null byte and other control chars are invalid
+{ "data": "Hello\x00World" }
+
+// CORRECT — use Unicode escape sequences
+{ "data": "Hello\u0000World" }</code></pre>
+
+                <h2>Escaping in JavaScript</h2>
+                <p><code>JSON.stringify()</code> handles escaping automatically — always use it instead of building JSON strings manually:</p>
+                <pre class="code-block"><code>// Let JSON.stringify do the work
+const obj = {
+    message: 'He said "hello"\nNew line here',
+    path: 'C:\\Users\\john',
+    tab: 'col1\tcol2'
+};
+
+const json = JSON.stringify(obj);
+console.log(json);
+// {"message":"He said \"hello\"\nNew line here","path":"C:\\Users\\john","tab":"col1\tcol2"}
+
+// Unescape: JSON.parse reverses the process
+const parsed = JSON.parse(json);
+console.log(parsed.message); // He said "hello"
+                              // New line here</code></pre>
+
+                <h3>Escaping for HTML Contexts</h3>
+                <p>When embedding JSON in an HTML <code>&lt;script&gt;</code> tag, you also need to escape HTML special characters to prevent XSS:</p>
+                <pre class="code-block"><code>// Dangerous — script tag ends prematurely
+const data = JSON.stringify({ html: "&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;" });
+
+// Safe — escape forward slashes in JSON embedded in HTML
+const safe = JSON.stringify(data).replace(/\//g, '\\/');
+// Or use a dedicated HTML-safe JSON serializer</code></pre>
+
+                <h2>Escaping in Python</h2>
+                <p>Python's <code>json</code> module handles escaping correctly out of the box:</p>
+                <pre class="code-block"><code>import json
+
+data = {
+    "message": 'He said "hello"\nNew line',
+    "path": r"C:\Users\john",
+    "unicode": "Emoji: \U0001F600"
+}
+
+# Serialize — escaping is automatic
+json_str = json.dumps(data)
+print(json_str)
+# {"message": "He said \"hello\"\nNew line", "path": "C:\\Users\\john", "unicode": "Emoji: \ud83d\ude00"}
+
+# Deserialize — unescaping is automatic
+parsed = json.loads(json_str)
+print(parsed["message"])  # He said "hello"
+                           # New line
+
+# Preserve Unicode characters (don't escape them)
+json_str = json.dumps(data, ensure_ascii=False)
+# {"message": "He said \"hello\"\nNew line", ..., "unicode": "Emoji: 😀"}</code></pre>
+
+                <h2>Nested JSON Strings</h2>
+                <p>Nested JSON (JSON encoded as a string value within JSON) requires double-escaping — one of the trickiest scenarios:</p>
+                <pre class="code-block"><code>// Inner JSON object
+const innerObj = { "key": "value with \"quotes\"" };
+
+// Serialize inner object to string
+const innerStr = JSON.stringify(innerObj);
+// {"key":"value with \"quotes\""}
+
+// Embed as a string value in outer JSON — stringify again
+const outer = JSON.stringify({ "payload": innerStr });
+// {"payload":"{\"key\":\"value with \\\"quotes\\\"\"}"}
+
+// Parse outer, then parse inner
+const parsedOuter = JSON.parse(outer);
+const parsedInner = JSON.parse(parsedOuter.payload);
+console.log(parsedInner.key); // value with "quotes"</code></pre>
+
+                <p>This pattern is common in webhook payloads, event systems (like AWS SNS/SQS), and API gateways that wrap payloads as JSON strings.</p>
+
+                <h2>Unicode Escaping</h2>
+                <p>Any Unicode character can be expressed as <code>\uXXXX</code>. For characters outside the Basic Multilingual Plane (code points above U+FFFF), JSON uses UTF-16 surrogate pairs:</p>
+                <pre class="code-block"><code>// Basic Unicode — emoji U+1F600 (😀) as surrogate pair
+{ "emoji": "\uD83D\uDE00" }
+
+// Python: json.dumps uses \uXXXX by default
+import json
+print(json.dumps({"emoji": "😀"}))
+# {"emoji": "\ud83d\ude00"}
+
+// To keep Unicode characters readable, use ensure_ascii=False
+print(json.dumps({"emoji": "😀"}, ensure_ascii=False))
+# {"emoji": "😀"}</code></pre>
+
+                <h2>Unescape JSON: Common Use Cases</h2>
+                <p>Unescaping converts escaped sequences back to their original characters. You'll need this when:</p>
+                <ul>
+                    <li>Reading a JSON string stored in a database that was double-escaped</li>
+                    <li>Debugging API responses that contain stringified JSON payloads</li>
+                    <li>Processing log files where JSON was serialized as a string</li>
+                    <li>Working with AWS Lambda events, Kafka messages, or message queues</li>
+                </ul>
+
+                <pre class="code-block"><code>// JavaScript: unescape a JSON string
+const escaped = '{"message":"Hello\\nWorld","path":"C:\\\\Users\\\\john"}';
+const unescaped = JSON.parse(escaped);
+console.log(unescaped.message); // Hello
+                                 // World
+console.log(unescaped.path);    // C:\Users\john
+
+// Python: unescape
+import json
+escaped = '{"message": "Hello\\nWorld", "path": "C:\\\\Users\\\\john"}'
+parsed = json.loads(escaped)
+print(parsed["message"])  # Hello
+                           # World</code></pre>
+
+                <h2>Quick Reference: Escape Sequences You Need Daily</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>You want to store…</th>
+                            <th>Write in JSON as…</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>A double-quote character <code>"</code></td><td><code>\"</code></td></tr>
+                        <tr><td>A backslash <code>\</code></td><td><code>\\</code></td></tr>
+                        <tr><td>A newline (line break)</td><td><code>\n</code></td></tr>
+                        <tr><td>A tab character</td><td><code>\t</code></td></tr>
+                        <tr><td>A Windows path <code>C:\Users</code></td><td><code>C:\\Users</code></td></tr>
+                        <tr><td>Emoji 😀 (U+1F600)</td><td><code>\uD83D\uDE00</code> or literal if allowed</td></tr>
+                        <tr><td>Null byte (U+0000)</td><td><code>\u0000</code></td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Key Takeaways</h2>
+                <ul>
+                    <li>Always use a JSON library (<code>JSON.stringify</code>, <code>json.dumps</code>) to serialize — never build JSON strings by hand</li>
+                    <li>The eight mandatory escape sequences: <code>\"</code> <code>\\</code> <code>\/</code> <code>\b</code> <code>\f</code> <code>\n</code> <code>\r</code> <code>\t</code></li>
+                    <li>Control characters (U+0000–U+001F) must always be escaped</li>
+                    <li>Nested JSON requires double-escaping — use <code>JSON.parse</code> twice to unwrap</li>
+                    <li>Use an online tool to quickly escape/unescape strings when debugging</li>
+                </ul>
+
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-escape" class="related-tool-card">
+                    <strong>JSON Escape / Unescape</strong>
+                    <span>Escape or unescape JSON strings instantly</span>
+                </a>
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-viewer" class="related-tool-card">
+                    <strong>JSON Viewer</strong>
+                    <span>Visualize JSON as tree</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
