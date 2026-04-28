@@ -1,6 +1,9 @@
 # 工具内部目录，不上传
 .workbuddy/
 
+# 本地运维脚本目录（保存在本地，不推送到 GitHub）
+scripts/
+
 # 系统文件
 .DS_Store
 Thumbs.db
