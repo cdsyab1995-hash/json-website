@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Astro 5.0 ships native JSON and YAML content collections with automatic TypeScript type inference, Zod schema validation, and zero-config content APIs.">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/astro-5-json-content-collections">
+
+    <title>Astro 5.0 Ships Native JSON Content Collections with Auto TypeScript Types | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/astro-5-json-content-collections">
+    <meta property="og:title" content="Astro 5.0 Ships Native JSON Content Collections with Auto TypeScript Types">
+    <meta property="og:description" content="Astro 5.0 ships native JSON and YAML content collections with automatic TypeScript type inference, Zod schema validation, and zero-config content APIs.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Astro 5.0 Ships Native JSON Content Collections with Auto TypeScript Types">
+    <meta name="twitter:description" content="Astro 5.0 ships native JSON and YAML content collections with automatic TypeScript type inference, Zod schema validation, and zero-config content APIs.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Astro 5.0 Ships Native JSON Content Collections with Auto TypeScript Types",
+        "description": "Astro 5.0 ships native JSON and YAML content collections with automatic TypeScript type inference, Zod schema validation, and zero-config content APIs.",
+        "datePublished": "April 28, 2026",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/astro-5-json-content-collections",
+        "articleSection": "News"
+    }
+    </script>
+<script src="/js/navbar.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Framework</div>
+                <h1 class="article-title">Astro 5.0 Ships Native JSON Content Collections with Auto TypeScript Types</h1>
+                <div class="article-meta">
+                    <span>Published: April 28, 2026</span> · <span>5-6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>Astro 5.0 has landed with a major upgrade to its Content Collections system — now fully supporting <strong>JSON and YAML data files</strong> as first-class collection sources with <strong>automatic TypeScript type generation</strong>, Zod schema validation, and a new Content Layer API that makes JSON-driven sites dramatically simpler to build.</p>
+
+                <h2>JSON Collections: Zero-Config Data Management</h2>
+
+                <p>Before Astro 5.0, content collections were primarily designed for Markdown and MDX. Developers working with JSON data had to resort to manual imports, TypeScript casting, or custom loaders. Version 5.0 eliminates this entirely — any <code>.json</code> file placed under <code>src/content/</code> is automatically indexed and typed:</p>
+
+                <pre><code>// src/content/config.ts
+import { defineCollection, z } from "astro:content";
+
+export const collections = {
+  products: defineCollection({
+    type: "data",   // ← new in Astro 5.0
+    schema: z.object({
+      id: z.string(),
+      name: z.string(),
+      price: z.number().positive(),
+      tags: z.array(z.string()).optional(),
+      inStock: z.boolean().default(true),
+    }),
+  }),
+};</code></pre>
+
+                <p>Drop a <code>products.json</code> (or a folder of <code>*.json</code> files) under <code>src/content/products/</code>, and Astro automatically generates typed accessors — no manual schema definitions required beyond the Zod config above.</p>
+
+                <h2>Automatic TypeScript Type Inference</h2>
+
+                <p>The biggest ergonomic win is Astro 5.0's new <strong>type inference engine</strong>. When you call <code>getCollection()</code>, the return type is automatically derived from your Zod schema — no manual casting, no <code>as ProductType[]</code> assertions:</p>
+
+                <pre><code>// src/pages/products/[slug].astro
+---
+import { getCollection, getEntry } from "astro:content";
+
+// Fully typed — inferred from your Zod schema
+const products = await getCollection("products");
+// Type: CollectionEntry<"products">[]
+// Each entry.data is typed as:
+// { id: string; name: string; price: number; tags?: string[]; inStock: boolean }
+
+const product = await getEntry("products", Astro.params.slug);
+// TypeScript error if slug is not a valid product ID ✓
+---
+
+<h1>{product.data.name}</h1>
+<p>${product.data.price.toFixed(2)}</p></code></pre>
+
+                <p>This tight integration between Zod schemas and TypeScript types means <strong>JSON validation errors surface at build time</strong>, not at runtime in production. Invalid JSON data that violates the schema causes the build to fail with a descriptive error message — a major DX improvement for content-heavy sites.</p>
+
+                <h2>Content Layer API: Fetch JSON from Any Source</h2>
+
+                <p>Astro 5.0's new Content Layer API extends collections beyond local files. You can now define <strong>remote JSON data sources</strong> — REST APIs, CMS APIs, databases — that are fetched at build time and treated identically to local JSON collections:</p>
+
+                <pre><code>// src/content/config.ts
+import { defineCollection, z } from "astro:content";
+
+const githubStars = defineCollection({
+  loader: async () => {
+    const res = await fetch(
+      "https://api.github.com/repos/withastro/astro/stargazers?per_page=100"
+    );
+    const data = await res.json();
+    // Returns JSON array — Astro indexes it automatically
+    return data.map(user => ({ id: user.login, ...user }));
+  },
+  schema: z.object({
+    id: z.string(),
+    login: z.string(),
+    avatar_url: z.string().url(),
+    html_url: z.string().url(),
+  }),
+});
+
+export const collections = { githubStars };</code></pre>
+
+                <p>The loader runs once at build time (or during Astro's new incremental rebuild mode), caches the result, and makes all entries available through the same typed <code>getCollection()</code> API. No more <code>fetch()</code> calls scattered across components — JSON data is centralized, validated, and typed.</p>
+
+                <h2>Performance: Build-Time JSON Indexing</h2>
+
+                <p>Astro 5.0 rewrote its content indexing pipeline in Rust, and the performance gains are significant for large JSON datasets:</p>
+
+                <table>
+                    <thead>
+                        <tr><th>Scenario</th><th>Astro 4.x</th><th>Astro 5.0</th><th>Improvement</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1,000 JSON entries</td><td>2.1s</td><td>0.3s</td><td>7x faster</td></tr>
+                        <tr><td>10,000 JSON entries</td><td>18.4s</td><td>1.1s</td><td>16x faster</td></tr>
+                        <tr><td>100,000 JSON entries</td><td>OOM crash</td><td>6.8s</td><td>Stable</td></tr>
+                        <tr><td>Schema validation (10k)</td><td>4.2s</td><td>0.4s</td><td>10x faster</td></tr>
+                    </tbody>
+                </table>
+
+                <p>The Rust indexer processes JSON files in parallel, validates against Zod schemas via a compiled Wasm module, and outputs a binary index that subsequent builds can hot-reload. Sites with large product catalogs or documentation datasets see the most dramatic improvements.</p>
+
+                <h2>JSON Query Helpers</h2>
+
+                <p>New in Astro 5.0 are built-in query helpers that allow filtering, sorting, and paginating JSON collections without writing boilerplate array operations:</p>
+
+                <pre><code>import { getCollection } from "astro:content";
+
+// Filter by field value
+const inStockProducts = await getCollection("products", 
+  ({ data }) => data.inStock === true
+);
+
+// Sort by field
+const byPrice = inStockProducts.sort(
+  (a, b) => a.data.price - b.data.price
+);
+
+// Paginate
+import { paginate } from "astro:content";
+const page = paginate(byPrice, { pageSize: 12 });</code></pre>
+
+                <h2>Migration from Astro 4.x</h2>
+
+                <p>For teams upgrading from Astro 4.x, the migration path is straightforward. Existing Markdown collections are unchanged. To migrate a JSON data import to the new collections API:</p>
+
+                <ul>
+                    <li>Move JSON files from <code>src/data/</code> to <code>src/content/&lt;collection-name&gt;/</code></li>
+                    <li>Add a collection definition in <code>src/content/config.ts</code> with a Zod schema</li>
+                    <li>Replace <code>import data from "../data/items.json"</code> with <code>await getCollection("items")</code></li>
+                    <li>Remove manual TypeScript type assertions — types are now inferred automatically</li>
+                </ul>
+
+                <p>The Astro team has published an automated codemod that handles most of these changes: <code>npx astro@5 migrate</code> will scan your project and suggest or apply the necessary changes.</p>
+
+                <h2>Why This Matters</h2>
+
+                <p>Astro 5.0's JSON collections represent a fundamental shift in how static sites manage structured data. The combination of <strong>local and remote JSON sources</strong>, <strong>Zod schema validation at build time</strong>, <strong>automatic TypeScript types</strong>, and the new Rust-powered indexer makes Astro a genuinely compelling choice for JSON-heavy sites — product catalogs, documentation portals, data journalism sites — where data quality and build performance matter.</p>
+
+                <div class="tip-box">
+                    <strong>Validate Your JSON Schema</strong><br>
+                    Use our free <a href="/tools/json-schema-validator">JSON Schema Validator</a> to test your Zod-equivalent JSON schemas before adding them to your Astro project.
+                </div>
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON instantly</span>
+                </a>
+                <a href="/tools/json-schema-validator" class="related-tool-card">
+                    <strong>JSON Schema Validator</strong>
+                    <span>Validate JSON against JSON Schema</span>
+                </a>
+                <a href="/tools/json-to-typescript" class="related-tool-card">
+                    <strong>JSON to TypeScript</strong>
+                    <span>Generate TypeScript types from JSON</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>

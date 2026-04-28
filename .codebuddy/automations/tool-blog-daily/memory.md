@@ -7,18 +7,20 @@
 
 | 日期 | 目标工具 | 主题 | 状态 |
 |------|----------|------|------|
+| 2026-04-28 12:40 | json-escape | json-escape-unescape-guide | SUCCESS |
 | 2026-04-27 17:45 | streaming | handling-large-json-files-streaming-parsing | SUCCESS |
 | 2026-04-26 15:12 | formatter | json-validator-debug-api-errors-faster | SUCCESS |
 | 2026-04-25 15:45 | performance | json-performance-optimization-2026 | SUCCESS |
 | 2026-04-23 08:57 | patch/curl | json-patch-vs-merge-patch | SUCCESS |
 | 2026-04-22 09:00 | viewer | json-viewer-tree-view-why-you-need-one | SKIP (文章已存在) |
 
-## 最新执行 (2026-04-27 17:45)
+## 最新执行 (2026-04-28 12:40)
 - 状态：SUCCESS
-- 脚本：daily_blog.py（daily_tool_blog.py 不存在，使用 daily_blog.py 替代）
-- 生成文章：handling-large-json-files-streaming-parsing
-- 主题：Handling Large JSON Files: Streaming, Chunking, and Memory-Efficient Processing
-- 推送：已推送到 GitHub
+- 脚本：daily_tool_blog.py 不存在，手动生成文章（同历史做法）
+- 生成文章：json-escape-unescape-guide
+- 主题：JSON Escape & Unescape: Complete Developer Guide
+- 推送：已推送到 GitHub（commit b8ca85e）
+- 说明：3 files changed — 新建博文、更新 blog/index.html Featured、更新 sitemap.xml
 
 ## 执行记录 (2026-04-26 15:12)
 - 状态：SUCCESS
