@@ -1,0 +1,37 @@
+# Cloudflare Pages Redirect Rules
+# Redirect old pages/* URLs to new /tools/* URLs
+
+# Tool pages
+/pages/format                    /tools/json-formatter         301
+/pages/escape                    /tools/json-escape            301
+/pages/extract                   /tools/json-extract           301
+/pages/validate                  /tools/json-formatter         301
+/pages/minify                    /tools/json-formatter         301
+/pages/viewer                    /tools/json-viewer            301
+/pages/compare                   /tools/json-compare           301
+/pages/sort                       /tools/json-sort              301
+/pages/clean                      /tools/json-clean             301
+/pages/csv                        /tools/json-to-csv            301
+/pages/base64                     /tools/base64                 301
+/pages/url-encode                 /tools/url-encoder           301
+/pages/hash                       /tools/hash-generator         301
+/pages/json-to-xml                /tools/json-to-xml            301
+/pages/json-to-yaml               /tools/json-to-yaml           301
+/pages/jwt                        /tools/jwt-decoder            301
+/pages/timestamp                  /tools/timestamp-converter    301
+/pages/uuid                       /tools/uuid-generator         301
+/pages/html-encode                /tools/html-encoder           301
+/pages/regex                      /tools/regex-tester           301
+
+# Legacy paths with extensions
+/pages/format.html               /tools/json-formatter         301
+/pages/escape.html                /tools/json-escape            301
+/pages/extract.html               /tools/json-extract           301
+
+# Blog posts
+/blog/json-formatter-vs-validator        /blog/json-validator-debug-api-errors-faster        301
+/blog/json-viewer-tree-view               /blog/json-viewer-tree-view-why-you-need-one         301
+/blog/json-compare-tools                  /blog/compare-json-documents-find-differences        301
+
+# Catch-all for remaining pages/* requests
+/pages/*                              /                           301
