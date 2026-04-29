@@ -1,0 +1,123 @@
+# Cloudflare Pages Redirects - 301 SEO-Friendly Redirects
+# Format: /source /destination [status_code]
+# S = 301 (Permanent), 302 = Temporary
+
+# === Tool Pages ===
+# Old .html extensions → Clean URLs
+/tools/base64.html /tools/base64 301
+/tools/batch-renamer.html /tools/batch-renamer 301
+/tools/css-minifier.html /tools/css-minifier 301
+/tools/csv-to-excel.html /tools/csv-to-excel 301
+/tools/excel-remove-duplicates.html /tools/excel-remove-duplicates 301
+/tools/hash-generator.html /tools/hash-generator 301
+/tools/html-encoder.html /tools/html-encoder 301
+/tools/json-clean.html /tools/json-clean 301
+/tools/json-compare.html /tools/json-compare 301
+/tools/json-escape.html /tools/json-escape 301
+/tools/json-extract.html /tools/json-extract 301
+/tools/json-formatter.html /tools/json-formatter 301
+/tools/json-sort.html /tools/json-sort 301
+/tools/json-to-csv.html /tools/json-to-csv 301
+/tools/json-to-xml.html /tools/json-to-xml 301
+/tools/json-to-yaml.html /tools/json-to-yaml 301
+/tools/json-viewer.html /tools/json-viewer 301
+/tools/jwt-decoder.html /tools/jwt-decoder 301
+/tools/merge-csv.html /tools/merge-csv 301
+/tools/pdf-split.html /tools/pdf-split 301
+/tools/regex-tester.html /tools/regex-tester 301
+/tools/timestamp-converter.html /tools/timestamp-converter 301
+/tools/url-encoder.html /tools/url-encoder 301
+/tools/uuid-generator.html /tools/uuid-generator 301
+
+# === Short Tool Paths (/pages/xxx) ===
+/pages/format /tools/json-formatter 301
+/pages/escape /tools/json-escape 301
+/pages/extract /tools/json-extract 301
+/pages/validate /tools/json-formatter 301
+/pages/minify /tools/json-formatter 301
+/pages/viewer /tools/json-viewer 301
+/pages/compare /tools/json-compare 301
+/pages/sort /tools/json-sort 301
+/pages/clean /tools/json-clean 301
+/pages/csv /tools/json-to-csv 301
+/pages/base64 /tools/base64 301
+/pages/url-encode /tools/url-encoder 301
+/pages/hash /tools/hash-generator 301
+/pages/json-to-xml /tools/json-to-xml 301
+/pages/json-to-yaml /tools/json-to-yaml 301
+/pages/jwt /tools/jwt-decoder 301
+/pages/timestamp /tools/timestamp-converter 301
+/pages/uuid /tools/uuid-generator 301
+/pages/html-encode /tools/html-encoder 301
+/pages/regex /tools/regex-tester 301
+/pages/csv-to-excel /tools/csv-to-excel 301
+/pages/merge-csv /tools/merge-csv 301
+/pages/excel-remove-duplicates /tools/excel-remove-duplicates 301
+/pages/css-minifier /tools/css-minifier 301
+/pages/pdf-split /tools/pdf-split 301
+/pages/batch-renamer /tools/batch-renamer 301
+
+# === Legacy .html Pages ===
+/pages/csv-to-excel.html /tools/csv-to-excel 301
+/pages/merge-csv.html /tools/merge-csv 301
+/pages/excel-remove-duplicates.html /tools/excel-remove-duplicates 301
+/pages/css-minifier.html /tools/css-minifier 301
+/pages/html-encoder.html /tools/html-encoder 301
+/pages/url-encoder.html /tools/url-encoder 301
+/pages/base64.html /tools/base64 301
+/pages/jwt-decoder.html /tools/jwt-decoder 301
+/pages/regex-tester.html /tools/regex-tester 301
+/pages/uuid-generator.html /tools/uuid-generator 301
+/pages/timestamp-converter.html /tools/timestamp-converter 301
+/pages/hash-generator.html /tools/hash-generator 301
+/pages/pdf-split.html /tools/pdf-split 301
+/pages/batch-renamer.html /tools/batch-renamer 301
+
+# === Static Pages ===
+/about.html /about 301
+/blog.html /blog 301
+/news.html /news 301
+/privacy.html /privacy 301
+/terms.html /terms 301
+/cookie.html /cookie 301
+/changelog.html /changelog 301
+/best-practices.html /best-practices 301
+
+# === Blog Articles ===
+/pages/blog/compare-json-documents-find-differences.html /blog/compare-json-documents-find-differences 301
+/pages/blog/curl-json-api-guide.html /blog/curl-json-api-guide 301
+/pages/blog/json-api-error-handling-2026.html /blog/json-api-error-handling-2026 301
+/pages/blog/json-edge-computing-cloudflare-workers.html /blog/json-edge-computing-cloudflare-workers 301
+/pages/blog/json-parsing-performance-comparison.html /blog/json-parsing-performance-comparison 301
+/pages/blog/json-patch-vs-merge-patch.html /blog/json-patch-vs-merge-patch 301
+/pages/blog/json-schema-complete-guide-2026.html /blog/json-schema-complete-guide-2026 301
+/pages/blog/json-viewer-tree-view-why-you-need-one.html /blog/json-viewer-tree-view-why-you-need-one 301
+/pages/blog/jwt-security-best-practices-2026.html /blog/jwt-security-best-practices-2026 301
+/pages/blog/mcp-json-standardizing-ai-tools.html /blog/mcp-json-standardizing-ai-tools 301
+/pages/blog/model-context-protocol-json-rpc-ai-tools.html /blog/model-context-protocol-json-rpc-ai-tools 301
+/pages/blog/postgresql-jsonb-vs-mongodb-document-store.html /blog/postgresql-jsonb-vs-mongodb-document-store 301
+/pages/blog/rfc9457-problem-details-json-api-errors.html /blog/rfc9457-problem-details-json-api-errors 301
+/pages/blog/sort-json-arrays-objects-guide.html /blog/sort-json-arrays-objects-guide 301
+/pages/blog/zod-json-schema-validation-ai.html /blog/zod-json-schema-validation-ai 301
+/ai-tool-calling-mcp-2026.html /blog/ai-tool-calling-mcp-2026 301
+
+# === News Articles ===
+/pages/news/api-transformations-2026.html /news/api-transformations-2026 301
+/pages/news/browser-devtools-json-schema.html /news/browser-devtools-json-schema 301
+/pages/news/bun-2-json-serialization.html /news/bun-2-json-serialization 301
+/pages/news/cursor-vscode-json-lint-ai.html /news/cursor-vscode-json-lint-ai 301
+/pages/news/json-schema-to-typescript-v6.html /news/json-schema-to-typescript-v6 301
+/pages/news/json-schema-w3c-recommendation.html /news/json-schema-w3c-recommendation 301
+/pages/news/json-streaming-api-browser.html /news/json-streaming-api-browser 301
+/pages/news/jsonata-2-ai-query.html /news/jsonata-2-ai-query 301
+/pages/news/mcp-10000-servers.html /news/mcp-10000-servers 301
+/pages/news/nextjs-16-json-streaming.html /news/nextjs-16-json-streaming 301
+/pages/news/nodejs-24-json-schema.html /news/nodejs-24-json-schema 301
+/pages/news/zod-v4-5m-downloads.html /news/zod-v4-5m-downloads 301
+
+# === Wildcard Redirects for Future Pages ===
+# Redirect /pages/something to /something if exists
+# This is handled by Cloudflare Pages SPA routing, not wildcards here
+
+# === Root Redirects ===
+/pages /tools 301
