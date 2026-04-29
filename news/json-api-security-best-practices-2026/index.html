@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Essential security practices for JSON APIs: input validation, injection prevention, rate limiting, authentication patterns, and common vulnerabilities to avoid.">
+    <meta name="keywords" content="security, api, json, best practices, authentication">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/json-api-security-best-practices-2026">
+
+    <title>JSON API Security in 2026: 10 Practices You Can't Afford to Ignore | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/json-api-security-best-practices-2026">
+    <meta property="og:title" content="JSON API Security in 2026: 10 Practices You Can't Afford to Ignore">
+    <meta property="og:description" content="Essential security practices for JSON APIs: input validation, injection prevention, rate limiting, authentication patterns, and common vulnerabilities to avoid.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON API Security in 2026: 10 Practices You Can't Afford to Ignore">
+    <meta name="twitter:description" content="Essential security practices for JSON APIs: input validation, injection prevention, rate limiting, authentication patterns, and common vulnerabilities to avoid.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON API Security in 2026: 10 Practices You Can't Afford to Ignore",
+        "description": "Essential security practices for JSON APIs: input validation, injection prevention, rate limiting, authentication patterns, and common vulnerabilities to avoid.",
+        "datePublished": "2026-04-29",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/json-api-security-best-practices-2026",
+        "articleSection": "Security"
+    }
+    </script>
+    <script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Security</span>
+                </div>
+                <div class="article-category cat-development">Security</div>
+                <h1 class="article-title">JSON API Security in 2026: 10 Practices You Can't Afford to Ignore</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-29</span> &middot; <span>8-10 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                
+        <p class="lead">The OWASP API Security Top 10 lists broken object-level authorization and excessive data exposure as the #1 and #2 most critical API vulnerabilities. Both directly relate to how your API handles JSON data.
+
+These aren't theoretical concerns — they're the attack vectors behind the breaches you read about. Here's how to protect your JSON APIs in 2026.</p>
+
+        <div class="numbered-list">
+            <h2>1. 1. Validate Input at the Gate</h2>
+            <p>Never trust incoming JSON data. Validate before processing:</p>
+<p><pre class="code-block"><code>// ❌ Dangerous: Trusting client input</p>
+<p>app.post('/api/users', (req, res) => {</p>
+<p>  db.query(<code>INSERT INTO users VALUES (${req.body.id}, '${req.body.name}')</code>);</p>
+<p>});</p>
+<p>// ✅ Safe: Schema validation first</p>
+<p>app.post('/api/users', validate(schema), (req, res) => {</p>
+<p>  db.query('INSERT INTO users VALUES (?, ?)', [req.body.id, req.body.name]);</p>
+<p>});</code></pre></p>
+<p>Use JSON Schema with Ajv, Zod, or Pydantic to validate structure AND types.</p>
+
+            <h2>2. 2. Prevent JSON Injection</h2>
+            <p>Unsanitized JSON can inject into logs, databases, or other JSON consumers:</p>
+<p><pre class="code-block"><code>// ❌ Vulnerable to log injection</p>
+<p>const user = JSON.parse(req.body.data);</p>
+<p>logger.info(<code>User action: ${user.name}</code>);</p>
+<p>// ✅ Sanitize before logging</p>
+<p>const sanitized = JSON.parse(req.body.data);</p>
+<p>logger.info({</p>
+<p>  message: 'User action',</p>
+<p>  userName: sanitized.name.replace(/[\r\n]/g, ''),</p>
+<p>  userId: sanitized.id</p>
+<p>});</p>
+<p>// ✅ For database: Use parameterized queries</p>
+<p>const user = validate(userSchema, req.body);</p>
+<p>await db.query(</p>
+<p>  'INSERT INTO logs (type, data) VALUES (?, ?)',</p>
+<p>  ['user_action', JSON.stringify(sanitizeForLogging(user))]</p>
+<p>);</code></pre></p>
+
+            <h2>3. 3. Implement Rate Limiting with JSON Responses</h2>
+            <p>Return structured error responses when limits are exceeded:</p>
+<p><pre class="code-block"><code>{</p>
+<p>  "error": {</p>
+<p>    "code": "RATE_LIMIT_EXCEEDED",</p>
+<p>    "message": "Too many requests. Please wait before retrying.",</p>
+<p>    "details": {</p>
+<p>      "limit": 100,</p>
+<p>      "window": "1 minute",</p>
+<p>      "retryAfter": 45</p>
+<p>    },</p>
+<p>    "docs": "https://api.example.com/docs/rate-limiting"</p>
+<p>  }</p>
+<p>}</code></pre></p>
+<p>Use Redis for distributed rate limiting:</p>
+<p><pre class="code-block"><code>async function checkRateLimit(userId: string): Promise<boolean> {</p>
+<p>  const key = <code>ratelimit:${userId}</code>;</p>
+<p>  const current = await redis.incr(key);</p>
+<p>  if (current === 1) {</p>
+<p>    await redis.expire(key, 60); // 1-minute window</p>
+<p>  }</p>
+<p>  if (current > 100) {</p>
+<p>    const ttl = await redis.ttl(key);</p>
+<p>    throw new RateLimitError({</p>
+<p>      code: 'RATE_LIMIT_EXCEEDED',</p>
+<p>      retryAfter: ttl</p>
+<p>    });</p>
+<p>  }</p>
+<p>  return true;</p>
+<p>}</code></pre></p>
+        </div>
+
+        <h2>Common Mistakes to Avoid</h2>
+        <div class="warning-box">
+            <p>❌ <strong>Never expose internals in errors:</strong></p>
+<p><pre class="code-block"><code>{</p>
+<p>  "error": "Database error: Connection to postgres://user:password@host/db failed"</p>
+<p>}</code></pre></p>
+<p>✅ <strong>Return generic messages to clients:</strong></p>
+<p><pre class="code-block"><code>{</p>
+<p>  "error": {</p>
+<p>    "code": "INTERNAL_ERROR",</p>
+<p>    "message": "An unexpected error occurred. Reference: ABC123"</p>
+<p>  }</p>
+<p>}</code></pre></p>
+<p>❌ <strong>Accepting any content type:</strong></p>
+<p><pre class="code-block"><code>app.use((req, res, next) => {</p>
+<p>  // Attacker sends: Content-Type: application/x-www-form-urlencoded</p>
+<p>  // with body: _method=DELETE</p>
+<p>  req.body = parseBody(req);</p>
+<p>  next();</p>
+<p>});</code></pre></p>
+<p>✅ <strong>Strict content-type enforcement:</strong></p>
+<p><pre class="code-block"><code>app.use((req, res, next) => {</p>
+<p>  if (req.method === 'POST' || req.method === 'PUT') {</p>
+<p>    const contentType = req.get('Content-Type');</p>
+<p>    if (!contentType?.includes('application/json')) {</p>
+<p>      return res.status(415).json({</p>
+<p>        error: { code: 'UNSUPPORTED_MEDIA_TYPE', message: 'Content-Type must be application/json' }</p>
+<p>      });</p>
+<p>    }</p>
+<p>  }</p>
+<p>  next();</p>
+<p>});</code></pre></p>
+<p>❌ <strong>No limits on JSON payload size:</strong></p>
+<p><pre class="code-block"><code>app.use(express.json()); // Unlimited by default!</code></pre></p>
+<p>✅ <strong>Configure reasonable limits:</strong></p>
+<p><pre class="code-block"><code>app.use(express.json({</p>
+<p>  limit: '100kb',        // Max payload size</p>
+<p>  strict: true,          // Reject malformed JSON</p>
+<p>  verify: (req, res, buf) => {</p>
+<p>    // Custom verification</p>
+<p>    if (buf.length > 100 * 1024) {</p>
+<p>      throw new Error('Payload too large');</p>
+<p>    }</p>
+<p>  }</p>
+<p>}));</code></pre></p>
+        </div>
+
+        <h2>Your Implementation Checklist</h2>
+        <div class="checklist">
+            ## Security Checklist
+
+Before deploying any JSON API:
+
+- [ ] **Input Validation**: Schema validation on all endpoints
+- [ ] **Parameterized Queries**: No string concatenation in DB queries
+- [ ] **Rate Limiting**: Per-user and per-IP limits configured
+- [ ] **Content-Type Enforcement**: Strict JSON validation
+- [ ] **Payload Limits**: Max size configured (recommend 100KB-1MB)
+- [ ] **Error Sanitization**: No internals exposed in responses
+- [ ] **Authentication**: JWT/OAuth2 with proper validation
+- [ ] **Authorization**: Object-level access checks
+- [ ] **Logging**: Audit log for sensitive operations
+- [ ] **HTTPS**: TLS 1.3 enforced
+- [ ] **CORS**: Proper origin restrictions
+- [ ] **Security Headers**: CSP, X-Frame-Options, X-Content-Type-Options
+
+<em>Validate your JSON payloads before storing. Try our <a href="/tools/json-validator">JSON Validator</a> for quick checks.</em>
+        </div>
+    
+                <hr>
+                <p><em>Need to work with JSON data? Try our free <a href="/tools/json-formatter">JSON Formatter</a>, <a href="/tools/json-validator">JSON Validator</a>, and <a href="/tools/json-to-csv">JSON to CSV Converter</a> &mdash; no signup required.</em></p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 AI JSON &mdash; Free JSON Tools for Developers</p>
+            <nav class="footer-nav">
+                <a href="/about">About</a>
+                <a href="/blog">Blog</a>
+                <a href="/news">News</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

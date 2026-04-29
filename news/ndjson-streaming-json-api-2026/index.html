@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Learn how to implement Newline-Delimited JSON (NDJSON) streaming for high-performance APIs, real-time updates, and efficient large dataset handling.">
+    <meta name="keywords" content="ndjson, streaming, api, performance">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/ndjson-streaming-json-api-2026">
+
+    <title>Streaming JSON APIs with NDJSON: A Practical Guide for 2026 | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/ndjson-streaming-json-api-2026">
+    <meta property="og:title" content="Streaming JSON APIs with NDJSON: A Practical Guide for 2026">
+    <meta property="og:description" content="Learn how to implement Newline-Delimited JSON (NDJSON) streaming for high-performance APIs, real-time updates, and efficient large dataset handling.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Streaming JSON APIs with NDJSON: A Practical Guide for 2026">
+    <meta name="twitter:description" content="Learn how to implement Newline-Delimited JSON (NDJSON) streaming for high-performance APIs, real-time updates, and efficient large dataset handling.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Streaming JSON APIs with NDJSON: A Practical Guide for 2026",
+        "description": "Learn how to implement Newline-Delimited JSON (NDJSON) streaming for high-performance APIs, real-time updates, and efficient large dataset handling.",
+        "datePublished": "2026-04-29",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/ndjson-streaming-json-api-2026",
+        "articleSection": "Tutorial"
+    }
+    </script>
+    <script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Tutorial</span>
+                </div>
+                <div class="article-category cat-development">Tutorial</div>
+                <h1 class="article-title">Streaming JSON APIs with NDJSON: A Practical Guide for 2026</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-29</span> &middot; <span>7-9 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                
+        <p class="lead">Traditional REST APIs return complete JSON responses at once. For large datasets or real-time feeds, this creates latency problems — users wait for the entire response before seeing any data.
+
+NDJSON (Newline-Delimited JSON) solves this by sending JSON objects one per line, separated by newlines. Each line is a complete, valid JSON object that can be processed immediately.
+
+This pattern is powering modern AI APIs, real-time dashboards, and high-performance data pipelines.</p>
+
+        <h2>Prerequisites</h2>
+        <div class="info-box">
+            For this tutorial, you'll need:
+
+- Node.js 18+ (for native streaming support)
+- Basic understanding of HTTP and JSON
+- Familiarity with async iterators (or willingness to learn!)
+
+Install these packages:
+
+<pre class="code-block"><code>npm install express ndjson
+npm install --save-dev typescript @types/node</code></pre>
+        </div>
+
+        ## Server-Side: Streaming NDJSON Responses
+
+Express with ndjson middleware:
+
+<pre class="code-block"><code>import createNdjsonStream from 'ndjson';
+import { Router } from 'express';
+
+const router = Router();
+
+// Stream thousands of records efficiently
+router.get('/api/events/stream', (req, res) => {
+  res.setHeader('Content-Type', 'application/x-ndjson');
+  res.setHeader('Transfer-Encoding', 'chunked');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  const transform = createNdjsonStream.serialize();
+
+  transform.pipe(res);
+
+  // Stream data as it becomes available
+  let count = 0;
+  const interval = setInterval(() => {
+    const record = {
+      id: count++,
+      timestamp: new Date().toISOString(),
+      event: 'user_action',
+      data: { userId: `user_${count}`, action: 'click' }
+    };
+
+    transform.write(record);
+
+    if (count >= 1000) {
+      clearInterval(interval);
+      transform.end();
+    }
+  }, 10); // 100 records/second
+});</code></pre>
+
+## Client-Side: Consuming NDJSON Streams
+
+<pre class="code-block"><code>// Using native fetch with ReadableStream (Node 18+)
+async function* streamNdjson(url: string) {
+  const response = await fetch(url);
+
+  if (!response.body) {
+    throw new Error('Streaming not supported');
+  }
+
+  const reader = response.body
+    .pipeThrough(new TextDecoderStream())
+    .pipeThrough(createNdjsonParseStream());
+
+  for await (const line of reader) {
+    yield line;
+  }
+}
+
+// Usage: Process stream as data arrives
+for await (const record of streamNdjson('/api/events/stream')) {
+  console.log('Received:', record.timestamp);
+  updateDashboard(record); // UI updates immediately
+}</code></pre>
+
+<aside class="tip-box">
+<strong>Browser Support</strong>: ReadableStream is supported in all modern browsers. For older browsers, use a polyfill or the <code>stream-consuming</code> library.
+</aside>
+
+        <h2>Advanced Tips</h2>
+        <div class="tip-box">
+            ## Advanced: Error Handling and Resilience
+
+NDJSON streams can fail midway. Here's how to handle it:
+
+<pre class="code-block"><code>class ResilientNdjsonStream {
+  constructor(url, options = {}) {
+    this.url = url;
+    this.options = options;
+    this.retryDelay = options.retryDelay || 1000;
+    this.maxRetries = options.maxRetries || 3;
+  }
+
+  async *stream() {
+    let retries = 0;
+
+    while (retries < this.maxRetries) {
+      try {
+        const response = await fetch(this.url);
+        const stream = response.body
+          .pipeThrough(new TextDecoderStream())
+          .pipeThrough(createNdjsonParseStream());
+
+        for await (const record of stream) {
+          retries = 0; // Reset on successful read
+          yield record;
+        }
+
+        return; // Stream ended normally
+      } catch (error) {
+        retries++;
+        console.warn(`Stream failed, retry ${retries}/${this.maxRetries}`);
+
+        if (retries < this.maxRetries) {
+          await this.delay(this.retryDelay * retries);
+        }
+      }
+    }
+
+    throw new Error('Max retries exceeded');
+  }
+
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+}</code></pre>
+        </div>
+
+        <h2>Summary</h2>
+        <p>## Summary
+
+NDJSON streaming enables:
+
+- ✅ Progressive loading — users see data immediately
+- ✅ Reduced memory usage — no need to buffer entire response
+- ✅ Real-time feeds — ideal for dashboards and live updates
+- ✅ AI API integration — OpenAI, Anthropic use NDJSON for completions
+
+**When to use NDJSON:**
+- Large dataset retrieval (> 1MB response)
+- Real-time data feeds
+- AI/ML streaming responses
+- Event pipelines
+
+**When NOT to use NDJSON:**
+- Simple CRUD operations
+- Small, predictable response sizes
+- When request/response idempotency is required
+
+<em>Format your NDJSON data with our <a href="/tools/json-formatter">JSON Formatter</a>.</em></p>
+    
+                <hr>
+                <p><em>Need to work with JSON data? Try our free <a href="/tools/json-formatter">JSON Formatter</a>, <a href="/tools/json-validator">JSON Validator</a>, and <a href="/tools/json-to-csv">JSON to CSV Converter</a> &mdash; no signup required.</em></p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 AI JSON &mdash; Free JSON Tools for Developers</p>
+            <nav class="footer-nav">
+                <a href="/about">About</a>
+                <a href="/blog">Blog</a>
+                <a href="/news">News</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
