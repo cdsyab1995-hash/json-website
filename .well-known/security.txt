@@ -1,0 +1,33 @@
+# Security Policy for aijsons.com
+# Version: 1.0
+# Last Updated: 2026-04-29
+
+# Contact email for security researchers to report vulnerabilities
+Contact: mailto:security@aijsons.com
+
+# Encryption key for secure communication (PGP)
+# You can add your PGP public key here if needed
+# Preferred-Languages: en
+
+# Policy expiration date (1 year from creation)
+Expires: 2027-04-29T23:59:59.000Z
+
+# Scope: what this policy applies to
+# This policy applies to all services under aijsons.com
+Canonical: https://www.aijsons.com/.well-known/security.txt
+
+# Acknowledgments page (if you want to credit researchers)
+# Acknowledgments: https://www.aijsons.com/security-acknowledgments
+
+# Hiring / security-related job openings
+# Hiring: https://www.aijsons.com/careers
+
+# Copyright and licensing
+# Copyright: Copyright (c) 2026 AI JSON Tools
+
+# Preferred languages for communication
+Preferred-Languages: en
+
+# Encryption: For encrypted communication, you can use the following PGP key
+# (Replace with your actual PGP key if you have one)
+# Encryption: https://www.aijsons.com/.well-known/pgp-key.txt
