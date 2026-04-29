@@ -125,13 +125,7 @@ img { contain: layout; }
 <script src="/js/navbar.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-CY19KF2X39');
-    </script>
+    <script src="/js/analytics.js"></script>
 </head> <body> <!-- Navigation -->
 <div id="navbar-placeholder"></div> <main class="main-container"> <div class="page-header"> <h1 class="page-title">JSON Key Sorter - Sort JSON Keys Alphabetically</h1> <p class="page-description"> Sort JSON keys by name with recursive sorting and ascending/descending options </p> </div> <section class="tool-area"> <div class="tool-section"> <div class="sort-options"> <label class="checkbox-label"> <input type="checkbox" id="recursiveSort" checked> <span>Recursive Sort (All Nested Levels)</span> </label> <label class="checkbox-label"> <input type="checkbox" id="caseSensitive" checked> <span>Case Sensitive</span> </label> <div class="sort-order"> <label class="radio-label"> <input type="radio" name="sortOrder" value="asc" checked> <span>Ascending (A-Z)</span> </label> <label class="radio-label"> <input type="radio" name="sortOrder" value="desc"> <span>Descending (Z-A)</span> </label> </div> </div> </div> <div class="tool-section"> <label class="section-label">Input JSON</label> <textarea id="sortInput" class="input-area" placeholder='Paste JSON to sort, for example: { "zhangsan": "Zhang", "lisi": "Li", "wangwu": "Wang", "config": { "zIndex": 100, "appName": "MyApp", "enabled": true } }'></textarea> <div class="toolbar mt-md"> <div class="toolbar-title"><span>Sort Action</span></div> <div class="btn-group"> <button class="btn btn-primary btn-lg" id="btnSort"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="12" y1="5" x2="12" y2="19"></line> <polyline points="19 12 12 19 5 12"></polyline> </svg> Sort </button> <button class="btn btn-success" id="btnCopy"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> Copy Result </button>
 <button class="btn btn-secondary" id="btnDownload">
