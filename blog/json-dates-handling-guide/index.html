@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="A comprehensive guide to handling dates in JSON APIs. Covers ISO 8601 format, Unix timestamps, timezone pitfalls, and practical solutions in JavaScript and Python.">
+    <meta name="keywords" content="json date format, json date timezone, iso 8601 json, json timestamp, date serialization">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>Working with JSON Dates: ISO 8601, Timestamps, and Timezone Best Practices | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/json-dates-handling-guide">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/blog/json-dates-handling-guide">
+    <meta property="og:title" content="Working with JSON Dates: ISO 8601, Timestamps, and Timezone Best Practices">
+    <meta property="og:description" content="A comprehensive guide to handling dates in JSON APIs. Covers ISO 8601 format, Unix timestamps, timezone pitfalls, and practical solutions in JavaScript and Python.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Working with JSON Dates: ISO 8601, Timestamps, and Timezone Best Practices">
+    <meta name="twitter:description" content="A comprehensive guide to handling dates in JSON APIs. Covers ISO 8601 format, Unix timestamps, timezone pitfalls, and practical solutions in JavaScript and Python.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+    <meta property="article:published_time" content="2026-04-29">
+    <meta property="article:section" content="Development">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Working with JSON Dates: ISO 8601, Timestamps, and Timezone Best Practices",
+        "description": "A comprehensive guide to handling dates in JSON APIs. Covers ISO 8601 format, Unix timestamps, timezone pitfalls, and practical solutions in JavaScript and Python.",
+        "datePublished": "2026-04-29",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/blog/json-dates-handling-guide",
+        "articleSection": "Development"
+    }
+    </script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/blog">Blog</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Development</div>
+                <h1 class="article-title">Working with JSON Dates: ISO 8601, Timestamps, and Timezone Best Practices</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-29</span> &middot; <span>4-6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+
+                <p class="lead">JSON has no native date type. Dates are represented as strings, and the format of those strings is entirely up to you. This sounds simple, but it's the source of countless bugs: timezone mismatches, ambiguous formats (<code>03/04/2026</code> — is it March 4th or April 3rd?), and silent failures when parsers can't agree on a format. This guide covers the standards, patterns, and pitfalls you need to know.</p>
+
+                <p>ISO 8601 (<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>) is the universally accepted format for date strings in JSON APIs. It's unambiguous, sortable as a string, and supported by every major language's date parser. The <code>T</code> separates date and time. The <code>Z</code> suffix indicates UTC. Timezone offsets use <code>+HH:MM</code>/<code>-HH:MM</code> (e.g., <code>2026-04-29T10:30:00+08:00</code> for Beijing time).</p>
+
+                <h2>ISO 8601 Format Breakdown</h2>
+
+                <table class="data-table"><thead><tr><th>Format</th><th>Example</th><th>Use Case</th></tr></thead><tbody><tr><td>Date only</td><td>2026-04-29</td><td>Birthdays, publication dates</td></tr><tr><td>Date + time</td><td>2026-04-29T14:30:00</td><td>Events, schedules</td></tr><tr><td>With timezone Z</td><td>2026-04-29T14:30:00Z</td><td>API timestamps (UTC)</td></tr><tr><td>With offset</td><td>2026-04-29T22:30:00+08:00</td><td>Local time with offset</td></tr><tr><td>With milliseconds</td><td>2026-04-29T14:30:00.123Z</td><td>High-precision logging</td></tr><tr><td>Unix timestamp</td><td>1745917800</td><td>Compact, language-agnostic</td></tr></tbody></table>
+
+                <h2>JavaScript: Parsing and Formatting Dates</h2>
+
+                <pre class="code-block"><code>// Parsing ISO 8601 (built-in support)
+const dateStr = '2026-04-29T14:30:00Z';
+const date = new Date(dateStr);
+console.log(date.toISOString());  // 2026-04-29T14:30:00.000Z
+
+// WARNING: new Date() with non-ISO strings is unreliable
+new Date('04/29/2026');  // May differ across browsers!
+new Date('2026-04-29');  // Parsed as UTC midnight — usually safe
+
+// Formatting dates for JSON output
+function toJsonDate(date) {
+  return date.toISOString();  // Always returns UTC ISO 8601
+}
+
+// For user-facing dates, use Intl
+const userDate = new Intl.DateTimeFormat('en-US', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+  timeZone: 'America/New_York'
+}).format(date);  // "Apr 29, 2026, 10:30 AM"  ' + '</code></pre>
+
+                <pre class="code-block"><code>// DANGER: Date-only strings are parsed as UTC midnight
+const date = new Date('2026-04-29');
+console.log(date.toISOString());  // 2026-04-29T00:00:00.000Z ✓
+
+// But local time display depends on YOUR timezone
+console.log(date.toLocaleDateString());
+// In UTC-5: "4/28/2026" ← WRONG! It shifted to previous day!
+
+// SAFE: Always include time and timezone for precision
+const safe = new Date('2026-04-29T12:00:00Z');
+console.log(safe.toLocaleDateString('en-US'));
+// "4/29/2026" ✓ Consistent regardless of viewer's timezone</code></pre>
+
+                <h3>Python: Date Handling with datetime</h3>
+
+                <pre class="code-block"><code>from datetime import datetime, timezone
+import json
+
+# Parse ISO 8601
+date = datetime.fromisoformat('2026-04-29T14:30:00+00:00')
+print(date)  # 2026-04-29 14:30:00+00:00
+
+# Serialize to ISO 8601
+print(date.isoformat())  # 2026-04-29T14:30:00+00:00
+
+# Custom JSON encoder for datetime objects
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        return super().default(obj)
+
+data = {
+    "event": "deploy",
+    "timestamp": datetime.now(timezone.utc),
+    "duration_seconds": 45.2
+}
+
+json_str = json.dumps(data, cls=DateTimeEncoder)
+# {"event": "deploy", "timestamp": "2026-04-29T08:57:46.123456+00:00", ...}
+
+# Parse JSON dates back to datetime
+def parse_dates(obj):
+    if isinstance(obj, str):
+        try:
+            return datetime.fromisoformat(obj)
+        except ValueError:
+            return obj
+    if isinstance(obj, dict):
+        return {k: parse_dates(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [parse_dates(v) for v in obj]
+    return obj
+
+parsed = json.loads(json_str, object_hook=parse_dates)</code></pre>
+
+                <h2>API Design: Date Best Practices</h2>
+
+                <p>For API responses, always return dates in ISO 8601 with timezone information (<code>Z</code> for UTC, or explicit offset). Accept flexible input formats but normalize to ISO 8601 internally. Use UTC for all server-side storage and processing — convert to local time only at the display layer. For date-only fields (birthdays, holidays), use <code>YYYY-MM-DD</code> format without time.</p>
+
+                <h2>Key Takeaways</h2>
+
+                <ul><li>JSON has no date type — dates are always strings, so format consistency is critical</li><li>Use ISO 8601 (<code>YYYY-MM-DDTHH:mm:ssZ</code>) for all API date strings</li><li>Always include timezone info — omitting it leads to timezone-shifting bugs</li><li>In JavaScript, use <code>new Date(isoString)</code> — avoid locale-specific formats</li><li>In Python, use <code>datetime.fromisoformat()</code> (Python 3.11+) and custom JSON encoders</li><li>Store and process dates in UTC — convert to local time only at the display layer</li></ul>
+
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-viewer" class="related-tool-card">
+                    <strong>JSON Viewer</strong>
+                    <span>Visualize JSON as tree</span>
+                </a>
+                <a href="/tools/json-extract" class="related-tool-card">
+                    <strong>JSON Extractor</strong>
+                    <span>Extract data from JSON with JSONPath</span>
+                </a>            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
