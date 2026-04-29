@@ -1,0 +1,87 @@
+<!-- AdSense Placeholder - Replace with your actual ad code after approval -->
+<!-- 
+  HOW TO USE:
+  1. Get approved for Google AdSense first
+  2. Replace the data-ad-slot values with your actual ad unit IDs
+  3. Add these blocks to your pages where you want ads to appear
+-->
+<style>
+/* Ad container styling - keeps layout stable */
+.ad-container {
+  min-height: 90px;
+  margin: 1.5rem 0;
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px dashed rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+.ad-container.horizontal {
+  min-height: 100px;
+}
+.ad-container.sidebar {
+  min-height: 250px;
+}
+</style>
+
+<!-- ============================================
+     RESPONSIVE AD (full width, auto height)
+     Place after page header or between content sections
+     ============================================ -->
+<div class="ad-container" data-ad-placeholder="Responsive Ad">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<!-- ============================================
+     IN-FEED AD (matches content style)
+     Place between blog/news articles or tool listings
+     ============================================ -->
+<div class="ad-container" data-ad-placeholder="In-Feed Ad">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="fluid"
+       data-ad-layout="in-article">
+  </ins>
+</div>
+
+<!-- ============================================
+     IN-ARTICLE AD (within content)
+     Place mid-article (e.g., after 3rd paragraph)
+     ============================================ -->
+<div class="ad-container" data-ad-placeholder="In-Article Ad">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="fluid"
+       data-ad-layout="in-article">
+  </ins>
+</div>
+
+<!-- ============================================
+     DISPLAY AD (fixed size)
+     Place in sidebar or between content blocks
+     ============================================ -->
+<div class="ad-container horizontal" data-ad-placeholder="Display Ad 728x90">
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:728px;height:90px"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX">
+  </ins>
+</div>
+
+<!-- Load adsbygoogle.js -->
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>

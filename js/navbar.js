@@ -196,7 +196,7 @@
       </div>
     </div>
 
-    ${navLink('/blog', '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>', 'Tutorial')}
+    ${navLink('/blog', '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>', 'Blog')}
     ${navLink('/best-practices', '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>', 'Practices')}
     ${navLink('/news', '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>', 'News')}
     ${navLink('/about', '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>', 'About')}
