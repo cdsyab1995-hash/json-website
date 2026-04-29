@@ -123,6 +123,14 @@ img { contain: layout; }
 }
     </script>
 <script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
 </head> <body> <!-- Navigation -->
 <div id="navbar-placeholder"></div> <main class="main-container"> <div class="page-header"> <h1 class="page-title">JSON to YAML Converter - Convert JSON and YAML</h1> <p class="page-description"> Convert between JSON and YAML formats. Perfect for Kubernetes configs, CI/CD pipelines, and DevOps workflows </p> </div> <section class="tool-area"> <div class="tool-section"> <label class="section-label">Input (Auto-Detect Format)</label> <textarea id="yamlInput" class="input-area" placeholder='Enter JSON or YAML, for example: JSON format: { "name": "MyApp", "version": "1.0.0", "config": { "port": 8080, "debug": true } } Or YAML format: name: MyApp version: "1.0.0" config: port: 8080 debug: true'></textarea> <div class="toolbar mt-md"> <div class="toolbar-title"><span>Convert Actions</span></div> <div class="btn-group"> <button class="btn btn-primary btn-lg" id="btnToYAML"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="5" y1="12" x2="19" y2="12"></line> <polyline points="12 5 19 12 12 19"></polyline> </svg> JSON to YAML </button> <button class="btn btn-secondary btn-lg" id="btnToJSON"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="19" y1="12" x2="5" y2="12"></line> <polyline points="12 19 5 12 12 5"></polyline> </svg> YAML to JSON </button> </div> </div> <div class="toolbar mt-md"> <div class="btn-group"> <button class="btn btn-success" id="btnCopy"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> Copy Result </button>
 <button class="btn btn-secondary" id="btnDownload">

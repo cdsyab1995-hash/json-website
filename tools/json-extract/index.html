@@ -123,6 +123,14 @@ img { contain: layout; }
 }
     </script>
 <script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
 </head> <body> <!-- Navigation -->
 <div id="navbar-placeholder"></div> <main class="main-container"> <div class="page-header"> <h1 class="page-title">Instant JSON Data Extractor - Extract Fields from JSON</h1> <p class="page-description"> Extract specific fields from JSON using path queries. Access nested objects, arrays, and properties quickly. </p> </div> <section class="tool-area"> <div class="tool-section"> <label class="section-label">JSON String</label> <textarea id="extractInput" class="input-area" placeholder='Enter JSON string, for example: { "name": "John", "age": 30, "address": { "city": "New York", "district": "Manhattan" }, "skills": ["JavaScript", "Python", "Go"], "projects": [ {"name": "Project A", "status": "Completed"}, {"name": "Project B", "status": "In Progress"} ] }' style="min-height: 250px;"></textarea> </div> <div class="tool-section mt-lg"> <label class="section-label">Path</label> <input type="text" id="pathInput" class="input-field" placeholder='Enter path, for example: name or address.city or skills[0]'/> <div class="toolbar mt-md"> <div class="toolbar-title"><span>Extract Action</span></div> <div class="btn-group"> <button class="btn btn-primary btn-lg" id="btnExtract"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> Extract Data </button> <button class="btn btn-secondary" id="btnCopy"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> Copy </button>
 <button class="btn btn-secondary" id="btnDownload">

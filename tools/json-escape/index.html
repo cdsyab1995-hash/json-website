@@ -123,6 +123,14 @@ img { contain: layout; }
 }
     </script>
 <script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
 </head> <body> <!-- Navigation -->
 <div id="navbar-placeholder"></div> <main class="main-container"> <div class="page-header"> <h1 class="page-title">JSON Escape & Unescape Tool - Handle Special Characters</h1> <p class="page-description"> Escape and unescape strings for JSON format. Handle special characters for API development and data exchange </p> </div> <section class="tool-area"> <div class="tool-section"> <label class="section-label">Input String</label> <textarea id="escapeInput" class="input-area" placeholder='Enter strings to escape or unescape, for example: Hello "World" New Line: Tab: ' style="min-height: 200px;"></textarea> <div class="toolbar mt-md"> <div class="toolbar-title"><span>Escape Actions</span></div> <div class="btn-group"> <button class="btn btn-success btn-lg" id="btnEscape"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="5" y1="12" x2="19" y2="12"></line> <polyline points="12 5 19 12 12 19"></polyline> </svg> Escape </button> <button class="btn btn-primary btn-lg" id="btnUnescape"> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <line x1="19" y1="12" x2="5" y2="12"></line> <polyline points="12 19 5 12 12 5"></polyline> </svg> Unescape </button> <button class="btn btn-secondary" id="btnCopy" style="margin-left: 0.5rem;">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
