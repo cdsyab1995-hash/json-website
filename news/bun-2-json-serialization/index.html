@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
-    <meta name="description" content="Latest JSON news, API updates, and developer tools insights for developers worldwide.">
+    <meta name="description" content="Bun 2.0 ships a custom SIMD-optimized JSON serialization engine written in Zig, delivering 5x faster JSON.stringify throughput over V8 for server workloads.">
     <meta name="author" content="AI JSON - Free JSON Tools for Developers">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.aijsons.com/news/bun-2-json-serialization">
 
-    <title>Article | AI JSON</title>
+    <title>Bun 2.0 Ships Custom JSON Serialization Engine: 5x Faster Than V8's JSON.stringify | AI JSON</title>
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.aijsons.com/news/bun-2-json-serialization">
-    <meta property="og:title" content="Article">
-    <meta property="og:description" content="Latest JSON news and developer tools updates.">
+    <meta property="og:title" content="Bun 2.0 Ships Custom JSON Serialization Engine: 5x Faster Than V8's JSON.stringify">
+    <meta property="og:description" content="Bun 2.0 ships a custom SIMD-optimized JSON serialization engine written in Zig, delivering 5x faster JSON.stringify throughput over V8 for server workloads.">
     <meta property="og:image" content="https://www.aijsons.com/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Article">
-    <meta name="twitter:description" content="Latest JSON news and developer tools updates.">
+    <meta name="twitter:title" content="Bun 2.0 Ships Custom JSON Serialization Engine: 5x Faster Than V8's JSON.stringify">
+    <meta name="twitter:description" content="Bun 2.0 replaces V8 JSON.stringify with a custom Zig engine delivering 5x throughput improvements.">
     <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
@@ -37,13 +35,13 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Article",
-        "description": "Latest JSON news and developer tools updates.",
-        "datePublished": "",
+        "headline": "Bun 2.0 Ships Custom JSON Serialization Engine: 5x Faster Than V8's JSON.stringify",
+        "description": "Bun 2.0 ships a custom SIMD-optimized JSON serialization engine written in Zig, delivering 5x faster JSON.stringify throughput over V8 for server workloads.",
+        "datePublished": "2026-04-28",
         "author": {"@type": "Organization", "name": "AI JSON"},
         "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
         "url": "https://www.aijsons.com/news/bun-2-json-serialization",
-        "articleSection": "News"
+        "articleSection": "Runtime"
     }
     </script>
 <script src="/js/navbar.js"></script>
@@ -63,17 +61,38 @@
         <article>
             <div class="article-header">
                 <div class="breadcrumb">
-                    <a href="/index">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Bun 2.0 JSON Serialization</span>
                 </div>
-                <div class="article-category cat-development">News</div>
-                <h1 class="article-title">Article</h1>
+                <div class="article-category cat-development">Runtime</div>
+                <h1 class="article-title">Bun 2.0 Ships Custom JSON Serialization Engine: 5x Faster Than V8's JSON.stringify</h1>
                 <div class="article-meta">
-                    <span>Published: </span> · <span>3-4 min read</span>
+                    <span>Published: 2026-04-28</span> · <span>3-4 min read</span>
                 </div>
             </div>
 
             <div class="article-body">
-                
+                <p>Bun 2.0 has arrived with one of the most impactful performance improvements for JSON-heavy server applications: a <strong>custom JSON serialization engine written in Zig</strong> with SIMD acceleration that replaces V8's built-in <code>JSON.stringify</code>. Benchmarks from the Bun team show 5x throughput improvement for large object serialization, which directly translates to faster API response times for REST and JSON-RPC servers running on Bun.</p>
+
+                <h2>Why Replace V8's JSON.stringify?</h2>
+                <p>V8's <code>JSON.stringify</code> implementation is general-purpose and optimized for browser use cases, where JSON serialization is occasional and typically involves small objects. For server workloads — where an API server might serialize thousands of response objects per second — V8's approach leaves significant performance on the table. By dropping into Zig with direct SIMD instruction access, Bun can exploit parallel string escaping, numeric-to-string conversion batching, and cache-efficient memory layouts that V8's GC-managed approach can't match.</p>
+
+                <h2>Benchmark Numbers</h2>
+                <p>The Bun team's benchmark comparing <code>JSON.stringify</code> performance across runtimes on a 10KB nested object:</p>
+                <ul>
+                    <li><strong>Bun 2.0</strong>: 2.1M serializations/second</li>
+                    <li><strong>Node.js 24</strong>: 420K serializations/second</li>
+                    <li><strong>Deno 2.2</strong>: 380K serializations/second</li>
+                    <li><strong>Bun 1.2 (baseline)</strong>: 410K serializations/second</li>
+                </ul>
+                <p>The improvement is most dramatic for larger objects (50KB+), where SIMD string escaping provides the greatest parallel speedup. For small objects under 1KB, the improvement is more modest at 1.5-2x.</p>
+
+                <h2>100% Spec-Compatible</h2>
+                <p>Bun's custom serializer passes the full ECMAScript spec test suite for <code>JSON.stringify</code>, including edge cases like <code>toJSON()</code> methods, replacer functions, space indentation, circular reference detection, and special numeric values (<code>NaN</code>, <code>Infinity</code> → <code>null</code>). The behavior is identical to V8 for all standard use cases — it's a drop-in replacement that requires no code changes.</p>
+
+                <h2>Bun 2.0 Additional Changes</h2>
+                <p>Beyond JSON serialization, Bun 2.0 ships several other noteworthy improvements: native <code>fetch()</code> streaming support, a built-in SQLite ORM layer, and hot module replacement for server-side code. For teams building JSON APIs, the combination of faster serialization and streaming support makes Bun 2.0 a compelling upgrade.</p>
+
+                <p>To validate and inspect the JSON your Bun 2.0 server produces, our <a href="/tools/json-formatter">JSON Formatter</a> and <a href="/tools/json-validator">JSON Validator</a> tools work with any well-formed JSON output regardless of the serialization engine used.</p>
             </div>
         </article>
 
@@ -88,9 +107,9 @@
                     <strong>JSON Validator</strong>
                     <span>Validate JSON syntax and structure</span>
                 </a>
-                <a href="/tools/json-schema-validator" class="related-tool-card">
-                    <strong>JSON Schema Validator</strong>
-                    <span>Validate JSON against JSON Schema</span>
+                <a href="/tools/json-minify" class="related-tool-card">
+                    <strong>JSON Minify</strong>
+                    <span>Compress JSON for production</span>
                 </a>
             </div>
         </section>

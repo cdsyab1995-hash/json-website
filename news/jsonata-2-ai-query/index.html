@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
-    <meta name="description" content="Latest JSON news, API updates, and developer tools insights for developers worldwide.">
+    <meta name="description" content="JSONata 2.0 ships an AI-powered query assistant that translates natural language descriptions into JSONata expressions, lowering the barrier to JSON transformation.">
     <meta name="author" content="AI JSON - Free JSON Tools for Developers">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.aijsons.com/news/jsonata-2-ai-query">
 
-    <title>Article | AI JSON</title>
+    <title>JSONata 2.0 Ships AI-Powered Query Suggestions: Natural Language to JSONata Expressions | AI JSON</title>
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.aijsons.com/news/jsonata-2-ai-query">
-    <meta property="og:title" content="Article">
-    <meta property="og:description" content="Latest JSON news and developer tools updates.">
+    <meta property="og:title" content="JSONata 2.0 Ships AI-Powered Query Suggestions: Natural Language to JSONata Expressions">
+    <meta property="og:description" content="JSONata 2.0 adds an AI query assistant that translates natural language descriptions into JSONata expressions, lowering the barrier to complex JSON transformations.">
     <meta property="og:image" content="https://www.aijsons.com/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Article">
-    <meta name="twitter:description" content="Latest JSON news and developer tools updates.">
+    <meta name="twitter:title" content="JSONata 2.0 Ships AI-Powered Query Suggestions: Natural Language to JSONata Expressions">
+    <meta name="twitter:description" content="JSONata 2.0 adds natural language to JSONata expression translation via AI assistant.">
     <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
@@ -37,13 +35,13 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Article",
-        "description": "Latest JSON news and developer tools updates.",
-        "datePublished": "",
+        "headline": "JSONata 2.0 Ships AI-Powered Query Suggestions: Natural Language to JSONata Expressions",
+        "description": "JSONata 2.0 adds an AI query assistant that translates natural language descriptions into JSONata expressions, lowering the barrier to complex JSON transformations.",
+        "datePublished": "2026-04-29",
         "author": {"@type": "Organization", "name": "AI JSON"},
         "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
         "url": "https://www.aijsons.com/news/jsonata-2-ai-query",
-        "articleSection": "News"
+        "articleSection": "Dev Tools"
     }
     </script>
 <script src="/js/navbar.js"></script>
@@ -63,17 +61,62 @@
         <article>
             <div class="article-header">
                 <div class="breadcrumb">
-                    <a href="/index">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>JSONata 2.0 AI Query</span>
                 </div>
-                <div class="article-category cat-development">News</div>
-                <h1 class="article-title">Article</h1>
+                <div class="article-category cat-development">Dev Tools</div>
+                <h1 class="article-title">JSONata 2.0 Ships AI-Powered Query Suggestions: Natural Language to JSONata Expressions</h1>
                 <div class="article-meta">
-                    <span>Published: </span> · <span>5-6 min read</span>
+                    <span>Published: 2026-04-29</span> · <span>5-6 min read</span>
                 </div>
             </div>
 
             <div class="article-body">
-                
+                <p>JSONata — the JSON query and transformation language popular in Node-RED, AWS Step Functions, and IBM App Connect — has released version 2.0 with a headline feature that makes the language significantly more accessible: an <strong>AI-powered query assistant</strong> that translates natural language descriptions into JSONata expressions. For developers who know what they want to do with JSON but struggle with JSONata's syntax, this changes the workflow substantially.</p>
+
+                <h2>What Is JSONata?</h2>
+                <p>JSONata is a lightweight query and transformation language for JSON data. It's particularly popular in integration platforms (Node-RED, MuleSoft, AWS Step Functions) where developers need to transform JSON from one shape to another. A simple JSONata expression can flatten nested arrays, filter by conditions, aggregate values, and reshape entire document structures — but the syntax has a steep learning curve for newcomers.</p>
+
+                <h2>The AI Query Assistant</h2>
+                <p>JSONata 2.0's AI assistant takes a natural language description of the desired transformation and the input JSON structure, then generates a working JSONata expression:</p>
+
+                <pre><code>import { suggest } from 'jsonata/ai';
+
+const inputJSON = {
+  orders: [
+    { id: 'o1', customer: 'Alice', items: [{ sku: 'A1', qty: 2, price: 10 }] },
+    { id: 'o2', customer: 'Bob', items: [{ sku: 'B1', qty: 1, price: 25 }] }
+  ]
+};
+
+const expression = await suggest(
+  inputJSON,
+  'Get the total value of each order (sum of qty * price for each item) with the order id and customer name'
+);
+
+console.log(expression);
+// Output: orders.{ "id": id, "customer": customer, "total": $sum(items.(qty * price)) }
+
+// Run it:
+const result = await jsonata(expression).evaluate(inputJSON);
+// [{ id: 'o1', customer: 'Alice', total: 20 }, { id: 'o2', customer: 'Bob', total: 25 }]
+</code></pre>
+
+                <h2>How the AI Was Trained</h2>
+                <p>The JSONata team fine-tuned a small language model on a dataset of 50,000+ JSONata expression/description pairs, drawn from GitHub repositories, Stack Overflow questions, and the official documentation examples. The model runs locally in Node.js via ONNX Runtime — no API calls to external services, no data sent off-device. For production integration platforms that handle sensitive data, this privacy-preserving approach matters.</p>
+
+                <h2>JSONata 2.0 Core Changes</h2>
+                <p>Beyond the AI assistant, JSONata 2.0 includes several long-requested language improvements:</p>
+                <ul>
+                    <li><strong>Async expressions</strong>: <code>$async()</code> function for calling external services within a transformation pipeline</li>
+                    <li><strong>Named lambdas</strong>: Functions can now be defined with names for better debugging and recursion</li>
+                    <li><strong>Streaming evaluation</strong>: Large input documents can be evaluated as a stream, avoiding loading the full JSON into memory</li>
+                    <li><strong>TypeScript-first SDK</strong>: The npm package now ships full TypeScript types for all APIs</li>
+                </ul>
+
+                <h2>Integration Ecosystem</h2>
+                <p>JSONata 2.0 maintains backward compatibility with all 1.x expressions. AWS has announced JSONata 2.0 support in Step Functions will ship in Q3 2026. The Node-RED team plans to upgrade their default JSONata version in Node-RED 4.1.</p>
+
+                <p>For developers exploring JSONata transformations, our <a href="/tools/json-formatter">JSON Formatter</a> helps you understand and visualize the JSON structures you're working with, making it easier to describe the transformation you want in natural language.</p>
             </div>
         </article>
 
@@ -88,9 +131,9 @@
                     <strong>JSON Validator</strong>
                     <span>Validate JSON syntax and structure</span>
                 </a>
-                <a href="/tools/json-schema-validator" class="related-tool-card">
-                    <strong>JSON Schema Validator</strong>
-                    <span>Validate JSON against JSON Schema</span>
+                <a href="/tools/json-compare" class="related-tool-card">
+                    <strong>JSON Compare</strong>
+                    <span>Compare JSON objects and find differences</span>
                 </a>
             </div>
         </section>

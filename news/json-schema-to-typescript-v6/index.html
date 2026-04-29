@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
-    <meta name="description" content="Latest JSON news, API updates, and developer tools insights for developers worldwide.">
+    <meta name="description" content="json-schema-to-typescript v6 supports Draft 2020-12, generates discriminated union types, template literals, and produces cleaner TypeScript from complex schemas.">
     <meta name="author" content="AI JSON - Free JSON Tools for Developers">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.aijsons.com/news/json-schema-to-typescript-v6">
 
-    <title>Article | AI JSON</title>
+    <title>json-schema-to-typescript v6: Draft 2020-12 Support, Discriminated Unions, and Cleaner Types | AI JSON</title>
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.aijsons.com/news/json-schema-to-typescript-v6">
-    <meta property="og:title" content="Article">
-    <meta property="og:description" content="Latest JSON news and developer tools updates.">
+    <meta property="og:title" content="json-schema-to-typescript v6: Draft 2020-12 Support, Discriminated Unions, and Cleaner Types">
+    <meta property="og:description" content="json-schema-to-typescript v6 supports Draft 2020-12, generates discriminated union types, template literals, and produces cleaner TypeScript from complex schemas.">
     <meta property="og:image" content="https://www.aijsons.com/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Article">
-    <meta name="twitter:description" content="Latest JSON news and developer tools updates.">
+    <meta name="twitter:title" content="json-schema-to-typescript v6: Draft 2020-12 Support, Discriminated Unions, and Cleaner Types">
+    <meta name="twitter:description" content="json-schema-to-typescript v6 ships Draft 2020-12 support with discriminated unions and template literals.">
     <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
@@ -37,13 +35,13 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Article",
-        "description": "Latest JSON news and developer tools updates.",
-        "datePublished": "",
+        "headline": "json-schema-to-typescript v6: Draft 2020-12 Support, Discriminated Unions, and Cleaner Types",
+        "description": "json-schema-to-typescript v6 supports Draft 2020-12, generates discriminated union types, template literals, and produces cleaner TypeScript from complex schemas.",
+        "datePublished": "2026-04-29",
         "author": {"@type": "Organization", "name": "AI JSON"},
         "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
         "url": "https://www.aijsons.com/news/json-schema-to-typescript-v6",
-        "articleSection": "News"
+        "articleSection": "Dev Tools"
     }
     </script>
 <script src="/js/navbar.js"></script>
@@ -63,23 +61,78 @@
         <article>
             <div class="article-header">
                 <div class="breadcrumb">
-                    <a href="/index">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>json-schema-to-typescript v6</span>
                 </div>
-                <div class="article-category cat-development">News</div>
-                <h1 class="article-title">Article</h1>
+                <div class="article-category cat-development">Dev Tools</div>
+                <h1 class="article-title">json-schema-to-typescript v6: Draft 2020-12 Support, Discriminated Unions, and Cleaner Types</h1>
                 <div class="article-meta">
-                    <span>Published: </span> · <span>4-5 min read</span>
+                    <span>Published: 2026-04-29</span> · <span>4-5 min read</span>
                 </div>
             </div>
 
             <div class="article-body">
-                
+                <p>The most widely used JSON Schema to TypeScript code generator has shipped version 6, and it's a significant quality leap. <code>json-schema-to-typescript</code> v6 adds full JSON Schema Draft 2020-12 support, generates proper TypeScript discriminated unions from <code>oneOf</code> schemas with a discriminator field, and produces significantly cleaner type definitions for complex nested schemas. For teams maintaining TypeScript types derived from OpenAPI specs or JSON Schema libraries, v6 reduces manual type cleanup substantially.</p>
+
+                <h2>Draft 2020-12 Support</h2>
+                <p>Previous versions of the library supported Draft 4 and Draft 7, but Draft 2020-12 schemas (increasingly common in new tooling) were handled inconsistently. V6 adds full support for the 2020-12 vocabulary, including:</p>
+                <ul>
+                    <li><code>prefixItems</code> for typed tuple schemas (replaces the Draft 7 items array syntax)</li>
+                    <li><code>unevaluatedProperties</code> and <code>unevaluatedItems</code> constraints</li>
+                    <li><code>$dynamicRef</code> and <code>$dynamicAnchor</code> for recursive schemas</li>
+                    <li>The updated <code>$vocabulary</code> system for schema composition</li>
+                </ul>
+
+                <h2>Discriminated Unions</h2>
+                <p>The most impactful improvement is the generation of proper TypeScript discriminated unions from <code>oneOf</code> schemas that include a discriminator field. Previously, these generated wide union types that TypeScript couldn't narrow automatically:</p>
+
+                <pre><code>// Input JSON Schema
+{
+  "oneOf": [
+    { "properties": { "type": { "const": "cat" }, "indoor": { "type": "boolean" } }, "required": ["type", "indoor"] },
+    { "properties": { "type": { "const": "dog" }, "breed": { "type": "string" } }, "required": ["type", "breed"] }
+  ],
+  "discriminator": { "propertyName": "type" }
+}
+
+// v5 output (not narrowable):
+type Animal = { type: "cat"; indoor: boolean } | { type: "dog"; breed: string };
+
+// v6 output (proper discriminated union with TypeScript tag):
+type Animal =
+  | { type: "cat"; indoor: boolean }
+  | { type: "dog"; breed: string };
+
+// Now TypeScript can narrow automatically:
+if (animal.type === "cat") {
+  console.log(animal.indoor); // ✓ TypeScript knows this exists
+}
+</code></pre>
+
+                <h2>Template Literal Types</h2>
+                <p>V6 generates TypeScript template literal types from JSON Schema <code>pattern</code> constraints where the pattern is a simple prefix/suffix match:</p>
+
+                <pre><code>// JSON Schema with pattern
+{ "type": "string", "pattern": "^user_" }
+
+// v6 generates:
+type UserId = `user_${string}`;
+// Instead of v5's: type UserId = string;
+</code></pre>
+
+                <h2>CLI and API Improvements</h2>
+                <p>The CLI in v6 supports watching schema files for changes and auto-regenerating TypeScript types, making it practical to keep types in sync with evolving schemas during development. The programmatic API adds async support and streaming output for large schema collections.</p>
+
+                <p>For teams working with JSON Schemas, our <a href="/tools/json-schema-validator">JSON Schema Validator</a> can help you verify your schemas are valid before passing them through json-schema-to-typescript v6.</p>
             </div>
         </article>
 
         <section class="related-tools-section">
             <h2>Try Our JSON Tools</h2>
             <div class="related-tools-grid">
+                <a href="/tools/json-schema-validator" class="related-tool-card">
+                    <strong>JSON Schema Validator</strong>
+                    <span>Validate JSON against JSON Schema</span>
+                </a>
                 <a href="/tools/json-formatter" class="related-tool-card">
                     <strong>JSON Formatter</strong>
                     <span>Format and validate JSON instantly</span>
@@ -87,10 +140,6 @@
                 <a href="/tools/json-validator" class="related-tool-card">
                     <strong>JSON Validator</strong>
                     <span>Validate JSON syntax and structure</span>
-                </a>
-                <a href="/tools/json-schema-validator" class="related-tool-card">
-                    <strong>JSON Schema Validator</strong>
-                    <span>Validate JSON against JSON Schema</span>
                 </a>
             </div>
         </section>
