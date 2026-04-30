@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Learn how to convert JSON data to CSV format using JavaScript, Python, and command-line tools. Handle nested objects, arrays, and edge cases like missing fields and special characters.">
+    <meta name="keywords" content="json to csv, convert json to csv, json csv export, flatten json csv, json array to csv">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>JSON to CSV Conversion: Complete Developer Guide with Code Examples | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/json-to-csv-complete-guide">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/blog/json-to-csv-complete-guide">
+    <meta property="og:title" content="JSON to CSV Conversion: Complete Developer Guide with Code Examples">
+    <meta property="og:description" content="Learn how to convert JSON data to CSV format using JavaScript, Python, and command-line tools. Handle nested objects, arrays, and edge cases like missing fields and special characters.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON to CSV Conversion: Complete Developer Guide with Code Examples">
+    <meta name="twitter:description" content="Learn how to convert JSON data to CSV format using JavaScript, Python, and command-line tools. Handle nested objects, arrays, and edge cases like missing fields and special characters.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+    <meta property="article:published_time" content="2026-04-30">
+    <meta property="article:section" content="Tutorial">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON to CSV Conversion: Complete Developer Guide with Code Examples",
+        "description": "Learn how to convert JSON data to CSV format using JavaScript, Python, and command-line tools. Handle nested objects, arrays, and edge cases like missing fields and special characters.",
+        "datePublished": "2026-04-30",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/blog/json-to-csv-complete-guide",
+        "articleSection": "Tutorial"
+    }
+    </script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/blog">Blog</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Tutorial</div>
+                <h1 class="article-title">JSON to CSV Conversion: Complete Developer Guide with Code Examples</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-04-30</span> &middot; <span>4-6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+
+                <p class="lead">CSV remains the lingua franca of data exchange for spreadsheets, analytics tools, and business reporting. While JSON is the developer's format of choice, analysts, accountants, and managers need CSV. Whether you're exporting API data for Excel, preparing reports for stakeholders, or loading data into pandas DataFrames, knowing how to reliably convert JSON to CSV is an essential skill.</p>
+
+                <p>JSON supports nested objects, arrays, heterogeneous types, and null values. CSV is a flat grid of rows and columns with string values. Converting between them means resolving these structural mismatches. A simple <code>JSON.stringify()</code> won't work — you need a strategy for flattening nested structures, handling arrays, and escaping special characters.</p>
+
+                <h3>Method 1: JavaScript — Manual Conversion</h3>
+
+                <h3>Basic Flat Object Conversion</h3>
+
+                <pre class="code-block"><code>// Input JSON array
+const data = [
+  { "name": "Alice", "email": "alice@example.com", "role": "admin" },
+  { "name": "Bob", "email": "bob@example.com", "role": "user" },
+  { "name": "Carol", "email": "carol@example.com", "role": "editor" }
+];
+
+// Convert to CSV
+function jsonToCsv(data) {
+  if (!data.length) return '';
+  const headers = Object.keys(data[0]);
+  const csvRows = [headers.join(',')];
+
+  for (const row of data) {
+    const values = headers.map(h => {
+      const val = row[h] ?? '';
+      return '"' + String(val).replace(/"/g, '""') + '"';
+    });
+    csvRows.push(values.join(','));
+  }
+
+  return csvRows.join('\n');
+}
+
+console.log(jsonToCsv(data));
+// name,email,role
+// "Alice","alice@example.com","admin"
+// "Bob","bob@example.com","user"
+// "Carol","carol@example.com","editor"</code></pre>
+
+                <h3>Handling Nested Objects</h3>
+
+                <pre class="code-block"><code>// Flatten nested JSON objects for CSV
+function flattenObject(obj, prefix = '') {
+  const result = {};
+
+  for (const key of Object.keys(obj)) {
+    const newKey = prefix ? prefix + '.' + key : key;
+    const value = obj[key];
+
+    if (value &amp;&amp; typeof value === 'object' &amp;&amp; !Array.isArray(value)) {
+      Object.assign(result, flattenObject(value, newKey));
+    } else {
+      result[newKey] = value;
+    }
+  }
+
+  return result;
+}
+
+// Example: nested address
+const data = [
+  { "name": "Alice", "address": { "city": "NYC", "zip": "10001" } },
+  { "name": "Bob", "address": { "city": "LA", "zip": "90001" } }
+];
+
+const flat = data.map(item => flattenObject(item));
+console.log(jsonToCsv(flat));
+// name,address.city,address.zip
+// "Alice","NYC","10001"
+// "Bob","LA","90001"</code></pre>
+
+                <h3>Handling Arrays in JSON</h3>
+
+                <pre class="code-block"><code>// When a field contains an array, join values or create separate rows
+function flattenWithArrays(obj, prefix = '') {
+  const result = {};
+
+  for (const key of Object.keys(obj)) {
+    const newKey = prefix ? prefix + '.' + key : key;
+    const value = obj[key];
+
+    if (Array.isArray(value)) {
+      result[newKey] = value.join('; ');
+    } else if (value &amp;&amp; typeof value === 'object') {
+      Object.assign(result, flattenWithArrays(value, newKey));
+    } else {
+      result[newKey] = value;
+    }
+  }
+
+  return result;
+}
+
+// Example: user with multiple tags
+const data = [
+  { "name": "Alice", "tags": ["python", "go", "rust"] },
+  { "name": "Bob", "tags": ["javascript"] }
+];
+
+const flat = data.map(item => flattenWithArrays(item));
+console.log(jsonToCsv(flat));
+// name,tags
+// "Alice","python; go; rust"
+// "Bob","javascript"</code></pre>
+
+                <h3>Download CSV in the Browser</h3>
+
+                <pre class="code-block"><code>// Create a downloadable CSV file from JSON data
+function downloadCsv(data, filename = 'export.csv') {
+  const csv = jsonToCsv(data);
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.click();
+
+  URL.revokeObjectURL(url);
+}
+
+// Usage
+fetch('/api/users')
+  .then(res => res.json())
+  .then(data => downloadCsv(data, 'users.csv'));</code></pre>
+
+                <h3>Method 2: Python — Using pandas</h3>
+
+                <pre class="code-block"><code>import pandas as pd
+import json
+
+# Load JSON data
+with open('data.json', 'r') as f:
+    data = json.load(f)
+
+# Convert to DataFrame
+df = pd.json_normalize(data)  # Automatically flattens nested objects
+
+# Export to CSV
+df.to_csv('output.csv', index=False)
+
+# Handle arrays by joining with a separator
+# df.to_csv('output.csv', index=False, sep=',', quotechar='"', escapechar='\\')
+
+# Or with more control:
+df.to_csv('output.csv', index=False, encoding='utf-8',
+          columns=['name', 'email', 'role'],  # Select columns
+          na_rep='N/A')  # Replace NaN values</code></pre>
+
+                <h3>Method 3: Python — Without Dependencies</h3>
+
+                <pre class="code-block"><code>import json
+import csv
+
+def json_to_csv(data, output_path):
+    if not data:
+        return
+
+    # Flatten nested objects
+    def flatten(obj, prefix=''):
+        items = {}
+        for k, v in obj.items():
+            key = f'{prefix}.{k}' if prefix else k
+            if isinstance(v, dict):
+                items.update(flatten(v, key))
+            elif isinstance(v, list):
+                items[key] = '; '.join(str(i) for i in v)
+            else:
+                items[key] = v
+        return items
+
+    flat_data = [flatten(item) for item in data]
+    headers = list(flat_data[0].keys())
+
+    with open(output_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=headers)
+        writer.writeheader()
+        writer.writerows(flat_data)
+
+# Usage
+with open('data.json') as f:
+    data = json.load(f)
+
+json_to_csv(data, 'output.csv')</code></pre>
+
+                <h2>Edge Cases and Gotchas</h2>
+
+                <p>CSV fields containing commas, quotes, or newlines must be wrapped in double quotes. Double quotes within values are escaped by doubling them (<code>""</code>). Most CSV libraries handle this automatically, but manual implementations often miss edge cases with Unicode characters, null bytes, or Windows line endings.</p>
+
+                <p>Not every JSON object will have the same keys. When generating CSV headers, collect all unique keys from all objects first. Missing values should be empty strings or a placeholder like <code>N/A</code> — not <code>undefined</code> or <code>null</code>, which break CSV parsers.</p>
+
+                <p>JSON dates are often ISO 8601 strings (<code>2026-04-29T08:00:00Z</code>). When converting to CSV, consider formatting them for the target audience — Excel-friendly dates, locale-specific formats, or Unix timestamps depending on the use case.</p>
+
+                <p>For small datasets (under 10,000 rows), any method works fine. For larger datasets, pandas with <code>chunksize</code> parameter or streaming CSV writers will prevent memory issues. Always test with a sample of your actual data before processing the full dataset.</p>
+
+                <h2>Quick Comparison: JavaScript vs Python</h2>
+
+                <table class="data-table"><thead><tr><th>Feature</th><th>JavaScript</th><th>Python (pandas)</th></tr></thead><tbody><tr><td>Setup</td><td>Zero dependencies</td><td>pip install pandas</td></tr><tr><td>Nested objects</td><td>Manual flatten function</td><td>json_normalize()</td></tr><tr><td>Large files</td><td>Streaming with generators</td><td>chunksize parameter</td></tr><tr><td>Type handling</td><td>Manual coercion</td><td>Automatic dtype inference</td></tr><tr><td>Browser export</td><td>Blob + download</td><td>N/A (server-side only)</td></tr><tr><td>Best for</td><td>Frontend apps, Node.js scripts</td><td>Data analysis, ETL pipelines</td></tr></tbody></table>
+
+                <h2>Key Takeaways</h2>
+
+                <ul><li>Always flatten nested JSON objects before converting to CSV — flat key-value pairs are the CSV contract</li><li>Handle arrays by joining values with a delimiter or exploding into separate rows</li><li>Use pandas <code>json_normalize()</code> for Python — it handles flattening automatically</li><li>Escape special characters (commas, quotes, newlines) properly in CSV fields</li><li>Test with your actual data — synthetic tests miss real-world edge cases like missing keys and null values</li><li>For browser-based conversion, create a Blob and trigger download via a temporary anchor element</li></ul>
+
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-to-csv" class="related-tool-card">
+                    <strong>JSON to CSV</strong>
+                    <span>Convert JSON to CSV format</span>
+                </a>
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-extract" class="related-tool-card">
+                    <strong>JSON Extractor</strong>
+                    <span>Extract data from JSON with JSONPath</span>
+                </a>            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
