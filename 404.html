@@ -127,7 +127,30 @@
     '/terms.html': '/terms',
     '/cookie.html': '/cookie',
     '/changelog.html': '/changelog',
-    '/best-practices': '/best-practices'
+    '/best-practices': '/best-practices',
+    // /pages/ 目录重定向
+    '/pages/': '/tools',
+    '/pages/index.html': '/',
+    '/pages/index': '/',
+    '/pages/blog': '/blog',
+    '/pages/blog/': '/blog',
+    '/pages/news': '/news',
+    '/pages/news/': '/news',
+    // /pages/ 带 .html 后缀的工具页
+    '/pages/yaml.html': '/tools/json-to-yaml',
+    '/pages/json-to-yaml.html': '/tools/json-to-yaml',
+    '/pages/xml.html': '/tools/json-to-xml',
+    '/pages/json-to-xml.html': '/tools/json-to-xml',
+    '/pages/format.html': '/tools/json-formatter',
+    '/pages/validate.html': '/tools/json-formatter',
+    '/pages/minify.html': '/tools/json-formatter',
+    '/pages/sort.html': '/tools/json-sort',
+    '/pages/clean.html': '/tools/json-clean',
+    '/pages/escape.html': '/tools/json-escape',
+    '/pages/extract.html': '/tools/json-extract',
+    '/pages/view.html': '/tools/json-viewer',
+    '/pages/compare.html': '/tools/json-compare',
+    '/pages/csv.html': '/tools/json-to-csv'
   };
   var dest = redirects[path];
   if (dest) {
