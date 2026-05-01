@@ -557,4 +557,102 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-minify-compress-guide</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-path-extraction-guide</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-rest-api-design-best-practices</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-schema-validation-guide-2026</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-to-csv-complete-guide</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/blog/json-vs-yaml-when-to-use</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/json-api-security-best-practices-2026</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/json-b-vs-mongodb-2026</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/json-schema-validation-nodejs-2026</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/json-schema-w3c-recommendation-analysis</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/ndjson-streaming-json-api-2026</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/shopify-json-migration-case-study</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/vscode-json-copilot-2026</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aijsons.com/news/zod-vs-json-schema-2026</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
