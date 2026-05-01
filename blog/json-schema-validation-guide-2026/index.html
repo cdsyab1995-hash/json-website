@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="A practical guide to using JSON Schema for API request/response validation. Covers Draft 2020-12 features, common patterns, and implementation in JavaScript and Python.">
+    <meta name="keywords" content="json schema validation, json schema draft 2020-12, api validation, json schema examples, ajv validation">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>JSON Schema Validation in Practice: Building Reliable APIs with Draft 2020-12 | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/json-schema-validation-guide-2026">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/blog/json-schema-validation-guide-2026">
+    <meta property="og:title" content="JSON Schema Validation in Practice: Building Reliable APIs with Draft 2020-12">
+    <meta property="og:description" content="A practical guide to using JSON Schema for API request/response validation. Covers Draft 2020-12 features, common patterns, and implementation in JavaScript and Python.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON Schema Validation in Practice: Building Reliable APIs with Draft 2020-12">
+    <meta name="twitter:description" content="A practical guide to using JSON Schema for API request/response validation. Covers Draft 2020-12 features, common patterns, and implementation in JavaScript and Python.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+    <meta property="article:published_time" content="2026-05-01">
+    <meta property="article:section" content="Development">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON Schema Validation in Practice: Building Reliable APIs with Draft 2020-12",
+        "description": "A practical guide to using JSON Schema for API request/response validation. Covers Draft 2020-12 features, common patterns, and implementation in JavaScript and Python.",
+        "datePublished": "2026-05-01",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/blog/json-schema-validation-guide-2026",
+        "articleSection": "Development"
+    }
+    </script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/blog">Blog</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Development</div>
+                <h1 class="article-title">JSON Schema Validation in Practice: Building Reliable APIs with Draft 2020-12</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-01</span> &middot; <span>4-6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+
+                <p class="lead">TypeScript types, Pydantic models, and Java classes validate data at compile time or during deserialization. But when data comes from external sources — API requests, webhooks, third-party integrations, or user input — you need runtime validation. JSON Schema is the standard for describing and validating JSON structure, types, and constraints.</p>
+
+                <p>Draft 2020-12 is the latest JSON Schema specification. Key improvements over Draft-07 include: <code>prefixItems</code> for tuple-type arrays (replacing <code>items</code> as an array), <code>$dynamicAnchor</code> and <code>$dynamicRef</code> for recursive schemas that work across file boundaries, and boolean schemas where <code>true</code> means 'anything is valid' and <code>false</code> means 'nothing is valid'.</p>
+
+                <h2>Basic Schema Structure</h2>
+
+                <pre class="code-block"><code>{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User's email address"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8,
+      "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$",
+      "description": "Must contain uppercase, lowercase, and a digit"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 13,
+      "maximum": 120
+    }
+  },
+  "required": ["email", "password", "name"],
+  "additionalProperties": false
+}</code></pre>
+
+                <h3>Validation in JavaScript with Ajv</h3>
+
+                <pre class="code-block"><code>import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
+
+const ajv = new Ajv({ allErrors: true });
+addFormats(ajv);
+
+// Define schema
+const schema = {
+  type: 'object',
+  properties: {
+    email: { type: 'string', format: 'email' },
+    age: { type: 'integer', minimum: 0, maximum: 150 }
+  },
+  required: ['email', 'age'],
+  additionalProperties: false
+};
+
+// Compile validator
+const validate = ajv.compile(schema);
+
+// Test data
+const valid = { email: 'user@example.com', age: 25 };
+const invalid = { email: 'not-an-email', age: -5 };
+
+console.log(validate(valid));    // true
+console.log(validate(invalid));  // false
+console.log(validate.errors);
+// [
+//   { keyword: 'format', params: { format: 'email' }, ... },
+//   { keyword: 'minimum', params: { minimum: 0 }, ... }
+// ]</code></pre>
+
+                <h3>Express.js Middleware Example</h3>
+
+                <pre class="code-block"><code>import express from 'express';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
+
+const ajv = new Ajv({ allErrors: true });
+addFormats(ajv);
+
+// Create validation middleware
+function validateBody(schema) {
+  const validate = ajv.compile(schema);
+  return (req, res, next) => {
+    if (!validate(req.body)) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          code: 'VALIDATION_ERROR',
+          message: 'Request body validation failed',
+          details: validate.errors.map(e => ({
+            field: e.instancePath || e.params.missingProperty,
+            rule: e.keyword,
+            message: e.message
+          }))
+        }
+      });
+    }
+    next();
+  };
+}
+
+// Usage in routes
+app.post('/api/users',
+  validateBody(userSchema),
+  async (req, res) => {
+    // req.body is guaranteed to match the schema
+    const user = await createUser(req.body);
+    res.json({ success: true, data: user });
+  }
+);</code></pre>
+
+                <h3>Validation in Python</h3>
+
+                <pre class="code-block"><code>import jsonschema
+from jsonschema import validate, ValidationError
+
+# Define schema
+schema = {
+    "type": "object",
+    "properties": {
+        "email": {"type": "string", "format": "email"},
+        "name": {"type": "string", "minLength": 1},
+        "tags": {
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+            "maxItems": 10,
+            "uniqueItems": True
+        }
+    },
+    "required": ["email", "name"],
+    "additionalProperties": False
+}
+
+# Validate data
+try:
+    validate(instance=data, schema=schema)
+    print("Valid!")
+except ValidationError as e:
+    print(f"Invalid: {e.message}")
+    print(f"Field: {e.json_path}")
+    print(f"Rule: {e.validator}")  # e.g., 'minLength', 'type'</code></pre>
+
+                <h2>Common Validation Patterns</h2>
+
+                <pre class="code-block"><code>// Schema with conditional requirements
+{
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": ["admin", "user", "guest"]
+    },
+    "permissions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["role"],
+  "if": {
+    "properties": { "role": { "const": "admin" } }
+  },
+  "then": {
+    "required": ["permissions"]
+  }
+}
+// Admins MUST have permissions; other roles don't need them</code></pre>
+
+                <pre class="code-block"><code>{
+  "type": "object",
+  "properties": {
+    "version": { "type": "string", "const": "2.0" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^usr_[a-z0-9]+$" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "created_at"]
+    }
+  },
+  "required": ["version", "data"]
+}</code></pre>
+
+                <p>Compile your schemas once and reuse the validator function. Ajv compiles JSON Schema into JavaScript functions that run 10-100x faster than interpreting the schema on each validation call. For high-throughput APIs, this makes a significant difference. Also consider using <code>$ref</code> to keep schemas DRY and compiled validators cached.</p>
+
+                <h2>Key Takeaways</h2>
+
+                <ul><li>JSON Schema Draft 2020-12 is the current standard — use it for new projects</li><li>Always validate external data at runtime — types and interfaces are not enough</li><li>Compile validators once, reuse them — Ajv compiles to JavaScript functions for speed</li><li>Use <code>allErrors: true</code> to return all validation failures at once, not just the first</li><li>Conditional validation with <code>if/then/else</code> handles complex business rules</li><li>Integrate validation into API middleware to catch bad data before it hits your business logic</li></ul>
+
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-validator" class="related-tool-card">
+                    <strong>JSON Validator</strong>
+                    <span>Validate JSON against schema</span>
+                </a>
+                <a href="/tools/json-viewer" class="related-tool-card">
+                    <strong>JSON Viewer</strong>
+                    <span>Visualize JSON as tree</span>
+                </a>            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
