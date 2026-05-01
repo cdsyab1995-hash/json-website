@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="A practical guide to designing clean, consistent JSON APIs. Covers naming conventions, response envelopes, error formats, pagination patterns, and versioning strategies that scale.">
+    <meta name="keywords" content="json api design, rest api best practices, json naming conventions, api response format, json api versioning">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+
+    <title>JSON REST API Design Best Practices: Structure, Naming, and Versioning | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/json-rest-api-design-best-practices">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/blog/json-rest-api-design-best-practices">
+    <meta property="og:title" content="JSON REST API Design Best Practices: Structure, Naming, and Versioning">
+    <meta property="og:description" content="A practical guide to designing clean, consistent JSON APIs. Covers naming conventions, response envelopes, error formats, pagination patterns, and versioning strategies that scale.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON REST API Design Best Practices: Structure, Naming, and Versioning">
+    <meta name="twitter:description" content="A practical guide to designing clean, consistent JSON APIs. Covers naming conventions, response envelopes, error formats, pagination patterns, and versioning strategies that scale.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+    <meta property="article:published_time" content="2026-05-01">
+    <meta property="article:section" content="Development">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON REST API Design Best Practices: Structure, Naming, and Versioning",
+        "description": "A practical guide to designing clean, consistent JSON APIs. Covers naming conventions, response envelopes, error formats, pagination patterns, and versioning strategies that scale.",
+        "datePublished": "2026-05-01",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/blog/json-rest-api-design-best-practices",
+        "articleSection": "Development"
+    }
+    </script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/blog">Blog</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Development</div>
+                <h1 class="article-title">JSON REST API Design Best Practices: Structure, Naming, and Versioning</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-01</span> &middot; <span>4-6 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+
+                <p class="lead">A well-designed JSON API is predictable. Developers can guess how new endpoints behave before reading the documentation. A poorly designed one requires constant reference to docs, produces subtle bugs from inconsistent naming, and breaks clients when fields change. The cost of bad API design compounds over time — every client that integrates against it inherits the technical debt.</p>
+
+                <p>There are three common JSON key naming styles: <code>snake_case</code> (used by Python, GitHub API, Stripe), <code>camelCase</code> (used by JavaScript-heavy APIs, Twilio, Salesforce), and <code>kebab-case</code> (rare in JSON, common in URL paths). The choice matters less than consistency. Pick one for your organization and enforce it with linting. Mixing conventions within a single API — <code>userId</code> in one endpoint, <code>user_id</code> in another — is the worst outcome.</p>
+
+                <h2>Standard Response Envelope</h2>
+
+                <pre class="code-block"><code>{
+  "success": true,
+  "data": {
+    "id": "usr_abc123",
+    "email": "alice@example.com",
+    "name": "Alice Chen",
+    "created_at": "2026-05-01T08:00:00Z"
+  },
+  "meta": {
+    "request_id": "req_xyz789",
+    "version": "2.0",
+    "timestamp": "2026-05-01T09:00:00Z"
+  }
+}
+
+// Error response — same structure
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Email address is already registered",
+    "details": [
+      {
+        "field": "email",
+        "rule": "unique",
+        "message": "This email is already in use"
+      }
+    ]
+  },
+  "meta": {
+    "request_id": "req_abc456",
+    "version": "2.0",
+    "timestamp": "2026-05-01T09:00:01Z"
+  }
+}</code></pre>
+
+                <h2>Pagination Patterns</h2>
+
+                <pre class="code-block"><code>{
+  "data": [
+    { "id": "usr_001", "name": "Alice" },
+    { "id": "usr_002", "name": "Bob" },
+    { "id": "usr_003", "name": "Carol" }
+  ],
+  "pagination": {
+    "cursor": "eyJpZCI6InVzcl8wMDMifQ",
+    "has_next": true,
+    "has_prev": false,
+    "limit": 20,
+    "total": 1542
+  }
+}
+
+// Client requests next page:
+// GET /api/users?cursor=eyJpZCI6InVzcl8wMDMifQ&amp;limit=20
+
+// Offset-based (simpler but degrades at scale):
+{
+  "pagination": {
+    "page": 1,
+    "per_page": 20,
+    "total_pages": 78,
+    "total_count": 1542
+  }
+}</code></pre>
+
+                <h2>Versioning Strategies</h2>
+
+                <table class="data-table"><thead><tr><th>Strategy</th><th>Example</th><th>Pros</th><th>Cons</th></tr></thead><tbody><tr><td>URL path</td><td>/api/v2/users</td><td>Explicit, cache-friendly</td><td>URL pollution</td></tr><tr><td>Header</td><td>API-Version: 2.0</td><td>Clean URLs</td><td>Harder to test in browser</td></tr><tr><td>Query param</td><td>/api/users?version=2</td><td>Easy to test</td><td>Can be ignored by proxies</td></tr><tr><td>Accept header</td><td>Accept: application/vnd.api+json;version=2</td><td>RESTful purist approach</td><td>Complex for clients</td></tr></tbody></table>
+
+                <pre class="code-block"><code>// Version in URL path — most practical choice
+GET /api/v1/users         // Legacy version
+GET /api/v2/users         // Current version with breaking changes
+GET /api/v2/users/:id/orders  // Consistent prefix
+
+// Rules for breaking vs non-breaking changes:
+// Non-breaking (safe to add without version bump):
+// - Adding new optional fields to responses
+// - Adding new optional query parameters
+// - Adding new endpoints
+
+// Breaking changes (REQUIRE version bump):
+// - Renaming or removing fields
+// - Changing field types
+// - Changing error response format
+// - Making previously optional fields required
+
+// Deprecation header for old versions:
+// Deprecation: true
+// Sunset: Sat, 1 Jan 2027 00:00:00 GMT</code></pre>
+
+                <h3>Boolean and Null Handling</h3>
+
+                <p>Use native JSON booleans (<code>true</code>/<code>false</code>), not strings (<code>"true"</code>/<code>"false"</code>) or integers (<code>1</code>/<code>0</code>). Reserve <code>null</code> for genuinely missing or unknown values — avoid using it to mean 'not applicable' when omitting the field entirely is cleaner. Never return <code>undefined</code> in JSON responses; serialize all defined fields explicitly.</p>
+
+                <h3>Date and Time Fields</h3>
+
+                <pre class="code-block"><code>// Always use ISO 8601 with timezone for timestamps
+{
+  "created_at": "2026-05-01T09:00:00Z",         // UTC preferred
+  "updated_at": "2026-05-01T09:15:00Z",
+  "scheduled_for": "2026-05-02T14:00:00+08:00",  // Local time with offset
+  "expires_at": "2026-05-08T09:00:00Z",
+
+  // For dates without time: use date-only format
+  "birth_date": "1990-03-15",
+  "fiscal_year_end": "2026-12-31",
+
+  // For durations: use ISO 8601 duration or seconds
+  "session_duration": "PT30M",   // ISO 8601: 30 minutes
+  "timeout_seconds": 1800         // Or just seconds as integer
+}</code></pre>
+
+                <h2>ID Formats</h2>
+
+                <table class="data-table"><thead><tr><th>ID Format</th><th>Example</th><th>Best For</th></tr></thead><tbody><tr><td>UUID v4</td><td>550e8400-e29b-41d4-a716-446655440000</td><td>Distributed systems, privacy</td></tr><tr><td>Prefixed ID</td><td>usr_abc123xyz</td><td>Multi-entity APIs (Stripe style)</td></tr><tr><td>Sequential int</td><td>12345</td><td>Simple apps, SQL-native</td></tr><tr><td>ULID</td><td>01ARZ3NDEKTSV4RRFFQ69G5FAV</td><td>Time-sortable, UUID-compatible</td></tr><tr><td>Nanoid</td><td>V1StGXR8_Z5jdHi6B-myT</td><td>URL-safe, compact</td></tr></tbody></table>
+
+                <h2>Key Takeaways</h2>
+
+                <ul><li>Consistency beats perfection — pick a naming convention (snake_case or camelCase) and enforce it across the entire API</li><li>Use a standard response envelope with <code>success</code>, <code>data</code>, <code>error</code>, and <code>meta</code> fields</li><li>Always include timestamps in ISO 8601 format with timezone information</li><li>Version your API in the URL path for clarity and cache-friendliness</li><li>Use cursor-based pagination for large datasets; offset pagination degrades past a few thousand records</li><li>Prefixed IDs (<code>usr_abc123</code>) prevent mixing ID types across different entity types</li></ul>
+
+            </div>
+        </article>
+
+        <section class="related-tools-section">
+            <h2>Try Our JSON Tools</h2>
+            <div class="related-tools-grid">
+                <a href="/tools/json-formatter" class="related-tool-card">
+                    <strong>JSON Formatter</strong>
+                    <span>Format and validate JSON</span>
+                </a>
+                <a href="/tools/json-validator" class="related-tool-card">
+                    <strong>JSON Validator</strong>
+                    <span>Validate JSON against schema</span>
+                </a>
+                <a href="/tools/json-viewer" class="related-tool-card">
+                    <strong>JSON Viewer</strong>
+                    <span>Visualize JSON as tree</span>
+                </a>            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI JSON - Free JSON Tools for Developers</p>
+        <p class="text-sm mt-sm">
+            <a href="/about">About</a> | <a href="/changelog">Changelog</a> | <a href="/">Home</a>
+        </p>
+    </footer>
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
