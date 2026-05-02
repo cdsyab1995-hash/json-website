@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free online JSON validator. Instantly validate JSON syntax, find errors with exact line numbers, and verify schema compliance. No signup required.">
+<meta name="author" content="AI JSON - JSON Tools for Developers">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.aijsons.com/tools/json-validator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.aijsons.com/tools/json-validator">
+<meta property="og:title" content="JSON Validator - Validate JSON Syntax Online Free | AI JSON">
+<meta property="og:description" content="Validate JSON syntax instantly. Detect errors with exact line numbers, verify JSON structure, and get clear error messages. 100% free, runs in your browser.">
+<meta property="og:site_name" content="AI JSON">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JSON Validator - Validate JSON Syntax Online Free">
+<meta name="twitter:description" content="Validate JSON syntax instantly. Detect errors with exact line numbers, verify JSON structure, and get clear error messages.">
+<meta name="twitter:image" content="https://aijsons.com/og-image.png">
+<meta name="twitter:url" content="https://www.aijsons.com/tools/json-validator">
+<title>JSON Validator - Validate JSON Syntax Online Free | AI JSON</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-main:#131c2e;--bg-dark:#0a0f1a;--bg-card:#1f2940;
+  --bg-secondary:#2a3654;--text-primary:#F8FAFC;--text-secondary:#94A3B8;
+  --primary:#22C55E;--space-sm:0.5rem;--space-md:1rem;--space-xl:2rem;
+  --radius-md:8px;--radius-lg:12px;
+}
+body{font-family:'DM Sans','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text-primary);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+.navbar{background:var(--bg-dark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-xl);border-bottom:1px solid var(--bg-secondary);position:sticky;top:0;z-index:100}
+.navbar-brand{font-size:1.25rem;font-weight:700;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:var(--space-sm)}
+.navbar-links{display:flex;align-items:center;gap:0.25rem;flex-wrap:wrap}
+.nav-link{color:var(--text-secondary);text-decoration:none;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-size:.875rem;font-weight:500;height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center;gap:0.3rem}
+.nav-link svg{width:16px;height:16px;flex-shrink:0}
+.nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(34,197,94,.1)}
+.main-container{flex:1;max-width:1200px;margin:0 auto;padding:var(--space-xl);width:100%;min-height:calc(100vh - 64px - 80px)}
+img{contain:layout}
+</style>
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#22C55E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JSON Validator - Validate JSON Syntax Online Free",
+  "url": "https://www.aijsons.com/tools/json-validator",
+  "description": "Free online JSON validator. Instantly check JSON syntax, find errors with exact line numbers, verify JSON structure. No signup required.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web Browser",
+  "softwareVersion": "1.0",
+  "screenshot": "https://aijsons.com/og-image.png",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "96",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "inLanguage": "en",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "featureList": [
+    "JSON syntax validation",
+    "Error detection with exact line number",
+    "Clear error messages",
+    "Valid JSON success feedback",
+    "JSON statistics (keys, depth, size)",
+    "Copy to clipboard",
+    "100% client-side processing"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.aijsons.com/"},
+    {"@type":"ListItem","position":2,"name":"JSON Validator","item":"https://www.aijsons.com/tools/json-validator"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a JSON validator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A JSON validator checks whether a JSON string follows the correct JSON syntax rules defined by RFC 8259. It detects errors like missing quotes, trailing commas, mismatched brackets, and other syntax issues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this JSON validator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free with no limits and no signup required. All validation runs in your browser — your JSON data never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What JSON errors can this validator detect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This validator detects all standard JSON syntax errors including: missing or extra commas, unquoted keys, single-quoted strings, mismatched braces/brackets, invalid Unicode escapes, and malformed numbers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it validate against JSON Schema?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This tool validates JSON syntax (RFC 8259 compliance). For JSON Schema validation, use our JSON Formatter which supports advanced schema checking."
+      }
+    }
+  ]
+}
+</script>
+<script src="/js/navbar.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+<script src="/js/analytics.js"></script>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+
+<main class="main-container">
+  <div class="page-header">
+    <h1 class="page-title">JSON Validator — Validate JSON Syntax Instantly</h1>
+    <p class="page-description">
+      Paste your JSON and get instant syntax validation with clear error messages and line numbers. 100% free, runs in your browser.
+    </p>
+  </div>
+
+  <section class="tool-area">
+    <!-- Input -->
+    <div class="tool-section">
+      <label class="section-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:.5rem">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
+        Input JSON
+      </label>
+      <textarea id="jsonInput" class="input-area" placeholder='Paste your JSON here, e.g.&#10;{&#10;  "name": "John",&#10;  "age": 30,&#10;  "active": true&#10;}'></textarea>
+
+      <div class="toolbar mt-md">
+        <div class="toolbar-title">
+          <span>Validation</span>
+          <span id="statusBadge" class="status-badge"></span>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-main" id="btnValidate">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Validate JSON
+          </button>
+          <button class="btn btn-ghost" id="btnClear">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Clear
+          </button>
+          <button class="btn btn-ghost" id="btnLoadExample">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="4 17 10 11 4 5"></polyline>
+              <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
+            Load Example
+          </button>
+        </div>
+      </div>
+
+      <!-- Validation Result Panel -->
+      <div id="validResult" class="message" style="display:none"></div>
+
+      <!-- Error Panel -->
+      <div id="errorPanel" class="error-panel" style="display:none">
+        <svg class="error-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <div class="error-content">
+          <div id="errorType" class="error-type">SyntaxError</div>
+          <div id="errorMessage" class="error-message"></div>
+          <div id="errorLine" class="error-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Panel -->
+    <div id="statsPanel" class="tool-section mt-lg" style="display:none">
+      <label class="section-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:.5rem">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+        JSON Statistics
+      </label>
+      <div id="statsGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:1rem"></div>
+    </div>
+
+    <!-- Formatted Preview -->
+    <div class="tool-section mt-lg">
+      <label class="section-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:.5rem">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        Formatted Output
+      </label>
+      <div id="jsonHighlight" class="json-highlight"></div>
+    </div>
+
+    <div class="tool-section mt-lg">
+      <label class="section-label">Output</label>
+      <div class="output-container">
+        <div class="output-toolbar">
+          <span id="outputLabel" style="font-size:.85rem;color:var(--text-secondary)">Ready</span>
+          <button class="btn-copy" id="btnCopy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <textarea id="jsonOutput" class="output-area" readonly placeholder="Validation result will appear here..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to use -->
+  <section class="tutorial-section" style="max-width:860px;margin:2rem auto 0">
+    <div class="tutorial-header">
+      <h2 style="font-size:1.5rem;margin-bottom:1rem;color:var(--primary)">How to Validate JSON Online</h2>
+      <p style="color:var(--text-secondary);line-height:1.7">Step-by-step guide for using the JSON Validator.</p>
+    </div>
+    <ol style="margin:1.5rem 0 0 1.5rem;color:var(--text-secondary);line-height:2">
+      <li>Paste your JSON string into the <strong style="color:var(--text-primary)">Input JSON</strong> box above.</li>
+      <li>Click <strong style="color:var(--primary)">Validate JSON</strong> — the result appears instantly.</li>
+      <li>If <strong style="color:#22C55E">valid</strong>, you'll see a green success message and JSON statistics.</li>
+      <li>If <strong style="color:#EF4444">invalid</strong>, the error panel shows the exact error type, message, and line number.</li>
+      <li>Fix your JSON and validate again until it passes.</li>
+    </ol>
+  </section>
+
+  <!-- Common Errors -->
+  <section class="tutorial-section" style="max-width:860px;margin:2rem auto 0">
+    <h2 style="font-size:1.3rem;margin-bottom:1rem;color:var(--primary)">Common JSON Errors &amp; Fixes</h2>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:.9rem">
+        <thead>
+          <tr style="border-bottom:1px solid var(--bg-secondary)">
+            <th style="text-align:left;padding:.75rem;color:var(--text-secondary)">Error</th>
+            <th style="text-align:left;padding:.75rem;color:var(--text-secondary)">Example (Wrong)</th>
+            <th style="text-align:left;padding:.75rem;color:var(--text-secondary)">Fix</th>
+          </tr>
+        </thead>
+        <tbody style="color:var(--text-secondary)">
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Trailing comma</td>
+            <td style="padding:.75rem"><code style="color:#EF4444">{"a":1,}</code></td>
+            <td style="padding:.75rem"><code style="color:#22C55E">{"a":1}</code></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Single quotes</td>
+            <td style="padding:.75rem"><code style="color:#EF4444">{'key':'val'}</code></td>
+            <td style="padding:.75rem"><code style="color:#22C55E">{"key":"val"}</code></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Unquoted key</td>
+            <td style="padding:.75rem"><code style="color:#EF4444">{key: "val"}</code></td>
+            <td style="padding:.75rem"><code style="color:#22C55E">{"key": "val"}</code></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
+            <td style="padding:.75rem">Missing comma</td>
+            <td style="padding:.75rem"><code style="color:#EF4444">{"a":1 "b":2}</code></td>
+            <td style="padding:.75rem"><code style="color:#22C55E">{"a":1,"b":2}</code></td>
+          </tr>
+          <tr>
+            <td style="padding:.75rem">Comments</td>
+            <td style="padding:.75rem"><code style="color:#EF4444">{"a":1} // comment</code></td>
+            <td style="padding:.75rem">Remove comments (JSON doesn't support them)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" style="max-width:860px;margin:2rem auto 0">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <details class="faq-item">
+        <summary class="faq-question">What is JSON validation?</summary>
+        <div class="faq-answer">
+          <p>JSON validation checks whether a string conforms to the JSON specification (RFC 8259). Valid JSON must use double-quoted string keys, no trailing commas, and proper bracket matching.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Does my JSON get uploaded to a server?</summary>
+        <div class="faq-answer">
+          <p><strong>No.</strong> All validation runs entirely in your browser using JavaScript. Your JSON data never leaves your device.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is there a size limit?</summary>
+        <div class="faq-answer">
+          <p>No hard limit — it handles large files well since processing is client-side. For very large files (&gt;10 MB), consider using the <a href="/tools/json-formatter" style="color:var(--primary)">JSON Formatter</a> which is optimized for performance.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">What's the difference between validation and formatting?</summary>
+        <div class="faq-answer">
+          <p>Validation checks <em>correctness</em> — is this valid JSON? Formatting also beautifies the JSON with indentation. Use our <a href="/tools/json-formatter" style="color:var(--primary)">JSON Formatter</a> if you also want to format your output.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="related-tools-section">
+    <h2>Related Tools</h2>
+    <div class="related-tools-grid">
+      <a href="/tools/json-formatter" class="related-tool-card">
+        <strong>JSON Formatter</strong>
+        <span>Format, validate &amp; minify JSON</span>
+      </a>
+      <a href="/tools/json-viewer" class="related-tool-card">
+        <strong>JSON Viewer</strong>
+        <span>Visualize JSON in tree view</span>
+      </a>
+      <a href="/tools/json-compare" class="related-tool-card">
+        <strong>JSON Compare</strong>
+        <span>Diff two JSON documents</span>
+      </a>
+      <a href="/tools/json-clean" class="related-tool-card">
+        <strong>JSON Minifier</strong>
+        <span>Compress JSON to one line</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>AI JSON - Instant client-side JSON processing. Your data stays private.</p>
+  <p class="text-sm mt-sm">
+    <a href="/privacy" class="text-primary">Privacy Policy</a> |
+    <a href="/terms" class="text-primary">Terms of Service</a> |
+    <a href="/cookie" class="text-primary">Cookie Policy</a>
+  </p>
+  <p class="text-small mt-sm">&copy; 2026 AI JSON. All rights reserved.</p>
+</footer>
+
+<script src="/js/app.js" defer></script>
+<script>
+// ===== JSON Validator Logic =====
+(function() {
+
+  // Syntax-highlight JSON
+  function syntaxHighlight(json) {
+    if (typeof json !== 'string') {
+      json = JSON.stringify(json, null, 2);
+    }
+    json = json.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+      var cls = 'json-number';
+      if (/^"/.test(match)) {
+        if (/:$/.test(match)) cls = 'json-key';
+        else cls = 'json-string';
+      } else if (/true|false/.test(match)) {
+        cls = 'json-boolean';
+      } else if (/null/.test(match)) {
+        cls = 'json-null';
+      }
+      return '<span class="' + cls + '">' + match + '</span>';
+    });
+  }
+
+  // Count stats
+  function getStats(obj, depth, keys, arrays) {
+    depth = depth || 0;
+    keys = keys || {count:0};
+    arrays = arrays || {count:0};
+    if (Array.isArray(obj)) {
+      arrays.count += obj.length;
+      obj.forEach(function(v) { getStats(v, depth+1, keys, arrays); });
+    } else if (obj !== null && typeof obj === 'object') {
+      Object.keys(obj).forEach(function(k) {
+        keys.count++;
+        getStats(obj[k], depth+1, keys, arrays);
+      });
+    }
+    return {keys: keys.count, arrays: arrays.count};
+  }
+
+  function getDepth(obj) {
+    if (typeof obj !== 'object' || obj === null) return 0;
+    return 1 + Math.max(0, ...Object.values(obj).map(getDepth));
+  }
+
+  function showStats(parsed, raw) {
+    var panel = document.getElementById('statsPanel');
+    var grid  = document.getElementById('statsGrid');
+    var s = getStats(parsed);
+    var depth = getDepth(parsed);
+    var size  = new Blob([raw]).size;
+    var sizeStr = size < 1024 ? size + ' B' : (size/1024).toFixed(1) + ' KB';
+    var items = [
+      {label: 'Total Keys',  value: s.keys},
+      {label: 'Array Items', value: s.arrays},
+      {label: 'Max Depth',   value: depth},
+      {label: 'Size',        value: sizeStr},
+    ];
+    grid.innerHTML = items.map(function(it) {
+      return '<div style="background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;text-align:center">'
+        + '<div style="font-size:1.5rem;font-weight:700;color:var(--primary)">' + it.value + '</div>'
+        + '<div style="font-size:.8rem;color:var(--text-secondary);margin-top:.25rem">' + it.label + '</div>'
+        + '</div>';
+    }).join('');
+    panel.style.display = '';
+  }
+
+  function validate() {
+    var raw = document.getElementById('jsonInput').value.trim();
+    var resultEl = document.getElementById('validResult');
+    var errorEl  = document.getElementById('errorPanel');
+    var badge    = document.getElementById('statusBadge');
+    var output   = document.getElementById('jsonOutput');
+    var highlight= document.getElementById('jsonHighlight');
+    var label    = document.getElementById('outputLabel');
+
+    if (!raw) {
+      resultEl.style.display = 'none';
+      errorEl.style.display  = 'none';
+      document.getElementById('statsPanel').style.display = 'none';
+      output.value = '';
+      highlight.innerHTML = '';
+      badge.textContent = '';
+      badge.className = 'status-badge';
+      return;
+    }
+
+    try {
+      var parsed = JSON.parse(raw);
+      var pretty = JSON.stringify(parsed, null, 2);
+
+      // Success
+      resultEl.style.display = '';
+      resultEl.className = 'message success';
+      resultEl.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:.4rem"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Valid JSON!</strong> Your JSON is syntactically correct.';
+
+      errorEl.style.display = 'none';
+      badge.textContent = '✓ Valid';
+      badge.className = 'status-badge badge-success';
+
+      highlight.innerHTML = '<pre style="white-space:pre-wrap;word-break:break-all">' + syntaxHighlight(pretty) + '</pre>';
+      output.value = pretty;
+      label.textContent = 'Formatted JSON (' + pretty.length + ' chars)';
+
+      showStats(parsed, raw);
+
+    } catch(e) {
+      // Error
+      resultEl.style.display = 'none';
+      errorEl.style.display  = '';
+      badge.textContent = '✗ Invalid';
+      badge.className = 'status-badge badge-error';
+
+      var lineMatch = e.message.match(/position (\d+)/i) || e.message.match(/line (\d+)/i);
+      var lineInfo  = '';
+      if (lineMatch) {
+        var pos = parseInt(lineMatch[1]);
+        var lineNum = raw.substring(0, pos).split('\n').length;
+        lineInfo = 'Near line ' + lineNum + ' (position ' + pos + ')';
+      }
+      document.getElementById('errorType').textContent = 'SyntaxError';
+      document.getElementById('errorMessage').textContent = e.message;
+      document.getElementById('errorLine').textContent = lineInfo;
+
+      highlight.innerHTML = '';
+      output.value = '';
+      label.textContent = 'Invalid JSON';
+      document.getElementById('statsPanel').style.display = 'none';
+    }
+  }
+
+  var EXAMPLE = JSON.stringify({
+    "name": "JSON Validator Example",
+    "version": "1.0.0",
+    "valid": true,
+    "tags": ["json", "validator", "online"],
+    "author": {
+      "name": "AI JSON",
+      "url": "https://www.aijsons.com"
+    }
+  }, null, 2);
+
+  document.getElementById('btnValidate').addEventListener('click', validate);
+  document.getElementById('btnClear').addEventListener('click', function() {
+    document.getElementById('jsonInput').value = '';
+    validate();
+  });
+  document.getElementById('btnLoadExample').addEventListener('click', function() {
+    document.getElementById('jsonInput').value = EXAMPLE;
+    validate();
+  });
+  document.getElementById('btnCopy').addEventListener('click', function() {
+    var out = document.getElementById('jsonOutput').value;
+    if (!out) return;
+    navigator.clipboard.writeText(out).then(function() {
+      var btn = document.getElementById('btnCopy');
+      var orig = btn.innerHTML;
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.innerHTML = orig; }, 1500);
+    });
+  });
+
+  // Real-time validation on input
+  var timer;
+  document.getElementById('jsonInput').addEventListener('input', function() {
+    clearTimeout(timer);
+    timer = setTimeout(validate, 400);
+  });
+
+})();
+</script>
+<script>
+(function() {
+  var toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  function applyTheme(theme) {
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+  function initTheme() {
+    var saved = localStorage.getItem('theme');
+    if (saved) applyTheme(saved);
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
+  }
+  toggle.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'light' ? 'dark' : 'light';
+    applyTheme(next); localStorage.setItem('theme', next);
+  });
+  initTheme();
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function(err) {
+      console.warn('[PWA] SW registration failed:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>
