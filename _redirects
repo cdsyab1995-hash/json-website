@@ -121,3 +121,12 @@
 
 # === Root Redirects ===
 /pages /tools 301
+/pages/ / 301
+/pages/index.html / 301
+
+# === Missing GSC 404 Redirects ===
+/pages/format.html /tools/json-formatter 301
+/pages/yaml.html /tools/json-to-yaml 301
+/pages/news/ /news 301
+/pages/blog/ /blog 301
+/pages/blog/index.html /blog 301
