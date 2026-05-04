@@ -700,5 +700,25 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <url>
+        <loc>https://www.aijsons.com/blog/json-viewer-tree-structure-guide</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://www.aijsons.com/news/zod-v4-release</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.aijsons.com/news/deno-json-native-support</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </url>
 </urlset>

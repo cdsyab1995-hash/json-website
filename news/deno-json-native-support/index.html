@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deno 2.2 includes built-in JSON Schema validation without external dependencies.">
+    <meta name="keywords" content="deno, json schema, typescript, runtime, validation">
+    <meta name="robots" content="index, follow">
+    <title>Deno 2.2 Adds Native JSON Schema Validation | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/deno-json-native-support">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Deno 2.2 Adds Native JSON Schema Validation">
+    <meta property="og:description" content="Deno 2.2 includes built-in JSON Schema validation without external dependencies.">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/news">News</a>
+                </div>
+                <span class="article-category cat-news">News</span>
+                <h1 class="article-title">Deno 2.2 Adds Native JSON Schema Validation</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-04</span> · <span>1 min read</span> · <span>270 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>Deno 2.2: JSON Schema Built-In</h2><p>Deno 2.2 has added native JSON Schema validation support, allowing developers to validate JSON data against schemas without adding external dependencies. The built-in validator supports the full JSON Schema specification, including draft-07 and draft-2020-12 vocabularies.</p><p>This addition aligns Deno with its goal of providing a comprehensive standard library that reduces the need for external packages. Developers can now perform schema validation using only Deno's built-in APIs, simplifying dependency management and improving security by reducing the attack surface from third-party packages.</p><p>The native validator is optimized for Deno's use case, providing fast validation with reasonable memory overhead. It integrates with Deno's permission system, allowing validation of remote schemas to be controlled separately from other network access.</p></div>
+        <div class="article-section"><h2>Performance Characteristics</h2><p>Benchmarks comparing Deno's built-in validator to popular third-party options show competitive performance. For typical document sizes (under 100KB), validation speed is comparable to specialized libraries. For very large documents, the built-in validator shows some overhead compared to the fastest specialized implementations, but this is acceptable for most use cases.</p><p>The advantage of the built-in validator is consistent performance across different use cases without the need to evaluate and choose between multiple third-party options.</p></div>
+        <div class="article-section"><h2>Developer Experience</h2><p>Using the built-in validator is straightforward. Developers import the validation function from Deno's standard library, provide the JSON data and schema, and receive detailed validation results. The API is designed to be familiar to developers who have used validation libraries in other languages.</p><p>Error messages follow a consistent format that makes integration with error handling and reporting straightforward. The validation results include both success/failure status and detailed information about any validation errors, including paths to failing fields and expected versus actual values.</p></div>
+        
+            </div>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
