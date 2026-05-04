@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical guide to debugging JWT issues in your applications. Learn to inspect token contents, validate signatures, and fix common JWT errors.">
+    <meta name="keywords" content="jwt debugging, json web token, jwt decode, jwt validation, jwt troubleshooting">
+    <meta name="author" content="AI JSON">
+    <meta name="robots" content="index, follow">
+    <title>JWT Debugging Guide: How to Inspect and Validate JSON Web Tokens | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/jwt-debugging-guide">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JWT Debugging Guide: How to Inspect and Validate JSON Web Tokens">
+    <meta property="og:description" content="A practical guide to debugging JWT issues in your applications. Learn to inspect token contents, validate signatures, and fix common JWT errors.">
+    <meta property="og:url" content="https://www.aijsons.com/blog/jwt-debugging-guide">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JWT Debugging Guide: How to Inspect and Validate JSON Web Tokens",
+        "description": "A practical guide to debugging JWT issues in your applications. Learn to inspect token contents, validate signatures, and fix common JWT errors.",
+        "wordCount": 585,
+        "datePublished": "2026-05-04",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"}
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/blog">Blog</a> &gt; Tutorial
+                </div>
+                <span class="article-category cat-development">Tutorial</span>
+                <h1 class="article-title">JWT Debugging Guide: How to Inspect and Validate JSON Web Tokens</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-04</span> · <span>3 min read</span> · <span>585 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>Understanding JWT Structure: The Key to Debugging</h2><p>A JSON Web Token (JWT) has three parts separated by dots: the header, the payload, and the signature. Each part is Base64URL-encoded, which means you can decode and inspect them without any special tools. This transparency is what makes JWT debugging manageable. The header typically contains two fields: alg (the signing algorithm) and typ (the token type, usually JWT). The payload contains the claims: standard claims like sub, exp, iat, and custom claims specific to your application. The signature is the cryptographic proof that the token has not been tampered with. When debugging JWT issues, always start by decoding the token.</p></div>
+        <div class="article-section"><h2>Common JWT Errors and Their Meanings</h2><p>JWT errors fall into several categories. Expired tokens produce exp claim is in the past errors. The fix is either to refresh the token or to adjust the expiration time in your token generation logic. Signature validation failures produce errors like invalid signature. This usually means the secret or public key used to verify the token does not match the one used to sign it. Double-check that your verification key matches your signing key exactly. Missing claims errors indicate that your application expects certain claims that are not present in the token. This can happen when the token was issued by a different provider, or when the token generation logic was updated but old tokens are still in circulation.</p></div>
+        <div class="article-section"><h2>Tools for JWT Debugging</h2><p>jwt.io is the most popular online JWT debugger. You paste your token, and it shows the decoded header and payload, highlights errors, and lets you verify signatures by entering your secret or public key. For command-line debugging, the jwt-cli tool lets you decode and verify JWTs right in your terminal. This is safer than online tools because your tokens never leave your machine. In browser DevTools, you can inspect JWTs stored in localStorage or sessionStorage by simply copying the token value and using jwt.io or jwt-cli to decode it.</p></div>
+        <div class="article-section"><h2>Debugging JWT in Node.js Applications</h2><p>In Node.js, the jsonwebtoken library is the standard for JWT operations. When debugging, enable verbose error logging by catching and logging the full error object (not just the message). The error object contains details like which validation step failed, what the expected value was, and what the actual value was. A common gotcha is clock tolerance. JWT libraries typically allow a small clock skew when checking exp and nbf claims. If your servers clocks are slightly out of sync, valid tokens might be rejected. Set a reasonable clock tolerance to handle minor clock differences.</p></div>
+        <div class="article-section"><h2>Debugging JWT in Python Applications</h2><p>In Python, the PyJWT library is the most widely used JWT library. When debugging, the library exceptions are quite informative: ExpiredSignatureError, InvalidSignatureError, InvalidTokenError. Catch these specific exceptions and log the token JTI or payload to understand what went wrong. A Python-specific debugging tip is to use the python-jose library get_unverified_header() and get_unverified_claims() functions during development. These let you inspect a token without verifying the signature. Also watch out for timezone issues. Python datetime handling with timezone-naive versus timezone-aware datetimes can cause tokens to appear expired when they are not.</p></div>
+        <div class="article-section"><h2>Security Considerations When Debugging JWTs</h2><p>Never log full JWTs in production. A JWT is a bearer token—whoever has it can authenticate as the user it represents. Logging full tokens is a security risk. Instead, log only the token JTI or the first few characters of the signature. When using online debugging tools like jwt.io, never paste tokens that are currently valid in your production system. An attacker who intercepts the token could use it to impersonate a user. For production tokens, decode them offline using command-line tools. Finally, be careful with CORS when debugging JWTs in browser applications.</p></div>
+        
+            </div>
+            
+            <footer class="article-footer">
+                <h3>Related Tools</h3>
+                <div class="related-tools">
+                    <a href="/tools/json-formatter" class="tool-link">JSON Formatter</a>
+                    <a href="/tools/json-validator" class="tool-link">JSON Validator</a>
+                    <a href="/tools/json-viewer" class="tool-link">JSON Viewer</a>
+                </div>
+            </footer>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
