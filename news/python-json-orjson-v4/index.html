@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orjson 4.0 brings new features for data science workflows and improved serialization performance.">
+    <meta name="keywords" content="python, orjson, json performance, data science, numpy">
+    <meta name="robots" content="index, follow">
+    <title>Python orjson 4.0: Faster JSON for Data Science | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/python-json-orjson-v4">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python orjson 4.0: Faster JSON for Data Science">
+    <meta property="og:description" content="Orjson 4.0 brings new features for data science workflows and improved serialization performance.">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/news">News</a>
+                </div>
+                <span class="article-category cat-news">News</span>
+                <h1 class="article-title">Python orjson 4.0: Faster JSON for Data Science</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-04</span> · <span>2 min read</span> · <span>312 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>orjson 4.0: Built for Data Science</h2><p>Orjson, the fastest Python JSON library, released version 4.0 with features specifically designed for data science workflows. The new release adds native support for serializing pandas DataFrames, NumPy arrays, and Python dataclasses with significantly improved performance.</p><p>Data science applications often need to serialize large datasets to JSON for storage, API transmission, or inter-process communication. Orjson 4.0's new DataFrame serialization support handles the conversion automatically, producing compact JSON representations of tabular data that can be efficiently transmitted and reconstructed.</p><p>The new version maintains orjson's position as the fastest Python JSON library, with serialization speeds approximately 10x faster than the standard library json module and deserialization speeds approximately 3x faster. For applications that process large volumes of JSON data, these improvements translate directly to reduced processing time and lower computational costs.</p></div>
+        <div class="article-section"><h2>New Features for Data Science Workflows</h2><p>Beyond raw performance, orjson 4.0 introduces features that simplify data science workflows. Native NumPy array serialization preserves the full structure and type information of arrays, enabling round-trip serialization that maintains precision for floating-point data.</p><p>Pandas DataFrame serialization handles the column-based structure of DataFrames efficiently, producing JSON that represents the data in a format that's both human-readable and easy to reconstruct. The serialization is configurable, allowing users to choose between different representations for dates, missing values, and complex types.</p><p>The new dataclass serialization support automatically handles Python dataclasses with proper type preservation, reducing the boilerplate code required for JSON serialization in data processing applications.</p></div>
+        <div class="article-section"><h2>Installation and Migration</h2><p>Orjson 4.0 is available via pip and conda-forge. The package includes pre-compiled wheels for common platforms, ensuring fast installation without requiring a Rust compiler. Users upgrading from orjson 3.x will find that existing code continues to work without modification, as the API remains fully compatible.</p><p>The migration for data science applications may require updating serialization calls to take advantage of new features, but the library gracefully handles missing optional dependencies, falling back to standard behavior when specialized serializers aren't available.</p></div>
+        
+            </div>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
