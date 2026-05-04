@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bun's new JSON HTTP server benchmark shows significant performance advantages over Node.js.">
+    <meta name="keywords" content="bun, javascript, http server, performance, benchmark">
+    <meta name="robots" content="index, follow">
+    <title>Bun 1.2 Sets New Record for JSON HTTP Server Performance | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/bun-json-http-server-performance">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Bun 1.2 Sets New Record for JSON HTTP Server Performance">
+    <meta property="og:description" content="Bun's new JSON HTTP server benchmark shows significant performance advantages over Node.js.">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/news">News</a>
+                </div>
+                <span class="article-category cat-news">News</span>
+                <h1 class="article-title">Bun 1.2 Sets New Record for JSON HTTP Server Performance</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-04</span> · <span>2 min read</span> · <span>314 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>Bun's New JSON HTTP Server Benchmark Results</h2><p>Bun 1.2, the JavaScript runtime known for its speed, has released benchmark results for its new JSON HTTP server that show dramatic performance improvements over Node.js. In tests measuring requests per second for JSON API endpoints, Bun 1.2 achieves approximately 2.5x the throughput of Node.js 22.</p><p>The benchmark tests realistic JSON API scenarios: parsing incoming JSON requests, processing the data, generating JSON responses, and sending them back. The tests use production-representative payloads of moderate size (1-10KB per request) and measure sustained throughput over extended periods.</p><p>The performance advantage comes from several factors: Bun's JavaScript engine optimizations, native HTTP handling that bypasses some Node.js abstractions, and streaming JSON parsing that reduces memory overhead. For applications that are JSON-heavy, these advantages translate directly to lower infrastructure costs and better user experiences.</p></div>
+        <div class="article-section"><h2>Implications for Production Deployments</h2><p>The benchmark results have implications for organizations evaluating JavaScript runtimes for production workloads. For applications where JSON processing is a significant portion of total processing time, Bun's performance advantages can reduce infrastructure requirements.</p><p>However, the benchmark results should be evaluated in context. Real-world applications have varying profiles: some are JSON-heavy, others are database-heavy, and others spend significant time in custom business logic. Organizations should benchmark their actual applications rather than relying solely on synthetic benchmarks.</p><p>Ecosystem compatibility also matters. Bun has made significant progress on Node.js compatibility, but some packages and native modules may still have issues. Organizations considering Bun for production should carefully evaluate their dependency trees and test thoroughly.</p></div>
+        <div class="article-section"><h2>Future Performance Improvements</h2><p>The Bun team has indicated that further performance improvements are in development. Upcoming versions will include additional optimizations for JSON streaming and HTTP/2 support, which should further extend Bun's performance lead.</p><p>The focus on JSON performance reflects Bun's positioning as an ideal runtime for modern web applications that rely heavily on JSON for data exchange. As JSON remains the dominant format for web APIs, runtimes optimized for JSON processing provide tangible benefits for developers.</p></div>
+        
+            </div>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
