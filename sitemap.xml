@@ -954,5 +954,12 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <url>
+        <loc>https://www.aijsons.com/blog/json-encryption-security-practices</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </url>
 </urlset>
