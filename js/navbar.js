@@ -200,6 +200,7 @@
     ${navLink('/best-practices', '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>', 'Practices')}
     ${navLink('/news', '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>', 'News')}
     ${navLink('/about', '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>', 'About')}
+    ${navLink('/contact', '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>', 'Contact')}
     ${navLink('/changelog', '<circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>', 'Changelog')}
 
     <a href="/tools/json-formatter" class="nav-link cta">Try Formatter</a>
