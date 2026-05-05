@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The JSON Schema specification reaches a major milestone with Draft 2020-12 approval. New features include unevaluatedProperties, dynamic references, and improved pattern handling.">
+    <meta name="keywords" content="json schema, json schema draft 2020-12, api specification, json schema updates">
+    <meta name="robots" content="index, follow">
+    <title>JSON Schema Draft 2020-12 Approved: Major Updates for API Developers | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/json-schema-draft-2020-12-approved">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JSON Schema Draft 2020-12 Approved: Major Updates for API Developers">
+    <meta property="og:description" content="The JSON Schema specification reaches a major milestone with Draft 2020-12 approval. New features include unevaluatedProperties, dynamic references, and improved pattern handling.">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/news">News</a>
+                </div>
+                <span class="article-category cat-news">News</span>
+                <h1 class="article-title">JSON Schema Draft 2020-12 Approved: Major Updates for API Developers</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-05</span> · <span>6 min read</span> · <span>1212 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>What Is New in JSON Schema Draft 2020-12</h2><p>The JSON Schema working group has officially approved Draft 2020-12, bringing the most significant improvements to the specification in years. This release powers the API validation and documentation ecosystems that millions of developers rely on daily. The headline change is the introduction of unevaluatedProperties and unevaluatedItems — two new keywords that allow validators to precisely track which properties have been evaluated by subschemas, then apply constraints to anything that remains.</p><p>This resolves a long-standing frustration: with Draft 7, using additionalProperties alongside allOf or anyOf produced confusing results because validators could not see which properties had been approved by nested schemas. With unevaluatedProperties, you can say 'allow only properties that were explicitly validated somewhere in this schema' — a clear, intuitive semantic. The draft also introduces dynamicRef for recursive schemas, improved Unicode support in pattern matching, and a streamlined vocabulary declaration system.</p></div>
+        <div class="article-section"><h2>Dynamic References: Solving Recursive Schema Problems</h2><p>One of JSON Schema's longest-standing limitations was the inability to cleanly express recursive data structures such as trees, linked lists, or nested configuration hierarchies. Draft 2020-12 introduces dynamicRef and dynamicAnchor to solve this problem definitively. Previously, $ref referenced only static locations defined at schema load time, making self-referential schemas awkward and error-prone. With dynamicRef, references resolve at evaluation time rather than definition time — the resolution is dynamic with respect to the schema being evaluated.</p><p>In practice, this allows you to write a base schema defining a tree node, then extend it in derived schemas without modifying the original. The dynamic resolution picks up the correct extension automatically. This is particularly valuable for validating document formats, configuration file hierarchies, and any data structure where nesting depth is not known in advance. Implementations like Ajv and jsonschema (Python) have added full dynamicRef support.</p></div>
+        <div class="article-section"><h2>unevaluatedProperties and unevaluatedItems in Depth</h2><p>The unevaluatedProperties keyword is one of the most requested features in the JSON Schema community's history. Here is the core problem it solves: suppose you have a base schema that allows properties 'name' and 'age', and a derived schema using allOf that adds 'email'. If you add additionalProperties: false to the base schema, 'email' is rejected — even though it is valid in the derived schema — because additionalProperties only sees properties not defined in the immediate schema.</p><p>unevaluatedProperties fixes this by considering the results of all subschemas (allOf, anyOf, if/then, $ref, etc.) before deciding whether a property has been evaluated. A property is unevaluated only if no subschema has accepted it. This makes it possible to enforce closed schemas at any level of composition without fighting the constraint system. unevaluatedItems provides the same capability for arrays.</p></div>
+        <div class="article-section"><h2>Improved Vocabulary System for Extensions</h2><p>JSON Schema's extensibility has always been a theoretical strength, but the vocabulary system in Draft 2019-09 was confusing enough that many implementers ignored it. Draft 2020-12 refactors vocabulary declarations to be cleaner and more explicit. A vocabulary is a named set of keywords that must all be supported together. Schemas declare which vocabularies they require, and validators that do not support a required vocabulary must refuse to process the schema rather than silently produce incorrect results.</p><p>This change has significant implications for specialized validation use cases. Organizations building OpenAPI-compatible validators, YAML configuration validators, or domain-specific schema languages can now define their extension vocabularies with formal semantics. Validators can declare what they support, and schema authors can declare what they require — creating a clear compatibility contract. The core vocabularies (Core, Applicator, Validation, Meta-Data, Format-Annotation, Content, Unevaluated) are themselves defined using this system.</p></div>
+        <div class="article-section"><h2>Migration Path from Previous Drafts</h2><p>For the vast majority of users, migrating to Draft 2020-12 is straightforward because the core keywords and their behavior remain identical across drafts. If your schemas use only basic validation — required, type, properties, items, minLength, maximum, enum, and similar common keywords — they will validate identically under 2020-12. The changes are additive, not breaking.</p><p>The primary migration consideration applies to schemas that used advanced features from Draft 2019-09. The $recursiveRef and $recursiveAnchor keywords, which were an early attempt at solving recursive schemas, have been replaced by the cleaner dynamicRef and dynamicAnchor. If you use $recursiveRef in production schemas, you will need to migrate to dynamicRef. The JSON Schema website provides a dedicated migration guide with before/after examples for every changed keyword, making this a well-documented upgrade path.</p></div>
+        <div class="article-section"><h2>Tooling and Library Support Across Ecosystems</h2><p>The major JSON Schema implementations have moved quickly to adopt Draft 2020-12. In JavaScript, Ajv (the most widely deployed JSON Schema validator, used by thousands of npm packages) supports all drafts including 2020-12. The json-schema library used by VS Code for IntelliSense and inline validation has been updated. In Python, the jsonschema library added 2020-12 support, as did the newer fastjsonschema.</p><p>Java users can find support in NetworkNT's json-schema-validator, which has an excellent track record of following new drafts. .NET developers have support through NJsonSchema and JsonSchema.Net. The online JSON Schema Playground at json-schema.org defaults to 2020-12, making it easy to experiment with all new features interactively. The comprehensive test suite maintained by the JSON Schema team ensures that implementations produce consistent results across language boundaries — important for polyglot teams sharing schemas.</p></div>
+        <div class="article-section"><h2>Impact on OpenAPI and AsyncAPI Specifications</h2><p>JSON Schema underpins both OpenAPI (the REST API specification standard) and AsyncAPI (the event-driven API standard). OpenAPI 3.1 already adopted JSON Schema 2020-12 as its schema dialect, marking a significant alignment after years in which OpenAPI used a subset dialect of JSON Schema that diverged from the main spec. This alignment means that skills and tooling learned for one context transfer directly to the other.</p><p>For API teams using OpenAPI 3.1, the Draft 2020-12 features — especially unevaluatedProperties and improved $ref semantics — make it possible to write schemas that precisely describe complex polymorphic types without workarounds. AsyncAPI teams gain the same expressive power for message schema definitions. The broader ecosystem effect is that JSON Schema knowledge is becoming more universally applicable, reducing the fragmentation that previously required separate expertise for each spec format.</p></div>
+        <div class="article-section"><h2>Practical Examples: Before and After Draft 2020-12</h2><p>Here are two concrete examples showing how Draft 2020-12 simplifies real-world schema challenges.</p><p>Example 1 — Closed schema with inheritance (previously required fragile workarounds):
+```json
+{
+  '$schema': 'https://json-schema.org/draft/2020-12/schema',
+  'allOf': [{ '$ref': '#/$defs/Base' }],
+  'properties': { 'extra': { 'type': 'string' } },
+  'unevaluatedProperties': false,
+  '$defs': {
+    'Base': { 'properties': { 'id': { 'type': 'integer' } } }
+  }
+}
+```
+This cleanly disallows any property except 'id' and 'extra', regardless of schema composition depth.</p><p>Example 2 — Recursive tree schema using dynamicRef:
+```json
+{
+  '$schema': 'https://json-schema.org/draft/2020-12/schema',
+  '$id': 'tree',
+  '$dynamicAnchor': 'node',
+  'type': 'object',
+  'properties': {
+    'value': { 'type': 'number' },
+    'children': { 'type': 'array', 'items': { '$dynamicRef': '#node' } }
+  }
+}
+```
+This was extremely difficult to express cleanly before Draft 2020-12.</p></div>
+        <div class="article-section"><h2>What Comes Next: The Road Beyond Draft 2020-12</h2><p>The JSON Schema community is already discussing the priorities for the next iteration. Key areas under consideration include: improved support for discriminated unions (selecting which subschema to apply based on a type tag property), native support for value references within a schema (enabling cross-field validation without custom keywords), and a standard format for schema bundles that package a schema with all its references into a single portable document.</p><p>The governance structure has also matured. JSON Schema now has an official organization, a published roadmap, and a formalized RFC-like process for proposing changes. This gives the community confidence that the specification will continue to evolve in a deliberate, backward-compatible way. For API teams investing in JSON Schema-based tooling, this stability roadmap makes the investment significantly more attractive than it was in the early draft years.</p></div>
+        
+            </div>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
