@@ -780,5 +780,25 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <url>
+        <loc>https://www.aijsons.com/blog/json-serialization-performance</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://www.aijsons.com/news/typescript-json-type-inference</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.aijsons.com/news/json-graphql-comparison-2026</loc>
+        <lastmod>2026-05-05</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </url>
 </urlset>
