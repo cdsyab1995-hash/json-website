@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understand RFC 7386 JSON Merge Patch for partial JSON updates. Learn when to use merge patch vs. other update strategies.">
+    <meta name="keywords" content="json merge patch, partial update, rfc 7386, json patch, update strategy">
+    <meta name="author" content="AI JSON">
+    <meta name="robots" content="index, follow">
+    <title>JSON Merge Patch: A Simple Algorithm for Partial Updates | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/blog/json-merge-patch-algorithms">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JSON Merge Patch: A Simple Algorithm for Partial Updates">
+    <meta property="og:description" content="Understand RFC 7386 JSON Merge Patch for partial JSON updates. Learn when to use merge patch vs. other update strategies.">
+    <meta property="og:url" content="https://www.aijsons.com/blog/json-merge-patch-algorithms">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "JSON Merge Patch: A Simple Algorithm for Partial Updates",
+        "description": "Understand RFC 7386 JSON Merge Patch for partial JSON updates. Learn when to use merge patch vs. other update strategies.",
+        "wordCount": 461,
+        "datePublished": "2026-05-05",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"}
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/blog">Blog</a> &gt; Tutorial
+                </div>
+                <span class="article-category cat-development">Tutorial</span>
+                <h1 class="article-title">JSON Merge Patch: A Simple Algorithm for Partial Updates</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-05</span> · <span>2 min read</span> · <span>461 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>The Problem: How Do You Update Part of a JSON Document?</h2><p>When building APIs, you often need to update individual fields in an object without touching the rest. The naive approach is to send the entire object with just one field changed, but this requires the client to track state, increases bandwidth, and creates race conditions when multiple clients update the same object simultaneously. JSON Merge Patch (RFC 7386) provides a simple solution: send only the fields you want to change, and the server merges them into the existing document. Deleted fields are represented by null in the patch.</p></div>
+        <div class="article-section"><h2>How JSON Merge Patch Works</h2><p>JSON Merge Patch is beautifully simple. The patch is itself a JSON object. To merge a patch into a target document, you recursively apply each property: if the patch has a value that is not null, set that property in the target to the patch value. If the patch has null, remove that property from the target. If the patch has an array, replace the target array entirely. That is it—no operations, no paths, no tests. The simplicity makes it easy to implement, debug, and understand.</p></div>
+        <div class="article-section"><h2>When Merge Patch Falls Short</h2><p>Merge patch simplicity is also its limitation. You cannot append to an array; you can only replace it. You cannot update a deeply nested property without including the entire parent structure. You cannot conditionally apply changes based on the current value. For these scenarios, JSON Patch (RFC 6902) provides a more powerful alternative. JSON Patch defines operations like add, remove, replace, move, copy, and test, with JSON Pointers to identify the exact location to modify.</p></div>
+        <div class="article-section"><h2>Implementing Merge Patch in JavaScript</h2><p>Implementing merge patch is straightforward. A recursive function that handles objects and primitives covers most cases. For objects, iterate over patch properties: if the value is null, delete the property from the target; otherwise, recursively merge or replace. For arrays, simply replace. The tricky part is handling the case where the target does not have a property that the patch wants to update—create it. Many libraries exist if you prefer not to roll your own.</p></div>
+        <div class="article-section"><h2>Using Merge Patch in REST APIs</h2><p>The HTTP PATCH method was designed for partial updates, and JSON Merge Patch is one of the most common formats for PATCH bodies. Set the Content-Type to application/merge-patch+json. Your API documentation should specify that clients should send only the fields they want to update. Document that null means delete. Consider providing optimistic locking (ETags) to handle concurrent updates. If the client sends a patch based on stale data, you can detect the conflict and return 409 Conflict.</p></div>
+        <div class="article-section"><h2>Testing Merge Patch Implementations</h2><p>Test your merge patch implementation thoroughly. Create a test suite covering: adding new properties to existing objects, overwriting existing property values, deleting properties by setting them to null, nested object merging, array replacement, null patches (delete everything), empty patches (modify nothing), handling missing target properties, and type mismatches. Edge cases like merging into null should all be specified and tested.</p></div>
+        
+            </div>
+            
+            <footer class="article-footer">
+                <h3>Related Tools</h3>
+                <div class="related-tools">
+                    <a href="/tools/json-formatter" class="tool-link">JSON Formatter</a>
+                    <a href="/tools/json-validator" class="tool-link">JSON Validator</a>
+                    <a href="/tools/json-viewer" class="tool-link">JSON Viewer</a>
+                </div>
+            </footer>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

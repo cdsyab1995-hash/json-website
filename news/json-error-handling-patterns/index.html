@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Best practices for designing JSON error responses. Compare RFC 7807 Problem Details, JSON:API errors, and custom formats.">
+    <meta name="keywords" content="json error handling, api error format, rfc 7807, problem details, api error design">
+    <meta name="robots" content="index, follow">
+    <title>Modern JSON Error Handling: Patterns That Work | AI JSON</title>
+    <link rel="canonical" href="https://www.aijsons.com/news/json-error-handling-patterns">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Modern JSON Error Handling: Patterns That Work">
+    <meta property="og:description" content="Best practices for designing JSON error responses. Compare RFC 7807 Problem Details, JSON:API errors, and custom formats.">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AI JSON</a>
+            <a href="/tools/json-formatter" class="btn btn-primary">Try Formatter</a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <article class="article">
+            <header class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> &gt; <a href="/news">News</a>
+                </div>
+                <span class="article-category cat-news">News</span>
+                <h1 class="article-title">Modern JSON Error Handling: Patterns That Work</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-05</span> · <span>2 min read</span> · <span>318 words</span>
+                </div>
+            </header>
+            
+            <div class="article-body">
+                <div class="article-section"><h2>Why JSON Error Design Matters</h2><p>Error responses are where many APIs fail users most severely. When something goes wrong, developers debugging integrations need clear, actionable information: what went wrong, where it went wrong, and ideally how to fix it. Poor error handling creates frustrated developers, long debugging sessions, and support burden. Good error design reduces all three. The challenge is balancing detail (helps debugging) with security and simplicity.</p></div>
+        <div class="article-section"><h2>RFC 7807: Problem Details for HTTP APIs</h2><p>RFC 7807 defines a standard format for HTTP API error responses with type (URI linking to documentation), title (human-readable summary), detail (specific context), and instance (identifying the request) properties. Custom properties can provide additional context. This format is gaining adoption because it provides structure without being overly prescriptive. The type URI links to documentation, making errors self-documenting.</p></div>
+        <div class="article-section"><h2>JSON:API Error Format</h2><p>JSON:API defines its own error format optimized for its resource-oriented model. Errors include id (unique error identifier), links (about and describedBy URLs), status (HTTP status code), code (application-specific error code), title (short summary), detail (human-readable explanation), and source (pointer to the specific field or parameter). Relationships to related errors can be expressed. The format integrates naturally with JSON:API overall structure.</p></div>
+        <div class="article-section"><h2>Custom Error Formats: When and Why</h2><p>Many APIs use custom error formats that do not conform to RFC 7807 or JSON:API. This is not always wrong—sometimes you have specific requirements that standards do not address. Custom formats can be simpler for simple APIs. However, when building custom formats, include: a human-readable message, an error code that code can switch on, the field that caused the error (for validation), and links to documentation. Avoid exposing internal implementation details.</p></div>
+        <div class="article-section"><h2>Error Handling Best Practices</h2><p>Use appropriate HTTP status codes consistently. 400 for client errors, 401/403 for auth, 404 for missing resources, 422 for validation errors, 429 for rate limiting, 500 for server errors. Return errors in the same format as successful responses (consistency helps client code). Log errors server-side with full details for debugging; return sanitized details to clients. Include a request identifier in error responses that maps to server-side logs.</p></div>
+        
+            </div>
+        </article>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AI JSON. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
