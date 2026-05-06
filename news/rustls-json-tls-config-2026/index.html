@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="Rustls 0.23 replaces OpenSSL-style configuration files with a JSON-based TLS configuration system that supports live reload, schema validation, and runtime certificate management.">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/rustls-json-tls-config-2026">
+
+    <title>Rustls 0.23 Introduces JSON-Based TLS Configuration: Goodbye OpenSSL Config Files | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/rustls-json-tls-config-2026">
+    <meta property="og:title" content="Rustls 0.23 Introduces JSON-Based TLS Configuration: Goodbye OpenSSL Config Files">
+    <meta property="og:description" content="Rustls 0.23 replaces OpenSSL-style configuration files with a JSON-based TLS configuration system that supports live reload, schema validation, and runtime certificate management.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rustls 0.23 Introduces JSON-Based TLS Configuration: Goodbye OpenSSL Config Files">
+    <meta name="twitter:description" content="Rustls 0.23 replaces OpenSSL-style configuration files with a JSON-based TLS configuration system that supports live reload, schema validation, and runtime certificate management.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Rustls 0.23 Introduces JSON-Based TLS Configuration: Goodbye OpenSSL Config Files",
+        "description": "Rustls 0.23 replaces OpenSSL-style configuration files with a JSON-based TLS configuration system that supports live reload, schema validation, and runtime certificate management.",
+        "datePublished": "2026-05-06",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/rustls-json-tls-config-2026",
+        "articleSection": "News"
+    }
+    </script>
+<script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">Security</div>
+                <h1 class="article-title">Rustls 0.23 Introduces JSON-Based TLS Configuration: Goodbye OpenSSL Config Files</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-06</span> &middot; <span>6-7 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>TLS configuration has been one of the last holdouts of complex legacy configuration formats. Rustls 0.23 changes this by introducing a fully JSON-based TLS configuration system that supports schema validation, live reload without service restart, and programmatic certificate management.</p>
+
+<h2>JSON TLS Configuration in Practice</h2>
+
+<p>Replace complex OpenSSL configuration directives with readable JSON:
+
+<pre><code>// rustls.json - New format
+{
+  "server": {
+    "certificates": [
+      {
+        "cert": "/etc/ssl/certs/api.example.com.pem",
+        "key": "/etc/ssl/private/api.example.com.key",
+        "domains": ["api.example.com", "*.api.example.com"]
+      }
+    ],
+    "protocols": ["TLSv1.3", "TLSv1.2"],
+    "cipherSuites": [
+      "TLS_AES_256_GCM_SHA384",
+      "TLS_CHACHA20_POLY1305_SHA256"
+    ],
+    "clientAuth": {
+      "required": false,
+      "caBundle": "/etc/ssl/certs/ca-bundle.pem"
+    }
+  }
+}</code></pre></p>
+
+<h2>Live Reload Without Downtime</h2>
+
+<p>The killer feature: Rustls 0.23 watches the JSON config file and hot-reloads TLS certificates on change. Certificate rotation — previously requiring service restarts or complex reload scripts — becomes trivial. New connections use the updated certificate immediately; existing connections complete with the old certificate.</p>
+
+<h2>Schema Validation Catches Misconfigurations</h2>
+
+<p>All JSON configurations are validated against a published JSON Schema before being applied. Invalid cipher suites, malformed certificate paths, and conflicting protocol settings are caught at load time with clear error messages, not discovered during TLS handshake failures in production.</p>
+
+<h2>Ecosystem Impact</h2>
+
+<p>Nginx plans JSON TLS configuration support in v1.28 (May 2026). HAProxy has implemented a compatible JSON config format. Caddy's JSON configuration already supports similar patterns. The trend toward JSON for infrastructure configuration — already dominant in Kubernetes and Terraform — is now reaching TLS.</p>
+
+
+                <hr>
+                <p><em>Need to work with JSON data? Try our free <a href="/tools/json-formatter">JSON Formatter</a>, <a href="/tools/json-validator">JSON Validator</a>, and <a href="/tools/json-to-csv">JSON to CSV Converter</a> &mdash; no signup required.</em></p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 AI JSON &mdash; Free JSON Tools for Developers</p>
+            <nav class="footer-nav">
+                <a href="/about">About</a>
+                <a href="/blog">Blog</a>
+                <a href="/news">News</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
