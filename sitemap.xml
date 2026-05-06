@@ -678,16 +678,7 @@
         <loc>https://www.aijsons.com/news/nodejs-json-streaming-api-2026</loc>
         <lastmod>2026-05-04</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.aijsons.com/news/nodejs-json-streaming-api-2026</loc>
-        <lastmod>2026-05-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
+       >
         <loc>https://www.aijsons.com/blog/json-validator-debug-api-errors</loc>
         <lastmod>2026-05-04</lastmod>
         <changefreq>weekly</changefreq>
@@ -969,97 +960,97 @@
     </url>
 </url>
   <url>
-    <loc>https://www.aijsons.com/blog/json-schema-validation-best-practices/</loc>
+    <loc>https://www.aijsons.com/blog/json-schema-validation-best-practices</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/blog/jsonpath-query-language-tutorial/</loc>
+    <loc>https://www.aijsons.com/blog/jsonpath-query-language-tutorial</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/blog/json-editor-vscode-extensions-2026/</loc>
+    <loc>https://www.aijsons.com/blog/json-editor-vscode-extensions-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/blog/json-data-migration-best-practices/</loc>
+    <loc>https://www.aijsons.com/blog/json-data-migration-best-practices</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-schema-draft-2026-update/</loc>
+    <loc>https://www.aijsons.com/news/json-schema-draft-2026-update</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/openapi-35-json-schema-integration/</loc>
+    <loc>https://www.aijsons.com/news/openapi-35-json-schema-integration</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-streaming-protocols-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-streaming-protocols-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-vs-protobuf-benchmark-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-vs-protobuf-benchmark-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-ai-code-generation-tools-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-ai-code-generation-tools-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-security-vulnerabilities-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-security-vulnerabilities-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-performance-wasm-browser-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-performance-wasm-browser-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-editor-ide-plugins-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-editor-ide-plugins-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-microservices-communication-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-microservices-communication-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-mobile-optimization-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-mobile-optimization-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-data-pipelines-etl-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-data-pipelines-etl-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.aijsons.com/news/json-text-sequences-lsp-rust-2026/</loc>
+    <loc>https://www.aijsons.com/news/json-text-sequences-lsp-rust-2026</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
