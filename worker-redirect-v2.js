@@ -1,12 +1,11 @@
 export default {
   async fetch(request) {
     const url = new URL(request.url);
-    let path = url.pathname.replace(/\/$/, '');
+    const path = url.pathname.replace(/\/$/, '');
 
-    // ========== 工具路径映射 ==========
-    // 格式: 旧路径slug → 新工具名称
-    const toolMap = {
-      // 短名称映射
+    // ========== 已知工具映射 (SEO友好的目标路径) ==========
+    // 已知的短名称/别名 → 正确的工具路径
+    const knownTools = {
       'format': 'json-formatter',
       'escape': 'json-escape',
       'extract': 'json-extract',
@@ -35,8 +34,7 @@ export default {
       'cssminifier': 'css-minifier',
       'pdfsplit': 'pdf-split',
       'batchrenamer': 'batch-renamer',
-      
-      // 完整名称映射（兼容 /pages/tool-name 格式）
+      // 完整名称（与 tools/ 目录一致）
       'json-formatter': 'json-formatter',
       'json-escape': 'json-escape',
       'json-extract': 'json-extract',
@@ -62,76 +60,76 @@ export default {
       'batch-renamer': 'batch-renamer'
     };
 
-    // ========== 处理 /pages/xxx 或 /pages/xxx.html ==========
-    const match = path.match(/^\/pages\/([^/.]+)(?:\.html)?$/);
-    if (match) {
-      const slug = match[1];
-      const tool = toolMap[slug];
-      
-      if (tool) {
-        return Response.redirect(url.origin + '/tools/' + tool, 301);
+    // ========== 通用正则模式 (无需维护slug列表) ==========
+
+    // /pages/xxx.html → /tools/xxx (未知slug也生效)
+    // 匹配 /pages/format.html, /pages/uuid-generator.html, /pages/yaml.html 等
+    const toolPageMatch = path.match(/^\/pages\/([^/]+)\.html$/);
+    if (toolPageMatch) {
+      const slug = toolPageMatch[1];
+      const target = knownTools[slug] || slug; // 有映射用映射，没有直接用slug
+      return Response.redirect(url.origin + '/tools/' + target, 301);
+    }
+
+    // /pages/xxx (无扩展名) → /tools/xxx
+    // 匹配 /pages/uuid, /pages/format, /pages/json-formatter 等
+    const toolShortMatch = path.match(/^\/pages\/([^\/]+)$/);
+    if (toolShortMatch) {
+      const slug = toolShortMatch[1];
+      // 排除已知的目录页
+      if (slug === 'news' || slug === 'blog') {
+        return Response.redirect(url.origin + '/' + slug, 301);
       }
+      const target = knownTools[slug] || slug;
+      return Response.redirect(url.origin + '/tools/' + target, 301);
     }
 
-    // ========== 处理 /pages/news/xxx.html ==========
-    const newsMatch = path.match(/^\/pages\/news\/(.+)\.html$/);
-    if (newsMatch) {
-      const slug = newsMatch[1];
-      return Response.redirect(url.origin + '/news/' + slug, 301);
+    // /pages/news/xxx.html → /news/xxx (通用：匹配任意文章slug)
+    const newsArticleMatch = path.match(/^\/pages\/news\/(.+)\.html$/);
+    if (newsArticleMatch) {
+      return Response.redirect(url.origin + '/news/' + newsArticleMatch[1], 301);
     }
 
-    // ========== 处理 /pages/blog/xxx.html ==========
-    const blogMatch = path.match(/^\/pages\/blog\/(.+)\.html$/);
-    if (blogMatch) {
-      const slug = blogMatch[1];
-      return Response.redirect(url.origin + '/blog/' + slug, 301);
+    // /pages/blog/xxx.html → /blog/xxx (通用：匹配任意文章slug)
+    const blogArticleMatch = path.match(/^\/pages\/blog\/(.+)\.html$/);
+    if (blogArticleMatch) {
+      return Response.redirect(url.origin + '/blog/' + blogArticleMatch[1], 301);
     }
 
-    // ========== 处理 /pages/ 目录页清理 ==========
     // /pages/news/ → /news
-    if (path === '/pages/news' || path === '/pages/news/') {
+    if (path === '/pages/news') {
       return Response.redirect(url.origin + '/news', 301);
     }
+
     // /pages/blog/ → /blog
-    if (path === '/pages/blog' || path === '/pages/blog/') {
+    if (path === '/pages/blog') {
       return Response.redirect(url.origin + '/blog', 301);
     }
+
     // /pages/blog.html → /blog
     if (path === '/pages/blog.html') {
       return Response.redirect(url.origin + '/blog', 301);
     }
 
-    // ========== 处理尾斜杠通用规则 ==========
-    // /tools/ → /tools (避免目录不存在导致 404)
-    if (path === '/tools' && new URL(request.url).pathname.endsWith('/')) {
+    // /pages/ → /tools
+    if (path === '/pages') {
       return Response.redirect(url.origin + '/tools', 301);
     }
-    // /blog/ → /blog
-    if (path === '/blog' && new URL(request.url).pathname.endsWith('/')) {
-      return Response.redirect(url.origin + '/blog', 301);
-    }
-    // /news/ → /news
-    if (path === '/news' && new URL(request.url).pathname.endsWith('/')) {
-      return Response.redirect(url.origin + '/news', 301);
+
+    // ========== 尾斜杠清理 (通用) ==========
+    if ((path === '/tools' || path === '/blog' || path === '/news') &&
+        url.pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/' + path.split('/').pop(), 301);
     }
 
-    // ========== 处理静态页面旧 .html 路径 ==========
-    const staticPages = {
-      '/about.html': '/about',
-      '/blog.html': '/blog',
-      '/news.html': '/news',
-      '/privacy.html': '/privacy',
-      '/terms.html': '/terms',
-      '/cookie.html': '/cookie',
-      '/changelog.html': '/changelog',
-      '/best-practices.html': '/best-practices',
-      '/contact.html': '/contact'
-    };
-    if (staticPages[path]) {
-      return Response.redirect(url.origin + staticPages[path], 301);
+    // ========== 静态页旧 .html 路径 (通用) ==========
+    // 匹配 /xxx.html → /xxx (任意单层路径.html)
+    const staticPageMatch = path.match(/^\/([a-z0-9-]+)\.html$/i);
+    if (staticPageMatch) {
+      return Response.redirect(url.origin + '/' + staticPageMatch[1], 301);
     }
 
-    // 非 pages 路径，放行
+    // 非匹配路径，放行
     return fetch(request);
   }
 };
