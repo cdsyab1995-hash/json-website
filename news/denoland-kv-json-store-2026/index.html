@@ -71,11 +71,11 @@
             </div>
 
             <div class="article-body">
-                <p>Deno KV started as a simple key-value store for edge functions. In 2026, it has evolved into a full JSON document store with secondary indexes, range queries, and multi-region ACID transactions. For teams building on Deno Deploy, it's now a credible alternative to DynamoDB and Cloudflare D1.</p>
+                <p>Deno KV started as a simple key-value store for edge functions. In 2026, it has evolved into a full JSON document store with secondary indexes, range queries, and multi-region ACID transactions. For teams building on Deno Deploy, it's now a credible alternative to DynamoDB and Cloudflare D1. This article explores the new capabilities, practical usage patterns, and how Deno KV compares to established document databases when working with JSON data at the edge.</p>
 
 <h2>JSON Document Storage with Typed Keys</h2>
 
-<p>Deno KV now supports storing arbitrary JSON objects with composite typed keys. The type system ensures key structure consistency at runtime:
+<p>Deno KV now supports storing arbitrary JSON objects with composite typed keys. The type system ensures key structure consistency at runtime, preventing the schema drift that plagues untyped key-value stores. Keys can be composed of strings, numbers, booleans, and Uint8Arrays, allowing natural hierarchical organization of JSON documents. This structure enables efficient prefix scans and range queries that were impossible with flat key namespaces.</p>
 
 <pre><code>const kv = await Deno.openKv();
 
@@ -93,11 +93,13 @@ const result = await kv.atomic()
   .set(["users", "alice@example.com"], updatedUser)
   .commit();
 
-console.log(result.ok); // true if no conflict</code></pre></p>
+console.log(result.ok); // true if no conflict</code></pre>
+
+<p>The atomic check-and-set pattern is particularly powerful for JSON document updates. By including a versionstamp check, you implement optimistic concurrency control without locks. If two clients simultaneously update the same document, the first commit succeeds and the second receives a conflict signal, allowing the application to retry with fresh data. This pattern is essential for JSON documents representing shared state like user profiles or configuration objects.</p>
 
 <h2>Secondary Indexes for JSON Fields</h2>
 
-<p>The 2026 update adds automatic secondary indexing on JSON field paths. Index any nested field and query it with sub-10ms latency at edge:
+<p>The 2026 update adds automatic secondary indexing on JSON field paths. Index any nested field and query it with sub-10ms latency at edge. Before secondary indexes, querying Deno KV by any field other than the primary key required full table scans — acceptable for prototypes, unusable in production. The new indexing system maintains indexes automatically on write operations, keeping them consistent with the primary data without manual synchronization logic.</p>
 
 <pre><code>// Create index on nested JSON field
 await kv.createIndex("users", "$.role");
@@ -106,15 +108,27 @@ await kv.createIndex("users", "$.role");
 const admins = kv.list({ prefix: ["users_by_role", "admin"] });
 for await (const entry of admins) {
   console.log(entry.value.name);
-}</code></pre></p>
+}</code></pre>
 
-<h2>Cross-Region Replication</h2>
+<p>JSONPath notation for field references (using the <code>$.</code> prefix) supports nested fields and array elements. Indexes on <code>$.address.city</code> or <code>$.tags[0]</code> work correctly. Multi-field composite indexes are also supported, enabling efficient queries across multiple JSON fields simultaneously. The indexing engine uses a B-tree structure optimized for the key-ordered storage model of Deno KV.</p>
 
-<p>Deno KV now replicates across 12 global regions with configurable consistency levels. Developers choose between strong consistency (single-region write acknowledgment) and eventual consistency (faster writes, globally available reads) per-operation.</p>
+<h2>Cross-Region Replication and Consistency Models</h2>
+
+<p>Deno KV now replicates across 12 global regions with configurable consistency levels. Developers choose between strong consistency (single-region write acknowledgment) and eventual consistency (faster writes, globally available reads) per-operation. This per-operation granularity is unusual — most distributed stores require you to choose a consistency level at the cluster or table level, not per-request.</p>
+
+<p>The practical impact is significant for JSON APIs serving a global audience. User profile reads can use eventual consistency for maximum performance (serving from the nearest region), while writes that update account balance or subscription status use strong consistency to guarantee accuracy. This flexibility eliminates the common tradeoff between performance and correctness that plagues globally distributed applications.</p>
+
+<h2>Range Queries and JSON Filtering</h2>
+
+<p>The list API now supports start and end bounds, enabling efficient range scans over ordered JSON documents. Combined with timestamp-based keys, this enables powerful time-range queries without loading all data into memory. For event logs, audit trails, and time-series JSON data, this transforms Deno KV from a lookup store into a genuine analytics data source accessible at the edge.</p>
+
+<p>JSON field filtering during list operations reduces network transfer for large document collections. Instead of fetching entire JSON objects and filtering client-side, the query engine evaluates JSONPath predicates at the storage layer and returns only matching documents. This is particularly valuable for mobile applications where bandwidth and latency constraints make large JSON payloads impractical.</p>
 
 <h2>Benchmark vs Alternatives</h2>
 
-<p>In edge deployment benchmarks (Deno Deploy), Deno KV outperforms Cloudflare D1 by 40% on JSON read latency and matches DynamoDB on throughput while offering a dramatically simpler API. For Deno-native projects, the zero-configuration setup is the decisive advantage.</p>
+<p>In edge deployment benchmarks (Deno Deploy), Deno KV outperforms Cloudflare D1 by 40% on JSON read latency and matches DynamoDB on throughput while offering a dramatically simpler API. For Deno-native projects, the zero-configuration setup is the decisive advantage. Unlike DynamoDB, there is no infrastructure provisioning, capacity planning, or VPC configuration — open a connection and start storing JSON documents immediately.</p>
+
+<p>The total cost of ownership advantage is also meaningful. For projects with moderate JSON document volumes (under 100GB), Deno KV's pricing model is significantly cheaper than provisioned DynamoDB capacity or managed MongoDB Atlas clusters. Teams building on Deno Deploy can consolidate their data layer with their compute layer, simplifying operations and reducing the number of services to monitor and maintain.</p>
 
 
                 <hr>

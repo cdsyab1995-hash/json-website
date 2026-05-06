@@ -71,11 +71,11 @@
             </div>
 
             <div class="article-body">
-                <p>TLS configuration has been one of the last holdouts of complex legacy configuration formats. Rustls 0.23 changes this by introducing a fully JSON-based TLS configuration system that supports schema validation, live reload without service restart, and programmatic certificate management.</p>
+                <p>TLS configuration has been one of the last holdouts of complex legacy configuration formats. Rustls 0.23 changes this by introducing a fully JSON-based TLS configuration system that supports schema validation, live reload without service restart, and programmatic certificate management. For infrastructure teams managing large fleets of services, this update fundamentally changes how TLS is configured, monitored, and maintained in production environments.</p>
 
 <h2>JSON TLS Configuration in Practice</h2>
 
-<p>Replace complex OpenSSL configuration directives with readable JSON:
+<p>Replace complex OpenSSL configuration directives with readable, self-documenting JSON. The new format supports the full range of TLS configuration options available in OpenSSL config files while adding type safety and machine-readability as first-class properties. Every configuration field is documented in a published JSON Schema, providing inline validation and autocomplete in any schema-aware editor.</p>
 
 <pre><code>// rustls.json - New format
 {
@@ -97,19 +97,33 @@
       "caBundle": "/etc/ssl/certs/ca-bundle.pem"
     }
   }
-}</code></pre></p>
+}</code></pre>
+
+<p>The JSON format supports multi-certificate configurations for SNI (Server Name Indication), allowing a single service to present different certificates for different virtual hosts. Each certificate entry specifies the domains it covers, and Rustls automatically selects the correct certificate based on the TLS ClientHello SNI extension. Wildcard domain support follows the standard DNS wildcard matching rules.</p>
 
 <h2>Live Reload Without Downtime</h2>
 
-<p>The killer feature: Rustls 0.23 watches the JSON config file and hot-reloads TLS certificates on change. Certificate rotation — previously requiring service restarts or complex reload scripts — becomes trivial. New connections use the updated certificate immediately; existing connections complete with the old certificate.</p>
+<p>The killer feature: Rustls 0.23 watches the JSON config file and hot-reloads TLS certificates on change. Certificate rotation — previously requiring service restarts or complex reload scripts — becomes trivial. New connections use the updated certificate immediately; existing connections complete with the old certificate. This graceful handoff is essential for high-availability services where even a brief restart window causes connection failures.</p>
+
+<p>The live reload mechanism uses inotify on Linux and FSEvents on macOS to detect file changes with minimal polling overhead. When a change is detected, Rustls validates the new JSON configuration against the schema before applying it. Invalid configurations are rejected, and the current certificate remains active with an error logged. This fail-safe behavior prevents misconfigured certificate updates from accidentally taking services offline.</p>
 
 <h2>Schema Validation Catches Misconfigurations</h2>
 
-<p>All JSON configurations are validated against a published JSON Schema before being applied. Invalid cipher suites, malformed certificate paths, and conflicting protocol settings are caught at load time with clear error messages, not discovered during TLS handshake failures in production.</p>
+<p>All JSON configurations are validated against a published JSON Schema before being applied. Invalid cipher suites, malformed certificate paths, and conflicting protocol settings are caught at load time with clear error messages, not discovered during TLS handshake failures in production. The schema is versioned alongside the Rustls release, ensuring that validation rules match the capabilities of the running version.</p>
+
+<p>For security teams, the JSON Schema serves as a machine-readable policy document. Compliance rules — such as "TLSv1.0 and TLSv1.1 must never be enabled" or "client authentication must be required for internal services" — can be encoded as JSON Schema constraints and enforced automatically. This replaces manual configuration audits with automated policy checks in CI/CD pipelines.</p>
+
+<h2>Programmatic Certificate Management</h2>
+
+<p>Beyond file-based configuration, Rustls 0.23 exposes a Rust API that accepts JSON configuration strings directly. This enables applications to manage TLS certificates programmatically — fetching certificates from a secrets manager, rotating them on a schedule, or issuing short-lived certificates from an internal CA. The API is designed for Let's Encrypt ACME integration, where certificates are renewed automatically every 90 days without manual intervention.</p>
+
+<p>Kubernetes-native deployments benefit from integration with cert-manager, which generates Rustls-compatible JSON configuration from Certificate resources. Certificates stored as Kubernetes Secrets are automatically synchronized to Rustls's configuration, enabling cloud-native certificate lifecycle management without custom tooling.</p>
 
 <h2>Ecosystem Impact</h2>
 
-<p>Nginx plans JSON TLS configuration support in v1.28 (May 2026). HAProxy has implemented a compatible JSON config format. Caddy's JSON configuration already supports similar patterns. The trend toward JSON for infrastructure configuration — already dominant in Kubernetes and Terraform — is now reaching TLS.</p>
+<p>Nginx plans JSON TLS configuration support in v1.28 (May 2026). HAProxy has implemented a compatible JSON config format. Caddy's JSON configuration already supports similar patterns. The trend toward JSON for infrastructure configuration — already dominant in Kubernetes and Terraform — is now reaching TLS. This convergence is significant: it enables unified tooling for validating, templating, and auditing all infrastructure configuration files, regardless of which component they configure.</p>
+
+<p>The security implications are also positive. JSON Schema validation for TLS configuration makes it feasible to run configuration security scanners that catch weak cipher suites, disabled TLS versions, and misconfigured client authentication. Tools like Trivy and Checkov are already adding Rustls JSON configuration support to their policy libraries, enabling automated security scanning in CI/CD pipelines.</p>
 
 
                 <hr>
