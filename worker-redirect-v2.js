@@ -16,6 +16,7 @@ export default {
       'clean': 'json-clean',
       'toxml': 'json-to-xml',
       'toyaml': 'json-to-yaml',
+      'yaml': 'json-to-yaml',
       'view': 'json-viewer',
       'toxlsx': 'json-to-csv',
       'toxls': 'json-to-csv',
@@ -49,7 +50,6 @@ export default {
       'csv-to-excel': 'csv-to-excel',
       'merge-csv': 'merge-csv',
       'excel-remove-duplicates': 'excel-remove-duplicates',
-      'base64': 'base64',
       'hash-generator': 'hash-generator',
       'url-encoder': 'url-encoder',
       'html-encoder': 'html-encoder',
@@ -87,6 +87,20 @@ export default {
       return Response.redirect(url.origin + '/blog/' + slug, 301);
     }
 
+    // ========== 处理 /pages/ 目录页清理 ==========
+    // /pages/news/ → /news
+    if (path === '/pages/news' || path === '/pages/news/') {
+      return Response.redirect(url.origin + '/news', 301);
+    }
+    // /pages/blog/ → /blog
+    if (path === '/pages/blog' || path === '/pages/blog/') {
+      return Response.redirect(url.origin + '/blog', 301);
+    }
+    // /pages/blog.html → /blog
+    if (path === '/pages/blog.html') {
+      return Response.redirect(url.origin + '/blog', 301);
+    }
+
     // ========== 处理尾斜杠通用规则 ==========
     // /tools/ → /tools (避免目录不存在导致 404)
     if (path === '/tools' && new URL(request.url).pathname.endsWith('/')) {
@@ -99,6 +113,22 @@ export default {
     // /news/ → /news
     if (path === '/news' && new URL(request.url).pathname.endsWith('/')) {
       return Response.redirect(url.origin + '/news', 301);
+    }
+
+    // ========== 处理静态页面旧 .html 路径 ==========
+    const staticPages = {
+      '/about.html': '/about',
+      '/blog.html': '/blog',
+      '/news.html': '/news',
+      '/privacy.html': '/privacy',
+      '/terms.html': '/terms',
+      '/cookie.html': '/cookie',
+      '/changelog.html': '/changelog',
+      '/best-practices.html': '/best-practices',
+      '/contact.html': '/contact'
+    };
+    if (staticPages[path]) {
+      return Response.redirect(url.origin + staticPages[path], 301);
     }
 
     // 非 pages 路径，放行
