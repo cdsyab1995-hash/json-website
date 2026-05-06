@@ -125,7 +125,10 @@ img { contain: layout; }
 <script src="/js/navbar.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
-    <script src="/js/analytics.js"></script>
+    <script src="/js/analytics.js"></script>    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1902338749101993"
+     crossorigin="anonymous"></script>
+    
 </head> <body> <!-- Navigation -->
 <div id="navbar-placeholder"></div> <main class="main-container"> <div class="page-header text-center"> <h1 class="page-title">JSON Tree Viewer - Visualize JSON Data</h1> <p class="page-description"> Visualize JSON data with tree structure - Supports collapse/expand, search & locate </p> <div class="breadcrumb"> <a href="/">Home</a> / <span>JSON Viewer</span> </div> </div> <div class="tool-area"> <div class="tool-header"> <div class="tool-status" id="status"> <span class="status-dot"></span> <span class="status-text">Waiting for input...</span> </div> <div class="tool-actions"> <button class="btn btn-secondary" id="expandAllBtn">Expand All</button> <button class="btn btn-secondary" id="collapseAllBtn">Collapse All</button> <button class="btn btn-secondary" id="searchBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> Search </button> <button class="btn btn-secondary" id="copyBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> Copy </button> <button class="btn btn-secondary" id="downloadBtn"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path> <polyline points="7 10 12 15 17 10"></polyline> <line x1="12" y1="15" x2="12" y2="3"></line> </svg> Download </button> <button class="btn btn-danger" id="clearBtn">Clear</button> <select id="templateSelect" style="padding: 6px 12px; border-radius: 6px; border: 1px solid var(--bg-secondary); background: var(--bg-secondary); cursor: pointer; color: var(--text-primary); margin-left: 0.5rem;"> <option value="">Load Example...</option> <option value="example0">API Response</option> <option value="example1">User Profile</option> <option value="example2">Nested Config</option> </select> </div> </div> <div class="editor-container"> <div class="editor-panel"> <div class="editor-label">Input JSON</div> <textarea id="inputJson" class="code-editor" placeholder="Paste JSON data here, tree structure will display on the right..."></textarea> </div> <div class="editor-panel"> <div class="editor-label">Tree View</div> <div id="treeViewer" class="tree-viewer">Paste JSON data to view tree structure...</div> </div> </div> <div class="options-row"> <label class="checkbox-label"> <input type="checkbox" id="autoExpand" checked> <span>Auto-expand first level</span> </label> <label class="checkbox-label" style="margin-left: 20px;"> <span style="margin-right: 0.5rem;">Search:</span> <input type="text" id="searchInput" placeholder="Enter keywords to search..." style="padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); width: 200px;"> </label> </div> </div> <section class="tool-area mt-lg"> <h2 class="section-label">JSON Viewer Tips - How to Use JSON Tree Viewer</h2> <!-- Use Cases -->
 <div class="section features-section">
@@ -231,4 +234,15 @@ img { contain: layout; }
         });
     }
     </script>
+
+
+<!-- AdSense Responsive Ad Unit -->
+<ins class="adsbygoogle"
+     style="display:block; text-align:center; margin: 24px auto; max-width: 728px;"
+     data-ad-client="ca-pub-1902338749101993"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body> </html> 
