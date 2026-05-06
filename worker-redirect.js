@@ -81,7 +81,7 @@ export default {
       const tool = toolMap[slug];
 
       if (tool) {
-        return Response.redirect(url.origin + '/tools/' + tool + '/', 301);
+        return Response.redirect(url.origin + '/tools/' + tool, 301);
       }
       return new Response('Tool not found: ' + slug, { status: 404 });
     }
@@ -90,14 +90,14 @@ export default {
     const newsMatch = path.match(/^\/pages\/news\/(.+)\.html$/);
     if (newsMatch) {
       const slug = newsMatch[1];
-      return Response.redirect(url.origin + '/news/' + slug + '/', 301);
+      return Response.redirect(url.origin + '/news/' + slug, 301);
     }
 
     // ========== 处理 /pages/blog/xxx.html ==========
     const blogMatch = path.match(/^\/pages\/blog\/(.+)\.html$/);
     if (blogMatch) {
       const slug = blogMatch[1];
-      return Response.redirect(url.origin + '/blog/' + slug + '/', 301);
+      return Response.redirect(url.origin + '/blog/' + slug, 301);
     }
 
     // ========== 处理 /pages/format.html 等旧格式 ==========
@@ -106,8 +106,19 @@ export default {
       const slug = legacyToolMatch[1];
       const tool = toolMap[slug];
       if (tool) {
-        return Response.redirect(url.origin + '/tools/' + tool + '/', 301);
+        return Response.redirect(url.origin + '/tools/' + tool, 301);
       }
+    }
+
+    // ========== 尾斜杠清理 ==========
+    if (path === '/tools' && new URL(request.url).pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/tools', 301);
+    }
+    if (path === '/blog' && new URL(request.url).pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/blog', 301);
+    }
+    if (path === '/news' && new URL(request.url).pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/news', 301);
     }
 
     // 非 pages 路径，放行

@@ -69,7 +69,7 @@ export default {
       const tool = toolMap[slug];
       
       if (tool) {
-        return Response.redirect(url.origin + '/tools/' + tool + '/', 301);
+        return Response.redirect(url.origin + '/tools/' + tool, 301);
       }
     }
 
@@ -77,14 +77,28 @@ export default {
     const newsMatch = path.match(/^\/pages\/news\/(.+)\.html$/);
     if (newsMatch) {
       const slug = newsMatch[1];
-      return Response.redirect(url.origin + '/news/' + slug + '/', 301);
+      return Response.redirect(url.origin + '/news/' + slug, 301);
     }
 
     // ========== 处理 /pages/blog/xxx.html ==========
     const blogMatch = path.match(/^\/pages\/blog\/(.+)\.html$/);
     if (blogMatch) {
       const slug = blogMatch[1];
-      return Response.redirect(url.origin + '/blog/' + slug + '/', 301);
+      return Response.redirect(url.origin + '/blog/' + slug, 301);
+    }
+
+    // ========== 处理尾斜杠通用规则 ==========
+    // /tools/ → /tools (避免目录不存在导致 404)
+    if (path === '/tools' && new URL(request.url).pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/tools', 301);
+    }
+    // /blog/ → /blog
+    if (path === '/blog' && new URL(request.url).pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/blog', 301);
+    }
+    // /news/ → /news
+    if (path === '/news' && new URL(request.url).pathname.endsWith('/')) {
+      return Response.redirect(url.origin + '/news', 301);
     }
 
     // 非 pages 路径，放行
