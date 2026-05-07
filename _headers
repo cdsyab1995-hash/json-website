@@ -23,6 +23,11 @@
 /
   Cache-Control: public, max-age=3600, must-revalidate
 
+# ads.txt - must be text/plain for AdSense crawler
+/ads.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 # sitemap and robots - 1 day
 /sitemap.xml
   Cache-Control: public, max-age=86400
