@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Bq7rq6iKPPDtIQCMjYquCng3eeVG_Ni0tf1bqUQsQ2w" />
+    <meta name="description" content="How leading APIs implement rate limiting in 2026 — from token bucket algorithms to AI-aware cost-based limits, with standardized JSON error responses and new IETF header proposals.">
+    <meta name="author" content="AI JSON - Free JSON Tools for Developers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.aijsons.com/news/json-api-rate-limiting-patterns-2026">
+
+    <title>Modern JSON API Rate Limiting: Patterns and Headers for 2026 | AI JSON</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.aijsons.com/news/json-api-rate-limiting-patterns-2026">
+    <meta property="og:title" content="Modern JSON API Rate Limiting: Patterns and Headers for 2026">
+    <meta property="og:description" content="How leading APIs implement rate limiting in 2026 — from token bucket algorithms to AI-aware cost-based limits, with standardized JSON error responses and new IETF header proposals.">
+    <meta property="og:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Modern JSON API Rate Limiting: Patterns and Headers for 2026">
+    <meta name="twitter:description" content="How leading APIs implement rate limiting in 2026 — from token bucket algorithms to AI-aware cost-based limits, with standardized JSON error responses and new IETF header proposals.">
+    <meta name="twitter:image" content="https://www.aijsons.com/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fontsource-dm-sans/5.0.12/latin-400.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Modern JSON API Rate Limiting: Patterns and Headers for 2026",
+        "description": "How leading APIs implement rate limiting in 2026 — from token bucket algorithms to AI-aware cost-based limits, with standardized JSON error responses and new IETF header proposals.",
+        "datePublished": "2026-05-07",
+        "author": {"@type": "Organization", "name": "AI JSON"},
+        "publisher": {"@type": "Organization", "name": "AI JSON", "url": "https://www.aijsons.com"},
+        "url": "https://www.aijsons.com/news/json-api-rate-limiting-patterns-2026",
+        "articleSection": "News"
+    }
+    </script>
+<script src="/js/navbar.js"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CY19KF2X39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CY19KF2X39');
+    </script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="main-container">
+        <article>
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/news">News</a> / <span>Article</span>
+                </div>
+                <div class="article-category cat-development">API Design</div>
+                <h1 class="article-title">Modern JSON API Rate Limiting: Patterns and Headers for 2026</h1>
+                <div class="article-meta">
+                    <span>Published: 2026-05-07</span> &middot; <span>7-8 min read</span>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>Rate limiting has evolved significantly. As AI-generated API traffic surges and API costs become more complex, the simple request-per-minute counter is no longer sufficient. In 2026, the most robust JSON APIs implement multi-dimensional rate limiting with standardized error responses and predictive client guidance.</p>
+
+<h2>The Standard JSON Rate Limit Response</h2>
+
+<p>Modern APIs return structured JSON error responses when limits are exceeded, with enough detail for clients to implement smart retry logic:
+
+<pre><code>HTTP/1.1 429 Too Many Requests
+Content-Type: application/json
+Retry-After: 30
+X-RateLimit-Limit: 1000
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1746000000
+
+{
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Request limit exceeded. Retry after 30 seconds.",
+    "limit": 1000,
+    "window": "1 hour",
+    "retryAfter": 30,
+    "resetAt": "2026-04-29T13:00:00Z"
+  }
+}</code></pre></p>
+
+<h2>Token Bucket vs Sliding Window</h2>
+
+<p>The two most common algorithms in 2026: Token Bucket allows short bursts above the sustained rate — good for interactive APIs where users trigger multiple requests at once. Sliding Window provides perfectly smooth rate distribution — preferred for data pipeline APIs. Most AI APIs now use a hybrid: sliding window for request count plus token bucket for compute units.</p>
+
+<h2>AI Cost-Based Rate Limiting</h2>
+
+<p>With AI APIs, raw request count is a poor proxy for cost. GPT-5, Claude 4, and Gemini 2.5 all implement compute-unit limits alongside request limits. The JSON response includes both:
+
+<pre><code>{
+  "error": "QUOTA_EXCEEDED",
+  "limits": {
+    "requests": { "used": 1000, "limit": 1000, "resetAt": "..." },
+    "tokens": { "used": 2000000, "limit": 2000000, "resetAt": "..." },
+    "computeUnits": { "used": 500, "limit": 500, "resetAt": "..." }
+  }
+}</code></pre></p>
+
+<h2>IETF RateLimit Headers Draft</h2>
+
+<p>The IETF draft for standardized RateLimit headers (draft-ietf-httpapi-ratelimit-headers) is gaining adoption. It proposes three standard headers: <code>RateLimit-Limit</code>, <code>RateLimit-Remaining</code>, and <code>RateLimit-Reset</code>. GitHub, Stripe, and Cloudflare have all committed to adopting the finalized standard.</p>
+
+
+                <hr>
+                <p><em>Need to work with JSON data? Try our free <a href="/tools/json-formatter">JSON Formatter</a>, <a href="/tools/json-validator">JSON Validator</a>, and <a href="/tools/json-to-csv">JSON to CSV Converter</a> &mdash; no signup required.</em></p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 AI JSON &mdash; Free JSON Tools for Developers</p>
+            <nav class="footer-nav">
+                <a href="/about">About</a>
+                <a href="/blog">Blog</a>
+                <a href="/news">News</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
