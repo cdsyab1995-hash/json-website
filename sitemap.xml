@@ -1008,4 +1008,22 @@
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
+    <url>
+        <loc>https://www.aijsons.com/blog/json-typescript-integration-guide</loc>
+        <lastmod>2026-05-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.aijsons.com/news/json-api-rate-limiting-patterns-2026</loc>
+        <lastmod>2026-05-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.aijsons.com/news/json-schema-ai-validation-2026</loc>
+        <lastmod>2026-05-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>
